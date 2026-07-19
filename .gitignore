@@ -16,3 +16,6 @@ Thumbs.db
 # binaries). They are build output, not source — `pnpm install` regenerates them,
 # and production serves them from R2.
 apps/web/public/wasm/
+
+# Machine-local Claude Code settings
+.claude/settings.local.json

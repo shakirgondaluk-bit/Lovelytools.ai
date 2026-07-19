@@ -1,0 +1,4 @@
+{
+  "extends": "@lovelytools/config/tsconfig/next",
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

@@ -1,0 +1,91 @@
+/* lovelytools.ai — global stylesheet.
+   Design System tokens first, then Tailwind's layers. Order matters: the tokens
+   define the custom properties every utility resolves through.
+
+   Deep path rather than the package's "./styles.css" export: postcss-import
+   resolves bare specifiers through node_modules but ignores "exports" maps, so
+   the subpath export it advertises is invisible to it. pnpm symlinks the workspace
+   package here, so this points at the same file. */
+@import '@lovelytools/ui/src/styles/index.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* The DS ships base element styles in tokens/base.css; Tailwind's preflight
+     resets some of them, so re-assert the ones that matter after preflight runs. */
+  body {
+    font-family: var(--font-body);
+    font-size: var(--body-size);
+    line-height: var(--body-line);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* The 1240px container with 32px gutters, tightening on smaller screens (DS §Spacing). */
+  .lt-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  @media (max-width: 900px) {
+    .lt-container {
+      padding-inline: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .lt-container {
+      padding-inline: 20px;
+    }
+  }
+
+  /* Bands alternate --bg / --bg2, separated by 1px hairlines (DS §Backgrounds). */
+  .lt-band {
+    border-top: 1px solid var(--border);
+  }
+
+  /* The 56px hairline grid behind heroes, radially masked so it fades out. */
+  .lt-grid-bg {
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+  }
+}
+
+/* Ambient motion only — UI response stays intact so the interface remains legible
+   (DS §Animation: disable float/drift/spotlight, not everything). */
+@media (prefers-reduced-motion: reduce) {
+  .lt-float,
+  .lt-drift,
+  .lt-spotlight {
+    animation: none !important;
+  }
+}

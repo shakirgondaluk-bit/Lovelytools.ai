@@ -1,0 +1,105 @@
+/* lovelytools.ai — color tokens
+   Dark is the default theme. Add class "light" to <body> to swap.
+   Components reference tokens only — never raw hex.
+   Exception: the 8 category hues + star gold + error red are theme-invariant. */
+
+:root {
+  /* Core — dark (default) */
+  --bg: #0A0A0E;                        /* page background */
+  --bg2: #0E0E14;                       /* alternating band sections */
+  --surface: #14141C;                   /* cards, inputs, panels */
+  --surface2: #1A1A24;                  /* hover fills, nested wells */
+  --border: rgba(255,255,255,.08);      /* default hairlines */
+  --border2: rgba(255,255,255,.14);     /* emphasized/hover borders, kbd */
+  --text: #F2F1F7;                      /* headings, primary copy */
+  --text2: #A5A3B4;                     /* body copy, descriptions */
+  --text3: #6E6C7E;                     /* meta, placeholders — decorative only */
+  --accent: #7C6CFF;                    /* primary actions, links, active states */
+  --accent-soft: rgba(124,108,255,.14); /* accent tints, washes, announcement bar */
+  --green: #4ADE80;                     /* success, privacy proof, checkmarks */
+  --green-soft: rgba(74,222,128,.12);   /* success tints */
+  --nav-bg: rgba(10,10,14,.82);         /* the 64px header bar (with 18–24px blur) */
+  --card-shadow: 0 20px 50px rgba(0,0,0,.45); /* floating cards, search bar, mega panels */
+
+  /* Mega panels — opaque, unlike --nav-bg, and that is the whole point.
+
+     The DS's nav rule (82% + 18–24px blur) was written for a 64px bar drifting over
+     body copy. A mega panel is ~330px tall and opens directly over the hero's 72px
+     headline, where translucency stops working:
+       · at 82% the headline composites to ~rgb(52,52,56) on a rgb(10,10,14) panel —
+         a ghost you can read the words of;
+       · at 97% it is still ~rgb(19,19,24), a delta of ~7/255 that the eye picks up
+         across a large flat area;
+       · below ~1% bleed the blur has nothing left to blur, so it costs a
+         backdrop-filter repaint on a 330px surface and buys nothing.
+     Blur cannot rescue it either — a 24px radius is small next to 72px glyphs, so it
+     smears the letterforms without hiding them.
+
+     Frosted glass isn't see-through in the first place. So the panel is an opaque
+     sheet, and the glass reads through devices the DS already owns: a vertical
+     gradient for depth, the inset top highlight, and the float shadow. Legible at any
+     scroll position, over any hero, for free. */
+  --nav-panel-bg: linear-gradient(180deg, #13131B 0%, #0C0C12 100%);
+  /* The DS's "this floats" device (§Borders & shadows), applied to the panel's top
+     edge — the etched highlight that separates it from the header. */
+  --nav-panel-edge: inset 0 1px 0 rgba(255,255,255,.07);
+
+  /* Category hues — theme-invariant */
+  --cat-pdf: #FF6B6B;        /* PD · PDF & Documents */
+  --cat-image: #4ADE80;      /* IM · Image Tools */
+  --cat-video: #7C6CFF;      /* VD · Video Tools */
+  --cat-audio: #FFC53D;      /* AU · Audio Tools */
+  --cat-calc: #38BDF8;       /* CA · Calculators */
+  --cat-convert: #FF8A3D;    /* CV · Converters */
+  --cat-text: #F472B6;       /* TX · Text Tools */
+  --cat-dev: #34D3C3;        /* DV · Developer Tools */
+
+  /* Fixed semantics — theme-invariant */
+  --star: #F5B83D;           /* star ratings */
+  --error: #FF5C5C;          /* destructive / error */
+}
+
+/* Light theme — first-class equivalent, never mixed per-component */
+body.light {
+  --bg: #FAFAFC;
+  --bg2: #F4F3F8;
+  --surface: #FFFFFF;
+  --surface2: #F6F5FA;
+  --border: rgba(22,20,44,.10);
+  --border2: rgba(22,20,44,.18);
+  --text: #15132A;
+  --text2: #54516B;
+  --text3: #8B889C;
+  --accent: #6A58F5;
+  --accent-soft: rgba(106,88,245,.10);
+  --green: #1FA45B;
+  --green-soft: rgba(31,164,91,.10);
+  --nav-bg: rgba(250,250,252,.85);
+  --card-shadow: 0 20px 45px rgba(30,25,80,.10);
+  --nav-panel-bg: linear-gradient(180deg, #FFFFFF 0%, #F7F6FB 100%);
+  /* On light the etched edge is a near-white highlight rather than a faint one —
+     the same device, inverted, so the panel still reads as a raised sheet. */
+  --nav-panel-edge: inset 0 1px 0 rgba(255,255,255,.9);
+
+  /* Category hues as TEXT darken one step on light */
+  --cat-pdf-text: #E05252;
+  --cat-image-text: #1FA45B;
+  --cat-video-text: #6A58F5;
+  --cat-audio-text: #B8860B;
+  --cat-calc-text: #0284C7;
+  --cat-convert-text: #D96A1E;
+  --cat-text-text: #D6408F;
+  --cat-dev-text: #0F9488;
+}
+
+/* On dark, text-on-hue variants equal the hue itself */
+:root {
+  --cat-pdf-text: #FF6B6B;
+  --cat-image-text: #4ADE80;
+  --cat-video-text: #7C6CFF;
+  --cat-audio-text: #FFC53D;
+  --cat-calc-text: #38BDF8;
+  --cat-convert-text: #FF8A3D;
+  --cat-text-text: #F472B6;
+  --cat-dev-text: #34D3C3;
+}

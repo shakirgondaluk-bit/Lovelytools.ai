@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    // No "WebWorker" here. It conflicts with "DOM" — the two libs redeclare the
+    // same globals with different shapes, and the fallout is baffling (it made
+    // HTMLInputElement.value stop resolving). Worker code should declare its own
+    // context with /// <reference lib="webworker" /> at the top of the file.
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "noEmit": true
+  },
+  "exclude": ["node_modules", "dist", ".next"]
+}

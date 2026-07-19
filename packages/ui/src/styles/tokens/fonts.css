@@ -1,0 +1,13 @@
+/* lovelytools.ai — webfonts.
+   Both families are Google Fonts. The Design System loaded them from the Google CDN
+   because no self-hosted binaries were provided; under Next.js, `next/font/google`
+   downloads and self-hosts them at build time instead. Same two families, no
+   render-blocking request to a third party — which the LCP < 1.2s budget (RFC-001 §6)
+   needs, and which keeps the privacy promise honest (no font CDN sees your visitors).
+
+   The loader lives in apps/web/app/layout.tsx and publishes:
+     --font-grotesk    → Space Grotesk
+     --font-instrument → Instrument Sans
+   tokens/typography.css folds those into --font-display / --font-body.
+
+   NEVER load a third family. */

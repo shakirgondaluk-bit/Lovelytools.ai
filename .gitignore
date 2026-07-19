@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+.env
+.env.*.local
+
+.DS_Store
+Thumbs.db
+
+# WASM cores are staged out of node_modules by tooling/wasm-build (62 MB of
+# binaries). They are build output, not source — `pnpm install` regenerates them,
+# and production serves them from R2.
+apps/web/public/wasm/

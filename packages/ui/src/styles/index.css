@@ -1,0 +1,10 @@
+/* lovelytools.ai design system — token entry point.
+   Import this one file; it pulls in every token layer in cascade order.
+   Values are Design System v1.0 verbatim — this package is the authority. */
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/radius.css';
+@import './tokens/animation.css';
+@import './tokens/base.css';

@@ -1,0 +1,47 @@
+/* lovelytools.ai — typography tokens
+   Space Grotesk: display, headings, numerals, monograms, kbd.
+   Instrument Sans: body, UI labels, forms.
+   ui-monospace: code + image-placeholder labels only. NEVER load a third family. */
+
+:root {
+  /* --font-grotesk / --font-instrument come from next/font (see tokens/fonts.css).
+     The literal family names are the fallback when the loader is absent — e.g. when
+     these tokens are consumed outside the Next app. */
+  --font-display: var(--font-grotesk), 'Space Grotesk', sans-serif;
+  --font-body: var(--font-instrument), 'Instrument Sans', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Scale — sizes (px), line-heights + tracking marked @kind other */
+  --display-2xl-size: 96px;  /* type-led hero only */
+  --display-2xl-line: 1.02;   /* @kind other */
+  --display-2xl-track: -0.04em; /* @kind other */
+  --display-xl-size: 72px;   /* homepage hero H1 */
+  --display-xl-line: 1.04;    /* @kind other */
+  --display-xl-track: -0.035em; /* @kind other */
+  --display-lg-size: 56px;   /* final CTA */
+  --display-lg-line: 1.06;    /* @kind other */
+  --display-lg-track: -0.035em; /* @kind other */
+  --display-md-size: 44px;   /* stat numerals, privacy H2 */
+  --display-md-line: 1.08;    /* @kind other */
+  --display-md-track: -0.03em;  /* @kind other */
+  --h2-size: 40px;           /* section headings */
+  --h2-line: 1.12;            /* @kind other */
+  --h2-track: -0.03em;          /* @kind other */
+  --h3-size: 20px;           /* card titles, steps, plan names */
+  --h3-line: 1.25;            /* @kind other */
+  --h3-track: -0.02em;          /* @kind other */
+  --body-lg-size: 17px;      /* hero subheads, section intros (up to 19px) */
+  --body-lg-line: 1.55;       /* @kind other */
+  --body-size: 14px;         /* default copy, nav, features (14–16px) */
+  --body-line: 1.6;           /* @kind other */
+  --small-size: 12.5px;      /* meta, captions, chips, footer links */
+  --small-line: 1.5;          /* @kind other */
+  --overline-size: 12px;     /* eyebrows, column titles — uppercase Grotesk 600 */
+  --overline-track: 0.14em;     /* @kind other */
+}
+
+/* Rules:
+   — headings: text-wrap balance; paragraphs: text-wrap pretty
+   — tracking tightens as size grows; positive tracking only on overlines
+   — numerals in stats/prices are always Space Grotesk
+   — minimum UI text 11px; minimum body 12.5px */

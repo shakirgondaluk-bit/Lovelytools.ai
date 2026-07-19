@@ -1,0 +1,15 @@
+{
+  "extends": "@lovelytools/config/tsconfig/next",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  // public/ holds staged vendor assets (the ffmpeg cores and class worker). They are
+  // served verbatim, never compiled — and typechecking them is actively harmful: a
+  // stray `/// <reference lib="webworker" />` in a vendored .d.ts pulls the WebWorker
+  // lib into this program and breaks DOM types everywhere.
+  "exclude": ["node_modules", "public"]
+}

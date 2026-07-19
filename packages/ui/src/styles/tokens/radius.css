@@ -1,0 +1,13 @@
+/* lovelytools.ai — border radius tokens.
+   Rule of thumb: nested radii step down ~4px from their container
+   (24px panel → 14px input → 10px button inside it). */
+
+:root {
+  --r-xs: 3px;    /* category dots (9px squares) */
+  --r-sm: 6px;    /* kbd chips, footer badges, nested nav rows (5–7px) */
+  --r-md: 9px;    /* buttons, logo mark, menu rows, monogram chips (8–10px) */
+  --r-lg: 12px;   /* inputs, search bar, FAQ rows, floating cards (11–14px) */
+  --r-xl: 16px;   /* standard cards: category, tool, collection, blog */
+  --r-2xl: 20px;  /* pricing cards, feature panels, privacy diagram (20–24px) */
+  --r-full: 99px; /* pills: badges, quick chips, toggles; avatars use 50% */
+}

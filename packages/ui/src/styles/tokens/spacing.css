@@ -1,0 +1,30 @@
+/* lovelytools.ai — spacing tokens. Base unit 4px.
+   Allowed steps: 4 8 10 12 14 16 20 24 28 32 40 48 56 64 96 110.
+   All layout uses flex/grid with gap — no margin stacking between siblings. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-2h: 10px;
+  --space-3: 12px;
+  --space-3h: 14px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-27: 110px;
+
+  /* Layout */
+  --container-max: 1240px;   /* page container, centered */
+  --container-pad: 32px;     /* 24px tablet, 20px mobile */
+  --section-gap: 96px;       /* between section groups; 48px between related sections */
+  --card-grid-gap: 14px;     /* ALL card grids */
+  --card-pad: 20px;          /* 20–22 standard · 28 workflow · 32 pricing · 56 feature panels */
+  --nav-height: 64px;
+}

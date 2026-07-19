@@ -1,0 +1,22 @@
+{
+  "name": "lovelytools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "lovelytools.ai — privacy-first browser tools. No upload endpoint exists.",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "registry:check": "turbo registry:check"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  }
+}

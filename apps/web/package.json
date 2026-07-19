@@ -1,0 +1,45 @@
+{
+  "name": "@lovelytools/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3210",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint",
+    "check:links": "tsx scripts/check-links.ts",
+    "test": "tsx scripts/check-links.ts"
+  },
+  "dependencies": {
+    "@lovelytools/engine-audio": "workspace:*",
+    "@lovelytools/engine-video": "workspace:*",
+    "@lovelytools/engines-core": "workspace:*",
+    "@lovelytools/registry": "workspace:*",
+    "@lovelytools/ui": "workspace:*",
+    "next": "^15.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@lovelytools/engine-pdf": "workspace:*",
+    "@lovelytools/engine-conversion": "workspace:*",
+    "@lovelytools/engine-image": "workspace:*",
+    "@lovelytools/engine-calculator": "workspace:*",
+    "@lovelytools/engine-text": "workspace:*",
+    "@lovelytools/engine-devtools": "workspace:*",
+    "@lovelytools/engine-speech": "workspace:*",
+    "docx": "^9.1.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@lovelytools/config": "workspace:*",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "postcss-import": "^16.1.0",
+    "tsx": "^4.19.2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://api.github.com/repos/anthropics/claude-code/contents/plugins/frontend-design/skills/frontend-design\")",
+      "Bash(mkdir -p 'C:\\\\Users\\\\HP/.claude/skills/frontend-design')",
+      "Bash(curl -s -o 'C:\\\\Users\\\\HP/.claude/skills/frontend-design/SKILL.md' https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/skills/frontend-design/SKILL.md)",
+      "Read(//c/Users/HP/.claude/skills/frontend-design/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill\")",
+      "Bash(curl -s \"https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill\")",
+      "Bash(curl -s \"https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill/contents/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/package.json\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://registry.npmjs.org/ui-ux-pro-max-skill\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/README.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill/contents/cli\")",
+      "Bash(curl -s \"https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill/contents/.claude-plugin\")",
+      "Bash(npm view *)",
+      "Bash(npm install *)",
+      "Bash(uipro --version)",
+      "Bash(uipro --help)"
+    ]
+  }
+}

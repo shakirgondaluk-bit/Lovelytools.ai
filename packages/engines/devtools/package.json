@@ -1,0 +1,32 @@
+{
+  "name": "@lovelytools/engine-devtools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc --noEmit", "test": "tsx src/coverage.test.ts" },
+  "dependencies": {
+    "@lovelytools/engines-core": "workspace:*",
+    "@lovelytools/registry": "workspace:*",
+    "cronstrue": "^2.55.0",
+    "js-beautify": "^1.15.1",
+    "marked": "^15.0.6",
+    "node-html-markdown": "^1.3.0",
+    "qrcode": "^1.5.4",
+    "sql-formatter": "^15.4.9",
+    "terser": "^5.37.0",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@lovelytools/config": "workspace:*",
+    "@types/js-beautify": "^1.14.3",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.2",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2"
+  },
+  "peerDependencies": { "react": "^19.0.0" }
+}

@@ -1,0 +1,40 @@
+/* lovelytools.ai — animation system.
+   Rules: nothing animates layout (transform/opacity only);
+   ≤300ms for UI response, ≥6s for ambient loops; honor prefers-reduced-motion. */
+
+:root {
+  --ease-ui: ease;           /* @kind other */
+  --dur-fast: 150ms;         /* @kind other */
+  --dur-hover: 180ms;        /* @kind other */
+  --dur-fade: 200ms;         /* @kind other */
+  --dur-counter: 1600ms;     /* @kind other */
+}
+
+/* Hero floating cards — inner element; rotation lives on the wrapper */
+@keyframes lt-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Ambient gradient orbs (hero, final CTA) — 16–20s */
+@keyframes lt-drift {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(60px,-40px) scale(1.08); }
+  66%      { transform: translate(-40px,30px) scale(.95); }
+}
+
+/* Mega panels, FAQ answers, AI results — 180–250ms */
+@keyframes lt-fadeup {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Live status dots — 2s infinite */
+@keyframes lt-pulse {
+  0%, 100% { opacity: .5; }
+  50%      { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt-float, .lt-drift { animation: none !important; }
+}

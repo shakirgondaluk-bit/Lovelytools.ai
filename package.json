@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "build:web": "pnpm --filter @lovelytools/web build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "test": "turbo test",

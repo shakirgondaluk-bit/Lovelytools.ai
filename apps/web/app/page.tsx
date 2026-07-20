@@ -21,6 +21,7 @@ import {
   ToolCard,
 } from '@lovelytools/ui';
 import { HeroSearch } from '@/components/hero-search';
+import { HeroSpotlightGrid } from '@/components/hero-spotlight-grid';
 import { PricingToggle } from '@/components/pricing-toggle';
 
 export const metadata: Metadata = {
@@ -74,7 +75,7 @@ export default function HomePage() {
       <main>
         {/* ── Hero ──────────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden">
-          <div aria-hidden="true" className="lt-grid-bg absolute inset-0" />
+          <HeroSpotlightGrid />
           {/* Two drifting orbs — the only ambient colour in the system. */}
           <div
             aria-hidden="true"

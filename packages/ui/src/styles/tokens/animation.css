@@ -10,10 +10,13 @@
   --dur-counter: 1600ms;     /* @kind other */
 }
 
-/* Hero floating cards — inner element; rotation lives on the wrapper */
+/* Hero floating cards — inner element; base tilt lives on the wrapper, so this
+   organic drift (X sway + fractional rotation wobble) composes on top of it. */
 @keyframes lt-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+  30%      { transform: translate(6px, -10px) rotate(0.8deg); }
+  55%      { transform: translate(-3px, -16px) rotate(-0.5deg); }
+  80%      { transform: translate(-6px, -6px) rotate(0.4deg); }
 }
 
 /* Ambient gradient orbs (hero, final CTA) — 16–20s */

@@ -78,6 +78,25 @@
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
     mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
   }
+
+  /* Hero-only variant: the grid is invisible until the pointer moves, then only
+     the lines inside a soft disc around the cursor light up. --mx/--my/--on are
+     driven by the HeroSpotlightGrid island (px relative to this element's box);
+     without JS (or on touch) --on stays 0 and nothing shows, which is intended.
+     --grid-line is theme-aware: light lines on dark, dark lines on light. */
+  .lt-grid-spotlight {
+    --mx: 50%;
+    --my: 40%;
+    --on: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 54px 54px;
+    opacity: var(--on);
+    transition: opacity 300ms ease;
+    -webkit-mask-image: radial-gradient(circle 190px at var(--mx) var(--my), #000 0%, rgba(0,0,0,.4) 46%, transparent 72%);
+    mask-image: radial-gradient(circle 190px at var(--mx) var(--my), #000 0%, rgba(0,0,0,.4) 46%, transparent 72%);
+  }
 }
 
 /* Ambient motion only — UI response stays intact so the interface remains legible

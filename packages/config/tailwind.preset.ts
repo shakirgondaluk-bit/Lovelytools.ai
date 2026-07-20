@@ -76,9 +76,14 @@ const preset: Omit<Config, 'content'> = {
           '0%, 100%': { opacity: '0.5' },
           '50%': { opacity: '1' },
         },
+        // Organic drift, not a straight bob: a little X sway and a fractional
+        // rotation wobble read as "floating" where a pure 12px translateY barely
+        // registered. Amplitude stays mild; the per-card `delay` desyncs them.
         'lt-float': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
+          '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+          '30%': { transform: 'translate(6px, -10px) rotate(0.8deg)' },
+          '55%': { transform: 'translate(-3px, -16px) rotate(-0.5deg)' },
+          '80%': { transform: 'translate(-6px, -6px) rotate(0.4deg)' },
         },
         'lt-drift': {
           '0%, 100%': { transform: 'translate(0, 0)' },

@@ -11,6 +11,7 @@
   --surface2: #1A1A24;                  /* hover fills, nested wells */
   --border: rgba(255,255,255,.08);      /* default hairlines */
   --border2: rgba(255,255,255,.14);     /* emphasized/hover borders, kbd */
+  --grid-line: rgba(198,192,255,.45);   /* hero spotlight grid — light lines that glow on dark */
   --text: #F2F1F7;                      /* headings, primary copy */
   --text2: #A5A3B4;                     /* body copy, descriptions */
   --text3: #6E6C7E;                     /* meta, placeholders — decorative only */
@@ -67,6 +68,7 @@ body.light {
   --surface2: #F6F5FA;
   --border: rgba(22,20,44,.10);
   --border2: rgba(22,20,44,.18);
+  --grid-line: rgba(42,36,92,.32);      /* hero spotlight grid — dark lines that glow on light */
   --text: #15132A;
   --text2: #54516B;
   --text3: #8B889C;

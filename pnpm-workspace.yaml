@@ -3,3 +3,14 @@ packages:
   - 'packages/*'
   - 'packages/engines/*'
   - 'tooling/*'
+
+# pnpm 10+ blocks postinstall scripts by default (supply-chain hardening).
+# These are legitimate native-binary fetchers, not attack surface — esbuild
+# needs its own binary, sharp/onnxruntime-node/protobufjs compile or fetch
+# native bindings, tesseract.js downloads its WASM core.
+onlyBuiltDependencies:
+  - esbuild
+  - onnxruntime-node
+  - sharp
+  - tesseract.js
+  - protobufjs

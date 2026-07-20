@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "lovelytools.ai — privacy-first browser tools. No upload endpoint exists.",
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@11.15.1",
   "engines": {
     "node": ">=20"
   },

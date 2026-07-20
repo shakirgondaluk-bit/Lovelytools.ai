@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "turbo dev",
-    "build": "pnpm --filter @lovelytools/web build",
+    "build": "cd apps/web && npx --no-install next build",
     "build:turbo": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",

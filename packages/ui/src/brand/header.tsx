@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Logo } from '../primitives/logo';
 import { cn } from '../lib/utils';
+import { useFavorites } from './favorites';
 import { MegaNav, type MegaPanelId } from './mega-nav';
 import { SearchTrigger } from './search-bar';
 import { ThemeSwitcher } from './theme-switcher';
@@ -76,6 +77,7 @@ export function Header() {
           >
             EN
           </button>
+          <FavoritesLink />
           <ThemeSwitcher />
           {/*
             "Log in" used to sit here pointing at /login. NextAuth is not built
@@ -97,5 +99,30 @@ export function Header() {
 
       <MegaNav open={open} onClose={() => setOpen(null)} />
     </header>
+  );
+}
+
+/**
+ * The header's route into "My Favorite Tools". The count only renders once storage
+ * has been read (`hydrated`) — rendering it earlier would show "0" to someone who
+ * has favorites, and would mismatch the server HTML on hydration.
+ */
+function FavoritesLink() {
+  const { favorites, hydrated } = useFavorites();
+  const count = favorites.size;
+
+  return (
+    <Link
+      href="/favorites"
+      aria-label={
+        hydrated && count > 0 ? `My Favorite Tools (${count})` : 'My Favorite Tools'
+      }
+      className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-[13px] font-medium text-fg2 transition-colors duration-150 hover:bg-surface2 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      <span aria-hidden="true" className="text-[15px] leading-none">
+        {hydrated && count > 0 ? '♥' : '♡'}
+      </span>
+      {hydrated && count > 0 && <span aria-hidden="true">{count}</span>}
+    </Link>
   );
 }

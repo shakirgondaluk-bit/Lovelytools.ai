@@ -19,6 +19,13 @@ interface FavoritesContextValue {
   favorites: ReadonlySet<string>;
   isFavorite: (slug: string) => boolean;
   toggle: (slug: string) => void;
+  /**
+   * False until localStorage has been read. The set is empty on the server and on
+   * the first client render, so a consumer that renders an "in here" list must wait
+   * for this — otherwise someone with 12 favorites sees "nothing here yet" flash
+   * before their tools appear.
+   */
+  hydrated: boolean;
 }
 
 const FavoritesContext = createContext<FavoritesContextValue | null>(null);
@@ -54,12 +61,14 @@ export function FavoritesProvider({
   signedIn?: boolean;
 }) {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [hydrated, setHydrated] = useState(false);
   const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Hydrate from localStorage; if signed in, merge with the server set.
   useEffect(() => {
     const local = readLocal();
     setFavorites(new Set(local));
+    setHydrated(true);
     if (!signedIn) return;
     let cancelled = false;
     (async () => {
@@ -113,8 +122,8 @@ export function FavoritesProvider({
   );
 
   const value = useMemo<FavoritesContextValue>(
-    () => ({ favorites, isFavorite: (s) => favorites.has(s), toggle }),
-    [favorites, toggle],
+    () => ({ favorites, isFavorite: (s) => favorites.has(s), toggle, hydrated }),
+    [favorites, toggle, hydrated],
   );
 
   return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;

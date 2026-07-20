@@ -7,14 +7,20 @@ packages:
 # pnpm 10+ blocks dependency postinstall scripts by default (supply-chain
 # hardening) and only reads the allow-list from this field — package.json's
 # "pnpm" key and this file's old "onlyBuiltDependencies" list are both
-# deprecated and silently ignored by pnpm 11. Confirmed via a local
-# `pnpm install`, which auto-wrote this exact field name into the file.
-# These are legitimate native-binary fetchers, not attack surface — esbuild
-# needs its own binary, sharp/onnxruntime-node/protobufjs compile or fetch
-# native bindings, tesseract.js downloads its WASM core.
+# deprecated and silently ignored by pnpm 11.
+#
+# esbuild/onnxruntime-node/sharp/protobufjs are transitive, pulled in only
+# because @huggingface/transformers optionally supports Node-side backends
+# this app never uses — they're aliased to `false` for the browser bundle in
+# next.config.ts, and `next build` (apps/web's only build script) uses SWC,
+# not esbuild, so none of their native postinstalls are on the critical path.
+# On Hostinger's Cloud Startup plan esbuild's own binary-verification
+# postinstall fails outright (sandboxed exec), so these are left unbuilt
+# rather than forced. tesseract.js's postinstall is just an OpenCollective
+# funding message — harmless, allowed.
 allowBuilds:
-  esbuild: true
-  onnxruntime-node: true
-  protobufjs: true
-  sharp: true
+  esbuild: false
+  onnxruntime-node: false
+  protobufjs: false
+  sharp: false
   tesseract.js: true

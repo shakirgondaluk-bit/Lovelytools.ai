@@ -4,13 +4,17 @@ packages:
   - 'packages/engines/*'
   - 'tooling/*'
 
-# pnpm 10+ blocks postinstall scripts by default (supply-chain hardening).
+# pnpm 10+ blocks dependency postinstall scripts by default (supply-chain
+# hardening) and only reads the allow-list from this field — package.json's
+# "pnpm" key and this file's old "onlyBuiltDependencies" list are both
+# deprecated and silently ignored by pnpm 11. Confirmed via a local
+# `pnpm install`, which auto-wrote this exact field name into the file.
 # These are legitimate native-binary fetchers, not attack surface — esbuild
 # needs its own binary, sharp/onnxruntime-node/protobufjs compile or fetch
 # native bindings, tesseract.js downloads its WASM core.
-onlyBuiltDependencies:
-  - esbuild
-  - onnxruntime-node
-  - sharp
-  - tesseract.js
-  - protobufjs
+allowBuilds:
+  esbuild: true
+  onnxruntime-node: true
+  protobufjs: true
+  sharp: true
+  tesseract.js: true

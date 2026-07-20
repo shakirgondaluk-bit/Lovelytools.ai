@@ -9,8 +9,8 @@
   },
   "scripts": {
     "dev": "turbo dev",
-    "build": "turbo build",
-    "build:web": "pnpm --filter @lovelytools/web build",
+    "build": "pnpm --filter @lovelytools/web build",
+    "build:turbo": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "test": "turbo test",

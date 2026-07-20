@@ -124,7 +124,11 @@ export default function HomePage() {
         <section className="lt-band bg-bg2">
           <div className="lt-container grid grid-cols-1 gap-10 py-14 text-center sm:grid-cols-3">
             <StatCounter value={TOTAL_TOOLS} caption="tools in your browser" className="items-center" />
-            <StatCounter value={0} caption="files uploaded to our servers" className="items-center" />
+            {/* A string, not 0 — a numeric StatCounter animates up to its value, so
+                `value={0}` counted from 0 to 0 (visibly did nothing) and read as an
+                empty "no file selected yet" state. "Zero" renders statically as a
+                deliberate privacy claim. */}
+            <StatCounter value="Zero" caption="files uploaded, ever" className="items-center" />
             <StatCounter value="100%" caption="of processing happens on your device" className="items-center" />
           </div>
         </section>

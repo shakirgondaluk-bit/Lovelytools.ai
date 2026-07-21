@@ -25,7 +25,7 @@ const COMPANY: Array<[string, string]> = [
 export function Footer() {
   return (
     <footer className="border-t border-line bg-bg2">
-      <div className="mx-auto grid max-w-page grid-cols-2 gap-x-8 gap-y-10 px-8 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-page grid-cols-2 gap-x-6 gap-y-10 px-5 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-x-8 md:px-8 md:py-16">
         {/* Brand */}
         <div className="col-span-2 flex flex-col gap-4 md:col-span-1">
           <Logo />
@@ -59,7 +59,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-3 px-8 py-5">
+        <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-3 px-5 py-5 sm:px-6 md:px-8">
           <p className="text-[12.5px] text-fg3">© 2026 lovelytools.ai — all processing happens on your device.</p>
           <div className="flex items-center gap-5">
             <Link href="/privacy" className="text-[12.5px] text-fg3 transition-colors duration-150 hover:text-fg2">

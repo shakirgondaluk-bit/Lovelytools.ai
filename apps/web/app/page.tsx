@@ -244,7 +244,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-line bg-surface p-8 shadow-card">
+            <div className="rounded-2xl border border-line bg-surface p-5 shadow-card sm:p-8">
               <div className="flex flex-col gap-4 font-mono text-[12.5px]">
                 <div className="flex items-center justify-between text-fg3">
                   <span>Network</span>

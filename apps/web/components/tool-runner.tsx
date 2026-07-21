@@ -156,7 +156,7 @@ export function ToolRunner({ tool, category }: { tool: ToolDefinition; category:
   const busy = media.state === 'running' || media.state === 'loading-engine';
 
   return (
-    <div className="flex flex-col gap-5 rounded-2xl border border-line bg-surface p-8">
+    <div className="flex flex-col gap-5 rounded-2xl border border-line bg-surface p-5 sm:p-8">
       {!file && (
         <UploadZone
           accept={media.accept}
@@ -305,7 +305,7 @@ function NotBuiltYet({
   tryHrefs: TryLink[];
 }) {
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-8">
+    <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-5 sm:p-8">
       <h2 className="font-grotesk text-lg font-bold text-fg">Not built yet</h2>
       <p className="max-w-[560px] text-sm leading-[1.6] text-fg2">
         This one isn&rsquo;t a wiring job — the {engineName} engine {reason}. Saying so beats a
@@ -321,7 +321,7 @@ function NotBuiltYet({
 /** An engine that runs but has no page UI wired up in this pass — a wiring gap, not a capability gap. */
 function NotWiredUp({ engineName, tryHrefs }: { engineName: string; tryHrefs: TryLink[] }) {
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-8">
+    <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-5 sm:p-8">
       <h2 className="font-grotesk text-lg font-bold text-fg">Not wired up yet</h2>
       <p className="max-w-[560px] text-sm leading-[1.6] text-fg2">
         The <strong className="text-fg">{engineName}</strong> engine runs in your browser and this

@@ -188,7 +188,7 @@ export function AccountView() {
 function Panel({ children }: { children: React.ReactNode }) {
   return (
     <div className="lt-container py-16">
-      <div className="mx-auto flex w-full max-w-[420px] flex-col gap-4 rounded-2xl border border-line bg-surface p-8 shadow-card">
+      <div className="mx-auto flex w-full max-w-[420px] flex-col gap-4 rounded-2xl border border-line bg-surface p-6 sm:p-8 shadow-card">
         {children}
       </div>
     </div>

@@ -26,8 +26,15 @@
   --accent: #F5C518;
   --accent-soft: rgba(245,197,24,.14); /* accent tints, washes, announcement bar */
   --accent-fg: #14121F;                 /* text/icon color on top of --accent */
-  --green: #4ADE80;                     /* success, privacy proof, checkmarks */
-  --green-soft: rgba(74,222,128,.12);   /* success tints */
+  /* Dark theme's secondary is BLUE (product decision, 2026-07) — light keeps
+     purple. The token keeps its historical name; it colors success/privacy
+     accents, badges and checkmarks — i.e. it is a TEXT/ICON color, not just a
+     swatch, so the requested navy (#102A71) can't be used directly: against
+     --bg (#0A0A0E) it contrasts at ~1.36:1, far under the 4.5:1 (text) / 3:1
+     (icons) WCAG floor — the privacy checkmarks and labels went unreadable.
+     This is the same hue lifted to a contrast-passing lightness (~6.1:1). */
+  --green: #5B8DEF;
+  --green-soft: rgba(91,141,239,.12);   /* success tints */
   --nav-bg: rgba(10,10,14,.82);         /* the 64px header bar (with 18–24px blur) */
   --card-shadow: 0 20px 50px rgba(0,0,0,.45); /* floating cards, search bar, mega panels */
 

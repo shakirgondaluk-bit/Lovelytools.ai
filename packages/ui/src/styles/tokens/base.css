@@ -28,6 +28,13 @@ a:hover { color: var(--text); }
 input, button, textarea, select { font-family: var(--font-body); }
 input::placeholder, textarea::placeholder { color: var(--text3); }
 
+/* Logo mark — dark theme keeps the CSS gradient square; light theme swaps in
+   the gear+heart artwork (product decision, 2026-07). Both render server-side
+   always; this pure-CSS toggle avoids client JS and any hydration flash. */
+.lt-logo-mark-light { display: none; }
+body.light .lt-logo-mark-dark { display: none; }
+body.light .lt-logo-mark-light { display: block; }
+
 button { cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible {
   outline: 2px solid var(--accent);

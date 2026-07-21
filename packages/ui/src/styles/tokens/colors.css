@@ -29,12 +29,12 @@
   /* Dark theme's secondary is BLUE (product decision, 2026-07) — light keeps
      purple. The token keeps its historical name; it colors success/privacy
      accents, badges and checkmarks — i.e. it is a TEXT/ICON color, not just a
-     swatch, so the requested navy (#102A71) can't be used directly: against
-     --bg (#0A0A0E) it contrasts at ~1.36:1, far under the 4.5:1 (text) / 3:1
-     (icons) WCAG floor — the privacy checkmarks and labels went unreadable.
-     This is the same hue lifted to a contrast-passing lightness (~6.1:1). */
-  --green: #5B8DEF;
-  --green-soft: rgba(91,141,239,.12);   /* success tints */
+     swatch, so a swatch-accurate royal blue (~#0B3FA6) can't be used directly:
+     against --bg (#0A0A0E) that contrasts at ~2.1:1, under the 4.5:1 (text) /
+     3:1 (icon) WCAG floor. Same hue, lifted just enough to pass (~5.1:1) while
+     staying a saturated "true blue" rather than the paler tint tried first. */
+  --green: #477BF5;
+  --green-soft: rgba(71,123,245,.12);   /* success tints */
   --nav-bg: rgba(10,10,14,.82);         /* the 64px header bar (with 18–24px blur) */
   --card-shadow: 0 20px 50px rgba(0,0,0,.45); /* floating cards, search bar, mega panels */
 

@@ -13,7 +13,18 @@ import {
 import { cn } from '../lib/utils';
 
 const STORAGE_KEY = 'lt-favorites';
-const API = '/api/v1/favorites'; // edge · GET/PUT synced set of tool slugs
+
+/**
+ * How a signed-in user's set is persisted. Injected by the app rather than imported
+ * here, so this package stays free of any backend dependency — packages/ui is shared
+ * and must not know what the data layer is.
+ */
+export interface FavoritesSync {
+  /** Stable id for the signed-in user; null when anonymous. Changing it re-syncs. */
+  userId: string | null;
+  load: () => Promise<string[]>;
+  save: (slugs: string[]) => Promise<void>;
+}
 
 interface FavoritesContextValue {
   favorites: ReadonlySet<string>;
@@ -50,51 +61,60 @@ function writeLocal(slugs: string[]) {
 
 /**
  * FavoritesProvider — anonymous-first favorites (RFC-001 §5, §10).
- * Anonymous: localStorage["lt-favorites"]. Signed in: local set merges into
- * Postgres via GET/PUT /api/v1/favorites (optimistic, debounced writes).
+ *
+ * Anonymous: localStorage["lt-favorites"], and that path never requires a network.
+ * Signed in (a `sync` with a non-null userId): the local set is UNIONED with the
+ * stored one on load, then written back. Union rather than last-write-wins because
+ * both sides are things the same person deliberately hearted — favorites someone
+ * saved before signing up must survive their first sign-in, and a device that was
+ * offline must not delete what another device added.
+ *
+ * Removals therefore only propagate through an explicit toggle, which writes the
+ * full set. That is the accepted trade: a stale device can resurrect a removed
+ * favorite, which is recoverable; silently losing a saved list is not.
  */
 export function FavoritesProvider({
   children,
-  signedIn = false,
+  sync,
 }: {
   children: ReactNode;
-  signedIn?: boolean;
+  sync?: FavoritesSync;
 }) {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [hydrated, setHydrated] = useState(false);
   const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Hydrate from localStorage; if signed in, merge with the server set.
+  // `sync` is rebuilt each render by the app; only the user identity should
+  // re-trigger the merge, so the effect keys on that and reads the rest via ref.
+  const syncRef = useRef(sync);
+  syncRef.current = sync;
+  const userId = sync?.userId ?? null;
+
   useEffect(() => {
     const local = readLocal();
     setFavorites(new Set(local));
     setHydrated(true);
-    if (!signedIn) return;
+
+    if (!userId) return;
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch(API);
-        if (!res.ok) return;
-        const server: string[] = await res.json();
+        const stored = await syncRef.current!.load();
         if (cancelled) return;
-        const merged = Array.from(new Set([...server, ...local]));
+        const merged = Array.from(new Set([...stored, ...local]));
         setFavorites(new Set(merged));
         writeLocal(merged);
-        if (local.some((s) => !server.includes(s))) {
-          await fetch(API, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ toolSlugs: merged }),
-          });
+        if (local.some((s) => !stored.includes(s))) {
+          await syncRef.current!.save(merged);
         }
       } catch {
-        /* offline — local set remains authoritative */
+        /* offline or misconfigured — the local set remains authoritative */
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [signedIn]);
+  }, [userId]);
 
   const toggle = useCallback(
     (slug: string) => {
@@ -103,22 +123,19 @@ export function FavoritesProvider({
         next.has(slug) ? next.delete(slug) : next.add(slug);
         const list = Array.from(next);
         writeLocal(list);
-        if (signedIn) {
+        if (syncRef.current?.userId) {
+          // Debounced: rapid hearting writes once, not once per click.
           if (syncTimer.current) clearTimeout(syncTimer.current);
           syncTimer.current = setTimeout(() => {
-            fetch(API, {
-              method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ toolSlugs: list }),
-            }).catch(() => {
-              /* retried on next mutation; local copy is never lost */
+            syncRef.current?.save(list).catch(() => {
+              /* retried on next mutation; the local copy is never lost */
             });
           }, 600);
         }
         return next;
       });
     },
-    [signedIn],
+    [],
   );
 
   const value = useMemo<FavoritesContextValue>(

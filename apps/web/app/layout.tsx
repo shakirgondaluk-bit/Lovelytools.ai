@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans, Space_Grotesk } from 'next/font/google';
 import { TOTAL_TOOLS } from '@lovelytools/registry';
-import { FavoritesProvider, ThemeScript } from '@lovelytools/ui';
+import { ThemeScript } from '@lovelytools/ui';
+import { AppProviders } from '@/components/app-providers';
 import './globals.css';
 
 // Self-hosted at build time. These publish the CSS variables that
@@ -67,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           navigation. Here it runs after the element exists but before paint.
         */}
         <ThemeScript />
-        <FavoritesProvider>{children}</FavoritesProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

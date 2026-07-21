@@ -13,22 +13,23 @@
   },
   "dependencies": {
     "@lovelytools/engine-audio": "workspace:*",
+    "@lovelytools/engine-calculator": "workspace:*",
+    "@lovelytools/engine-conversion": "workspace:*",
+    "@lovelytools/engine-devtools": "workspace:*",
+    "@lovelytools/engine-image": "workspace:*",
+    "@lovelytools/engine-pdf": "workspace:*",
+    "@lovelytools/engine-speech": "workspace:*",
+    "@lovelytools/engine-text": "workspace:*",
     "@lovelytools/engine-video": "workspace:*",
     "@lovelytools/engines-core": "workspace:*",
     "@lovelytools/registry": "workspace:*",
     "@lovelytools/ui": "workspace:*",
-    "next": "^15.1.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@lovelytools/engine-pdf": "workspace:*",
-    "@lovelytools/engine-conversion": "workspace:*",
-    "@lovelytools/engine-image": "workspace:*",
-    "@lovelytools/engine-calculator": "workspace:*",
-    "@lovelytools/engine-text": "workspace:*",
-    "@lovelytools/engine-devtools": "workspace:*",
-    "@lovelytools/engine-speech": "workspace:*",
+    "@supabase/supabase-js": "^2.110.7",
     "docx": "^9.1.0",
-    "pdf-lib": "^1.17.1"
+    "next": "^15.1.3",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@lovelytools/config": "workspace:*",
@@ -37,9 +38,9 @@
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2",
     "postcss-import": "^16.1.0",
-    "tsx": "^4.19.2"
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   }
 }

@@ -18,12 +18,18 @@ export { Logo } from './primitives/logo';
 export { SegmentedToggle, type SegmentedOption } from './primitives/segmented-toggle';
 
 // ── L2 · brand ────────────────────────────────────────────────────────────────
+export { AccountStateProvider, useAccountState } from './brand/account-context';
 export { Accordion, type AccordionItem } from './brand/accordion';
 export { AIToolFinder, type FinderResult } from './brand/ai-tool-finder';
 export { BlogCard } from './brand/blog-card';
 export { CategoryCard } from './brand/category-card';
 export { CollectionCard } from './brand/collection-card';
-export { FavoriteButton, FavoritesProvider, useFavorites } from './brand/favorites';
+export {
+  FavoriteButton,
+  FavoritesProvider,
+  useFavorites,
+  type FavoritesSync,
+} from './brand/favorites';
 export { FloatingCard } from './brand/floating-card';
 export { Footer } from './brand/footer';
 export { Header } from './brand/header';

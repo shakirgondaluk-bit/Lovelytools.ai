@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Logo } from '../primitives/logo';
 import { cn } from '../lib/utils';
+import { useAccountState } from './account-context';
 import { useFavorites } from './favorites';
 import { MegaNav, type MegaPanelId } from './mega-nav';
 import { SearchTrigger } from './search-bar';
@@ -79,14 +80,12 @@ export function Header() {
           </button>
           <FavoritesLink />
           <ThemeSwitcher />
+          <AccountLink />
           {/*
-            "Log in" used to sit here pointing at /login. NextAuth is not built
-            (RFC-001 §5 is unimplemented), so it was a 404. Restore it with auth.
-
-            "Get started" now goes to /tools rather than /signup — and that is not a
-            stopgap. RFC-001 §5: "Anonymous-first. Tool pages are never gated —
-            anonymous users get full functionality at free limits." For a product
-            with nothing to sign up for, getting started IS opening a tool.
+            "Get started" goes to /tools, not /signup — and that is deliberate.
+            RFC-001 §5: "Anonymous-first. Tool pages are never gated." For a product
+            whose tools need no account, getting started IS opening a tool. Accounts
+            (the AccountLink above) are an opt-in sync layer, not a gate.
           */}
           <Link
             href="/tools"
@@ -123,6 +122,26 @@ function FavoritesLink() {
         {hydrated && count > 0 ? '♥' : '♡'}
       </span>
       {hydrated && count > 0 && <span aria-hidden="true">{count}</span>}
+    </Link>
+  );
+}
+
+/**
+ * The account entry point. Hidden entirely on deployments without accounts
+ * configured (`enabled` false), so the header is unchanged there. Otherwise it is
+ * "Log in" when signed out and "Account" when signed in — both routing to /account,
+ * which renders the right view for the session.
+ */
+function AccountLink() {
+  const { enabled, signedIn } = useAccountState();
+  if (!enabled) return null;
+
+  return (
+    <Link
+      href="/account"
+      className="hidden rounded-lg px-2.5 py-2 text-[13px] font-medium text-fg2 transition-colors duration-150 hover:bg-surface2 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:block"
+    >
+      {signedIn ? 'Account' : 'Log in'}
     </Link>
   );
 }

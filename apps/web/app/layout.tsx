@@ -50,7 +50,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${grotesk.variable} ${instrument.variable}`}>
+    // suppressHydrationWarning on <html> for the same reason as on <body>:
+    // ThemeScript sets style="color-scheme:…" on <html> before hydration, so
+    // the server HTML (no style attr) legitimately differs. One level deep —
+    // the tree inside still surfaces real mismatches.
+    <html
+      lang="en"
+      className={`${grotesk.variable} ${instrument.variable}`}
+      suppressHydrationWarning
+    >
       {/*
         suppressHydrationWarning is load-bearing, not a papering-over: ThemeScript
         (first child below) adds class="light" to <body> before React hydrates, so

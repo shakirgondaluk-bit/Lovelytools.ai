@@ -23,15 +23,14 @@ export function Logo({ size = 28, showWordmark = true, href = '/', className }: 
   const inner = (
     <>
       <span className="lt-logo-mark-slot relative shrink-0" style={{ width: size, height: size }}>
-        {/* Dark theme: gear+heart artwork (product decision, 2026-07). Crops the
-            soft vignette edges by overscaling 180% inside the rounded clip. */}
+        {/* Dark theme: gear+heart artwork (product decision, 2026-07). Full design visible. */}
         <span className="lt-logo-mark-dark absolute inset-0 overflow-hidden" style={{ borderRadius: radius }}>
           <Image
             src="/brand/logo-mark-dark.png"
             alt=""
-            width={size * 2}
-            height={size * 2}
-            className="absolute left-1/2 top-1/2 h-[180%] w-[180%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+            width={size}
+            height={size}
+            className="h-full w-full object-contain"
             priority
           />
         </span>

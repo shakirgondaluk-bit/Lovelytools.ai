@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
 import { Instrument_Sans, Space_Grotesk } from 'next/font/google';
 import { TOTAL_TOOLS } from '@lovelytools/registry';
 import { ThemeScript } from '@lovelytools/ui';
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#0A0A0E' },
-    { media: '(prefers-color-scheme: light)', color: '#FAFAFC' },
-  ],
-};
+// No `viewport.themeColor` here — deliberately. The site's theme is a manual
+// toggle (body.light), not the OS preference, so OS-keyed metas are wrong the
+// moment a user's saved choice differs. Worse, those metas are React-owned head
+// nodes: ThemeScript rewriting them broke hydration (React found its nodes gone
+// and the whole root died — no interactivity anywhere). ThemeScript now creates
+// and owns the single <meta name="theme-color"> outside React's tree.
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -4,6 +4,11 @@
    Exception: the 8 category hues + star gold + error red are theme-invariant. */
 
 :root {
+  /* UA-rendered surfaces (scrollbars, form controls, overscroll) follow the
+     theme. ThemeScript/the toggle pin the live value on <html> style; this is
+     the no-JS baseline. */
+  color-scheme: dark;
+
   /* Core — dark (default) */
   --bg: #0A0A0E;                        /* page background */
   --bg2: #0E0E14;                       /* alternating band sections */

@@ -121,7 +121,7 @@ export function AIToolFinder({ findTools, className }: AIToolFinderProps) {
             <button
               type="submit"
               disabled={state === 'loading'}
-              className="shrink-0 cursor-pointer rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-white transition-[filter] duration-150 hover:brightness-[1.12] disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="shrink-0 cursor-pointer rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-accent-fg transition-[filter] duration-150 hover:brightness-[1.12] disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {state === 'loading' ? 'Thinking…' : 'Find my tool'}
             </button>

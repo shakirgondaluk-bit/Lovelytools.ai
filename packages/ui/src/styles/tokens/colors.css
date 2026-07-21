@@ -20,8 +20,12 @@
   --text: #F2F1F7;                      /* headings, primary copy */
   --text2: #A5A3B4;                     /* body copy, descriptions */
   --text3: #6E6C7E;                     /* meta, placeholders — decorative only */
-  --accent: #7C6CFF;                    /* primary actions, links, active states */
-  --accent-soft: rgba(124,108,255,.14); /* accent tints, washes, announcement bar */
+  /* Dark theme's primary is YELLOW (product decision, 2026-07) — light keeps
+     orange (see body.light below). Yellow fails contrast with white text, so
+     --accent-fg flips to a dark ink here; light theme's --accent-fg stays white. */
+  --accent: #F5C518;
+  --accent-soft: rgba(245,197,24,.14); /* accent tints, washes, announcement bar */
+  --accent-fg: #14121F;                 /* text/icon color on top of --accent */
   --green: #4ADE80;                     /* success, privacy proof, checkmarks */
   --green-soft: rgba(74,222,128,.12);   /* success tints */
   --nav-bg: rgba(10,10,14,.82);         /* the 64px header bar (with 18–24px blur) */
@@ -81,6 +85,7 @@ body.light {
      purple. Deep enough that white button text still reads. */
   --accent: #F5820D;
   --accent-soft: rgba(245,130,13,.12);
+  --accent-fg: #FFFFFF;                 /* text/icon color on top of --accent */
   /* Light theme's secondary is PURPLE (product decision, 2026-07, paired with
      the orange primary above) — dark keeps green. The token keeps its historical
      name; it colors success/privacy accents, badges and checkmarks. */

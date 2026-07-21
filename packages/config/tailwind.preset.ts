@@ -18,6 +18,7 @@ const preset: Omit<Config, 'content'> = {
         fg3: 'var(--text3)',
         accent: 'var(--accent)',
         'accent-soft': 'var(--accent-soft)',
+        'accent-fg': 'var(--accent-fg)',
         success: 'var(--green)',
         'success-soft': 'var(--green-soft)',
         star: 'var(--star)',

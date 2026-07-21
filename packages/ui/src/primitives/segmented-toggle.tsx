@@ -48,7 +48,7 @@ export function SegmentedToggle<T extends string>({
               'cursor-pointer rounded-full px-4 py-[7px] font-sans text-[13.5px] font-semibold',
               'transition-[background,color] duration-fast ease-[var(--ease-ui)]',
               'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
-              active ? 'bg-accent text-white' : 'text-fg2 hover:text-fg',
+              active ? 'bg-accent text-accent-fg' : 'text-fg2 hover:text-fg',
             )}
           >
             {option.label}

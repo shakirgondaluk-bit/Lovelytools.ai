@@ -35,7 +35,7 @@ export function PricingCard({
       )}
     >
       {popular && (
-        <span className="absolute -top-[13px] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-[14px] py-[5px] text-xs font-semibold text-white">
+        <span className="absolute -top-[13px] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-[14px] py-[5px] text-xs font-semibold text-accent-fg">
           Most popular
         </span>
       )}

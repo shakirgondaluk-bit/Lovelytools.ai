@@ -45,7 +45,7 @@ export function FavoritesGrid() {
         </p>
         <Link
           href="/tools"
-          className="rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-white transition-[filter] duration-150 hover:brightness-[1.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-accent-fg transition-[filter] duration-150 hover:brightness-[1.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           Browse all tools
         </Link>

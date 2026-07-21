@@ -108,7 +108,7 @@ export function Header() {
           */}
           <Link
             href="/tools"
-            className="hidden rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-white transition-[filter] duration-150 hover:brightness-[1.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:block"
+            className="hidden rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-accent-fg transition-[filter] duration-150 hover:brightness-[1.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:block"
           >
             Get started
           </Link>
@@ -172,7 +172,7 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
         <Link
           href="/tools"
           onClick={onNavigate}
-          className="rounded-[9px] bg-accent px-4 py-3 text-center text-[14px] font-semibold text-white"
+          className="rounded-[9px] bg-accent px-4 py-3 text-center text-[14px] font-semibold text-accent-fg"
         >
           Get started — all tools
         </Link>

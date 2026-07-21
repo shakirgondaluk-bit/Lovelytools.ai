@@ -61,7 +61,7 @@ export function AccountView() {
         <div className="flex flex-wrap gap-3 pt-1">
           <Link
             href="/favorites"
-            className="rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-white transition-[filter] duration-150 hover:brightness-[1.12]"
+            className="rounded-[9px] bg-accent px-[18px] py-[9px] text-[14px] font-semibold text-accent-fg transition-[filter] duration-150 hover:brightness-[1.12]"
           >
             My Favorite Tools
           </Link>
@@ -158,7 +158,7 @@ export function AccountView() {
         <button
           type="submit"
           disabled={busy}
-          className="mt-1 rounded-[9px] bg-accent px-[18px] py-[10px] text-[14px] font-semibold text-white transition-[filter] duration-150 hover:brightness-[1.12] disabled:opacity-60"
+          className="mt-1 rounded-[9px] bg-accent px-[18px] py-[10px] text-[14px] font-semibold text-accent-fg transition-[filter] duration-150 hover:brightness-[1.12] disabled:opacity-60"
         >
           {busy ? 'Working…' : titles[mode]}
         </button>

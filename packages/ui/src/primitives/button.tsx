@@ -4,7 +4,7 @@ import { cn } from '../lib/utils';
 // DS §6.1 — four variants, three sizes. Hover: primary brightens 1.12, secondary
 // borders lighten, ghosts gain a --surface2 fill. Press (touch): scale .98.
 const VARIANTS = {
-  primary: 'bg-accent text-white border-transparent hover:brightness-[1.12]',
+  primary: 'bg-accent text-accent-fg border-transparent hover:brightness-[1.12]',
   secondary: 'bg-transparent text-fg border-line2 hover:border-fg3',
   ghost: 'bg-transparent text-fg2 border-transparent font-medium hover:bg-surface2 hover:text-fg',
   chip: 'bg-transparent text-fg2 border-line font-medium hover:border-line2 hover:text-fg',

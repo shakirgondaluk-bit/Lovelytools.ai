@@ -33,13 +33,14 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
   return (
     <>
       <Header />
-      <main className={jakarta.variable}>
-        {/* Warm accent-tinted band behind the hero, matching the Claude Design mock's
-            cream background instead of the site's neutral page bg. */}
-        <div
-          className="relative overflow-hidden border-b border-line"
-          style={{ background: 'linear-gradient(180deg, var(--accent-soft), transparent 65%)' }}
-        >
+      <main
+        className={jakarta.variable}
+        style={{ background: 'linear-gradient(90deg, var(--accent-soft), transparent 65%)' }}
+      >
+        {/* Warm accent-tinted band behind the whole page, matching the Claude Design mock's
+            cream background instead of the site's neutral page bg. Runs the full page height
+            down to the disclosure footer — Footer itself (site chrome) stays outside it. */}
+        <div className="relative overflow-hidden">
           <div className="lt-container flex flex-col gap-10 py-12">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb">
@@ -127,7 +128,7 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
               </div>
 
               {/* Gallery */}
-              <div className="order-1 md:order-2">
+              <div className="order-1 min-w-0 flex-[1.25_1_440px] md:order-2">
                 <AffiliateGallery images={product.images} productName={product.name} />
               </div>
 
@@ -152,9 +153,8 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
               </div>
             </section>
           </div>
-        </div>
 
-        <div className="lt-container flex flex-col gap-10 py-12">
+          <div className="lt-container flex flex-col gap-10 py-12">
           {/* Feature grid */}
           {product.features.length > 0 && (
             <section className="grid grid-cols-2 gap-2 rounded-2xl border border-line bg-surface p-4 sm:grid-cols-3 lg:grid-cols-6">
@@ -338,6 +338,7 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
             As an Amazon Associate, lovelytools.ai earns from qualifying purchases. Links on this page may earn us a
             commission at no extra cost to you.
           </footer>
+        </div>
         </div>
       </main>
       <Footer />

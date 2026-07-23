@@ -10,24 +10,33 @@ interface AffiliateGalleryProps {
 
 export function AffiliateGallery({ images, productName }: AffiliateGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [origin, setOrigin] = useState('50% 50%');
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setOrigin(`${x}% ${y}%`);
+  }
 
   return (
-    <div className="relative min-w-0 flex-[1.25_1_440px] space-y-3">
+    <div className="relative min-w-0 space-y-3">
       {/* Main image */}
       <div
-        className={`relative overflow-hidden rounded-2xl border border-line bg-surface transition-cursor ${
-          isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'
-        }`}
-        onClick={() => setIsZoomed(!isZoomed)}
+        className="relative cursor-zoom-in overflow-hidden rounded-2xl border border-line bg-surface"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        onMouseMove={handleMouseMove}
       >
-        <div className={`relative h-[560px] w-full overflow-auto ${isZoomed ? 'flex items-center justify-center' : ''}`}>
+        <div className="relative h-[360px] w-full overflow-hidden">
           <Image
-            src={images[activeIndex]}
+            src={images[activeIndex] ?? images[0]}
             alt={productName}
             width={880}
             height={560}
-            className={`h-auto w-full object-contain transition-transform ${isZoomed ? 'scale-150' : ''}`}
+            className="h-full w-full object-cover transition-transform duration-300 ease-out"
+            style={{ transform: isHovering ? 'scale(2)' : 'scale(1)', transformOrigin: origin }}
             priority
           />
         </div>
@@ -47,21 +56,18 @@ export function AffiliateGallery({ images, productName }: AffiliateGalleryProps)
           {images.slice(0, 4).map((src, i) => (
             <button
               key={src}
-              onClick={() => {
-                setActiveIndex(i);
-                setIsZoomed(false);
-              }}
+              onClick={() => setActiveIndex(i)}
               className={`group relative overflow-hidden rounded-lg border-2 transition-all ${
                 activeIndex === i ? 'border-accent' : 'border-line hover:border-line2'
               }`}
               aria-label={`View image ${i + 1}`}
             >
-              <div className="relative h-[140px] w-full overflow-hidden bg-surface">
+              <div className="relative h-[80px] w-full overflow-hidden bg-surface">
                 <Image
                   src={src}
                   alt={`${productName} ${i + 1}`}
                   width={200}
-                  height={140}
+                  height={80}
                   className="h-full w-full object-cover"
                 />
               </div>

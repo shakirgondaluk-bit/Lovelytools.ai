@@ -29,13 +29,13 @@ export function AffiliateGallery({ images, productName }: AffiliateGalleryProps)
         onMouseLeave={() => setIsHovering(false)}
         onMouseMove={handleMouseMove}
       >
-        <div className="relative h-[360px] w-full overflow-hidden">
+        <div className="relative flex h-[360px] w-full items-center justify-center overflow-hidden">
           <Image
             src={images[activeIndex] ?? images[0]}
             alt={productName}
             width={880}
             height={560}
-            className="h-full w-full object-cover transition-transform duration-300 ease-out"
+            className="h-full w-full object-contain transition-transform duration-300 ease-out"
             style={{ transform: isHovering ? 'scale(2)' : 'scale(1)', transformOrigin: origin }}
             priority
           />
@@ -62,13 +62,13 @@ export function AffiliateGallery({ images, productName }: AffiliateGalleryProps)
               }`}
               aria-label={`View image ${i + 1}`}
             >
-              <div className="relative h-[80px] w-full overflow-hidden bg-surface">
+              <div className="relative flex h-[80px] w-full items-center justify-center overflow-hidden bg-surface">
                 <Image
                   src={src}
                   alt={`${productName} ${i + 1}`}
                   width={200}
                   height={80}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
             </button>

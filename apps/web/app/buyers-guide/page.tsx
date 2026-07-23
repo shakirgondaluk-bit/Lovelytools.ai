@@ -67,7 +67,7 @@ export default function BuyersGuidePage() {
                 <Link
                   key={product.slug}
                   href={`/products/${product.slug}`}
-                  className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-line2"
+                  className="group flex flex-col gap-3 rounded-xl border border-line bg-surface p-4 transition-[transform,border-color] duration-[180ms] ease-out hover:-translate-y-[3px] hover:border-line2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.98] md:active:scale-100"
                 >
                   <div className="overflow-hidden rounded-xl border border-line bg-surface2">
                     <Image

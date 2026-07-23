@@ -21,7 +21,7 @@ const TRIGGERS: Array<{ id: MegaPanelId; label: string }> = [
 
 /**
  * Header — sticky 64px bar, --nav-bg + 18px blur (DS §9).
- * Order: logo · Tools · Solutions · Resources · Pricing · [spacer] ·
+ * Order: logo · Tools · Solutions · Resources · Buyer's Guide · Pricing · [spacer] ·
  * search trigger · EN · theme toggle · Log in · Get started.
  * Mega panels open on trigger mouseenter and close when the pointer leaves
  * the header+panel region (panels render inside <header>) or on Esc.
@@ -79,6 +79,13 @@ export function Header() {
               {t.label}
             </button>
           ))}
+          <Link
+            href="/buyers-guide"
+            onMouseEnter={() => setOpen(null)}
+            className="rounded-lg px-3.5 py-2 text-[14px] font-medium text-fg2 transition-colors duration-150 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Buyer's Guide
+          </Link>
           <Link
             href="/pricing"
             onMouseEnter={() => setOpen(null)}
@@ -208,6 +215,13 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
             className="rounded-[9px] p-2.5 text-[14px] font-medium text-fg2 hover:bg-surface2 hover:text-fg"
           >
             ♥ My Favorite Tools
+          </Link>
+          <Link
+            href="/buyers-guide"
+            onClick={onNavigate}
+            className="rounded-[9px] p-2.5 text-[14px] font-medium text-fg2 hover:bg-surface2 hover:text-fg"
+          >
+            Buyer's Guide
           </Link>
           <Link
             href="/pricing"

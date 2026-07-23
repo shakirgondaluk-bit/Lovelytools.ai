@@ -12,6 +12,7 @@ import { Logo } from '../primitives/logo';
 
 const COMPANY: Array<[string, string]> = [
   ['About', '/about'],
+  ["Buyer's Guide", '/buyers-guide'],
   ['Pricing', '/pricing'],
   ['Privacy', '/privacy'],
   ['Terms', '/terms'],

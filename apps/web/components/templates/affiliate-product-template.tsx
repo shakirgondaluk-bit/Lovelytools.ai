@@ -31,20 +31,24 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
           <div className="lt-container flex flex-col gap-10 py-12">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb">
-              <ol className="flex flex-wrap items-center gap-2 text-[12.5px] text-fg3">
+              <ol className="flex flex-wrap items-center gap-2 text-[13px] text-fg3">
                 <li>
                   <Link href="/" className="transition-colors hover:text-fg">
                     Home
                   </Link>
                 </li>
-                <li aria-hidden="true">·</li>
+                <li aria-hidden="true" className="text-fg3">
+                  ›
+                </li>
                 <li>
-                  <Link href={product.categoryPath} className="transition-colors hover:text-fg">
+                  <Link href={product.categoryPath} className="font-semibold text-accent transition-opacity hover:opacity-80">
                     {product.categoryLabel}
                   </Link>
                 </li>
-                <li aria-hidden="true">·</li>
-                <li aria-current="page" className="text-fg2">
+                <li aria-hidden="true" className="text-fg3">
+                  ›
+                </li>
+                <li aria-current="page" className="truncate text-fg2">
                   {product.name}
                 </li>
               </ol>

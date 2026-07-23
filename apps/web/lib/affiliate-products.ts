@@ -7,14 +7,16 @@
  * source of truth the skill writes to and the template reads from.
  */
 
+import type { AffiliateIconName } from '@/components/templates/affiliate-icons';
+
 export interface AffiliateSpecItem {
-  icon: string; // lucide-react icon name, e.g. "monitor"
+  icon: AffiliateIconName; // one of the names in components/templates/affiliate-icons.tsx
   label: string;
   value: string;
 }
 
 export interface AffiliateFeature {
-  icon: string;
+  icon: AffiliateIconName;
   title: string;
   body: string;
 }
@@ -41,7 +43,7 @@ export interface AffiliateProduct {
   images: [string, ...string[]]; // hero first, then thumbnails — local paths under /public; hero is required
   awardBadge?: { line1: string; line2: string }; // e.g. { line1: "BEST", line2: "CHOICE" }
 
-  trustBadges: { icon: string; label: string; sublabel: string }[];
+  trustBadges: { icon: AffiliateIconName; label: string; sublabel: string }[];
   specs: AffiliateSpecItem[];
   features: AffiliateFeature[];
 

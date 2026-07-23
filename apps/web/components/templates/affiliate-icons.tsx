@@ -41,7 +41,9 @@ export type AffiliateIconName =
   | 'lock'
   | 'truck'
   | 'refresh-ccw'
-  | 'badge-check';
+  | 'badge-check'
+  | 'check'
+  | 'x';
 
 const paths: Record<AffiliateIconName, React.ReactNode> = {
   monitor: (
@@ -227,6 +229,8 @@ const paths: Record<AffiliateIconName, React.ReactNode> = {
       <path d="M9 12l2 2 4-4" />
     </>
   ),
+  check: <path d="M5 13l4 4L19 7" />,
+  x: <path d="M6 6l12 12M18 6L6 18" />,
 };
 
 export function AffiliateIcon({

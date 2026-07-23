@@ -5,6 +5,7 @@ import { Footer, Header } from '@lovelytools/ui';
 import type { AffiliateProduct } from '@/lib/affiliate-products';
 import { affiliateUrl } from '@/lib/affiliate-products';
 import { AffiliateIcon } from './affiliate-icons';
+import { AffiliateGallery } from './affiliate-gallery';
 
 // Scoped to this template only — the Claude Design mock's headings are set in Plus
 // Jakarta Sans, not the site-wide Space Grotesk (font-grotesk). Loaded here rather
@@ -126,33 +127,8 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
               </div>
 
               {/* Gallery */}
-              <div className="order-1 relative min-w-0 flex-[1.25_1_440px] md:order-2">
-                {product.awardBadge && (
-                  <div className="absolute -top-3 right-2 z-10 flex h-[70px] w-[70px] flex-col items-center justify-center gap-0.5 rounded-full bg-accent text-center leading-tight text-accent-fg shadow-[var(--card-shadow)]">
-                    <AffiliateIcon name="award" className="size-[14px]" />
-                    <span className="text-[10px] font-extrabold">{product.awardBadge.line1}</span>
-                    <span className="text-[10px] font-extrabold">{product.awardBadge.line2}</span>
-                  </div>
-                )}
-                <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-                  <Image
-                    src={product.images[0]}
-                    alt={product.name}
-                    width={880}
-                    height={560}
-                    className="h-auto w-full object-cover"
-                    priority
-                  />
-                </div>
-                {product.images.length > 1 && (
-                  <div className="mt-3 grid grid-cols-4 gap-2">
-                    {product.images.slice(1, 5).map((src, i) => (
-                      <div key={src} className="overflow-hidden rounded-lg border border-line bg-surface">
-                        <Image src={src} alt={`${product.name} ${i + 2}`} width={200} height={140} className="h-auto w-full object-cover" />
-                      </div>
-                    ))}
-                  </div>
-                )}
+              <div className="order-1 md:order-2">
+                <AffiliateGallery images={product.images} productName={product.name} />
               </div>
 
               {/* Quick specs */}

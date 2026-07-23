@@ -19,7 +19,7 @@ const COMPANY: Array<[string, string]> = [
 ];
 
 /**
- * Footer — brand + Products, Solutions, Company + legal strip (DS §10 #14).
+ * Footer — brand + Tools, Solutions, Company + legal strip (DS §10 #14).
  * Pure RSC — zero client JS.
  */
 export function Footer() {
@@ -48,7 +48,7 @@ export function Footer() {
         </div>
 
         <FooterColumn
-          title="Products"
+          title="Tools"
           links={[['All tools', '/tools'], ...CATEGORIES.map((c): [string, string] => [c.name, c.href])]}
         />
         <FooterColumn

@@ -9,7 +9,7 @@ import { MonogramChip } from './monogram-chip';
 // Help, FAQ, plus a featured article). Every one of those routes is a 404 —
 // editorial is served from Postgres per RFC-001 §2 and there is no database. Bring
 // the panel back with the content.
-export type MegaPanelId = 'products' | 'solutions';
+export type MegaPanelId = 'tools' | 'solutions';
 
 interface MegaNavProps {
   open: MegaPanelId | null;
@@ -49,14 +49,14 @@ export function MegaNav({ open, onClose }: MegaNavProps) {
       }}
     >
       <div className="mx-auto max-w-page px-8 py-7">
-        {open === 'products' && <ProductsPanel />}
+        {open === 'tools' && <ToolsPanel />}
         {open === 'solutions' && <SolutionsPanel />}
       </div>
     </div>
   );
 }
 
-/* ---------- Products: 2 category columns + featured card ---------- */
+/* ---------- Tools: 2 category columns + featured card ---------- */
 
 /**
  * The categories that operate on a file the user brings. Everything else is a
@@ -66,7 +66,7 @@ export function MegaNav({ open, onClose }: MegaNavProps) {
  * ['pdf', 'image', 'video', 'audio'] — slugs from the pre-merge catalog, which the
  * registry renamed to 'pdf-tools', 'image-tools' and so on. Because
  * `string[].includes(string)` is perfectly legal, TypeScript said nothing, the
- * filter matched nothing, and the Products menu silently rendered with one item in
+ * filter matched nothing, and the Tools menu silently rendered with one item in
  * it. Typing the array means a wrong slug is now a compile error.
  */
 const FILE_CATEGORIES: CategorySlug[] = [
@@ -77,7 +77,7 @@ const FILE_CATEGORIES: CategorySlug[] = [
   'social-media-tools',
 ];
 
-function ProductsPanel() {
+function ToolsPanel() {
   const files = CATEGORIES.filter((c) => FILE_CATEGORIES.includes(c.slug));
   // The complement, not a second hand-kept list: a new category must appear in one
   // column or the other, never in neither.

@@ -15,13 +15,13 @@ import { ThemeSwitcher } from './theme-switcher';
 // A "Resources" trigger sat here. Its panel was six 404s and a link to a blog post
 // that was never written — editorial is unbuilt. Restore it with the content.
 const TRIGGERS: Array<{ id: MegaPanelId; label: string }> = [
-  { id: 'products', label: 'Tools' },
+  { id: 'tools', label: 'Tools' },
   { id: 'solutions', label: 'Solutions' },
 ];
 
 /**
  * Header — sticky 64px bar, --nav-bg + 18px blur (DS §9).
- * Order: logo · Products · Solutions · Resources · Pricing · [spacer] ·
+ * Order: logo · Tools · Solutions · Resources · Pricing · [spacer] ·
  * search trigger · EN · theme toggle · Log in · Get started.
  * Mega panels open on trigger mouseenter and close when the pointer leaves
  * the header+panel region (panels render inside <header>) or on Esc.
@@ -156,7 +156,7 @@ export function Header() {
 /**
  * MobileMenu — the below-md replacement for the hover mega panels.
  * A full-width sheet under the 64px bar: primary links, then every category
- * (the Products panel's content, flattened), then account/pricing. Scrolls
+ * (the Tools panel's content, flattened), then account/pricing. Scrolls
  * internally; any navigation closes it.
  */
 function MobileMenu({ onNavigate }: { onNavigate: () => void }) {

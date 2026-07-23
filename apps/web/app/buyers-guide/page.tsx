@@ -54,7 +54,9 @@ export default function BuyersGuidePage() {
               every day.
             </p>
 
-            <p className="text-[13px] text-fg3">{products.length} reviews</p>
+            <p className="text-[13px] text-fg3">
+              {products.length} {products.length === 1 ? 'review' : 'reviews'}
+            </p>
           </div>
         </section>
 

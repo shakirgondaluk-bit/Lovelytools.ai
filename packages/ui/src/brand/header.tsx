@@ -15,7 +15,7 @@ import { ThemeSwitcher } from './theme-switcher';
 // A "Resources" trigger sat here. Its panel was six 404s and a link to a blog post
 // that was never written — editorial is unbuilt. Restore it with the content.
 const TRIGGERS: Array<{ id: MegaPanelId; label: string }> = [
-  { id: 'products', label: 'Products' },
+  { id: 'products', label: 'Tools' },
   { id: 'solutions', label: 'Solutions' },
 ];
 

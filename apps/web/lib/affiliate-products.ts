@@ -38,7 +38,7 @@ export interface AffiliateProduct {
   tagline: string; // italic one-liner under the title
   description: string; // paragraph under tagline
 
-  images: string[]; // hero first, then thumbnails — local paths under /public
+  images: [string, ...string[]]; // hero first, then thumbnails — local paths under /public; hero is required
   awardBadge?: { line1: string; line2: string }; // e.g. { line1: "BEST", line2: "CHOICE" }
 
   trustBadges: { icon: string; label: string; sublabel: string }[];

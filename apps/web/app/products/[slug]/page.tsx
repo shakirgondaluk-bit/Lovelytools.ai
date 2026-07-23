@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { affiliateProducts, allAffiliateProductSlugs, getAffiliateProduct } from '@/lib/affiliate-products';
+import { allAffiliateProductSlugs, getAffiliateProduct } from '@/lib/affiliate-products';
 import { AffiliateProductTemplate } from '@/components/templates/affiliate-product-template';
 
 /**
@@ -43,6 +43,3 @@ export default async function AffiliateProductPage({ params }: { params: Promise
   if (!product) notFound();
   return <AffiliateProductTemplate product={product} />;
 }
-
-// Re-exported for the skill to import when appending a new product.
-export { affiliateProducts };

@@ -21,8 +21,9 @@ const TRIGGERS: Array<{ id: MegaPanelId; label: string }> = [
 
 /**
  * Header — sticky 64px bar, --nav-bg + 18px blur (DS §9).
- * Order: logo · Tools · Solutions · Resources · Buyer's Guide · Pricing · [spacer] ·
+ * Order: logo · Tools · Solutions · Resources · Buyer's Guide · [spacer] ·
  * search trigger · EN · theme toggle · Log in · Get started.
+ * (Pricing is currently hidden — see the note in the nav below.)
  * Mega panels open on trigger mouseenter and close when the pointer leaves
  * the header+panel region (panels render inside <header>) or on Esc.
  */
@@ -86,13 +87,8 @@ export function Header() {
           >
             Buyer's Guide
           </Link>
-          <Link
-            href="/pricing"
-            onMouseEnter={() => setOpen(null)}
-            className="rounded-lg px-3.5 py-2 text-[14px] font-medium text-fg2 transition-colors duration-150 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            Pricing
-          </Link>
+          {/* Pricing — hidden for now. /pricing still exists and is reachable
+              directly; restore this link (and the mobile one below) to bring it back. */}
         </nav>
 
         <div className="ml-auto flex items-center gap-1.5 md:gap-2.5" onMouseEnter={() => setOpen(null)}>
@@ -223,13 +219,7 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
           >
             Buyer's Guide
           </Link>
-          <Link
-            href="/pricing"
-            onClick={onNavigate}
-            className="rounded-[9px] p-2.5 text-[14px] font-medium text-fg2 hover:bg-surface2 hover:text-fg"
-          >
-            Pricing
-          </Link>
+          {/* Pricing — hidden for now; see the note on the desktop nav above. */}
           {enabled && (
             <Link
               href="/account"

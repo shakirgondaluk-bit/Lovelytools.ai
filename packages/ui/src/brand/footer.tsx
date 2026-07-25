@@ -10,10 +10,12 @@ import { Logo } from '../primitives/logo';
 // and there is no database. The column linked six 404s. Linking to pages that don't
 // exist is worse than not having the column; add it back with the content.
 
+// Pricing is hidden for now — the /pricing page still exists and is reachable
+// directly, but nothing links to it. Restore this entry (and the two links in
+// header.tsx) to bring it back.
 const COMPANY: Array<[string, string]> = [
   ['About', '/about'],
   ["Buyer's Guide", '/buyers-guide'],
-  ['Pricing', '/pricing'],
   ['Privacy', '/privacy'],
   ['Terms', '/terms'],
   ['Contact', '/contact'],

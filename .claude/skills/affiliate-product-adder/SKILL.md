@@ -87,7 +87,11 @@ markup, so getting the data right *is* getting the design right.
    - Product title → split into `brand` (first word/brand name) and `name` (rest of the title)
    - Price (for reference only — the template always sends users to Amazon for current price, per the design; don't hardcode price on the page)
    - Rating and review count (from the stars/review-count line near the title) — this is what `score` and the trust-badge rating must be grounded in, not a guess
-   - Main product image + up to 4 additional gallery images. Pull these with a JS snippet against `#landingImage`/`#imgTagWrapperId img` for the hero and `#altImages img` for thumbnails, then swap the `._AC_US100_` (or similar small-size) suffix in each thumbnail URL for `._AC_SX679_` to get a full-resolution version before downloading.
+   - Main product image + up to 4 additional gallery images, at the **highest resolution Amazon actually has** — not a guessed/upscaled URL. Amazon embeds the real available resolutions in the `data-a-dynamic-image` attribute on `#landingImage` (a JSON map of `{url: [width, height]}` covering every size Amazon generated for that photo, often 1000px+ on the long edge — much larger than the default `._AC_SX679_` thumbnail swap). Extract it with a JS snippet:
+     ```js
+     JSON.parse(document.querySelector('#landingImage').getAttribute('data-a-dynamic-image'))
+     ```
+     then pick the URL with the largest `width*height`. Do the same for each thumbnail — click it first (or hover) so `#landingImage`'s `data-a-dynamic-image` updates to that image's own JSON map, since `#altImages img` thumbnails only expose a small `._AC_US40_`-style URL directly. If a given photo's dynamic-image map is missing or single-entry, fall back to the `._AC_SX679_` suffix swap on the thumbnail URL as before — but the dynamic-image JSON is the ground truth and should be preferred whenever present.
    - Bullet points / "About this item" → source material for `specs`, `features`, `pros`
    - Category breadcrumb on the Amazon page → informs `categoryLabel` (a reasonable guess is fine; the user will fix this once the real category exists). Set `categoryPath` to `/buyers-guide` — there is no real category route yet, and pointing it at a guessed path 404s.
 

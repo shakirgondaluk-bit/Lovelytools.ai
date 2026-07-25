@@ -51,6 +51,14 @@ const SECURITY_HEADERS = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  // Hostinger's sandbox can't exec sharp's native postinstall (see pnpm-workspace.yaml
+  // allowBuilds), and next/image's built-in optimizer requires sharp in production —
+  // without it every optimization request 500s and every <Image> renders blank.
+  // Serving originals unoptimized sidesteps the missing binary entirely.
+  images: {
+    unoptimized: true,
+  },
+
   env: {
     NEXT_PUBLIC_WASM_MANIFEST: JSON.stringify(readWasmManifest()),
   },

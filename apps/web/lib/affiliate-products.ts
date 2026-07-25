@@ -64,6 +64,22 @@ function affiliateUrl(p: Pick<AffiliateProduct, 'asin' | 'affiliateTag' | 'amazo
 
 export { affiliateUrl };
 
+export interface AffiliateCategory {
+  slug: string; // used as the ?category= query value on /buyers-guide
+  label: string; // must match a product's categoryLabel to group under this category
+}
+
+// The Buyer's Guide listing page groups products under these categories.
+export const affiliateCategories: AffiliateCategory[] = [
+  { slug: 'home-improvement-power-tools', label: 'Home Improvement & Power Tools' },
+  { slug: 'kitchen-dining', label: 'Kitchen & Dining' },
+  { slug: 'home-garden', label: 'Home & Garden' },
+  { slug: 'sports-outdoor', label: 'Sports & Outdoor' },
+  { slug: 'office-supplies', label: 'Office Supplies' },
+  { slug: 'handmade-products', label: 'Handmade Products' },
+  { slug: 'furniture', label: 'Furniture' },
+];
+
 // The skill appends new entries to this array.
 export const affiliateProducts: AffiliateProduct[] = [
   {
@@ -72,8 +88,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Power Tools',
-    categoryPath: '/buyers-guide',
+    categoryLabel: 'Home Improvement & Power Tools',
+    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
 
     brand: 'RYOBI',
     name: 'R18PD3-215GZ 18V ONE+ Cordless Combi Drill Starter Kit + 60-Piece Bit Set',
@@ -180,6 +196,122 @@ export const affiliateProducts: AffiliateProduct[] = [
       {
         q: 'What size bits does the chuck accept?',
         a: 'The ratcheting chuck accepts any standard drilling or screwdriving bit up to 13mm.',
+      },
+    ],
+  },
+  {
+    slug: 'huepar-360-laser-level-tripod',
+    asin: 'B0DH4GBS7L',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home Improvement & Power Tools',
+    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+
+    brand: 'Huepar',
+    name: '360° Laser Level with 1.3m Tripod, Self Leveling Rechargeable Laser Level for Construction and Picture Hanging',
+    tagline: 'Three full 360° laser lines, a tripod, and a hard case — everything needed to level a room in one box.',
+    description:
+      'A self-leveling 360° laser level with one horizontal and two vertical beams, bundled with a 1.3m tripod and magnetic bracket for tiling, ceilings, cabinets and picture hanging.',
+
+    images: [
+      `/products/huepar-360-laser-level-tripod/1.jpg`,
+      `/products/huepar-360-laser-level-tripod/2.jpg`,
+      `/products/huepar-360-laser-level-tripod/3.jpg`,
+      `/products/huepar-360-laser-level-tripod/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'battery-charging', label: '4000mAh', sublabel: 'Rechargeable Li-ion, 8hrs use' },
+      { icon: 'ruler', label: '1.3m Tripod', sublabel: 'Extends 17" to 50"' },
+      { icon: 'star', label: '4.4 rating', sublabel: '44 reviews' },
+      { icon: 'package', label: 'Full Kit', sublabel: 'Case, glasses, target plate' },
+    ],
+    specs: [
+      { icon: 'layers', label: 'Laser lines', value: '3 × 360° (1 horizontal, 2 vertical)' },
+      { icon: 'gauge', label: 'Accuracy', value: '±1/9" at 33 feet' },
+      { icon: 'zap', label: 'Laser class', value: 'Class 2 (IEC/EN60825-1/2014), <1mW' },
+      { icon: 'battery', label: 'Battery', value: '3.7V 4000mAh Li-ion, 8hrs runtime' },
+      { icon: 'ruler', label: 'Tripod height', value: '17" to 50", 1/4"-20 thread' },
+      { icon: 'timer', label: 'Pulse mode range', value: 'Up to 196ft with receiver (sold separately)' },
+      { icon: 'settings', label: 'Modes', value: 'Self-leveling, manual, pulse' },
+      { icon: 'package', label: 'Included', value: 'Tripod, magnetic bracket, hard case, glasses, target plate' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: '3 × 360° laser lines',
+        body: 'One horizontal and two vertical 360° beams project across an entire room from a single position.',
+      },
+      {
+        icon: 'ruler',
+        title: '1.3m tripod included',
+        body: 'Extends from 17" to 50" so the laser height adjusts to ceilings, cabinets or floor work without extra purchases.',
+      },
+      {
+        icon: 'settings',
+        title: 'Self-leveling & manual mode',
+        body: 'Self-levels automatically under 3° of tilt, or lock the pendulum for manual angled lines.',
+      },
+      {
+        icon: 'timer',
+        title: 'Pulse mode for outdoor use',
+        body: 'Extends working distance from 98ft to 196ft when paired with a Huepar laser receiver, cutting through daylight glare.',
+      },
+      {
+        icon: 'battery-charging',
+        title: 'Rechargeable via USB-C',
+        body: 'Built-in 4000mAh battery runs 8 hours per charge and tops up from a laptop, power bank or car charger.',
+      },
+      {
+        icon: 'package',
+        title: 'Full accessory kit',
+        body: 'Ships with a magnetic 360° bracket, hard carry case, glasses, eyeglass case, target board and power cord.',
+      },
+    ],
+
+    pros: [
+      'Amazon\'s Choice with a 4.4 rating across 44 reviews',
+      'Full 360° coverage on all three lines, not just the horizontal',
+      'Tripod and magnetic bracket included — no separate mounting purchase needed',
+      'USB-C rechargeable with 8-hour runtime',
+      'Reviewers note it performs better than pricier DeWalt/Bosch units',
+    ],
+    cons: [
+      'Pulse mode needs a separate Huepar LR-6RG receiver to use outdoors',
+      'One reviewer felt the bundled tripod was the weak point of the kit',
+    ],
+    bestFor: [
+      'DIYers tiling, hanging cabinets, or installing ceilings and picture rails',
+      'Anyone wanting a tripod and case included rather than bought separately',
+      'Indoor and occasional outdoor use (with a receiver for pulse mode)',
+    ],
+    notIdealFor: [
+      'Frequent outdoor/long-distance work without already owning a laser receiver',
+      'Buyers wanting the sturdiest possible tripod — consider upgrading that separately',
+    ],
+
+    score: 8.8,
+    verdict:
+      'A well-equipped 360° laser level that undercuts big-brand pricing while still including a tripod, hard case and full accessory set — reviewers rate it above comparable DeWalt and Bosch kits, with the tripod being the only recurring gripe.',
+
+    faq: [
+      {
+        q: 'Does this work outdoors?',
+        a: 'Yes, via pulse mode, which extends the working distance to 196ft, but it requires a Huepar laser receiver (e.g. LR-6RG) purchased separately to detect the flickering beam in daylight.',
+      },
+      {
+        q: 'How long does the battery last?',
+        a: 'The built-in 3.7V 4000mAh lithium-ion battery runs for about 8 hours per charge and recharges over USB-C from a laptop, power bank or car charger.',
+      },
+      {
+        q: 'What is included in the box?',
+        a: 'The laser level, a 1.3m tripod, a 360° magnetic bracket, a hard carry case, safety glasses with case, a target board, a tripod storage bag and a power cord.',
+      },
+      {
+        q: 'How accurate is it?',
+        a: 'Accuracy is rated at ±1/9" at 33 feet in self-leveling mode, which auto-levels under 3° of tilt and flashes to warn when it exceeds that range.',
       },
     ],
   },

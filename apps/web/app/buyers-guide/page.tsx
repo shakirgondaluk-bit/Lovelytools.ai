@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Footer, Header } from '@lovelytools/ui';
-import { affiliateProducts } from '@/lib/affiliate-products';
+import { affiliateProducts, affiliateCategories } from '@/lib/affiliate-products';
 
 export const metadata: Metadata = {
   title: "Buyer's Guide — hand-picked product reviews | lovelytools.ai",
@@ -16,8 +16,17 @@ export const metadata: Metadata = {
  * a category hub (CategoryTemplate) but reading from the affiliate product
  * store instead of the tool registry. Pure RSC.
  */
-export default function BuyersGuidePage() {
-  const products = affiliateProducts;
+export default async function BuyersGuidePage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ category?: string }>;
+}) {
+  const resolvedSearchParams = await searchParams;
+  const activeSlug = resolvedSearchParams?.category;
+  const activeCategory = affiliateCategories.find((c) => c.slug === activeSlug);
+  const products = activeCategory
+    ? affiliateProducts.filter((p) => p.categoryLabel === activeCategory.label)
+    : affiliateProducts;
 
   return (
     <>
@@ -42,11 +51,19 @@ export default function BuyersGuidePage() {
                 <li aria-current="page" className="text-fg2">
                   Buyer's Guide
                 </li>
+                {activeCategory ? (
+                  <>
+                    <li aria-hidden="true">·</li>
+                    <li aria-current="page" className="text-fg2">
+                      {activeCategory.label}
+                    </li>
+                  </>
+                ) : null}
               </ol>
             </nav>
 
             <h1 className="font-grotesk text-[clamp(32px,5vw,44px)] font-bold leading-[1.08] tracking-[-0.03em] text-fg">
-              Buyer's Guide
+              {activeCategory ? activeCategory.label : "Buyer's Guide"}
             </h1>
 
             <p className="max-w-[560px] text-[17px] leading-[1.55] text-fg2">
@@ -57,12 +74,42 @@ export default function BuyersGuidePage() {
             <p className="text-[13px] text-fg3">
               {products.length} {products.length === 1 ? 'review' : 'reviews'}
             </p>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              <Link
+                href="/buyers-guide"
+                className={`inline-flex items-center rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors ${
+                  !activeCategory
+                    ? 'border-accent bg-accent-soft text-accent'
+                    : 'border-line bg-surface text-fg2 hover:border-line2 hover:text-fg'
+                }`}
+              >
+                All
+              </Link>
+              {affiliateCategories.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/buyers-guide?category=${category.slug}`}
+                  className={`inline-flex items-center rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors ${
+                    activeCategory?.slug === category.slug
+                      ? 'border-accent bg-accent-soft text-accent'
+                      : 'border-line bg-surface text-fg2 hover:border-line2 hover:text-fg'
+                  }`}
+                >
+                  {category.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="lt-container py-14">
           {products.length === 0 ? (
-            <p className="text-[14.5px] text-fg2">No reviews yet — check back soon.</p>
+            <p className="text-[14.5px] text-fg2">
+              {activeCategory
+                ? `No reviews in ${activeCategory.label} yet — check back soon.`
+                : 'No reviews yet — check back soon.'}
+            </p>
           ) : (
             <div className="grid grid-cols-1 gap-grid sm:grid-cols-2 lg:grid-cols-3">
               {products.map((product) => (

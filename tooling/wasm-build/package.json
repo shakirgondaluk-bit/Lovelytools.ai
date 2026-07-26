@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsx src/stage-cores.ts",
-    "postinstall": "tsx src/stage-cores.ts"
+    "build": "node --experimental-strip-types src/stage-cores.ts",
+    "postinstall": "node --experimental-strip-types src/stage-cores.ts"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.12.10",

@@ -546,6 +546,122 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'ingco-cordless-circular-saw',
+    asin: 'B0CZHNWQCP',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home Improvement & Power Tools',
+    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+
+    brand: 'INGCO',
+    name: '20V 140mm Cordless Circular Saw with Brushless Motor 6300RPM Max. Cutting Depth 50mm (90°) Electric Circular Saw 20mm Arbor with 1Pcs 4.0Ah Battery and Charger CSLI14021',
+    tagline: 'A brushless 20V circular saw that cuts 50mm deep and comes with the battery and charger already in the box.',
+    description:
+      'A cordless circular saw with a brushless motor spinning a 140mm blade up to 6300 RPM, cutting up to 50mm deep at 90° and 33mm at 45°, bundled with a 4.0Ah battery and fast charger from the INGCO 20V P20S platform.',
+
+    images: [
+      `/products/ingco-cordless-circular-saw/1.jpg`,
+      `/products/ingco-cordless-circular-saw/2.jpg`,
+      `/products/ingco-cordless-circular-saw/3.jpg`,
+      `/products/ingco-cordless-circular-saw/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'battery-charging', label: '4.0Ah Battery', sublabel: 'Included, 2hr fast charge' },
+      { icon: 'gauge', label: '6300 RPM', sublabel: 'Brushless motor, no-load speed' },
+      { icon: 'star', label: '4.7 rating', sublabel: '173 reviews' },
+      { icon: 'ruler', label: '50mm Depth', sublabel: 'Max cut at 90°' },
+    ],
+    specs: [
+      { icon: 'zap', label: 'Voltage', value: '20V, brushless motor' },
+      { icon: 'gauge', label: 'No-load speed', value: '0–6300 RPM' },
+      { icon: 'ruler', label: 'Blade diameter', value: '140mm, 20mm arbor' },
+      { icon: 'ruler', label: 'Max cutting depth', value: '50mm at 90°, 33mm at 45°' },
+      { icon: 'sliders', label: 'Adjustments', value: 'Cutting depth & bevel angle' },
+      { icon: 'battery', label: 'Battery', value: '1 × 4.0Ah Li-ion, P20S platform' },
+      { icon: 'timer', label: 'Charge time', value: '2 hours (fast charger included)' },
+      { icon: 'package', label: 'Included', value: 'Saw, 4.0Ah battery, charger, 140mm blade' },
+    ],
+    features: [
+      {
+        icon: 'zap',
+        title: 'Brushless motor',
+        body: 'Delivers more power and a longer run time per charge than a conventional carbon-brush motor.',
+      },
+      {
+        icon: 'ruler',
+        title: '50mm max cutting depth',
+        body: 'Cuts up to 50mm deep at 90° and 33mm at 45°, covering straight and slant cuts in one tool.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Depth & bevel adjustment',
+        body: 'Both cutting depth and bevel angle adjust to match the material and the cut being made.',
+      },
+      {
+        icon: 'battery-charging',
+        title: '2-hour fast charging',
+        body: 'The included 4.0Ah battery fully recharges in around 2 hours via the bundled fast charger.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'Overheat protection',
+        body: 'A power indicator and over-heating protection guard the motor and battery during extended use.',
+      },
+      {
+        icon: 'package',
+        title: 'Ready to cut out of the box',
+        body: 'Ships with the saw, a 4.0Ah battery, a fast charger and a 140mm blade — no separate purchases needed to start.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.7 rating across 173 reviews, 50+ bought in the past month",
+      'Brushless motor gives more power and longer runtime than brushed alternatives',
+      'Battery and fast charger included — ready to use straight out of the box',
+      'Battery is compatible across the whole INGCO 20V P20S tool platform',
+      'Both cutting depth and bevel angle are adjustable for different cuts',
+    ],
+    cons: [
+      'Only one 4.0Ah battery is included — a second pack means a separate purchase for continuous use',
+      '140mm blade diameter suits general DIY cuts rather than deep structural timber work',
+    ],
+    bestFor: [
+      'DIYers wanting a cordless saw ready to use out of the box, battery and charger included',
+      'Anyone already in, or starting, the INGCO 20V P20S battery ecosystem',
+      'Straight and angled cuts in wood up to 50mm thick',
+    ],
+    notIdealFor: [
+      'Tradespeople needing all-day runtime without owning a spare battery',
+      'Deep or heavy-duty timber cutting beyond 50mm — a larger-blade saw suits that better',
+    ],
+
+    score: 9.0,
+    verdict:
+      "A well-priced brushless circular saw that ships complete with a battery and fast charger — the 4.7 rating from 173 reviewers and Amazon's Choice badge back up its numbers, and it slots into the wider INGCO 20V tool range.",
+
+    faq: [
+      {
+        q: 'Does this come with a battery and charger?',
+        a: 'Yes — it includes one 4.0Ah Li-ion battery and a fast charger that fully recharges the battery in about 2 hours.',
+      },
+      {
+        q: 'How deep can it cut?',
+        a: 'Up to 50mm deep at a 90° straight cut, or 33mm at a 45° bevel cut.',
+      },
+      {
+        q: 'Is the battery compatible with other INGCO tools?',
+        a: 'Yes, the battery and charger work across the full range of INGCO 20V P20S platform power tools.',
+      },
+      {
+        q: 'What size blade does it use?',
+        a: 'A 140mm diameter blade with a 20mm arbor; one 140mm blade is included in the box.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

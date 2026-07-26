@@ -315,6 +315,121 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'bosch-universalaquatak-135-pressure-washer',
+    asin: 'B06XRWS76H',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home & Garden',
+    categoryPath: '/buyers-guide',
+
+    brand: 'Bosch',
+    name: 'UniversalAquatak 135 High Pressure Washer | 1900 W, 135 Bar, 450 l/h Flow Rate, 3-in-1 Nozzle, Detergent Nozzle & Carrying Handle',
+    tagline: '135 bar and a 3-in-1 nozzle that switches jets for you — one washer for the car, the patio and the garden furniture.',
+    description:
+      'A corded electric pressure washer with a 1900W motor and 135 bar of pressure, bundled with a 3-in-1 nozzle, a detergent nozzle for foam cleaning, and a pull-out handle for compact storage.',
+
+    images: [
+      `/products/bosch-universalaquatak-135-pressure-washer/1.jpg`,
+      `/products/bosch-universalaquatak-135-pressure-washer/2.jpg`,
+      `/products/bosch-universalaquatak-135-pressure-washer/3.jpg`,
+      `/products/bosch-universalaquatak-135-pressure-washer/4.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'gauge', label: '135 Bar', sublabel: 'High-pressure cleaning power' },
+      { icon: 'star', label: '4.4 rating', sublabel: '3,016 reviews' },
+      { icon: 'package', label: 'Full Kit', sublabel: 'Gun, lance, 3-in-1 & detergent nozzle' },
+      { icon: 'truck', label: '1K+ bought', sublabel: 'In the past month' },
+    ],
+    specs: [
+      { icon: 'gauge', label: 'Pressure', value: '135 bar' },
+      { icon: 'zap', label: 'Motor power', value: '1900 W, corded electric' },
+      { icon: 'droplet', label: 'Max flow rate', value: '450 l/h' },
+      { icon: 'ruler', label: 'Hose length', value: '7 m' },
+      { icon: 'timer', label: 'Cable length', value: '5 m' },
+      { icon: 'package', label: 'Weight', value: '6.55 kg (net)' },
+      { icon: 'layers', label: 'Dimensions', value: '17.4 × 14.7 × 14.2 cm' },
+      { icon: 'shield-check', label: 'Certification', value: 'CE, CSA' },
+    ],
+    features: [
+      {
+        icon: 'sliders',
+        title: '3-in-1 nozzle',
+        body: 'Combines a fan jet, rotary jet and point jet in a single nozzle, so the right jet is a twist away for any cleaning job.',
+      },
+      {
+        icon: 'droplet',
+        title: 'High-pressure foam cleaning',
+        body: 'Fill the supplied detergent container and attach the detergent nozzle to lift stubborn dirt before rinsing.',
+      },
+      {
+        icon: 'move',
+        title: 'Pull-out & carrying handles',
+        body: 'A pivoting, height-adjustable pull-out handle plus a second carrying handle make it easy to move and compact to store.',
+      },
+      {
+        icon: 'refresh-ccw',
+        title: 'Self-priming pump',
+        body: 'Draws water directly from a container or tank when needed, without a separate priming step.',
+      },
+      {
+        icon: 'layers',
+        title: 'Compact storage design',
+        body: 'The hose and detergent container clip onto the body of the washer, cutting the footprint needed to store it.',
+      },
+      {
+        icon: 'package',
+        title: 'Full accessory kit',
+        body: 'Ships with the high-pressure gun, lance, 3-in-1 nozzle, detergent nozzle (450ml), 7m hose and a water filter.',
+      },
+    ],
+
+    pros: [
+      '4.4 rating across 3,016 reviews, with 1K+ bought in the past month',
+      '3-in-1 nozzle covers fan, rotary and point jets without swapping attachments',
+      'Detergent nozzle and container included for foam cleaning',
+      'Pull-out and carrying handles make it compact to store and easy to move',
+      'Self-priming pump can draw water from a container or tank',
+    ],
+    cons: [
+      'Corded electric — needs a nearby mains socket and only a 5m power cable',
+      '135 bar is mid-range for the category; heavier patio or driveway grime may need more passes',
+    ],
+    bestFor: [
+      'Washing cars, patios, garden furniture and flowerpots around the home',
+      'Buyers wanting one washer with multiple jet types instead of separate nozzles',
+      'Anyone short on storage space, thanks to the pivoting handle and clip-on hose',
+    ],
+    notIdealFor: [
+      'Cordless or battery-only setups — this is mains-powered with a 5m cable',
+      'Heavy-duty commercial cleaning where a higher-pressure unit would work faster',
+    ],
+
+    score: 8.8,
+    verdict:
+      'A well-rounded corded pressure washer backed by a strong 4.4 rating from over 3,000 reviewers — the 3-in-1 nozzle and detergent kit cover most home cleaning jobs, and the pull-out handle keeps it easy to store.',
+
+    faq: [
+      {
+        q: 'What is included in the box?',
+        a: 'The UniversalAquatak 135 washer, Bosch high-pressure gun, lance, 3-in-1 nozzle, a detergent nozzle with 450ml container, a 7m high-pressure hose, and a water filter.',
+      },
+      {
+        q: 'Can it draw water from a container instead of a tap?',
+        a: 'Yes, it has a self-priming pump that can draw water directly from a container or tank.',
+      },
+      {
+        q: 'How long are the hose and power cable?',
+        a: 'The high-pressure hose is 7 metres and the power cable is 5 metres.',
+      },
+      {
+        q: 'What is the maximum water temperature it can handle?',
+        a: 'Up to 40°C inlet water temperature, per Bosch\'s technical data for this model.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

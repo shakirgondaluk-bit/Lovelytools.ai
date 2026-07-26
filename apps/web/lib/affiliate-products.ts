@@ -430,6 +430,122 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'lamicall-cordless-tyre-inflator',
+    asin: 'B0DZWXC2FH',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home & Garden',
+    categoryPath: '/buyers-guide',
+
+    brand: 'Lamicall',
+    name: 'Cordless Tyre Inflator Air Compressor - [Metal Cylinder] 150PSI Electric Pump with Digital Dual-Value Display, Portable Air Pump for Car Motorcycle Bike Balls, with Long Hose, Silicone Case',
+    tagline: 'A pocket-sized compressor that hits 150PSI, doubles as a power bank, and shuts off the second your tyre hits target pressure.',
+    description:
+      'A cordless tyre inflator with an aluminium alloy cylinder and 120W motor, delivering up to 150PSI with a digital dual-value display, auto-shutoff, and a built-in 5000mAh battery that also works as a power bank.',
+
+    images: [
+      `/products/lamicall-cordless-tyre-inflator/1.jpg`,
+      `/products/lamicall-cordless-tyre-inflator/2.jpg`,
+      `/products/lamicall-cordless-tyre-inflator/3.jpg`,
+      `/products/lamicall-cordless-tyre-inflator/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'battery-charging', label: '5000mAh', sublabel: 'Battery, up to 28 min runtime' },
+      { icon: 'gauge', label: '150 PSI', sublabel: 'Max pressure, 35L/min airflow' },
+      { icon: 'star', label: '4.5 rating', sublabel: '478 reviews' },
+      { icon: 'ruler', label: '50cm Hose', sublabel: 'Extended, rotatable nozzle' },
+    ],
+    specs: [
+      { icon: 'zap', label: 'Motor power', value: '120W' },
+      { icon: 'gauge', label: 'Max pressure', value: '150 PSI, 16500 RPM' },
+      { icon: 'droplet', label: 'Airflow rate', value: '35 L/min' },
+      { icon: 'battery', label: 'Battery', value: '5000mAh, up to 28 min runtime' },
+      { icon: 'ruler', label: 'Air hose', value: '50cm extended, rotatable nozzle' },
+      { icon: 'settings', label: 'Modes', value: '5 (car, motorcycle, bike, ball, custom)' },
+      { icon: 'sliders', label: 'Pressure units', value: '4 (PSI, KPA, BAR, KG/CM²)' },
+      { icon: 'package', label: 'Included', value: 'French nozzle, inflation nozzle/needle, Type-C cable, silicone sleeve' },
+    ],
+    features: [
+      {
+        icon: 'zap',
+        title: '120W motor, 150PSI max',
+        body: 'Inflates a car tyre from 28PSI to 36PSI in under a minute, backed by an aluminium alloy cylinder that reduces heat build-up.',
+      },
+      {
+        icon: 'ruler',
+        title: '50cm extended hose',
+        body: 'A rotatable nozzle on a long hose reaches any valve position, so the pump can sit on the ground without bending down to hold it.',
+      },
+      {
+        icon: 'gauge',
+        title: 'Dual pressure gauge',
+        body: 'A high-precision chip reads tyre pressure to ±0.1 PSI, showing live pressure and target side by side, and auto-shuts off on target.',
+      },
+      {
+        icon: 'sliders',
+        title: '5 modes, 4 pressure units',
+        body: 'Presets for car, motorcycle, bike, ball and custom inflation, switchable between PSI, KPA, BAR and KG/CM².',
+      },
+      {
+        icon: 'battery-charging',
+        title: 'Doubles as a power bank',
+        body: 'The built-in 5000mAh battery charges via USB-C and outputs 5V/2A, so it can top up a phone in an emergency.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'Full safety protection',
+        body: 'Over-voltage, over-current, over-temperature, under-voltage and short-circuit protection, tested from -15°C to 40°C.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.5 rating across 478 reviews, 100+ bought in the past month",
+      'Reaches 150PSI with a 35L/min airflow rate — fast enough for a full car tyre top-up in under a minute',
+      '50cm extended hose with a rotatable nozzle reaches awkward valve positions without bending down',
+      'Auto-shutoff and a ±0.1 PSI accurate dual gauge take the guesswork out of target pressure',
+      'Doubles as a 5000mAh power bank and has a built-in emergency light',
+    ],
+    cons: [
+      'Battery-powered runtime (28 min) means very heavy use in one session will need a recharge',
+      'A compact cylinder pump like this suits tyres and small items better than large volume inflatables',
+    ],
+    bestFor: [
+      'Drivers wanting a fast, accurate, cordless inflator to keep in the car',
+      'Cyclists and motorcyclists needing multiple valve types and pressure units in one tool',
+      'Anyone who wants an inflator that can also serve as a backup power bank or light',
+    ],
+    notIdealFor: [
+      'Inflating large-volume items like paddling pools or air beds regularly',
+      'Users needing continuous runtime beyond 28 minutes without a recharge break',
+    ],
+
+    score: 9.0,
+    verdict:
+      "A well-specced cordless tyre inflator that backs up its 150PSI/35L/min numbers with a 4.5 rating from 478 reviewers — the extended hose, auto-shutoff and accurate dual gauge make it genuinely easier to use than a basic pump, and the power bank/light functions are a useful bonus.",
+
+    faq: [
+      {
+        q: 'How long does it take to inflate a car tyre?',
+        a: 'Lamicall states it can raise a car tyre from 28PSI to 36PSI in under a minute, thanks to the 120W motor delivering 35L/min airflow.',
+      },
+      {
+        q: 'How long does the battery last on a charge?',
+        a: 'The built-in 5000mAh battery runs for up to 28 minutes of continuous use per charge, and recharges via USB-C.',
+      },
+      {
+        q: 'Can it inflate things other than car tyres?',
+        a: 'Yes — it has 5 modes (car, motorcycle, bike, ball, custom) and includes a French nozzle, inflation nozzle and needle for different valve types.',
+      },
+      {
+        q: 'Does it turn off automatically at the target pressure?',
+        a: 'Yes, the dual-value display shows live and target pressure, and the pump auto-shuts off once the preset target is reached.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

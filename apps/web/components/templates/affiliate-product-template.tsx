@@ -129,7 +129,7 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
 
               {/* Gallery */}
               <div className="order-1 min-w-0 flex-[1.25_1_440px] md:order-2">
-                <AffiliateGallery images={product.images} productName={product.name} />
+                <AffiliateGallery images={product.images} productName={product.name} awardBadge={product.awardBadge} />
               </div>
 
               {/* Quick specs */}

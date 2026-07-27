@@ -6,9 +6,10 @@ import Image from 'next/image';
 interface AffiliateGalleryProps {
   images: [string, ...string[]];
   productName: string;
+  awardBadge?: { line1: string; line2: string };
 }
 
-export function AffiliateGallery({ images, productName }: AffiliateGalleryProps) {
+export function AffiliateGallery({ images, productName, awardBadge }: AffiliateGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [origin, setOrigin] = useState('50% 50%');
@@ -43,10 +44,10 @@ export function AffiliateGallery({ images, productName }: AffiliateGalleryProps)
       </div>
 
       {/* Award badge */}
-      {images.length > 0 && (
+      {awardBadge && (
         <div className="absolute -top-3 right-2 z-10 flex h-[70px] w-[70px] flex-col items-center justify-center gap-0.5 rounded-full bg-accent text-center leading-tight text-accent-fg shadow-[var(--card-shadow)]">
-          <span className="text-[10px] font-extrabold">AMAZON'S</span>
-          <span className="text-[10px] font-extrabold">CHOICE</span>
+          <span className="text-[10px] font-extrabold">{awardBadge.line1}</span>
+          <span className="text-[10px] font-extrabold">{awardBadge.line2}</span>
         </div>
       )}
 

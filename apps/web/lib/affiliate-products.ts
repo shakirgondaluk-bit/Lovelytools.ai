@@ -662,6 +662,114 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'pizza-delivery-bag-heavy-duty-insulated',
+    asin: 'B077P1Z2WV',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Kitchen & Dining',
+    categoryPath: '/buyers-guide',
+
+    brand: 'DS Packaging',
+    name: 'Heavy Duty Pizza Delivery Bag, 20" x 20" x 8" Full Insulated All Sides, 51 x 51 x 20cm',
+    tagline: 'A full foil-lined delivery bag built to keep pizza and takeaway food hot from the kitchen to the door.',
+    description:
+      'A heavy-duty insulated pizza delivery bag with full foil lining on every side and two ventilation holes to reduce condensation, sized to hold large pizza boxes for delivery drivers and caterers.',
+
+    images: [
+      `/products/pizza-delivery-bag-heavy-duty-insulated/1.jpg`,
+      `/products/pizza-delivery-bag-heavy-duty-insulated/2.jpg`,
+      `/products/pizza-delivery-bag-heavy-duty-insulated/3.jpg`,
+      `/products/pizza-delivery-bag-heavy-duty-insulated/4.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'star', label: '4.6 rating', sublabel: '93 reviews' },
+      { icon: 'layers', label: 'Full Insulation', sublabel: 'Heavy foil lining, all sides' },
+      { icon: 'ruler', label: '20x20x8"', sublabel: '51 x 51 x 20cm interior' },
+      { icon: 'truck', label: 'Ready to Ship', sublabel: 'In stock, dispatched fast' },
+    ],
+    specs: [
+      { icon: 'ruler', label: 'Size', value: '20" x 20" x 8" (51 x 51 x 20cm)' },
+      { icon: 'layers', label: 'Insulation', value: 'Full heavy foil lining, all sides' },
+      { icon: 'refresh-ccw', label: 'Ventilation', value: 'Two air holes to reduce condensation' },
+      { icon: 'package', label: 'Capacity', value: 'Fits multiple large pizza boxes' },
+      { icon: 'star', label: 'Rating', value: '4.6 out of 5 (93 ratings)' },
+      { icon: 'truck', label: 'Seller', value: 'DS Packaging Ltd, ships from the UK' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: 'Full foil insulation',
+        body: 'Heavy foil lining covers every side of the bag, not just the top, to hold heat in during transit.',
+      },
+      {
+        icon: 'refresh-ccw',
+        title: 'Ventilation holes',
+        body: 'Two air holes let steam escape, cutting the condensation build-up that can soften pizza boxes.',
+      },
+      {
+        icon: 'ruler',
+        title: '20 x 20 x 8 inch interior',
+        body: 'Sized to hold large pizza boxes, with room for more than one order at once.',
+      },
+      {
+        icon: 'lock',
+        title: 'Velcro closure flap',
+        body: 'A hook-and-loop fastened inner flap keeps the bag sealed shut while it is being carried.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'Heavy-duty build',
+        body: 'Reviewers report it holds up well to repeated daily use by delivery drivers and caterers.',
+      },
+    ],
+
+    pros: [
+      'Reviewers say it keeps food "piping hot" for both deliveries and catering',
+      'Full foil lining insulation on all sides, not just the top',
+      'Ventilation holes help reduce condensation build-up inside the bag',
+      'Interior is large enough for multiple big pizza boxes',
+      'Velcro-fastened flap keeps the bag sealed during transit',
+    ],
+    cons: [
+      'Sold as a generic/unbranded bag rather than an established thermal-bag brand',
+      'No shoulder strap or wheels — it is a plain carry bag',
+    ],
+    bestFor: [
+      'Pizza and takeaway delivery drivers, including gig-economy delivery work',
+      'Caterers transporting hot food short distances',
+      'Anyone moving hot cooked food between a kitchen and another location',
+    ],
+    notIdealFor: [
+      'Buyers who specifically want an established, branded thermal delivery bag',
+      'Long-distance delivery that needs an actively heated bag rather than passive insulation',
+    ],
+
+    score: 8.6,
+    verdict:
+      'A straightforward, heavy-duty insulated bag that reviewers say keeps pizza and takeaway food hot in transit — the full foil lining and ventilation holes work as advertised, even if it is a no-frills generic bag rather than a premium branded one.',
+
+    faq: [
+      {
+        q: 'What size pizza boxes does it fit?',
+        a: 'The interior measures 20" x 20" x 8" (51 x 51 x 20cm), sized for large pizza boxes and multiple orders at once.',
+      },
+      {
+        q: 'How is it insulated?',
+        a: 'A full heavy foil lining covers all sides of the bag to help retain heat during transit.',
+      },
+      {
+        q: 'Does it have any ventilation?',
+        a: 'Yes, two air holes let steam pass through, which helps reduce condensation build-up inside the bag.',
+      },
+      {
+        q: 'Is it durable enough for daily delivery use?',
+        a: 'Reviewers describe it as well-made and heavy duty, including drivers using it for gig-economy delivery services.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

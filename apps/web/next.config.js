@@ -1,7 +1,18 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { TOOLS } from '@lovelytools/registry';
-import type { NextConfig } from 'next';
+// @ts-check
+const { readFileSync } = require('node:fs');
+const { join } = require('node:path');
+
+/**
+ * This file is plain CommonJS JavaScript, and that is deliberate — see VIDEO_SLUGS
+ * below. It used to be next.config.ts importing TOOLS from @lovelytools/registry.
+ *
+ * Next has to compile a TypeScript config before it can read it, so every server
+ * boot loaded @next/swc — a Rust native addon that starts a tokio runtime sized to
+ * available_parallelism(). On the 64-core production host that was 64 permanently
+ * idle threads per app instance, and Hostinger's CloudLinux nproc limit counts
+ * threads: two instances pinned the account at its 200-thread ceiling while the
+ * site itself sat at 1% CPU. A .js config is require()'d directly, no compiler.
+ */
 
 /**
  * The WASM asset manifest, written by tooling/wasm-build. Maps a logical core name
@@ -9,7 +20,7 @@ import type { NextConfig } from 'next';
  * bundle, so engines resolve hashed URLs with no runtime lookup — and a new core
  * lands on a new URL, which is what makes the immutable cache safe.
  */
-function readWasmManifest(): Record<string, string> {
+function readWasmManifest() {
   try {
     return JSON.parse(readFileSync(join(process.cwd(), 'public/wasm/manifest.json'), 'utf8'));
   } catch {
@@ -48,7 +59,21 @@ const SECURITY_HEADERS = [
   { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
 ];
 
-const nextConfig: NextConfig = {
+/**
+ * Routes that get ISOLATION_HEADERS: every tool whose engine is 'video'.
+ *
+ * This list used to be `TOOLS.filter((t) => t.engine === 'video')`. That import is
+ * what dragged SWC into the production server (see the note at the top), so it now
+ * lives in a plain JSON file — and is kept honest by scripts/check-video-headers.ts,
+ * which fails `pnpm test` the moment it disagrees with the registry. Do not silence
+ * that test by trimming the list: a video tool missing here loses SharedArrayBuffer
+ * and silently falls back to the single-threaded ffmpeg core.
+ */
+/** @type {string[]} */
+const VIDEO_SLUGS = require('./video-slugs.json');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
 
   // Hostinger's sandbox can't exec sharp's native postinstall (see pnpm-workspace.yaml
@@ -115,15 +140,12 @@ const nextConfig: NextConfig = {
         source: '/wasm/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
-      // Isolate exactly the routes whose engine needs threads — derived from the
-      // registry, so a new video tool gets its headers by existing. A hand-kept
-      // list here would silently drop threading the first time someone forgot it.
-      ...TOOLS.filter((tool) => tool.engine === 'video').map((tool) => ({
-        source: `/${tool.slug}`,
+      ...VIDEO_SLUGS.map((slug) => ({
+        source: `/${slug}`,
         headers: ISOLATION_HEADERS,
       })),
     ];
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

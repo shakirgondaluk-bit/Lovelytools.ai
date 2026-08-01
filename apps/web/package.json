@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
     "check:links": "tsx scripts/check-links.ts",
-    "test": "tsx scripts/check-links.ts"
+    "check:video-headers": "tsx scripts/check-video-headers.ts",
+    "test": "tsx scripts/check-video-headers.ts && tsx scripts/check-links.ts"
   },
   "dependencies": {
     "@lovelytools/engine-audio": "workspace:*",

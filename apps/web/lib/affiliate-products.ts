@@ -770,6 +770,124 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'duronic-eb40-electric-egg-boiler',
+    asin: 'B0CGJC5NB6',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Kitchen & Dining',
+    categoryPath: '/buyers-guide?category=kitchen-dining',
+
+    brand: 'Duronic',
+    name: 'EB40 BK Electric Egg Boiler, Steamer and Poacher for 7 Soft, Medium or Hard Boiled Eggs',
+    tagline: 'Set the dial, walk away, and get seven eggs cooked exactly how you asked for them.',
+    description:
+      'A 400W electric egg steamer that cooks up to seven eggs at once to a soft, medium or hard yolk, then shuts itself off and beeps — no timer watching, no guessing, no pan of boiling water on the hob.',
+
+    images: [
+      `/products/duronic-eb40-electric-egg-boiler/1.jpg`,
+      `/products/duronic-eb40-electric-egg-boiler/2.jpg`,
+      `/products/duronic-eb40-electric-egg-boiler/3.jpg`,
+      `/products/duronic-eb40-electric-egg-boiler/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.3 rating', sublabel: '778 reviews' },
+      { icon: 'award', label: "Amazon's Choice", sublabel: 'In Egg Boilers' },
+      { icon: 'package', label: '7 Eggs', sublabel: 'Cooked in one batch' },
+      { icon: 'timer', label: 'Auto Shut-Off', sublabel: 'With ready buzzer' },
+    ],
+    specs: [
+      { icon: 'zap', label: 'Power', value: '400W' },
+      { icon: 'package', label: 'Capacity', value: 'Up to 7 eggs per batch' },
+      { icon: 'sliders', label: 'Settings', value: 'Soft / medium / hard dial' },
+      { icon: 'timer', label: 'Shut-off', value: 'Automatic, with buzzer' },
+      { icon: 'droplet', label: 'Measuring cup', value: '11.5cm tall, MAX line, built-in piercer' },
+      { icon: 'ruler', label: 'Dimensions', value: '20.5 x 18 x 14.5 cm' },
+      { icon: 'layers', label: 'Material', value: 'Stainless steel body, black finish' },
+      { icon: 'shield-check', label: 'Warranty', value: '1 year against manufacturer defects' },
+    ],
+    features: [
+      {
+        icon: 'package',
+        title: 'Seven eggs at once',
+        body: 'A single tray holds seven eggs, so one run covers a family breakfast or a week of meal-prep in one go.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Soft, medium or hard dial',
+        body: 'A front knob sets the yolk consistency you want rather than leaving you to time it yourself.',
+      },
+      {
+        icon: 'timer',
+        title: 'Shuts off and beeps',
+        body: 'The cooker cuts power and sounds a buzzer when the eggs are done, so nothing is left boiling dry.',
+      },
+      {
+        icon: 'droplet',
+        title: 'Measuring cup with egg piercer',
+        body: 'The cup meters the water to a MAX line and has a pin underneath to prick shells, which helps stop cracking.',
+      },
+      {
+        icon: 'flame',
+        title: 'Poaching and omelette trays',
+        body: 'Duronic lists trays for poached eggs and omelettes alongside the boiling rack, extending it past plain boiled eggs.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'Anti-slip base',
+        body: 'Rubber feet keep the unit planted on the worktop while it is running and while you lift the hot lid off.',
+      },
+    ],
+
+    pros: [
+      'Cooks seven eggs in one batch — enough for a family breakfast or a batch of meal prep',
+      'Soft, medium and hard settings on a single dial, no timing by hand',
+      'Automatic shut-off with a buzzer means you can leave it and do something else',
+      'Measuring cup doubles as an egg piercer, which cuts down on cracked shells',
+      'Compact 20.5 x 18cm footprint suits small kitchens, dorms and office break rooms',
+      "Amazon's Choice in Egg Boilers with a 4.3 rating across 778 reviews",
+    ],
+    cons: [
+      'Duronic themselves warn that trapped steam under the lid can carry on cooking soft and medium eggs after shut-off',
+      'The 1-year warranty is short next to the 3-year cover some kitchen brands offer',
+      'This listing sells several styles at different prices — check which one is selected before you buy',
+    ],
+    bestFor: [
+      'Households cooking several eggs at once on a weekday morning',
+      'Meal preppers who batch-boil eggs for the week ahead',
+      'Small kitchens, student halls and office break rooms with little counter space',
+    ],
+    notIdealFor: [
+      'Anyone who wants a digital timer or LCD readout rather than a mechanical dial',
+      'Cooks who want soft-boiled eggs stopped to the second without lifting the lid promptly',
+    ],
+
+    score: 8.5,
+    verdict:
+      "A simple, well-priced egg steamer that does the one job properly — seven eggs, one dial, and a buzzer when they are ready. The 4.3 rating across 778 reviews and the Amazon's Choice badge back it up; just lift the lid promptly if you like your yolks runny, because Duronic admits residual steam keeps cooking after the power cuts.",
+
+    faq: [
+      {
+        q: 'How many eggs can it cook at once?',
+        a: 'Up to seven eggs in a single batch, held on one tray under the clear lid.',
+      },
+      {
+        q: 'How do I choose soft, medium or hard eggs?',
+        a: 'Fill the measuring cup with water to the max line and turn the front dial to soft, medium or hard — the setting on the dial determines the texture, not the amount of water.',
+      },
+      {
+        q: 'Does it turn itself off?',
+        a: 'Yes. It cuts power and sounds a buzzer when the eggs are done. Duronic notes that for soft and medium eggs the trapped steam can keep cooking them after shut-off, so lift the lid promptly.',
+      },
+      {
+        q: 'What is the measuring cup for?',
+        a: 'It meters the right amount of water up to a MAX line, and has a piercing pin built into the base to prick the shell before cooking, which helps prevent cracking and cooks the egg more evenly.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

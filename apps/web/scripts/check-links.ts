@@ -37,18 +37,30 @@ const walk = (dir: string): string[] => {
 
 const routes = new Set<string>(['/']);
 
-// Static routes: every app/<segment>/page.tsx that isn't dynamic.
-for (const entry of readdirSync(APP_DIR)) {
-  if (entry.startsWith('[') || entry.startsWith('(') || entry.startsWith('_')) continue;
-  const path = join(APP_DIR, entry);
-  if (!statSync(path).isDirectory()) continue;
-  try {
-    statSync(join(path, 'page.tsx'));
-    routes.add(`/${entry}`);
-  } catch {
-    /* not a route directory */
+// Static routes: every app/**/page.tsx whose segments are all static.
+//
+// This used to walk only the first level, which quietly meant a link to a
+// nested route (e.g. /product-finder/compare) was reported as broken even
+// though the page existed. Dynamic and grouping segments are still skipped —
+// those are covered by the registry pass below.
+const collectStaticRoutes = (dir: string, prefix: string): void => {
+  for (const entry of readdirSync(dir)) {
+    if (entry.startsWith('[') || entry.startsWith('(') || entry.startsWith('_') || entry === 'api') continue;
+    const path = join(dir, entry);
+    if (!statSync(path).isDirectory()) continue;
+
+    const route = `${prefix}/${entry}`;
+    try {
+      statSync(join(path, 'page.tsx'));
+      routes.add(route);
+    } catch {
+      /* not a route directory itself, but may contain one */
+    }
+    collectStaticRoutes(path, route);
   }
-}
+};
+
+collectStaticRoutes(APP_DIR, '');
 
 // Dynamic routes: everything the registry pre-renders through app/[slug].
 for (const { slug } of allSlugs()) routes.add(`/${slug}`);

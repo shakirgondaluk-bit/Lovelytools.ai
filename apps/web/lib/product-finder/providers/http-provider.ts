@@ -125,7 +125,12 @@ function discount(price: Money | null, original: Money | null): number | null {
   return Math.round(((original.amount - price.amount) / original.amount) * 100);
 }
 
-function normalize(raw: unknown, http: HttpProviderConfig, marketplace: string): NormalizedProduct | null {
+function normalize(
+  raw: unknown,
+  http: HttpProviderConfig,
+  marketplace: string,
+  sourceRank?: number,
+): NormalizedProduct | null {
   const map = http.fieldMap;
   const field = (key: string) => readPath(raw, map[key] ?? key);
 
@@ -160,6 +165,7 @@ function normalize(raw: unknown, http: HttpProviderConfig, marketplace: string):
     productUrl: asString(field('productUrl')) ?? `https://www.${marketplace}/dp/${asin}`,
     marketplace,
     source: PROVIDER_ID,
+    sourceRank,
   };
 }
 
@@ -243,7 +249,7 @@ export function createHttpProvider(config: ProductFinderConfig): IProductProvide
       });
       const body = await fetchJson(url, http, signal);
       return collect(body)
-        .map((raw) => normalize(raw, http, query.marketplace))
+        .map((raw, index) => normalize(raw, http, query.marketplace, index))
         .filter((p): p is NormalizedProduct => p !== null)
         .slice(0, query.limit);
     },

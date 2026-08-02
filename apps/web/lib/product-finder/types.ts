@@ -57,6 +57,17 @@ export interface NormalizedProduct {
   /** Id of the provider that produced this record — for debugging and attribution only. */
   source: string;
   /**
+   * Zero-based position in the provider's own result ordering.
+   *
+   * Load-bearing, not diagnostic. Amazon's search ranking is a strong relevance
+   * model and discarding it was a real defect: asking for alternatives to a
+   * £112 EV charging cable surfaced a £10.82 camping cable reel that sat at
+   * position 20, because a cheap well-rated item wins on our own signals once
+   * every candidate is treated as equally relevant. Undefined when the provider
+   * has no meaningful ordering (a direct ASIN lookup, for instance).
+   */
+  sourceRank?: number;
+  /**
    * Set when this ASIN also exists as a hand-written review in the affiliate
    * store, so the UI can deep-link to the richer curated page instead of the
    * generated one.

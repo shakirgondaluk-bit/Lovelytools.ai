@@ -83,6 +83,11 @@ export interface RankingInput {
    * verdict still names the highest *scoring* product as the winner.
    */
   pinned?: string[];
+  /**
+   * True when `keyword` was derived from a pasted product rather than typed by
+   * the user. Affects wording only — the scoring is identical.
+   */
+  keywordIsDerived?: boolean;
 }
 
 export interface IRankingEngine {
@@ -143,6 +148,10 @@ const REVIEW_VOLUME_FLOOR = 1000;
 
 interface SetContext {
   keyword: string | null;
+  /** True when the keyword was built from a pasted product rather than typed. */
+  keywordIsDerived: boolean;
+  /** ASINs the user asked for by name — exact matches, not candidates. */
+  pinned: Set<string>;
   /**
    * Whether any candidate published specifications at all.
    *
@@ -175,12 +184,14 @@ interface SetContext {
   dearest: NormalizedProduct | null;
 }
 
-function buildSetContext(products: NormalizedProduct[], keyword: string | null): SetContext {
+function buildSetContext(products: NormalizedProduct[], input: RankingInput): SetContext {
   const priced = products.filter((p) => p.price !== null);
   const sortedByPrice = [...priced].sort((a, b) => (a.price?.amount ?? 0) - (b.price?.amount ?? 0));
 
   return {
-    keyword,
+    keyword: input.keyword,
+    keywordIsDerived: input.keywordIsDerived ?? false,
+    pinned: new Set(input.pinned ?? []),
     hasDetail: products.some((p) => p.specifications.length > 0),
     hasDiscountData: products.some((p) => p.discountPercent !== null),
     size: products.length,
@@ -223,6 +234,59 @@ const WEIGHTS = {
   offer: 0.1,
   detail: 0.08,
 } as const;
+
+/**
+ * Confidence from the provider's own ordering, 1 → 0.
+ *
+ * Amazon ranks search results by a relevance model far better than anything we
+ * can compute from a title string, and ignoring it was the defect that let a
+ * £10.82 camping cable reel sitting at position 20 present itself as an
+ * alternative to a £112 EV charging cable. Decay is gentle across the first
+ * page and steep after it: position 1 scores 1.0, position 8 about 0.5,
+ * position 20 about 0.29.
+ */
+const rankConfidence = (sourceRank: number | undefined): number =>
+  sourceRank === undefined ? 1 : 1 / (1 + sourceRank / 8);
+
+/**
+ * How well a product answers the query.
+ *
+ * Two independent signals, because either alone is fooled. Term coverage alone
+ * scores the cable reel highly — its title genuinely ends "...and EV Charging
+ * Cables". Provider position alone would rank an irrelevant bestseller. Both
+ * together is what separates a competing product from an accessory that happens
+ * to share vocabulary.
+ */
+function relevanceDimension(product: NormalizedProduct, ctx: SetContext): ScoreBreakdown {
+  // The product the user pasted is exact by definition — it is not a match to a
+  // query, it *is* the query.
+  if (ctx.pinned.has(product.asin)) {
+    return {
+      id: 'relevance',
+      label: 'Match to your search',
+      score: 100,
+      weight: WEIGHTS.relevance,
+      note: 'This is the exact product you linked to.',
+    };
+  }
+
+  const terms = ctx.keyword ? relevanceScore(product, ctx.keyword) : 1;
+  const rank = rankConfidence(product.sourceRank);
+  const combined = terms * 0.6 + rank * 0.4;
+
+  const position = product.sourceRank === undefined ? null : product.sourceRank + 1;
+  const termNote = ctx.keyword
+    ? `Matches ${Math.round(terms * 100)}% of the key terms${ctx.keywordIsDerived ? ' from the product you linked to' : ' you searched for'}.`
+    : 'No search terms to match against.';
+
+  return {
+    id: 'relevance',
+    label: 'Match to your search',
+    score: clamp(combined * 100),
+    weight: WEIGHTS.relevance,
+    note: position === null ? termNote : `${termNote} Amazon ranks it #${position} for that search.`,
+  };
+}
 
 function scoreProduct(
   product: NormalizedProduct,
@@ -319,17 +383,9 @@ function scoreProduct(
           : 'No active discount reported for this listing.',
   });
 
-  // 5. How well the listing answers the actual query.
-  const relevance = ctx.keyword ? relevanceScore(product, ctx.keyword) : 1;
-  breakdown.push({
-    id: 'relevance',
-    label: 'Match to your search',
-    score: clamp(relevance * 100),
-    weight: WEIGHTS.relevance,
-    note: ctx.keyword
-      ? `Matches ${Math.round(relevance * 100)}% of the terms you searched for.`
-      : 'Looked up directly by ASIN, so relevance is exact.',
-  });
+  // 5. How well the listing answers the actual query — term coverage blended
+  //    with the position the provider itself put it in.
+  breakdown.push(relevanceDimension(product, ctx));
 
   // 6. How completely the listing is documented — a proxy for how confidently
   //    a buyer can judge it before ordering. Skipped entirely when the active
@@ -639,8 +695,8 @@ export class HeuristicRankingEngine implements IRankingEngine {
   readonly label = 'Signal-weighted ranking';
 
   async rank(input: RankingInput): Promise<RankingResult> {
-    const ctx = buildSetContext(input.products, input.keyword);
-    const pinned = new Set(input.pinned ?? []);
+    const ctx = buildSetContext(input.products, input);
+    const pinned = ctx.pinned;
 
     const scored = input.products
       .map((product) => {

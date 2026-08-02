@@ -22,6 +22,7 @@
 
 import type { ProductFinderConfig } from '../config';
 import type { IProductProvider } from '../provider';
+import { deriveProductQuery } from '../text';
 import {
   ProductProviderError,
   type Availability,
@@ -117,7 +118,7 @@ function availability(inStock: boolean | null | undefined): Availability {
   return 'unknown';
 }
 
-function normalize(raw: CanopyProduct, marketplace: string): NormalizedProduct | null {
+function normalize(raw: CanopyProduct, marketplace: string, sourceRank?: number): NormalizedProduct | null {
   const asin = raw.asin?.toUpperCase();
   const title = raw.title?.trim();
   if (!asin || !title) return null;
@@ -151,6 +152,7 @@ function normalize(raw: CanopyProduct, marketplace: string): NormalizedProduct |
     productUrl: raw.url ?? `https://www.${marketplace}/dp/${asin}`,
     marketplace,
     source: PROVIDER_ID,
+    sourceRank,
   };
 }
 
@@ -240,7 +242,9 @@ export function createCanopyProvider(config: ProductFinderConfig): IProductProvi
         // Sponsored rows are paid placements, not merit. A tool whose entire
         // premise is "here is the best one" must not rank an advert first.
         .filter((item) => item.sponsored !== true)
-        .map((item) => normalize(item, query.marketplace))
+        // Rank is assigned after removing ads, so position reflects organic
+        // relevance rather than how much shelf space was sold above it.
+        .map((item, index) => normalize(item, query.marketplace, index))
         .filter((p): p is NormalizedProduct => p !== null)
         .slice(0, query.limit);
 
@@ -263,22 +267,11 @@ export function createCanopyProvider(config: ProductFinderConfig): IProductProvi
 
     async findAlternatives(product, limit, signal): Promise<NormalizedProduct[]> {
       // Canopy has no "similar items" endpoint, so alternatives come from a
-      // search built out of the product's own name.
-      //
-      // The brand is deliberately excluded. Including it returns the same
-      // seller's other products — asking for alternatives to a TDBS mop and
-      // bucket returned TDBS brooms and dustpans, which is the opposite of a
-      // competing option. The name's leading words are the product category
-      // ("Heavy Duty Mop and Bucket"), which is what a shopper is comparing.
-      //
-      // Trimmed to five words because a full Amazon title is keyword soup that
-      // matches nothing but the original listing.
-      const keyword = product.name
-        .replace(/[^\p{L}\p{N}\s]+/gu, ' ')
-        .trim()
-        .split(/\s+/)
-        .slice(0, 5)
-        .join(' ');
+      // search built out of the product's own name. `deriveProductQuery` is
+      // shared with the discovery service, which scores those alternatives for
+      // relevance — searching for one phrase and grading against another would
+      // let junk through the gap.
+      const keyword = deriveProductQuery(product.brand, product.name);
 
       const results = await this.search(
         { keyword, marketplace: product.marketplace, limit: limit + 1 },

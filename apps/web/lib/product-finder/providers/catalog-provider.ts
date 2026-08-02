@@ -122,7 +122,7 @@ export function createCatalogProvider(_config: ProductFinderConfig): IProductPro
         .filter((r) => r.score > 0)
         .sort((a, b) => b.score - a.score)
         .slice(0, query.limit)
-        .map((r) => toNormalized(r.product));
+        .map((r, index) => ({ ...toNormalized(r.product), sourceRank: index }));
     },
 
     async getByAsin(asin: string): Promise<NormalizedProduct | null> {

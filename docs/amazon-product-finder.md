@@ -175,7 +175,7 @@ sum — there are no hidden multipliers, and the breakdown shown in "Why it rank
 
 | Signal | Weight | Source |
 |---|---|---|
-| Match to your search | 0.30 | Term coverage, weighted toward brand/title matches |
+| Match to your search | 0.30 | Term coverage (60%) blended with the provider's own result position (40%) |
 | Customer rating | 0.24 | Rating, damped by review-count confidence |
 | Value for money | 0.16 | Price vs shortlist median, adjusted by rating |
 | Reliability signal | 0.12 | Review volume, log-scaled |
@@ -186,6 +186,18 @@ Relevance carries the heaviest weight deliberately: an excellent product that
 half-matches the query is a worse answer than a good product that matches it
 exactly. Weighted lower, a heavily-reviewed cordless *tyre inflator* outranked an
 actual cordless *drill* on the query "cordless drill".
+
+Two independent signals feed it, because either alone is fooled. **Term
+coverage** alone can't tell a product from an accessory that shares its
+vocabulary — a camping cable reel whose title ends "…and EV Charging Cables"
+matches every term in a query about EV charging cables. **Provider position**
+alone would promote an irrelevant bestseller. Together they work: that reel sat
+at Amazon position 20, and folding position into the score is what demotes it.
+
+Pasting an Amazon link derives a query from the product's own title
+(`deriveProductQuery` in `text.ts`, shared with the provider so the search and
+the scoring can't diverge) and scores alternatives against it. The pasted
+product is exempt — it is the query, not a match for it.
 
 Signals a provider cannot report score a neutral 50 with a note saying so,
 rather than a guess. An ASIN the user pasted is always listed first — they asked

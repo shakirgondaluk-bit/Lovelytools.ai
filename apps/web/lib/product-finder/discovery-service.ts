@@ -12,6 +12,7 @@ import { buildAffiliateUrl } from '@/lib/affiliate-link';
 import { loadConfig, type ProductFinderConfig } from './config';
 import { detectInput } from './input';
 import { runFilters, type AppliedFilter } from './filters';
+import { deriveProductQuery } from './text';
 import { resolveProvider, type IProductProvider } from './provider';
 import { ClaudeRankingEngine } from './claude-ranking';
 import {
@@ -48,6 +49,18 @@ export interface DiscoveryResult {
   notes: string[];
   /** How many candidates the provider returned before filtering. */
   candidateCount: number;
+}
+
+/** What a provider round-trip yields, before filtering and ranking. */
+interface GatherResult {
+  candidates: NormalizedProduct[];
+  /** ASINs the user asked for by name — exempt from filtering and from relevance scoring. */
+  pinned: string[];
+  marketplace: string;
+  /** What alternatives are judged against. Never null when there are alternatives. */
+  keyword: string | null;
+  /** True when `keyword` was built from a pasted product rather than typed. */
+  keywordIsDerived?: boolean;
 }
 
 interface CacheEntry {
@@ -103,16 +116,17 @@ export class ProductDiscoveryService {
     const cached = readCache(cacheKey);
     if (cached) return cached;
 
-    const { candidates, pinned, marketplace, keyword } = await this.gather(input, signal);
+    const gathered = await this.gather(input, signal);
 
-    if (candidates.length === 0) {
-      throw new ProductProviderError('not_found', this.describeEmptyResult(input, marketplace), this.provider.id);
+    if (gathered.candidates.length === 0) {
+      throw new ProductProviderError(
+        'not_found',
+        this.describeEmptyResult(input, gathered.marketplace),
+        this.provider.id,
+      );
     }
 
-    const result = await this.analyse(
-      { candidates, pinned, keyword, marketplace, raw: rawInput, kind: input.kind },
-      signal,
-    );
+    const result = await this.analyse({ ...gathered, raw: rawInput, kind: input.kind }, signal);
     writeCache(cacheKey, result, this.config.cacheTtlMs);
     return result;
   }
@@ -180,7 +194,7 @@ export class ProductDiscoveryService {
   private async gather(
     input: NonNullable<ReturnType<typeof detectInput>>,
     signal: AbortSignal,
-  ): Promise<{ candidates: NormalizedProduct[]; pinned: string[]; marketplace: string; keyword: string | null }> {
+  ): Promise<GatherResult> {
     if (input.kind === 'keyword') {
       const candidates = await this.provider.search(
         { keyword: input.keyword, marketplace: this.config.marketplace, limit: this.config.candidateLimit },
@@ -216,22 +230,29 @@ export class ProductDiscoveryService {
     }
 
     const candidates = [primary, ...alternatives.filter((a) => a.asin !== primary.asin)];
-    return { candidates, pinned: [primary.asin], marketplace: input.marketplace, keyword: null };
+
+    // The keyword is what the alternatives get judged against, and it must not
+    // be null here. It was, and the consequence was that alternatives fetched by
+    // a fuzzy search skipped relevance filtering entirely and were each handed a
+    // perfect relevance score — 30% of the total — for free. That is how a
+    // camping cable reel became the "best alternative" to an EV charging cable.
+    // The pinned product is exempted inside the ranking engine, since it is the
+    // query rather than a match for it.
+    return {
+      candidates,
+      pinned: [primary.asin],
+      marketplace: input.marketplace,
+      keyword: deriveProductQuery(primary.brand, primary.name),
+      keywordIsDerived: true,
+    };
   }
 
   /** Filters → ranking → presentation shaping. */
   private async analyse(
-    args: {
-      candidates: NormalizedProduct[];
-      pinned: string[];
-      keyword: string | null;
-      marketplace: string;
-      raw: string;
-      kind: 'keyword' | 'asin';
-    },
+    args: GatherResult & { raw: string; kind: 'keyword' | 'asin' },
     signal: AbortSignal,
   ): Promise<DiscoveryResult> {
-    const { candidates, pinned, keyword, marketplace, raw, kind } = args;
+    const { candidates, pinned, keyword, keywordIsDerived, marketplace, raw, kind } = args;
 
     const filtered = runFilters(candidates, { keyword, minResults: this.config.resultLimit });
 
@@ -249,7 +270,7 @@ export class ProductDiscoveryService {
     }
 
     const ranked = await this.ranking.rank(
-      { products: surviving, keyword, preference: filtered.preference, pinned },
+      { products: surviving, keyword, keywordIsDerived, preference: filtered.preference, pinned },
       signal,
     );
 

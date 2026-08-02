@@ -22,6 +22,12 @@ interface SearchBarProps {
   onSearch?: (query: string) => void;
   className?: string;
   autoFocus?: boolean;
+  /**
+   * Prefills the input — /search passes the query it rendered for, so the box
+   * still shows what was searched. Uncontrolled, so remount it (`key={query}`)
+   * if the value has to change in place.
+   */
+  defaultValue?: string;
 }
 
 /**
@@ -29,7 +35,7 @@ interface SearchBarProps {
  * --surface fill, 1px --border2, r-14, card shadow. ⌘K / Ctrl+K focuses it
  * from anywhere; focus swaps the border to --accent (focus-within).
  */
-export function SearchBar({ onSearch, className, autoFocus }: SearchBarProps) {
+export function SearchBar({ onSearch, className, autoFocus, defaultValue }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [phrase, setPhrase] = useState(0);
 
@@ -79,6 +85,7 @@ export function SearchBar({ onSearch, className, autoFocus }: SearchBarProps) {
         id={SEARCH_INPUT_ID}
         name="q"
         type="search"
+        defaultValue={defaultValue}
         autoFocus={autoFocus}
         autoComplete="off"
         placeholder={PLACEHOLDERS[phrase]}

@@ -2,7 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Footer, Header } from '@lovelytools/ui';
-import { affiliateProducts, affiliateCategories } from '@/lib/affiliate-products';
+import {
+  affiliateProducts,
+  affiliateCategories,
+  type AffiliateProduct,
+} from '@/lib/affiliate-products';
+import { listDiscovered } from '@/lib/product-finder/discovered-store';
 
 export const metadata: Metadata = {
   title: "Buyer's Guide — hand-picked product reviews | lovelytools.ai",
@@ -24,9 +29,24 @@ export default async function BuyersGuidePage({
   const resolvedSearchParams = await searchParams;
   const activeSlug = resolvedSearchParams?.category;
   const activeCategory = affiliateCategories.find((c) => c.slug === activeSlug);
+
+  // Hand-written reviews first, then whatever the Product Finder has
+  // auto-published. Curated entries always lead: they are the ones with a real
+  // verdict behind them, and a machine-generated card should never outrank one
+  // just because it was discovered more recently.
+  const discovered = await listDiscovered();
+  const curatedSlugs = new Set(affiliateProducts.map((p) => p.slug));
+
+  const entries: { product: AffiliateProduct; generated: boolean }[] = [
+    ...affiliateProducts.map((product) => ({ product, generated: false })),
+    ...discovered
+      .filter((d) => !curatedSlugs.has(d.slug))
+      .map((d) => ({ product: d.product, generated: true })),
+  ];
+
   const products = activeCategory
-    ? affiliateProducts.filter((p) => p.categoryLabel === activeCategory.label)
-    : affiliateProducts;
+    ? entries.filter((e) => e.product.categoryLabel === activeCategory.label)
+    : entries;
 
   return (
     <>
@@ -139,7 +159,7 @@ export default async function BuyersGuidePage({
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-grid sm:grid-cols-2 lg:grid-cols-3">
-              {products.map((product) => (
+              {products.map(({ product, generated }) => (
                 <Link
                   key={product.slug}
                   href={`/products/${product.slug}`}
@@ -151,18 +171,31 @@ export default async function BuyersGuidePage({
                       alt={product.name}
                       width={440}
                       height={280}
-                      className="h-auto w-full object-cover"
+                      // Auto-published entries carry remote Amazon image URLs
+                      // rather than files under /public, so they cannot be
+                      // cropped to a uniform box without distortion.
+                      className={generated ? 'h-[180px] w-full object-contain p-3' : 'h-auto w-full object-cover'}
                     />
                   </div>
-                  <span className="inline-flex w-fit items-center rounded-full bg-accent-soft px-2.5 py-1 text-[11.5px] font-semibold text-accent">
-                    {product.categoryLabel}
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex w-fit items-center rounded-full bg-accent-soft px-2.5 py-1 text-[11.5px] font-semibold text-accent">
+                      {product.categoryLabel}
+                    </span>
+                    {/* Labelled, not disguised. A visitor should be able to tell
+                        a written review from a machine-generated listing before
+                        they click, and so should we when pruning these. */}
+                    {generated && (
+                      <span className="inline-flex w-fit items-center rounded-full border border-line px-2.5 py-1 text-[11.5px] font-semibold text-fg3">
+                        Auto-listed
+                      </span>
+                    )}
                   </span>
                   <h2 className="font-grotesk text-[16px] font-bold leading-snug text-fg">
                     <span className="text-accent">{product.brand}</span> {product.name}
                   </h2>
                   <p className="text-[13px] leading-relaxed text-fg2">{product.tagline}</p>
                   <span className="mt-auto text-[13px] font-semibold text-accent">
-                    Read review →
+                    {generated ? 'See the analysis →' : 'Read review →'}
                   </span>
                 </Link>
               ))}
@@ -183,7 +216,7 @@ export default async function BuyersGuidePage({
             mainEntity: {
               '@type': 'ItemList',
               numberOfItems: products.length,
-              itemListElement: products.map((product, i) => ({
+              itemListElement: products.map(({ product }, i) => ({
                 '@type': 'ListItem',
                 position: i + 1,
                 name: `${product.brand} ${product.name}`,

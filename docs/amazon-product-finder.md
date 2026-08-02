@@ -223,6 +223,50 @@ Two rules keep the results page honest:
 - **Applicability.** A stage no candidate carries data for is reported inactive
   and its chip is not shown, rather than claiming a filter that judged nothing.
 
+## Auto-publishing to the Buyer's Guide
+
+Every finder search persists its shortlist to Supabase, and the Buyer's Guide
+lists those alongside the hand-written reviews. Curated entries always lead and
+are labelled differently ("Read review" vs "See the analysis", plus an
+*Auto-listed* badge) — a visitor should be able to tell an editorial page from a
+generated one before clicking.
+
+**Setup** — run `docs/supabase-discovered-products.sql`, then set
+`SUPABASE_SERVICE_ROLE_KEY`. Without it the whole feature is inert: writes
+no-op, the listing is empty, and the finder is unaffected.
+
+| Variable | Notes |
+|---|---|
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only. Bypasses RLS — never expose it to the browser and never prefix it `NEXT_PUBLIC_` |
+| `PRODUCT_FINDER_AUTO_ADD` | `false` stops new products being published. Existing rows stay |
+| `PRODUCT_FINDER_AUTO_ADD_NOINDEX` | `true` makes every auto-published page `noindex`, effective on the next request with no redeploy |
+
+Writes are server-side only. The table grants public `select` and **no** write
+policy, so the anon key that ships in the browser cannot create a page — the
+finder route is the only way in.
+
+`/products/[slug]` sets `dynamicParams = true` so these resolve; the curated
+reviews are still pre-rendered by `generateStaticParams` and stay static.
+
+### Known trade-offs
+
+These are real and were accepted deliberately:
+
+- **Images are hotlinked from Amazon's CDN**, not downloaded to `public/` as the
+  affiliate-product-adder skill does — there is no build step to download into.
+  They can break if Amazon rotates a URL.
+- **The payload is a snapshot.** Price and rating are frozen at discovery; the
+  page always routes to Amazon for the live figure, and the copy says "at last
+  check".
+- **Content is thin** next to a written review — search results carry no specs,
+  so generated pages lean on the score breakdown rather than editorial.
+- **Scaled auto-generated affiliate pages carry SEO and Associates-programme
+  risk.** `PRODUCT_FINDER_AUTO_ADD_NOINDEX` and a `delete from
+  discovered_products` are the two levers if that ever bites.
+
+The `search_count` column is the useful by-product: it ranks what visitors
+actually look for, which is the shortlist worth turning into real reviews.
+
 ## Routes
 
 | Route | Rendering |

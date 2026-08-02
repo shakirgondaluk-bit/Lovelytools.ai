@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createDiscoveryService } from '@/lib/product-finder/discovery-service';
+import { recordDiscoveries } from '@/lib/product-finder/discovered-store';
+import { toAffiliateProduct } from '@/lib/product-finder/affiliate-product-adapter';
 import { loadConfig } from '@/lib/product-finder/config';
 import { isProductProviderError, type ProviderErrorCode } from '@/lib/product-finder/types';
 
@@ -50,6 +52,23 @@ export async function POST(request: Request) {
   try {
     const service = createDiscoveryService(config);
     const result = await service.discover(query, controller.signal);
+
+    // Auto-publish the shortlist to the Buyer's Guide.
+    //
+    // Awaited rather than fire-and-forget so the write actually lands, but
+    // wrapped so it can never affect the response: a Supabase outage, a missing
+    // service key or a dropped table must not stop someone searching. A failure
+    // here costs a catalogue entry, not a result.
+    try {
+      await recordDiscoveries(
+        result.results.map((item) =>
+          toAffiliateProduct(item, { keyword: result.query.keyword, affiliateTag: config.affiliateTag }),
+        ),
+      );
+    } catch (persistError) {
+      console.warn('[product-finder] could not auto-publish shortlist', persistError);
+    }
+
     return NextResponse.json(result);
   } catch (error) {
     if (isProductProviderError(error)) {

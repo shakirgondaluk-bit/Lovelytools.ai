@@ -77,6 +77,23 @@ const FILE_CATEGORIES: CategorySlug[] = [
   'social-media-tools',
 ];
 
+/**
+ * Shopping tools live outside the registry on purpose: they are not
+ * browser-side file tools and have no engine, so giving them a registry
+ * category would inflate TOTAL_TOOLS and every category count with something
+ * that is not one of the N privacy-first tools that number promises.
+ */
+const SHOPPING_TOOLS = [
+  {
+    href: '/product-finder',
+    code: 'AZ',
+    hue: '#FF9900',
+    hueOnLight: '#C77700',
+    name: 'Amazon Product Finder',
+    description: 'AI-ranked picks from a keyword or link',
+  },
+];
+
 function ToolsPanel() {
   const files = CATEGORIES.filter((c) => FILE_CATEGORIES.includes(c.slug));
   // The complement, not a second hand-kept list: a new category must appear in one
@@ -84,7 +101,10 @@ function ToolsPanel() {
   const utilities = CATEGORIES.filter((c) => !FILE_CATEGORIES.includes(c.slug));
 
   return (
-    <div className="grid grid-cols-[1fr_1fr_320px] gap-8">
+    /* minmax(0,1fr), not 1fr: a bare 1fr track refuses to shrink below its
+       content's min-content width, so the long category descriptions pushed the
+       featured card past the viewport instead of truncating. */
+    <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px] gap-6">
       <PanelColumn title="Files & Media">
         {files.map((c) => (
           <CategoryRow key={c.slug} category={c} />
@@ -93,6 +113,21 @@ function ToolsPanel() {
       <PanelColumn title="Utilities">
         {utilities.map((c) => (
           <CategoryRow key={c.slug} category={c} />
+        ))}
+      </PanelColumn>
+      <PanelColumn title="Shopping Tools">
+        {SHOPPING_TOOLS.map((tool) => (
+          <Link
+            key={tool.href}
+            href={tool.href}
+            className="flex items-center gap-3 rounded-[9px] p-2 transition-colors duration-150 hover:bg-surface2"
+          >
+            <MonogramChip code={tool.code} hue={tool.hue} hueOnLight={tool.hueOnLight} size={34} />
+            <span className="flex min-w-0 flex-1 flex-col">
+              <span className="text-[14px] font-semibold text-fg">{tool.name}</span>
+              <span className="truncate text-[12px] text-fg3">{tool.description}</span>
+            </span>
+          </Link>
         ))}
       </PanelColumn>
 
@@ -166,7 +201,7 @@ function SolutionsPanel() {
 
 function PanelColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex min-w-0 flex-col gap-1">
       <p className="mb-2 px-2 font-grotesk text-[11px] font-semibold uppercase tracking-[0.13em] text-fg3">
         {title}
       </p>

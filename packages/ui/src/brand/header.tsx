@@ -87,16 +87,51 @@ export function Header() {
           >
             Buyer's Guide
           </Link>
+          {/*
+            Amazon Product Finder — an outlined pill rather than another plain
+            nav link, so it reads as a call to action next to the text links
+            without competing with the filled "Get started" on the right.
+
+            The 64px bar has no spare room, so this follows the same
+            progressive-disclosure convention as the rest of it (SearchTrigger
+            appears at lg, Pricing is hidden entirely): the label shortens to
+            "Product Finder" at lg and only spells out in full at xl. Below lg
+            it is reached through the Tools mega-panel's Shopping Tools column
+            (visible from md) and through the mobile sheet.
+
+            aria-label carries the full name at every width, so the shortened
+            label is a visual abbreviation only.
+          */}
+          <Link
+            href="/product-finder"
+            aria-label="Amazon Product Finder"
+            onMouseEnter={() => setOpen(null)}
+            className="hidden whitespace-nowrap rounded-[9px] border border-line2 px-3.5 py-[7px] text-[14px] font-semibold text-fg transition-colors duration-150 hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:ml-1 lg:block"
+          >
+            <span aria-hidden="true" className="xl:hidden">
+              Product Finder
+            </span>
+            <span aria-hidden="true" className="hidden xl:inline">
+              Amazon Product Finder
+            </span>
+          </Link>
           {/* Pricing — hidden for now. /pricing still exists and is reachable
               directly; restore this link (and the mobile one below) to bring it back. */}
         </nav>
 
         <div className="ml-auto flex items-center gap-1.5 md:gap-2.5" onMouseEnter={() => setOpen(null)}>
           <SearchTrigger className="hidden lg:flex" />
+          {/*
+            Moved from md to xl to make room for the Amazon Product Finder CTA.
+            This button is an inert placeholder — no handler, no language menu,
+            one locale — so of everything competing for the bar below xl it is
+            the only thing that costs a user nothing to defer. Restore `md:block`
+            here when localisation actually ships and this does something.
+          */}
           <button
             type="button"
             aria-label="Language: English"
-            className="hidden cursor-pointer rounded-lg px-2.5 py-2 text-[13px] font-medium text-fg2 transition-colors duration-150 hover:bg-surface2 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:block"
+            className="hidden cursor-pointer rounded-lg px-2.5 py-2 text-[13px] font-medium text-fg2 transition-colors duration-150 hover:bg-surface2 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent xl:block"
           >
             EN
           </button>
@@ -178,6 +213,14 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
           className="rounded-[9px] bg-accent px-4 py-3 text-center text-[14px] font-semibold text-accent-fg"
         >
           Get started — all tools
+        </Link>
+
+        <Link
+          href="/product-finder"
+          onClick={onNavigate}
+          className="mt-1 rounded-[9px] border border-line2 px-4 py-3 text-center text-[14px] font-semibold text-fg"
+        >
+          Amazon Product Finder
         </Link>
 
         <Link

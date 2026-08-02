@@ -7,6 +7,7 @@
  * source of truth the skill writes to and the template reads from.
  */
 
+import { buildAffiliateUrl } from '@/lib/affiliate-link';
 import type { AffiliateIconName } from '@/components/templates/affiliate-icons';
 
 export interface AffiliateSpecItem {
@@ -58,8 +59,14 @@ export interface AffiliateProduct {
   faq: AffiliateFaqItem[];
 }
 
+/**
+ * Delegates to the Affiliate Link Service so the curated product template and
+ * the Product Finder build outbound links through exactly one code path. The
+ * signature is unchanged — callers (and the affiliate-product-adder skill)
+ * carry on using `affiliateUrl(product)`.
+ */
 function affiliateUrl(p: Pick<AffiliateProduct, 'asin' | 'affiliateTag' | 'amazonDomain'>) {
-  return `https://www.${p.amazonDomain}/dp/${p.asin}?tag=${p.affiliateTag}`;
+  return buildAffiliateUrl({ asin: p.asin, marketplace: p.amazonDomain, tag: p.affiliateTag });
 }
 
 export { affiliateUrl };

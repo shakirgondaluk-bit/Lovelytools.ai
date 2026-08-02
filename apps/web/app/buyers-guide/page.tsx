@@ -103,6 +103,33 @@ export default async function BuyersGuidePage({
           </div>
         </section>
 
+        {/* Featured tool — the Buyer's Guide answers "which one should I buy?"
+            for products we have already reviewed; the finder answers it for
+            everything else, so it belongs at the top of this page. */}
+        <section className="lt-container pt-12">
+          <Link
+            href="/product-finder"
+            className="group flex flex-col gap-4 rounded-2xl border border-line p-6 transition-[transform,border-color] duration-[180ms] ease-out hover:-translate-y-[2px] hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:flex-row sm:items-center sm:justify-between"
+            style={{ background: 'linear-gradient(135deg, var(--accent-soft), transparent 70%)' }}
+          >
+            <span className="flex flex-col gap-2">
+              <span className="font-grotesk text-[11px] font-semibold uppercase tracking-[0.13em] text-accent">
+                Featured tool
+              </span>
+              <span className="font-grotesk text-[20px] font-bold tracking-[-0.02em] text-fg">
+                Amazon Product Finder
+              </span>
+              <span className="max-w-[60ch] text-[14px] leading-[1.55] text-fg2">
+                Not reviewed here yet? Describe what you need — or paste an Amazon link — and get the three strongest
+                options scored out of 100, with pros, cons, quick specs and a side-by-side comparison.
+              </span>
+            </span>
+            <span className="inline-flex h-12 shrink-0 items-center justify-center rounded-full bg-accent px-6 text-[14px] font-bold text-accent-fg transition-transform group-hover:scale-[1.03]">
+              Launch Amazon Product Finder →
+            </span>
+          </Link>
+        </section>
+
         <section className="lt-container py-14">
           {products.length === 0 ? (
             <p className="text-[14.5px] text-fg2">

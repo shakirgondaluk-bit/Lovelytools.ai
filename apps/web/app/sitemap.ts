@@ -7,7 +7,17 @@ const BASE = 'https://lovelytools.ai';
 
 // Top-level pages that live outside the registry's flat namespace (app/<name>/page.tsx).
 // Kept in sync by hand because there are only a handful and they change rarely.
-const STATIC_PATHS = ['', '/tools', '/pricing', '/about', '/contact', '/privacy', '/terms'];
+const STATIC_PATHS = [
+  '',
+  '/tools',
+  '/product-finder',
+  '/buyers-guide',
+  '/pricing',
+  '/about',
+  '/contact',
+  '/privacy',
+  '/terms',
+];
 
 /**
  * /sitemap.xml — every indexable route, derived from the registry so a new tool,

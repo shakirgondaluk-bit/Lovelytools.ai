@@ -35,24 +35,34 @@ markup, so getting the data right *is* getting the design right.
   right before the site `Footer`. Automatic; no per-product setup.
 - **Breadcrumb**: `Home › {categoryLabel} › {product name}`, chevron (`›`) separators,
   category crumb in bold accent color, current page in muted gray with truncation.
-- **Hero**: brand name on its own line (uppercase, accent color) above the product
-  name (bold, large, dark). Tagline in bold italic accent color. Two CTAs
-  ("Check Price on Amazon →" filled pill with cart icon, "View on Amazon" outlined
-  pill) at 52px height.
-- **Trust badges**: fixed 2×2 grid (never reflows to 1×4), icon-in-rounded-square on
-  the left, bold label + gray sublabel stacked on the right, full text wrapping
-  (never truncated).
-- **Gallery**: compact ~360px-tall main image box, image always shown fully
-  (`object-contain`, centered — never cropped/cut off by the box, regardless of
-  the source photo's aspect ratio) with hover-zoom (2x scale, follows cursor
-  position via `transform-origin`), Amazon's Choice/award ribbon badge top-right,
-  up to 4 clickable thumbnails below (also `object-contain`, centered, never
-  cropped). Responsive order: gallery shows
-  *first* on mobile (below `sm`), copy/CTA shows *first* on tablet+ with gallery
-  second, desktop keeps all three hero columns side-by-side (copy | gallery | specs).
-- **Quick Specs**: large bold accent-color heading (no icon prefix, not uppercase),
-  icon-left rows with bold black label + gray right-aligned value, dividers between
-  rows, card height hugs its content (never stretches to match the gallery column).
+- **Hero layout**: two columns on desktop — one wide content column plus a 300px
+  Quick Specs rail (`lg:grid-cols-[minmax(0,1fr)_300px]`), *not* three side-by-side
+  columns. The content column stacks vertically: category pill → brand + product
+  name → gallery → tagline → description → CTAs → trust badges. This exists
+  specifically so a very long Amazon product title wraps across the full width
+  beside Quick Specs instead of forming a tall narrow tower of text next to the
+  gallery and leaving a large empty block beneath it. Product names are often
+  20+ words; don't shorten a name to "fit" — the layout handles it.
+- **Hero copy**: brand name on its own line (uppercase, accent color) above the product
+  name (bold, `clamp(26px,3.4vw,40px)`, dark). Tagline in bold italic accent color,
+  description unconstrained in width (no `max-w` ch cap — it spans the content
+  column). Two CTAs ("Check Price on Amazon →" filled pill with cart icon,
+  "View on Amazon" outlined pill) at 52px height.
+- **Trust badges**: exactly 4, laid out 2×2 on mobile/tablet and 1×4 across the wide
+  content column at `lg`. Icon-in-rounded-square on the left, bold label + gray
+  sublabel stacked on the right, full text wrapping (never truncated).
+- **Gallery**: sits inside the content column, below the title. ~360px-tall main
+  image box, image always shown fully (`object-contain`, centered — never
+  cropped/cut off by the box, regardless of the source photo's aspect ratio) with
+  hover-zoom (2x scale, follows cursor position via `transform-origin`), Amazon's
+  Choice/award ribbon badge top-right. Up to 4 clickable thumbnails (also
+  `object-contain`, centered, never cropped) in a 92px-wide **vertical rail to the
+  left** of the main image at `sm`+ (`flex-row-reverse`), falling back to a
+  4-across horizontal strip below the image on mobile.
+- **Quick Specs**: its own 300px right-hand column, `lg:sticky top-6`. Large bold
+  accent-color heading (no icon prefix, not uppercase), icon-left rows with bold
+  black label + gray right-aligned value, dividers between rows, card height hugs
+  its content (never stretches to match the content column).
 - **Features grid**: plain bold-stroke (`strokeWidth={2}`) accent-color icon directly
   above the title — no circle badge background. 6 columns desktop, 3 tablet, 2 mobile,
   with vertical dividers between columns.
@@ -124,7 +134,8 @@ markup, so getting the data right *is* getting the design right.
    - Hover over the main gallery image and confirm it zooms smoothly following the cursor; click a thumbnail and confirm the main image swaps.
    - Confirm the full product photo is visible in both the main image and every thumbnail — no cropped/cut-off edges (portrait or unusually-shaped source photos are the most likely to reveal a regression here).
    - The FAQ accordion opens/closes on click, chevron rotates.
-   - Resize to mobile (~375px) and tablet (~768px) widths: confirm the gallery/copy column order matches the design (gallery first on mobile, copy+CTA first on tablet), and that nothing causes horizontal overflow.
+   - Resize to mobile (~375px) and tablet (~768px) widths: confirm the hero collapses to a single column with Quick Specs below the content, the thumbnail rail flips from vertical to a horizontal strip under the main image below `sm`, and that nothing causes horizontal overflow.
+   - With a long product title (20+ words), confirm the name wraps across the full width beside Quick Specs and there is no large empty block under the hero text.
    - It also appears on `/buyers-guide` (the listing page reads the same store automatically — nothing to wire up there).
    Then run `pnpm build` (or `npm run build` from repo root) once before handing back — this is a static-export site, and a page-export or type error here is exactly what breaks the live Hostinger deploy even when `next dev` looks fine locally.
 

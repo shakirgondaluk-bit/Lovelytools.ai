@@ -68,8 +68,12 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
             </nav>
 
             {/* Hero: copy / gallery / quick specs */}
-            <section className="flex flex-wrap items-stretch gap-6">
-              <div className="order-2 flex min-w-0 flex-1 basis-[360px] flex-col gap-4 md:order-1">
+            {/* Title runs the full width beside Quick Specs, the gallery sits on the row
+                below it, then tagline/description/CTAs — so a very long product name wraps
+                across the wide column instead of pushing a tall, narrow tower of text next
+                to the gallery and leaving dead space under it. */}
+            <section className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+              <div className="flex min-w-0 flex-col gap-4">
                 <span className="inline-flex w-fit items-center rounded-full bg-accent-soft px-3 py-1 text-[12px] font-semibold text-accent">
                   {product.categoryLabel}
                 </span>
@@ -78,16 +82,19 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
                   <span className="[font-family:var(--font-jakarta)] text-[clamp(20px,3vw,26px)] font-extrabold uppercase leading-none tracking-[0.02em] text-accent">
                     {product.brand}
                   </span>
-                  <span className="[font-family:var(--font-jakarta)] text-[clamp(30px,5.5vw,42px)] font-extrabold leading-[1.08] tracking-[-0.03em] text-fg">
+                  <span className="[font-family:var(--font-jakarta)] text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.12] tracking-[-0.03em] text-fg">
                     {product.name}
                   </span>
                 </h1>
+
+                {/* Gallery */}
+                <AffiliateGallery images={product.images} productName={product.name} awardBadge={product.awardBadge} />
 
                 <p className="[font-family:var(--font-jakarta)] text-[17px] font-bold italic leading-snug text-accent">
                   {product.tagline}
                 </p>
 
-                <p className="max-w-[52ch] text-[14.5px] leading-[1.6] text-fg2">{product.description}</p>
+                <p className="text-[14.5px] leading-[1.6] text-fg2">{product.description}</p>
 
                 <div className="mt-2 flex flex-wrap gap-3">
                   <a
@@ -109,7 +116,7 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
                   </a>
                 </div>
 
-                <div className="mt-auto grid grid-cols-2 gap-3 pt-3">
+                <div className="mt-auto grid grid-cols-2 gap-3 pt-3 lg:grid-cols-4">
                   {product.trustBadges.map((t) => (
                     <div
                       key={t.label}
@@ -127,13 +134,8 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
                 </div>
               </div>
 
-              {/* Gallery */}
-              <div className="order-1 min-w-0 flex-[1.25_1_440px] md:order-2">
-                <AffiliateGallery images={product.images} productName={product.name} awardBadge={product.awardBadge} />
-              </div>
-
               {/* Quick specs */}
-              <div className="order-3 min-w-[min(300px,100%)] flex-1 basis-[300px] self-start">
+              <div className="min-w-0 lg:sticky lg:top-6">
                 <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-5">
                   <h2 className="[font-family:var(--font-jakarta)] text-[22px] font-extrabold text-accent">
                     Quick Specs

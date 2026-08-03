@@ -22,10 +22,12 @@ export function AffiliateGallery({ images, productName, awardBadge }: AffiliateG
   }
 
   return (
-    <div className="relative min-w-0 space-y-3">
+    // On wide screens the gallery now owns the full content column, so the thumbnails
+    // move into a vertical rail beside the main image instead of a wide strip beneath it.
+    <div className="relative flex min-w-0 flex-col gap-3 sm:flex-row-reverse sm:items-stretch">
       {/* Main image */}
       <div
-        className="relative cursor-zoom-in overflow-hidden rounded-2xl border border-line bg-surface"
+        className="relative min-w-0 flex-1 cursor-zoom-in overflow-hidden rounded-2xl border border-line bg-surface"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         onMouseMove={handleMouseMove}
@@ -53,7 +55,7 @@ export function AffiliateGallery({ images, productName, awardBadge }: AffiliateG
 
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-4 gap-2 sm:w-[92px] sm:shrink-0 sm:grid-cols-1">
           {images.slice(0, 4).map((src, i) => (
             <button
               key={src}

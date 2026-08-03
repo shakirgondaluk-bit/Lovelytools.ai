@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { cache } from 'react';
 import { notFound } from 'next/navigation';
 import { allAffiliateProductSlugs, getAffiliateProduct } from '@/lib/affiliate-products';
 import { getDiscovered } from '@/lib/product-finder/discovered-store';
+import { enrichDiscovered, needsEnrichment } from '@/lib/product-finder/enrich-discovered';
 import { AffiliateProductTemplate } from '@/components/templates/affiliate-product-template';
 
 /**
@@ -33,13 +35,24 @@ export function generateStaticParams() {
  * authoritative: if a product has been written up properly, that page wins over
  * whatever the finder happened to persist for the same slug.
  */
-async function resolveProduct(slug: string) {
+const resolveProduct = cache(async (slug: string) => {
   const curated = getAffiliateProduct(slug);
   if (curated) return { product: curated, generated: false };
 
   const discovered = await getDiscovered(slug);
-  return discovered ? { product: discovered.product, generated: true } : null;
-}
+  if (!discovered) return null;
+
+  // Discovery stores a lean row — one thumbnail, no specs — because enriching
+  // every search result costs four provider requests instead of one. Pay for it
+  // here, on first view of the page that actually shows a gallery. The result is
+  // written back, so this happens once per product rather than once per view.
+  const product =
+    !discovered.enriched && needsEnrichment(discovered.product)
+      ? await enrichDiscovered(slug, discovered.product)
+      : discovered.product;
+
+  return { product, generated: true };
+});
 
 export async function generateMetadata({
   params,

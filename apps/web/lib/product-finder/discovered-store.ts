@@ -29,6 +29,8 @@ export interface DiscoveredProduct {
   searchCount: number;
   firstSeen: string;
   lastSeen: string;
+  /** False when the gallery and specs still need a per-ASIN lookup. */
+  enriched: boolean;
 }
 
 interface Row {
@@ -42,6 +44,8 @@ interface Row {
   search_count: number;
   first_seen: string;
   last_seen: string;
+  /** Null until the per-ASIN detail lookup has filled in the gallery and specs. */
+  enriched_at?: string | null;
 }
 
 const TABLE = 'discovered_products';
@@ -98,6 +102,7 @@ const toDiscovered = (row: Row): DiscoveredProduct => ({
   searchCount: row.search_count,
   firstSeen: row.first_seen,
   lastSeen: row.last_seen,
+  enriched: Boolean(row.enriched_at),
 });
 
 /**
@@ -150,6 +155,26 @@ export async function listDiscovered(limit = 60): Promise<DiscoveredProduct[]> {
     return [];
   }
   return (data as Row[] | null)?.map(toDiscovered) ?? [];
+}
+
+/**
+ * Replaces a stored payload with its enriched version and stamps `enriched_at`.
+ *
+ * Failure is swallowed on purpose: enrichment is a quality improvement on a page
+ * that already renders. If the column does not exist yet — the table predates
+ * it and the migration in docs/supabase-discovered-products.sql has not been
+ * run — this logs and moves on, and the page still shows the thumbnail it had.
+ */
+export async function saveEnriched(slug: string, product: AffiliateProduct): Promise<void> {
+  const db = adminClient();
+  if (!db) return;
+
+  const { error } = await db
+    .from(TABLE)
+    .update({ payload: product, enriched_at: new Date().toISOString() })
+    .eq('slug', slug);
+
+  if (error) console.warn('[product-finder] could not save enriched product', slug, error.message);
 }
 
 /** Single lookup, backing /products/{slug} for auto-published entries. */

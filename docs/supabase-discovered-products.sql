@@ -24,8 +24,18 @@ create table if not exists public.discovered_products (
   -- reading before deciding which of these deserves a real hand-written review.
   search_count integer     not null default 1,
   first_seen   timestamptz not null default now(),
-  last_seen    timestamptz not null default now()
+  last_seen    timestamptz not null default now(),
+  -- When the full product detail (gallery, specs, description) was fetched.
+  -- Search results carry a single thumbnail and no specs; the rich data needs a
+  -- per-ASIN lookup, which costs a provider request. Stamping this means that
+  -- cost is paid once per product on first view, not on every page view.
+  -- Null = not yet enriched.
+  enriched_at  timestamptz
 );
+
+-- Safe to re-run on a table created before enrichment existed.
+alter table public.discovered_products
+  add column if not exists enriched_at timestamptz;
 
 -- The Buyer's Guide lists newest first and filters by category.
 create index if not exists discovered_products_last_seen_idx

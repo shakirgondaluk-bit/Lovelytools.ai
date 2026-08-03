@@ -177,16 +177,20 @@ export default async function BuyersGuidePage({
                       alt={product.name}
                       width={440}
                       height={280}
-                      // Auto-published entries carry remote Amazon imagery,
-                      // which is a product cut-out on a plain background rather
-                      // than a framed 440×280 photo — so it is contained, not
-                      // cropped. The 4:3 box gives a square cut-out roughly the
-                      // same visual mass as a curated card's landscape photo;
-                      // the old fixed 180px height made them look shrunken next
-                      // to hand-written entries.
+                      // Without this, next/image sizes the srcset from `width`
+                      // alone and serves a 440px source into a slot that is
+                      // ~370px CSS — half the pixels a retina display needs.
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      // Auto-published entries fill the frame like the curated
+                      // ones. Containing them inside a padded box was the
+                      // cautious choice — no crop — but it left every generated
+                      // card visibly letterboxed and smaller than its
+                      // neighbours. Amazon product shots are centred on a plain
+                      // background with generous margins, so cropping to 4:3
+                      // takes the empty edges rather than the product.
                       className={
                         generated
-                          ? 'aspect-[4/3] w-full object-contain p-2'
+                          ? 'aspect-[4/3] w-full object-cover'
                           : 'h-auto w-full object-cover'
                       }
                     />

@@ -119,6 +119,23 @@ function splitBrand(title: string, brand: string | null | undefined): { brand: s
   return rest.length > 0 ? { brand: first, name: rest.join(' ') } : { brand: '', name: title };
 }
 
+/**
+ * Amazon thumbnail URL → the original upload.
+ *
+ * Search results hand back sized derivatives — `.../71abc._AC_UL320_.jpg` is a
+ * 320px-tall thumbnail, which is why auto-published cards looked soft next to
+ * the hand-picked ones (those are real files under /public). Amazon's image
+ * host serves the full-resolution original when the size modifier is dropped,
+ * so this is a string edit rather than another request.
+ *
+ * Restricted to Amazon's own image hosts: the modifier syntax is theirs, and
+ * stripping a segment from an arbitrary URL could produce a 404.
+ */
+function upscaleImage(url: string): string {
+  if (!/(^|\.)(media-amazon\.com|ssl-images-amazon\.com)\//.test(url)) return url;
+  return url.replace(/\._[^./]*_\.(jpg|jpeg|png|gif|webp)$/i, '.$1');
+}
+
 function specs(raw: CanopyProduct['technicalSpecifications']): ProductSpec[] {
   if (!Array.isArray(raw)) return [];
   return raw
@@ -138,9 +155,9 @@ function normalize(raw: CanopyProduct, marketplace: string, sourceRank?: number)
   if (!asin || !title) return null;
 
   const { brand, name } = splitBrand(title, raw.brand);
-  const images = [raw.mainImageUrl, ...(raw.imageUrls ?? [])].filter(
-    (url): url is string => typeof url === 'string' && url.length > 0,
-  );
+  const images = [raw.mainImageUrl, ...(raw.imageUrls ?? [])]
+    .filter((url): url is string => typeof url === 'string' && url.length > 0)
+    .map(upscaleImage);
 
   return {
     asin,

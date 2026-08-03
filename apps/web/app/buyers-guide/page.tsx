@@ -44,6 +44,12 @@ export default async function BuyersGuidePage({
       .map((d) => ({ product: d.product, generated: true })),
   ];
 
+  // Only chip categories that hold something. The category list is a closed set
+  // the Product Finder's categoriser picks from, so most of it is empty at any
+  // given moment — showing all twenty would be a wall of dead filters.
+  const usedLabels = new Set(entries.map((e) => e.product.categoryLabel));
+  const visibleCategories = affiliateCategories.filter((c) => usedLabels.has(c.label));
+
   const products = activeCategory
     ? entries.filter((e) => e.product.categoryLabel === activeCategory.label)
     : entries;
@@ -106,7 +112,7 @@ export default async function BuyersGuidePage({
               >
                 All
               </Link>
-              {affiliateCategories.map((category) => (
+              {visibleCategories.map((category) => (
                 <Link
                   key={category.slug}
                   href={`/buyers-guide?category=${category.slug}`}
@@ -171,10 +177,18 @@ export default async function BuyersGuidePage({
                       alt={product.name}
                       width={440}
                       height={280}
-                      // Auto-published entries carry remote Amazon image URLs
-                      // rather than files under /public, so they cannot be
-                      // cropped to a uniform box without distortion.
-                      className={generated ? 'h-[180px] w-full object-contain p-3' : 'h-auto w-full object-cover'}
+                      // Auto-published entries carry remote Amazon imagery,
+                      // which is a product cut-out on a plain background rather
+                      // than a framed 440×280 photo — so it is contained, not
+                      // cropped. The 4:3 box gives a square cut-out roughly the
+                      // same visual mass as a curated card's landscape photo;
+                      // the old fixed 180px height made them look shrunken next
+                      // to hand-written entries.
+                      className={
+                        generated
+                          ? 'aspect-[4/3] w-full object-contain p-2'
+                          : 'h-auto w-full object-cover'
+                      }
                     />
                   </div>
                   <span className="flex flex-wrap items-center gap-2">

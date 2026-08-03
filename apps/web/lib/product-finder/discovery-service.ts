@@ -254,7 +254,11 @@ export class ProductDiscoveryService {
   ): Promise<DiscoveryResult> {
     const { candidates, pinned, keyword, keywordIsDerived, marketplace, raw, kind } = args;
 
-    const filtered = runFilters(candidates, { keyword, minResults: this.config.resultLimit });
+    const filtered = runFilters(candidates, {
+      keyword,
+      keywordIsDerived,
+      minResults: this.config.resultLimit,
+    });
 
     // A product the user explicitly asked for is never filtered out from under
     // them — they pasted its link; showing "no results" would be absurd.
@@ -294,6 +298,23 @@ export class ProductDiscoveryService {
         };
       });
 
+    // Say so when the marketplace provider dropped out and the curated catalog
+    // answered instead. `reviewSlug` is only ever set by the catalog provider,
+    // so an all-curated shortlist from a provider that claims marketplace
+    // coverage means the primary failed or ran out of quota. This used to be a
+    // console warning and nothing else — the visitor saw one of our own reviews
+    // presented as the best of Amazon, with no way to tell the difference.
+    const notes = [...ranked.notes];
+    if (
+      this.provider.coverage === 'marketplace' &&
+      results.length > 0 &&
+      results.every((r) => r.product.reviewSlug)
+    ) {
+      notes.unshift(
+        'Live Amazon results were unavailable for this search, so these come from our own reviewed products instead.',
+      );
+    }
+
     return {
       query: {
         raw,
@@ -307,7 +328,7 @@ export class ProductDiscoveryService {
       comparison: ranked.comparison,
       provider: { id: this.provider.id, label: this.provider.label },
       engine: ranked.engine,
-      notes: ranked.notes,
+      notes,
       candidateCount: candidates.length,
     };
   }

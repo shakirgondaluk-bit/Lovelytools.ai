@@ -25,6 +25,7 @@ import type { IProductProvider } from '../provider';
 import { deriveProductQuery } from '../text';
 import {
   ProductProviderError,
+  isProductProviderError,
   type Availability,
   type Money,
   type NormalizedProduct,
@@ -34,6 +35,19 @@ import {
 
 const PROVIDER_ID = 'canopy';
 const BASE_URL = 'https://rest.canopyapi.co/api/amazon';
+const GRAPHQL_URL = 'https://graphql.canopyapi.co/';
+
+/**
+ * Candidates requested per search.
+ *
+ * The REST search endpoint returns one page — 16 organic rows once sponsored
+ * placements are stripped, which is exactly Amazon's own page 1. Ranking "the
+ * three best" out of 16 is a weaker claim than it sounds. The GraphQL endpoint
+ * takes an explicit `limit`, so the pool more than doubles for the *same single
+ * request*; deeper pagination is deliberately not used, because each extra page
+ * is another request against a 100/month free tier.
+ */
+const SEARCH_LIMIT = 40;
 
 /** Canopy addresses stores by short code, not by hostname. */
 const DOMAIN_BY_MARKETPLACE: Record<string, string> = {
@@ -132,7 +146,10 @@ function normalize(raw: CanopyProduct, marketplace: string, sourceRank?: number)
     asin,
     name,
     brand,
-    category: raw.categories?.[0]?.name ?? 'Amazon',
+    // Empty, not a placeholder: search results carry no categories at all, and
+    // a literal "Amazon" here was surfacing as the category badge on every
+    // auto-published card. The adapter infers a real one instead.
+    category: raw.categories?.[0]?.name ?? '',
     // Deduped: mainImageUrl is often also present in imageUrls.
     images: [...new Set(images)],
     description: (raw.featureBullets ?? []).slice(0, 3).join(' '),
@@ -195,6 +212,75 @@ async function request<T>(path: string, apiKey: string, signal: AbortSignal): Pr
   }
 }
 
+/**
+ * Search via GraphQL, which — unlike the REST endpoint — accepts a result limit.
+ *
+ * The domain is inlined as an enum literal rather than passed as a variable, so
+ * this does not depend on knowing Canopy's enum type name. Errors are raised as
+ * `malformed_response` so the caller can retry over REST: a schema change at
+ * Canopy should cost us pool size, not the whole search.
+ */
+async function searchViaGraphql(
+  keyword: string,
+  marketplace: string,
+  apiKey: string,
+  signal: AbortSignal,
+): Promise<CanopySearchItem[]> {
+  const query = `query Search($term: String!) {
+    amazonProductSearchResults(input: { searchTerm: $term, domain: ${toDomain(marketplace)} }) {
+      productResults(input: { page: 1, limit: ${SEARCH_LIMIT} }) {
+        results { asin title url price { value currency } mainImageUrl rating ratingsTotal isPrime sponsored }
+      }
+    }
+  }`;
+
+  let response: Response;
+  try {
+    response = await fetch(GRAPHQL_URL, {
+      method: 'POST',
+      headers: { 'API-KEY': apiKey, 'content-type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({ query, variables: { term: keyword } }),
+      signal,
+      cache: 'no-store',
+    });
+  } catch (cause) {
+    if (signal.aborted) {
+      throw new ProductProviderError('timeout', 'Canopy did not respond in time.', PROVIDER_ID, { cause });
+    }
+    throw new ProductProviderError('provider_unavailable', 'Could not reach Canopy.', PROVIDER_ID, { cause });
+  }
+
+  // Auth and quota are real conditions, not schema problems — surface them
+  // as-is so the composite provider degrades instead of burning a second
+  // request on a REST call that is certain to fail the same way.
+  if (response.status === 401 || response.status === 403) {
+    throw new ProductProviderError('unauthorized', 'Canopy rejected the API key.', PROVIDER_ID);
+  }
+  if (response.status === 429) {
+    throw new ProductProviderError('rate_limited', 'Canopy quota exhausted.', PROVIDER_ID);
+  }
+  if (!response.ok) {
+    throw new ProductProviderError('malformed_response', `Canopy GraphQL returned ${response.status}.`, PROVIDER_ID);
+  }
+
+  const body = (await response.json()) as {
+    errors?: { message?: string }[];
+    data?: { amazonProductSearchResults?: { productResults?: { results?: CanopySearchItem[] } } };
+  };
+
+  // GraphQL reports field errors in a 200 response, so a bad query looks like
+  // success until the payload is inspected.
+  if (body.errors?.length) {
+    throw new ProductProviderError(
+      'malformed_response',
+      `Canopy GraphQL rejected the query: ${body.errors[0]?.message ?? 'unknown error'}`,
+      PROVIDER_ID,
+    );
+  }
+
+  return body.data?.amazonProductSearchResults?.productResults?.results ?? [];
+}
+
 /* ─────────────────────────── provider ─────────────────────────── */
 
 export function createCanopyProvider(config: ProductFinderConfig): IProductProvider {
@@ -228,15 +314,28 @@ export function createCanopyProvider(config: ProductFinderConfig): IProductProvi
     coverage: 'marketplace',
 
     async search(query: ProductQuery, signal: AbortSignal): Promise<NormalizedProduct[]> {
-      const body = await request<{
-        data?: { amazonProductSearchResults?: { productResults?: { results?: CanopySearchItem[] } } };
-      }>(
-        `/search?searchTerm=${encodeURIComponent(query.keyword ?? '')}&domain=${toDomain(query.marketplace)}`,
-        requireKey(),
-        signal,
-      );
+      const key = requireKey();
+      const keyword = query.keyword ?? '';
 
-      const results = body.data?.amazonProductSearchResults?.productResults?.results ?? [];
+      let results: CanopySearchItem[];
+      try {
+        results = await searchViaGraphql(keyword, query.marketplace, key, signal);
+      } catch (error) {
+        // Only a schema/transport problem falls back to REST. Auth failures and
+        // quota exhaustion would fail identically there, and retrying would
+        // spend a second request to learn nothing.
+        if (!isProductProviderError(error) || error.code !== 'malformed_response') throw error;
+        console.warn('[product-finder] Canopy GraphQL search failed, retrying over REST', error.message);
+
+        const body = await request<{
+          data?: { amazonProductSearchResults?: { productResults?: { results?: CanopySearchItem[] } } };
+        }>(
+          `/search?searchTerm=${encodeURIComponent(keyword)}&domain=${toDomain(query.marketplace)}`,
+          key,
+          signal,
+        );
+        results = body.data?.amazonProductSearchResults?.productResults?.results ?? [];
+      }
 
       const products = results
         // Sponsored rows are paid placements, not merit. A tool whose entire

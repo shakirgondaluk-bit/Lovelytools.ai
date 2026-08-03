@@ -61,9 +61,16 @@ export async function POST(request: Request) {
     // here costs a catalogue entry, not a result.
     try {
       await recordDiscoveries(
-        result.results.map((item) =>
-          toAffiliateProduct(item, { keyword: result.query.keyword, affiliateTag: config.affiliateTag }),
-        ),
+        result.results
+          // Never re-publish something we already have a written review for.
+          // `reviewSlug` marks a product that came from the curated catalog, and
+          // the generated slug differs from the curated one — so without this,
+          // a fallback to the catalog quietly created a second, machine-written
+          // card for a product already on the Buyer's Guide.
+          .filter((item) => !item.product.reviewSlug)
+          .map((item) =>
+            toAffiliateProduct(item, { keyword: result.query.keyword, affiliateTag: config.affiliateTag }),
+          ),
       );
     } catch (persistError) {
       console.warn('[product-finder] could not auto-publish shortlist', persistError);

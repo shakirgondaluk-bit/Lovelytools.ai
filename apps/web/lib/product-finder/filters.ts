@@ -21,7 +21,7 @@
  * the applied filters honestly rather than claiming filters that did nothing.
  */
 
-import { matchesTerm, tokenize } from './text';
+import { matchesTerm, queryTerms } from './text';
 import type { NormalizedProduct } from './types';
 
 export type FilterMode = 'exclude' | 'prefer';
@@ -47,9 +47,38 @@ export interface FilterOutcome {
 export interface FilterContext {
   keyword: string | null;
   minResults: number;
+  /**
+   * True when `keyword` was reconstructed from a pasted product's title rather
+   * than typed. A derived query is a guess about what the product *is*, so the
+   * strict all-terms stage does not apply to it.
+   */
+  keywordIsDerived?: boolean;
 }
 
 const MIN_RATING = 4;
+
+/** What "in the product's name" means everywhere below: brand + title. */
+const productTitle = (product: NormalizedProduct): string =>
+  `${product.brand} ${product.name}`.toLowerCase();
+
+/**
+ * Every meaningful query term present in the title — AND, not OR.
+ *
+ * This is the stage that does the real narrowing. Term-coverage scoring alone is
+ * an OR: searching "phone tripod" would accept anything that is merely a tripod,
+ * and with 16–24 candidates coming back from the provider there is more than
+ * enough room to insist on all of them. Restricted to the title on purpose — a
+ * word that appears only in a spec table or a marketing paragraph is not what
+ * the product *is*.
+ *
+ * It is relaxable (see the backward pass in `runFilters`), so an over-specific
+ * query degrades to the closest matches with the loosened filter reported,
+ * rather than to an empty page.
+ */
+function matchesAllTerms(product: NormalizedProduct, keyword: string): boolean {
+  const title = productTitle(product);
+  return queryTerms(keyword).every((term) => matchesTerm(title, term));
+}
 
 /**
  * How well a product answers the query, 0–1.
@@ -62,10 +91,10 @@ const MIN_RATING = 4;
  * near-miss can be shown when nothing better exists.
  */
 export function relevanceScore(product: NormalizedProduct, keyword: string): number {
-  const terms = tokenize(keyword);
+  const terms = queryTerms(keyword);
   if (terms.length === 0) return 1;
 
-  const title = `${product.brand} ${product.name}`.toLowerCase();
+  const title = productTitle(product);
   const secondary = [
     product.category,
     product.description,
@@ -136,6 +165,16 @@ interface ExcludeStage {
    */
   isActive(products: NormalizedProduct[], ctx: FilterContext): boolean;
   keep(product: NormalizedProduct, ctx: FilterContext): boolean;
+  /**
+   * How few survivors this stage tolerates before it is rolled back. Defaults to
+   * the requested result count — "top up the page" behaviour.
+   *
+   * A stage that expresses what the shopper actually asked for should set this
+   * to 1 instead. Padding a shortlist back up to three with products that do not
+   * match the query is not a better answer than showing the two that do; it is
+   * the same OR-matching that made the page feel arbitrary.
+   */
+  relaxFloor?: number;
 }
 
 const EXCLUDE_STAGES: ExcludeStage[] = [
@@ -144,6 +183,22 @@ const EXCLUDE_STAGES: ExcludeStage[] = [
     label: 'Keyword relevance',
     isActive: (_products, ctx) => Boolean(ctx.keyword),
     keep: (product, ctx) => relevanceScore(product, ctx.keyword ?? '') >= RELEVANCE_FLOOR,
+    // Same reasoning as the AND stage, and load-bearing for it: because this
+    // stage runs first, rolling it back restores the untouched candidate set and
+    // discards every later stage's work. Padding the page from here would hand
+    // back the products the AND stage had just removed.
+    relaxFloor: 1,
+  },
+  {
+    id: 'relevance-all',
+    label: 'Every search word in the product name',
+    // Pointless on a single-term query — it would be identical to the soft
+    // relevance floor above, and reporting it as an applied filter would be
+    // claiming a narrowing that never happened.
+    isActive: (_products, ctx) => !ctx.keywordIsDerived && queryTerms(ctx.keyword ?? '').length >= 2,
+    keep: (product, ctx) => matchesAllTerms(product, ctx.keyword ?? ''),
+    // Given up only when it would otherwise leave nothing at all.
+    relaxFloor: 1,
   },
   {
     id: 'rating',
@@ -227,8 +282,12 @@ export function runFilters(candidates: NormalizedProduct[], ctx: FilterContext):
   // Backward pass: undo the latest stages until we have enough to show. Order
   // matters — relevance is the last thing we give up, because a highly-rated
   // in-stock product that has nothing to do with the query is not a result.
-  for (let i = trail.length - 1; i >= 0 && surviving.length < ctx.minResults; i -= 1) {
+  //
+  // Each stage is checked against its own floor rather than one global minimum,
+  // so loosening "in stock" to fill the page never costs us the query match.
+  for (let i = trail.length - 1; i >= 0; i -= 1) {
     const { stage, before } = trail[i]!;
+    if (surviving.length >= (stage.relaxFloor ?? ctx.minResults)) continue;
     if (before.length === surviving.length) continue; // this stage removed nothing
     surviving = before;
     const record = applied.find((a) => a.id === stage.id);

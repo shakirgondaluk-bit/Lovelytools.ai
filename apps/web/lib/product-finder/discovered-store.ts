@@ -18,7 +18,8 @@
 // client and quietly do nothing rather than leak anything. Import it only from
 // server components and route handlers.
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import type { AffiliateProduct } from '@/lib/affiliate-products';
+import { affiliateCategories, type AffiliateProduct } from '@/lib/affiliate-products';
+import { categorySlug, inferCategory } from './categorize';
 
 export interface DiscoveredProduct {
   slug: string;
@@ -72,11 +73,28 @@ function adminClient(): SupabaseClient | null {
 export const autoPublishEnabled = (): boolean =>
   process.env.PRODUCT_FINDER_AUTO_ADD !== 'false' && adminClient() !== null;
 
+const KNOWN_LABELS = new Set(affiliateCategories.map((c) => c.label));
+
+/**
+ * Re-categorises on read when the stored label is not one we recognise.
+ *
+ * Rows written before the categoriser existed carry the provider placeholder
+ * ("Amazon"), which renders a badge no filter chip can match. Healing here
+ * rather than in a migration means those rows correct themselves on the next
+ * page view, and it keeps working if a future provider emits a taxonomy string
+ * of its own.
+ */
+function withCategory(product: AffiliateProduct): AffiliateProduct {
+  if (KNOWN_LABELS.has(product.categoryLabel)) return product;
+  const categoryLabel = inferCategory(product, null, product.categoryLabel);
+  return { ...product, categoryLabel, categoryPath: `/buyers-guide?category=${categorySlug(categoryLabel)}` };
+}
+
 const toDiscovered = (row: Row): DiscoveredProduct => ({
   slug: row.slug,
   asin: row.asin,
   marketplace: row.marketplace,
-  product: row.payload,
+  product: withCategory(row.payload),
   searchCount: row.search_count,
   firstSeen: row.first_seen,
   lastSeen: row.last_seen,

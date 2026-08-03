@@ -121,7 +121,10 @@ export function loadConfig(): ProductFinderConfig {
     fallbackProviderId: env.PRODUCT_FALLBACK_PROVIDER ?? 'catalog',
     marketplace: env.PRODUCT_MARKETPLACE ?? 'amazon.co.uk',
     affiliateTag: env.AMAZON_AFFILIATE_TAG ?? 'lovelytools-21',
-    candidateLimit: num(env.PRODUCT_CANDIDATE_LIMIT, 24),
+    // 40 to match what the Canopy GraphQL search asks for. It was 24, which was
+    // both unreachable (the REST endpoint returned one ~16-row page) and, once
+    // GraphQL raised the ceiling, would have thrown away a third of the pool.
+    candidateLimit: num(env.PRODUCT_CANDIDATE_LIMIT, 40),
     resultLimit: num(env.PRODUCT_RESULT_LIMIT, 3),
     timeoutMs: num(env.PRODUCT_PROVIDER_TIMEOUT_MS, 12_000),
     cacheTtlMs: num(env.PRODUCT_CACHE_TTL_MS, 10 * 60_000),

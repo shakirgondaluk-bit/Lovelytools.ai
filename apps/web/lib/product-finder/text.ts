@@ -41,6 +41,20 @@ const STOPWORDS = new Set([
 ]);
 
 /**
+ * The meaningful terms in a query — what a product must actually contain.
+ *
+ * Stopwords are dropped so "case for iPhone 17 Pro" is judged on
+ * case/iphone/17/pro rather than being handed a free point for "for". Falls back
+ * to the raw tokens when a query is nothing but stopwords, because an empty term
+ * list would make every product a perfect match.
+ */
+export function queryTerms(keyword: string): string[] {
+  const tokens = tokenize(keyword);
+  const meaningful = tokens.filter((term) => !STOPWORDS.has(term));
+  return meaningful.length > 0 ? meaningful : tokens;
+}
+
+/**
  * Builds a search phrase that describes what a product *is*, from its own title.
  *
  * Used for two things that must agree: finding alternatives to a pasted product,

@@ -77,6 +77,11 @@ export interface AffiliateCategory {
 }
 
 // The Buyer's Guide listing page groups products under these categories.
+//
+// This is the closed set the Product Finder's categoriser is allowed to emit
+// (see lib/product-finder/categorize.ts) — a label outside this list renders a
+// badge that no filter chip can match. The guide only shows chips for
+// categories that currently hold a product, so adding one here is cheap.
 export const affiliateCategories: AffiliateCategory[] = [
   { slug: 'home-improvement-power-tools', label: 'Home Improvement & Power Tools' },
   { slug: 'kitchen-dining', label: 'Kitchen & Dining' },
@@ -85,6 +90,21 @@ export const affiliateCategories: AffiliateCategory[] = [
   { slug: 'office-supplies', label: 'Office Supplies' },
   { slug: 'handmade-products', label: 'Handmade Products' },
   { slug: 'furniture', label: 'Furniture' },
+  { slug: 'mobile-phones-accessories', label: 'Mobile Phones & Accessories' },
+  { slug: 'smartwatches-wearables', label: 'Smartwatches & Wearables' },
+  { slug: 'audio-headphones', label: 'Audio & Headphones' },
+  { slug: 'computers-accessories', label: 'Computers & Accessories' },
+  { slug: 'cameras-photography', label: 'Cameras & Photography' },
+  { slug: 'car-motorbike', label: 'Car & Motorbike' },
+  { slug: 'cleaning-laundry', label: 'Cleaning & Laundry' },
+  { slug: 'lighting-electrical', label: 'Lighting & Electrical' },
+  { slug: 'beauty-personal-care', label: 'Beauty & Personal Care' },
+  { slug: 'health-household', label: 'Health & Household' },
+  { slug: 'baby-kids', label: 'Baby & Kids' },
+  { slug: 'pet-supplies', label: 'Pet Supplies' },
+  { slug: 'toys-games', label: 'Toys & Games' },
+  { slug: 'clothing-accessories', label: 'Clothing & Accessories' },
+  { slug: 'electronics-gadgets', label: 'Electronics & Gadgets' },
 ];
 
 // The skill appends new entries to this array.

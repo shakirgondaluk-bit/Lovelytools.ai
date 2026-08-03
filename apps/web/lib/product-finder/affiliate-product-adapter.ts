@@ -14,6 +14,7 @@
 
 import type { AffiliateFeature, AffiliateProduct, AffiliateSpecItem } from '@/lib/affiliate-products';
 import type { AffiliateIconName } from '@/components/templates/affiliate-icons';
+import { categorySlug, inferCategory } from './categorize';
 import type { FinderProduct } from './discovery-service';
 import { formatMoney } from './ranking';
 import type { NormalizedProduct } from './types';
@@ -205,6 +206,8 @@ export function toAffiliateProduct(finder: FinderProduct, ctx: AdapterContext): 
   // to be resolved to a definite string before the tuple is built.
   const [hero = NO_IMAGE, ...rest] = product.images.length > 0 ? product.images : [NO_IMAGE];
 
+  const category = inferCategory(product, ctx.keyword, product.category);
+
   const tagline = ctx.keyword
     ? `${analysis.headline} for “${ctx.keyword}” — scored ${analysis.aiScore}/100 by the Amazon Product Finder.`
     : `${analysis.headline} — scored ${analysis.aiScore}/100 by the Amazon Product Finder.`;
@@ -215,10 +218,10 @@ export function toAffiliateProduct(finder: FinderProduct, ctx: AdapterContext): 
     affiliateTag: ctx.affiliateTag,
     amazonDomain: product.marketplace,
 
-    categoryLabel: product.category,
-    // No per-category route exists yet, so the crumb points at the guide hub
-    // rather than a guessed path that would 404.
-    categoryPath: '/buyers-guide',
+    categoryLabel: category,
+    // No per-category route exists yet, so the crumb points at the guide hub's
+    // filtered view rather than a guessed path that would 404.
+    categoryPath: `/buyers-guide?category=${categorySlug(category)}`,
 
     brand: product.brand,
     name: product.name,

@@ -49,6 +49,9 @@ const GRAPHQL_URL = 'https://graphql.canopyapi.co/';
  */
 const SEARCH_LIMIT = 40;
 
+/** Cache window for per-ASIN detail lookups. See the call site for the rationale. */
+const LOOKUP_REVALIDATE_SECONDS = 6 * 60 * 60;
+
 /** Canopy addresses stores by short code, not by hostname. */
 const DOMAIN_BY_MARKETPLACE: Record<string, string> = {
   'amazon.co.uk': 'UK',
@@ -192,13 +195,26 @@ function normalize(raw: CanopyProduct, marketplace: string, sourceRank?: number)
 
 /* ─────────────────────────── transport ─────────────────────────── */
 
-async function request<T>(path: string, apiKey: string, signal: AbortSignal): Promise<T> {
+async function request<T>(
+  path: string,
+  apiKey: string,
+  signal: AbortSignal,
+  revalidateSeconds?: number,
+): Promise<T> {
   let response: Response;
   try {
     response = await fetch(`${BASE_URL}${path}`, {
       headers: { 'API-KEY': apiKey, accept: 'application/json' },
       signal,
-      cache: 'no-store',
+      // `no-store` is not merely a caching preference to Next: inside a static
+      // render it is a dynamic operation, and the render throws rather than
+      // silently deopting. /products/[slug] is an SSG route that generates
+      // unknown slugs on demand, so an uncached lookup there 500'd the page.
+      // Callers that can tolerate a stale record pass a revalidate window,
+      // which keeps the render static and spends less quota on repeat views.
+      ...(revalidateSeconds === undefined
+        ? { cache: 'no-store' as const }
+        : { next: { revalidate: revalidateSeconds } }),
     });
   } catch (cause) {
     if (signal.aborted) {
@@ -320,6 +336,11 @@ export function createCanopyProvider(config: ProductFinderConfig): IProductProvi
       `/product?asin=${encodeURIComponent(asin)}&domain=${toDomain(marketplace)}`,
       requireKey(),
       signal,
+      // A product's gallery, specs and description barely change; the price and
+      // rating on the page are stated as "at last check" and the visitor is sent
+      // to Amazon for the live figure. Six hours is a good trade against a
+      // 100-request monthly allowance.
+      LOOKUP_REVALIDATE_SECONDS,
     );
     const product = body.data?.amazonProduct;
     return product ? normalize(product, marketplace) : null;

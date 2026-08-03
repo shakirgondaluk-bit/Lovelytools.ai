@@ -51,27 +51,50 @@ interface Row {
 const TABLE = 'discovered_products';
 
 let client: SupabaseClient | null | undefined;
+let reader: SupabaseClient | null | undefined;
 
 /**
  * The admin client, built lazily so a deployment without the service key simply
  * has the feature switched off rather than failing at import time.
  */
+// No session to persist and no user to refresh: these clients are a server
+// process acting as itself, not on behalf of anyone.
+const AUTH = { auth: { persistSession: false, autoRefreshToken: false } } as const;
+
 function adminClient(): SupabaseClient | null {
   if (client !== undefined) return client;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  client =
-    url && serviceKey
-      ? createClient(url, serviceKey, {
-          // No session to persist and no user to refresh: this client is a
-          // server process acting as itself, not on behalf of anyone.
-          auth: { persistSession: false, autoRefreshToken: false },
-        })
-      : null;
-
+  client = url && serviceKey ? createClient(url, serviceKey, AUTH) : null;
   return client;
+}
+
+/**
+ * Client for reads. Prefers the service key when present, but falls back to the
+ * anon key — the table's RLS grants public select, so reading never needed
+ * elevated credentials.
+ *
+ * This matters beyond tidiness: the Buyer's Guide and the generated product
+ * pages are public pages, and tying them to a secret meant they rendered empty
+ * in any environment without it, including local development. Writes still
+ * require the service key, because there is deliberately no anon write policy.
+ */
+function readClient(): SupabaseClient | null {
+  if (reader !== undefined) return reader;
+
+  const admin = adminClient();
+  if (admin) {
+    reader = admin;
+    return reader;
+  }
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  reader = url && anonKey ? createClient(url, anonKey, AUTH) : null;
+  return reader;
 }
 
 export const autoPublishEnabled = (): boolean =>
@@ -141,7 +164,7 @@ export async function recordDiscoveries(products: AffiliateProduct[]): Promise<v
 
 /** Newest-first listing for the Buyer's Guide. */
 export async function listDiscovered(limit = 60): Promise<DiscoveredProduct[]> {
-  const db = adminClient();
+  const db = readClient();
   if (!db) return [];
 
   const { data, error } = await db
@@ -179,7 +202,7 @@ export async function saveEnriched(slug: string, product: AffiliateProduct): Pro
 
 /** Single lookup, backing /products/{slug} for auto-published entries. */
 export async function getDiscovered(slug: string): Promise<DiscoveredProduct | null> {
-  const db = adminClient();
+  const db = readClient();
   if (!db) return null;
 
   const { data, error } = await db.from(TABLE).select('*').eq('slug', slug).maybeSingle();

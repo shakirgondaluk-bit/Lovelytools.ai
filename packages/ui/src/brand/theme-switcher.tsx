@@ -32,20 +32,24 @@ function applyTheme(theme: Theme) {
 
 /**
  * ThemeScript — render as the FIRST CHILD of <body> in app/layout.tsx.
- * Applies the persisted theme before first paint (no flash). Dark is default.
+ * Applies the persisted theme before first paint (no flash). Light is the
+ * default — the class is added unless the visitor explicitly chose dark.
+ * (The class is added here rather than rendered on <body> by the layout: the
+ * server HTML must stay class-less, or hydration mismatches on <body> take the
+ * whole React root down and the page loses all interactivity.)
  * Also pins color-scheme so UA scrollbars/controls match from the start.
  */
 export function ThemeScript() {
   const js =
-    `try{var l=localStorage.getItem('${STORAGE_KEY}')==='light';` +
-    `if(l)document.body.classList.add('light');` +
-    `document.documentElement.style.colorScheme=l?'light':'dark';` +
+    `try{var d=localStorage.getItem('${STORAGE_KEY}')==='dark';` +
+    `if(!d)document.body.classList.add('light');` +
+    `document.documentElement.style.colorScheme=d?'dark':'light';` +
     // Create the theme-color meta ourselves so mobile browser chrome matches the
     // page. Created here, it is invisible to React — the layout renders no
     // themeColor, and touching React-owned head nodes from a script breaks
     // hydration.
     `var m=document.createElement('meta');m.name='theme-color';` +
-    `m.content=l?'${THEME_COLOR.light}':'${THEME_COLOR.dark}';` +
+    `m.content=d?'${THEME_COLOR.dark}':'${THEME_COLOR.light}';` +
     `document.head.appendChild(m)}catch(e){}`;
   // Runs against <body> — place the script tag as the first child of <body>,
   // or keep it in <head> and swap document.body for document.documentElement
@@ -58,7 +62,7 @@ export function ThemeScript() {
  * Persists to localStorage["lt-theme"]; announces state to screen readers.
  */
 export function ThemeSwitcher({ className }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
 
   // Sync with whatever ThemeScript applied pre-paint.
   useEffect(() => {

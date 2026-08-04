@@ -202,7 +202,10 @@ export default async function BuyersGuidePage({
                       </span>
                     )}
                   </span>
-                  <h2 className="font-grotesk text-[16px] font-bold leading-snug text-fg">
+                  {/* text-wrap:wrap for the same reason as the product page hero:
+                      the global `h2 { text-wrap: balance }` evens out line lengths,
+                      which on a long Amazon name leaves the card's lines short. */}
+                  <h2 className="font-grotesk text-[14.5px] font-semibold leading-snug text-fg [text-wrap:wrap]">
                     <span className="text-accent">{product.brand}</span> {product.name}
                   </h2>
                   <p className="text-[13px] leading-relaxed text-fg2">{product.tagline}</p>

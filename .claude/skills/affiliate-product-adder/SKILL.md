@@ -43,8 +43,12 @@ markup, so getting the data right *is* getting the design right.
   beside Quick Specs instead of forming a tall narrow tower of text next to the
   gallery and leaving a large empty block beneath it. Product names are often
   20+ words; don't shorten a name to "fit" — the layout handles it.
-- **Hero copy**: brand name on its own line (uppercase, accent color) above the product
-  name (bold, `clamp(26px,3.4vw,40px)`, dark). Tagline in bold italic accent color,
+- **Hero copy**: brand name on its own line (uppercase, accent color,
+  `clamp(16px,2vw,20px)`) above the product name (bold, `clamp(19px,2vw,25px)`,
+  dark — deliberately restrained; a 20+ word Amazon title set any larger dominates
+  the page). The `<h1>` carries `[text-wrap:wrap]` to override the global
+  `h1 { text-wrap: balance }` — balancing evens out line lengths, so a long title
+  wraps early and stops short of the Quick Specs column instead of filling the width. Tagline in bold italic accent color,
   description unconstrained in width (no `max-w` ch cap — it spans the content
   column). Two CTAs ("Check Price on Amazon →" filled pill with cart icon,
   "View on Amazon" outlined pill) at 52px height.
@@ -69,7 +73,9 @@ markup, so getting the data right *is* getting the design right.
   follows the photo's own aspect ratio. Never branch this className on the
   `generated` flag (an earlier `aspect-[4/3]` frame for auto-listed entries cropped
   their photos and made those cards read as a different component). The `generated`
-  flag is for the "Auto-listed" badge only — never for image sizing.
+  flag is for the "Auto-listed" badge only — never for image sizing. Card title is
+  `14.5px font-semibold` with `[text-wrap:wrap]` (accent-colored brand + name),
+  tagline `13px` below it.
 - **Features grid**: plain bold-stroke (`strokeWidth={2}`) accent-color icon directly
   above the title — no circle badge background. 6 columns desktop, 3 tablet, 2 mobile,
   with vertical dividers between columns.

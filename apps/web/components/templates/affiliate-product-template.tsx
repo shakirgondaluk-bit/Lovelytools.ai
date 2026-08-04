@@ -78,11 +78,15 @@ export function AffiliateProductTemplate({ product }: { product: AffiliateProduc
                   {product.categoryLabel}
                 </span>
 
-                <h1 className="flex flex-col gap-1">
-                  <span className="[font-family:var(--font-jakarta)] text-[clamp(20px,3vw,26px)] font-extrabold uppercase leading-none tracking-[0.02em] text-accent">
+                {/* text-wrap:wrap overrides the global `h1 { text-wrap: balance }`.
+                    Balancing evens out the line lengths, which on a 20+ word Amazon
+                    title means it wraps early and stops well short of the Quick Specs
+                    column; plain wrapping fills each line to the full column width. */}
+                <h1 className="flex flex-col gap-1 [text-wrap:wrap]">
+                  <span className="[font-family:var(--font-jakarta)] text-[clamp(16px,2vw,20px)] font-extrabold uppercase leading-none tracking-[0.02em] text-accent">
                     {product.brand}
                   </span>
-                  <span className="[font-family:var(--font-jakarta)] text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.12] tracking-[-0.03em] text-fg">
+                  <span className="[font-family:var(--font-jakarta)] text-[clamp(19px,2vw,25px)] font-extrabold leading-[1.2] tracking-[-0.015em] text-fg">
                     {product.name}
                   </span>
                 </h1>

@@ -63,6 +63,13 @@ markup, so getting the data right *is* getting the design right.
   accent-color heading (no icon prefix, not uppercase), icon-left rows with bold
   black label + gray right-aligned value, dividers between rows, card height hugs
   its content (never stretches to match the content column).
+- **Buyer's Guide listing card** (`app/buyers-guide/page.tsx`): auto-listed and
+  hand-added products must render through the **exact same** image frame —
+  `h-auto w-full object-cover` inside a rounded bordered box, so the frame's height
+  follows the photo's own aspect ratio. Never branch this className on the
+  `generated` flag (an earlier `aspect-[4/3]` frame for auto-listed entries cropped
+  their photos and made those cards read as a different component). The `generated`
+  flag is for the "Auto-listed" badge only — never for image sizing.
 - **Features grid**: plain bold-stroke (`strokeWidth={2}`) accent-color icon directly
   above the title — no circle badge background. 6 columns desktop, 3 tablet, 2 mobile,
   with vertical dividers between columns.

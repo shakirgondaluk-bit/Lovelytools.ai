@@ -181,18 +181,12 @@ export default async function BuyersGuidePage({
                       // alone and serves a 440px source into a slot that is
                       // ~370px CSS — half the pixels a retina display needs.
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      // Auto-published entries fill the frame like the curated
-                      // ones. Containing them inside a padded box was the
-                      // cautious choice — no crop — but it left every generated
-                      // card visibly letterboxed and smaller than its
-                      // neighbours. Amazon product shots are centred on a plain
-                      // background with generous margins, so cropping to 4:3
-                      // takes the empty edges rather than the product.
-                      className={
-                        generated
-                          ? 'aspect-[4/3] w-full object-cover'
-                          : 'h-auto w-full object-cover'
-                      }
+                      // Same frame for auto-listed and curated entries: the box
+                      // height follows the photo (`h-auto`) instead of being
+                      // pinned to a fixed 4:3 aspect. The fixed frame cropped
+                      // auto-listed shots and made those cards read as a
+                      // different, smaller component than their neighbours.
+                      className="h-auto w-full object-cover"
                     />
                   </div>
                   <span className="flex flex-wrap items-center gap-2">

@@ -38,24 +38,23 @@ export const CONVERSION_TOOLS: Record<string, ConversionToolBinding> = {
   'powerpoint-to-pdf': { to: 'pdf', accept: PPTX_ACCEPT, action: 'Convert to PDF' },
   'pdf-to-word': { to: 'docx', accept: PDF_ACCEPT, action: 'Convert to Word' },
   'pdf-to-powerpoint': { to: 'pptx', accept: PDF_ACCEPT, action: 'Convert to PowerPoint' },
+  'pdf-to-excel': { to: 'xlsx', accept: PDF_ACCEPT, action: 'Convert to Excel' },
 };
 
 /**
  * Conversion-engine tools that need a capability the engine doesn't have.
  *
- * pdf-to-excel is the one entry, and it earned its place here the way the PDF
- * engine's OCR gap did — by checking the actual route graph rather than assuming
- * the registry entry implied working code. `planRoute('pdf', 'xlsx')` returns null:
- * the doc IR that `pdf` feeds never produces `xlsx`, and the table IR that produces
- * `xlsx` has no `pdf` producer. pdfToDoc() extracts paragraphs and headings, not
- * cell grids — there is no code anywhere that reads tabular structure out of a PDF.
- * That is a real, nontrivial capability (position-clustering text into rows and
- * columns), not a wiring gap, so it is declared rather than guessed at.
+ * Empty, and worth keeping empty rather than deleting: this is where a tool goes
+ * when the registry lists it but the route graph can't serve it, and coverage.test.ts
+ * fails the build for anything that is neither bound above nor declared here.
+ *
+ * pdf-to-excel used to be the one entry. It was declared rather than guessed at
+ * because `planRoute('pdf', 'xlsx')` genuinely returned null — the table IR had no
+ * `pdf` producer, and pdfToDoc() only ever extracted paragraphs and headings. That
+ * gap is now filled by converters/pdf-table.ts, which reconstructs cell grids from
+ * glyph coordinates, so the route resolves and the tool is bound above.
  */
-export const CONVERSION_NOT_IMPLEMENTED: Record<string, string> = {
-  'pdf-to-excel':
-    'needs table-structure extraction from PDF text positions — nothing in the engine reads cell grids out of a PDF, only paragraphs and headings',
-};
+export const CONVERSION_NOT_IMPLEMENTED: Record<string, string> = {};
 
 export const conversionToolSlugs = (): string[] => Object.keys(CONVERSION_TOOLS);
 

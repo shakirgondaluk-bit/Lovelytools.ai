@@ -119,12 +119,17 @@ These are the gates that matter, because they catch what types cannot:
     fixtures built with the engine's own libraries (docx, xlsx, pptxgenjs) → valid
     `%PDF-1.7`, "minor differences" badge shown.
   - `markdown-to-pdf` — real Markdown with headings/bold/lists → valid PDF.
-  - `pdf-to-excel` — correctly renders "Not built yet" with the real reason (doc IR
-    has no route to table IR; nothing extracts cell grids from PDF text positions).
+  - `pdf-to-excel` — a generated report PDF (title, intro line, a table with
+    right-aligned figures and one deliberately empty cell, footnote) → `.xlsx` that
+    reads back as the page did: rows 1–2 the prose, row 3 blank, rows 4–8 the table
+    with labels in column A and `1204880` / `0.52` typed as numbers, the empty cell
+    blank *in place* rather than shifting the row, row 9 blank, row 10 the footnote.
+    One sheet per page; grid reconstruction from glyph coordinates lives in
+    `converters/pdf-table.ts`.
 - Registry: 235 tools · 9 categories · 7 collections · 251 slugs · no orphans, no
   dangling links, no collisions.
 - Engine coverage: video 23/23, audio 22/22, pdf 27/27, speech 3/3, **conversion
-  7/8 wired, 1 honestly declared unbuilt**.
+  8/8 wired**.
 - **Social media tools end to end** (the ninth category, all four tools driven in
   the browser):
   - URL ingest — a CORS-served WAV fetched by the page with real byte progress;

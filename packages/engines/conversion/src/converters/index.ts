@@ -5,6 +5,7 @@ import { tableToDoc } from '../ir';
 import { EngineError, type FormatId } from '../types';
 import * as doc from './document';
 import * as table from './table';
+import * as pdfTable from './pdf-table';
 import * as data from './data';
 
 type Progress = (pct: number, stage: string) => void;
@@ -36,6 +37,9 @@ export async function produce(
       case 'txt': return table.csvToTable(buf, p);
       case 'json': return table.jsonToTable(buf, p);
       case 'xml': return table.xmlToTable(buf, p);
+      // Its own module: this is geometry reconstruction against pdf.js, not a
+      // SheetJS container read like everything else on this branch.
+      case 'pdf': return pdfTable.pdfToTable(buf, name, p);
     }
   }
   if (ir === 'data') {

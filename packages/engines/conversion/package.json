@@ -10,7 +10,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "tsx src/coverage.test.ts"
+    "test": "tsx src/coverage.test.ts && tsx src/converters/pdf-table.test.ts"
   },
   "dependencies": {
     "@lovelytools/engines-core": "workspace:*",

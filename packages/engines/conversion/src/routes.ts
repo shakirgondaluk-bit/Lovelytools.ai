@@ -48,6 +48,11 @@ const GRAPH: IRNode[] = [
       xml: { fidelity: 'good', warning: 'Repeated elements map to rows; deep nesting is flattened.' },
       html: { fidelity: 'good', warning: 'Only <table> elements are read.' },
       txt: { fidelity: 'good', warning: 'Parsed as tab/comma-delimited text.' },
+      pdf: {
+        fidelity: 'text-only',
+        warning:
+          'A PDF stores glyph positions, not cells — the grid is reconstructed from where the text sits. Check merged cells and multi-line rows.',
+      },
     },
     consumers: {
       xlsx: { fidelity: 'high' },

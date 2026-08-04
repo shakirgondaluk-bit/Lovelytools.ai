@@ -9,7 +9,6 @@ import { useAccountState } from './account-context';
 import { useFavorites } from './favorites';
 import { MegaNav, type MegaPanelId } from './mega-nav';
 import { MonogramChip } from './monogram-chip';
-import { SearchTrigger } from './search-bar';
 import { ThemeSwitcher } from './theme-switcher';
 
 // A "Resources" trigger sat here. Its panel was six 404s and a link to a blog post
@@ -22,7 +21,7 @@ const TRIGGERS: Array<{ id: MegaPanelId; label: string }> = [
 /**
  * Header — sticky 64px bar, --nav-bg + 18px blur (DS §9).
  * Order: logo · Tools · Solutions · Resources · Buyer's Guide · [spacer] ·
- * search trigger · EN · theme toggle · Log in · Get started.
+ * favorites · theme toggle · Log in · Get started.
  * (Pricing is currently hidden — see the note in the nav below.)
  * Mega panels open on trigger mouseenter and close when the pointer leaves
  * the header+panel region (panels render inside <header>) or on Esc.
@@ -120,21 +119,12 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1.5 md:gap-2.5" onMouseEnter={() => setOpen(null)}>
-          <SearchTrigger className="hidden lg:flex" />
-          {/*
-            Moved from md to xl to make room for the Amazon Product Finder CTA.
-            This button is an inert placeholder — no handler, no language menu,
-            one locale — so of everything competing for the bar below xl it is
-            the only thing that costs a user nothing to defer. Restore `md:block`
-            here when localisation actually ships and this does something.
-          */}
-          <button
-            type="button"
-            aria-label="Language: English"
-            className="hidden cursor-pointer rounded-lg px-2.5 py-2 text-[13px] font-medium text-fg2 transition-colors duration-150 hover:bg-surface2 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent xl:block"
-          >
-            EN
-          </button>
+          {/* The ⌘K SearchTrigger pill sat here. Removed from the bar — the mobile
+              drawer still links to /search, and SearchTrigger itself is still
+              exported for use elsewhere. */}
+          {/* An "EN" button sat here. It was an inert placeholder — no handler, no
+              language menu, one locale — so it only advertised a choice that did not
+              exist. Bring it back when localisation actually ships. */}
           <FavoritesLink />
           <ThemeSwitcher />
           <AccountLink />

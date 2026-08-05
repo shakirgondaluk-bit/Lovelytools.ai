@@ -266,17 +266,47 @@ export function ProductFinderView() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 items-stretch gap-grid md:grid-cols-2 lg:grid-cols-3">
-            {result.results.map((item) => (
-              <ProductCard
-                key={item.product.asin}
-                item={item}
-                selected={selected.includes(item.product.asin)}
-                selectionCount={selected.length}
-                onToggleCompare={toggleCompare}
-              />
-            ))}
-          </div>
+          {/* Two tiers, labelled. A cheaper product sitting unexplained below a
+              dearer one reads as a worse result rather than a deliberate
+              value pick, so the split is stated rather than implied. */}
+          {(() => {
+            const cheaper = result.results.filter((r) => r.slot === 'cheaper-alternative');
+            const leading = result.results.filter((r) => r.slot !== 'cheaper-alternative');
+
+            const grid = (items: typeof result.results) => (
+              <div className="grid grid-cols-1 items-stretch gap-grid md:grid-cols-2 lg:grid-cols-3">
+                {items.map((item) => (
+                  <ProductCard
+                    key={item.product.asin}
+                    item={item}
+                    selected={selected.includes(item.product.asin)}
+                    selectionCount={selected.length}
+                    onToggleCompare={toggleCompare}
+                  />
+                ))}
+              </div>
+            );
+
+            if (cheaper.length === 0) return grid(result.results);
+
+            return (
+              <div className="flex flex-col gap-8">
+                {grid(leading)}
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="font-grotesk text-[17px] font-bold tracking-[-0.02em] text-fg">
+                      Cheaper alternatives
+                    </h3>
+                    <p className="text-[13px] text-fg2">
+                      {cheaper.length === 1 ? 'This one matches' : 'These match'} every word you searched for and
+                      {cheaper.length === 1 ? ' undercuts' : ' undercut'} all of the above on price.
+                    </p>
+                  </div>
+                  {grid(cheaper)}
+                </div>
+              </div>
+            );
+          })()}
 
           {result.comparison && (
             <div className="rounded-2xl border border-line bg-accent-soft p-6">

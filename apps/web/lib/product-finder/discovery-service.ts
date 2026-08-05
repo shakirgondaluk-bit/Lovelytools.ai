@@ -11,7 +11,7 @@
 import { buildAffiliateUrl } from '@/lib/affiliate-link';
 import { loadConfig, type ProductFinderConfig } from './config';
 import { detectInput } from './input';
-import { runFilters, type AppliedFilter } from './filters';
+import { matchesAllTerms, runFilters, type AppliedFilter } from './filters';
 import { deriveProductQuery } from './text';
 import { resolveProvider, type IProductProvider } from './provider';
 import { ClaudeRankingEngine } from './claude-ranking';
@@ -23,10 +23,20 @@ import {
 } from './ranking';
 import { ProductProviderError, type FinderInput, type NormalizedProduct } from './types';
 
+/**
+ * Why a product earned its place on the shortlist.
+ *
+ * `top-brand` — the strongest product from one brand. `cheaper-alternative` —
+ * matches every search word but undercuts every top-brand pick on price.
+ * `pinned` — the product the visitor pasted a link to.
+ */
+export type ResultSlot = 'pinned' | 'top-brand' | 'cheaper-alternative';
+
 /** One shortlisted product, with everything the UI needs and nothing it doesn't. */
 export interface FinderProduct {
   product: NormalizedProduct;
   analysis: ProductAnalysis;
+  slot: ResultSlot;
   /** Always built by the Affiliate Link Service — never a raw Amazon URL. */
   affiliateUrl: string;
   /** Where "View Details" goes: the curated review if we have one, else the generated page. */
@@ -90,6 +100,109 @@ function writeCache(key: string, value: DiscoveryResult, ttlMs: number): void {
   // Cheap bound — this is a warm-path cache, not a store.
   if (cache.size > 200) cache.clear();
   cache.set(key, { expiresAt: Date.now() + ttlMs, value });
+}
+
+export interface PickedResult {
+  analysis: ProductAnalysis;
+  slot: ResultSlot;
+}
+
+export interface ShortlistShape {
+  resultLimit: number;
+  topBrandCount: number;
+  cheaperAlternativeCount: number;
+}
+
+/**
+ * Chooses which ranked products make the shortlist, and why.
+ *
+ * Rank order alone tends to return the same brand three times over — Amazon
+ * search is full of one seller's near-identical listings, and a page of them is
+ * not a choice. So the shortlist is composed rather than sliced:
+ *
+ *   • the best product from each of the top N distinct brands, then
+ *   • the best products that undercut every one of those on price, while still
+ *     matching every search word.
+ *
+ * The cheaper tier is a genuine comparison, not a bargain bin: a product only
+ * qualifies if it beats the *cheapest* brand pick, so it is cheaper than
+ * everything above it rather than merely cheaper than the top one. Products with
+ * no published price are excluded — "cheaper" is a claim, and an unknown price
+ * cannot support it.
+ *
+ * Both tiers degrade rather than pad: too few brands and the remainder fills by
+ * rank; no cheaper match and the shortlist is simply shorter.
+ */
+export function selectShortlist(
+  analyses: ProductAnalysis[],
+  byAsin: Map<string, NormalizedProduct>,
+  pinned: string[],
+  keyword: string | null,
+  shape: ShortlistShape,
+): PickedResult[] {
+  const { resultLimit, topBrandCount, cheaperAlternativeCount } = shape;
+  const picked: PickedResult[] = [];
+  const taken = new Set<string>();
+
+  const take = (analysis: ProductAnalysis, slot: ResultSlot) => {
+    picked.push({ analysis, slot });
+    taken.add(analysis.asin);
+  };
+
+  // A pasted product is the question, not a candidate answer. It leads, and it
+  // never competes for a brand or a value slot.
+  for (const asin of pinned) {
+    const analysis = analyses.find((a) => a.asin === asin);
+    if (analysis) take(analysis, 'pinned');
+  }
+
+  // Tier 1 — one product per brand, best first.
+  const brandsSeen = new Set<string>();
+  for (const analysis of analyses) {
+    if (picked.length >= resultLimit || brandsSeen.size >= topBrandCount) break;
+    if (taken.has(analysis.asin)) continue;
+
+    const brand = (byAsin.get(analysis.asin)?.brand ?? '').trim().toLowerCase();
+    // An unbranded listing cannot be deduplicated by brand, so it passes rather
+    // than collapsing every unbranded product into a single slot.
+    if (brand && brandsSeen.has(brand)) continue;
+    if (brand) brandsSeen.add(brand);
+    take(analysis, 'top-brand');
+  }
+
+  // Tier 2 — cheaper, and still a match for what was asked.
+  const priceOf = (asin: string) => byAsin.get(asin)?.price?.amount ?? null;
+  const brandPrices = picked
+    .filter((p) => p.slot === 'top-brand')
+    .map((p) => priceOf(p.analysis.asin))
+    .filter((amount): amount is number => amount !== null);
+  const mustBeat = brandPrices.length > 0 ? Math.min(...brandPrices) : null;
+
+  let cheaperTaken = 0;
+  if (mustBeat !== null) {
+    for (const analysis of analyses) {
+      if (picked.length >= resultLimit || cheaperTaken >= cheaperAlternativeCount) break;
+      if (taken.has(analysis.asin)) continue;
+
+      const product = byAsin.get(analysis.asin);
+      const amount = product?.price?.amount ?? null;
+      if (amount === null || amount >= mustBeat) continue;
+      if (keyword && product && !matchesAllTerms(product, keyword)) continue;
+
+      take(analysis, 'cheaper-alternative');
+      cheaperTaken += 1;
+    }
+  }
+
+  // Backfill by rank only when a tier could not be filled, so the page is never
+  // short for want of a cheaper option that does not exist.
+  for (const analysis of analyses) {
+    if (picked.length >= resultLimit) break;
+    if (taken.has(analysis.asin)) continue;
+    take(analysis, 'top-brand');
+  }
+
+  return picked.slice(0, Math.max(resultLimit, pinned.length));
 }
 
 export class ProductDiscoveryService {
@@ -247,6 +360,16 @@ export class ProductDiscoveryService {
     };
   }
 
+  /** Composes the shortlist — see selectShortlist below. */
+  private selectShortlist(
+    analyses: ProductAnalysis[],
+    byAsin: Map<string, NormalizedProduct>,
+    pinned: string[],
+    keyword: string | null,
+  ): PickedResult[] {
+    return selectShortlist(analyses, byAsin, pinned, keyword, this.config);
+  }
+
   /** Filters → ranking → presentation shaping. */
   private async analyse(
     args: GatherResult & { raw: string; kind: 'keyword' | 'asin' },
@@ -279,13 +402,13 @@ export class ProductDiscoveryService {
     );
 
     const byAsin = new Map(surviving.map((p) => [p.asin, p]));
-    const results: FinderProduct[] = ranked.analyses
-      .slice(0, Math.max(this.config.resultLimit, pinned.length))
-      .map((analysis) => {
+    const results: FinderProduct[] = this.selectShortlist(ranked.analyses, byAsin, pinned, keyword)
+      .map(({ analysis, slot }) => {
         const product = byAsin.get(analysis.asin)!;
         return {
           product,
           analysis,
+          slot,
           affiliateUrl: buildAffiliateUrl({
             asin: product.asin,
             marketplace: product.marketplace,

@@ -20,7 +20,7 @@
  * to trade quota for fuller result cards.
  */
 
-import type { ProductFinderConfig } from '../config';
+import type { ProductFinderConfig, SearchRefinementConfig } from '../config';
 import type { IProductProvider } from '../provider';
 import { deriveProductQuery } from '../text';
 import {
@@ -246,6 +246,39 @@ async function request<T>(
 }
 
 /**
+ * Amazon's own refinement option labels, per marketplace.
+ *
+ * These are the strings in Amazon's left-hand sidebar, and they are localised —
+ * "Free UK Delivery by Amazon" exists only on .co.uk. An unknown marketplace
+ * therefore gets no refinement rather than a guessed label, because Canopy
+ * silently ignores an unrecognised refinement and we would report a filter as
+ * applied when Amazon had ignored it.
+ *
+ * Discoverable per search via the `availableRefinements` field, if these ever
+ * need checking against a live store.
+ */
+const REFINEMENT_LABELS: Record<string, { freeDelivery?: string; fastDelivery?: string }> = {
+  'amazon.co.uk': { freeDelivery: 'Free UK Delivery by Amazon', fastDelivery: 'Get It Tomorrow' },
+  'amazon.com': { freeDelivery: 'Free Shipping by Amazon', fastDelivery: 'Get It Today' },
+};
+
+/** GraphQL fragment for the `refinements` input, or '' when none apply. */
+function refinementClause(marketplace: string, config: SearchRefinementConfig): string {
+  const labels = REFINEMENT_LABELS[marketplace.toLowerCase().replace(/^www\./, '')];
+  if (!labels) return '';
+
+  const pairs: string[] = [];
+  if (config.freeDelivery && labels.freeDelivery) {
+    pairs.push(`{ name: "eligible_for_free_delivery", values: ${JSON.stringify([labels.freeDelivery])} }`);
+  }
+  if (config.fastDelivery && labels.fastDelivery) {
+    pairs.push(`{ name: "delivery_day", values: ${JSON.stringify([labels.fastDelivery])} }`);
+  }
+
+  return pairs.length > 0 ? `, refinements: { other: [${pairs.join(', ')}] }` : '';
+}
+
+/**
  * Search via GraphQL, which — unlike the REST endpoint — accepts a result limit.
  *
  * The domain is inlined as an enum literal rather than passed as a variable, so
@@ -257,12 +290,13 @@ async function searchViaGraphql(
   keyword: string,
   marketplace: string,
   apiKey: string,
+  refinements: SearchRefinementConfig,
   signal: AbortSignal,
 ): Promise<CanopySearchItem[]> {
   const query = `query Search($term: String!) {
-    amazonProductSearchResults(input: { searchTerm: $term, domain: ${toDomain(marketplace)} }) {
+    amazonProductSearchResults(input: { searchTerm: $term, domain: ${toDomain(marketplace)}${refinementClause(marketplace, refinements)} }) {
       productResults(input: { page: 1, limit: ${SEARCH_LIMIT} }) {
-        results { asin title url price { value currency } mainImageUrl rating ratingsTotal isPrime sponsored }
+        results { asin title brand url price { value currency } mainImageUrl rating ratingsTotal isPrime sponsored }
       }
     }
   }`;
@@ -357,7 +391,7 @@ export function createCanopyProvider(config: ProductFinderConfig): IProductProvi
 
       let results: CanopySearchItem[];
       try {
-        results = await searchViaGraphql(keyword, query.marketplace, key, signal);
+        results = await searchViaGraphql(keyword, query.marketplace, key, config.refinements, signal);
       } catch (error) {
         // Only a schema/transport problem falls back to REST. Auth failures and
         // quota exhaustion would fail identically there, and retrying would

@@ -75,7 +75,7 @@ const productTitle = (product: NormalizedProduct): string =>
  * query degrades to the closest matches with the loosened filter reported,
  * rather than to an empty page.
  */
-function matchesAllTerms(product: NormalizedProduct, keyword: string): boolean {
+export function matchesAllTerms(product: NormalizedProduct, keyword: string): boolean {
   const title = productTitle(product);
   return queryTerms(keyword).every((term) => matchesTerm(title, term));
 }

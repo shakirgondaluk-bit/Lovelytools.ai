@@ -22,6 +22,11 @@ export interface ProductFinderConfig {
   candidateLimit: number;
   /** Products shown on the results page. */
   resultLimit: number;
+  /** How many of `resultLimit` are the best product from distinct brands. */
+  topBrandCount: number;
+  /** How many are cheaper alternatives that still match every search word. */
+  cheaperAlternativeCount: number;
+  refinements: SearchRefinementConfig;
   /** Provider request timeout, ms. */
   timeoutMs: number;
   /** Discovery cache TTL, ms. 0 disables caching. */
@@ -29,6 +34,25 @@ export interface ProductFinderConfig {
   http: HttpProviderConfig;
   canopy: CanopyConfig;
   llm: LlmConfig;
+}
+
+/**
+ * Filters Amazon applies server-side, as part of the same search request.
+ *
+ * These are the refinements from Amazon's own sidebar, so they cost no extra
+ * quota and narrow the pool *before* the 40-candidate page is cut — which is
+ * strictly better than filtering locally afterwards, where a rejected product
+ * has already consumed one of the 40 slots.
+ */
+export interface SearchRefinementConfig {
+  /** Amazon's "Free UK Delivery by Amazon". */
+  freeDelivery: boolean;
+  /**
+   * Amazon's "Get It Tomorrow". Note this is *stricter* than "within a week":
+   * Amazon publishes no one-week refinement, so next-day is the closest
+   * available, and switching it on will exclude items arriving in 2–6 days.
+   */
+  fastDelivery: boolean;
 }
 
 export interface CanopyConfig {
@@ -125,8 +149,19 @@ export function loadConfig(): ProductFinderConfig {
     // both unreachable (the REST endpoint returned one ~16-row page) and, once
     // GraphQL raised the ceiling, would have thrown away a third of the pool.
     candidateLimit: num(env.PRODUCT_CANDIDATE_LIMIT, 40),
-    resultLimit: num(env.PRODUCT_RESULT_LIMIT, 3),
-    timeoutMs: num(env.PRODUCT_PROVIDER_TIMEOUT_MS, 12_000),
+    resultLimit: num(env.PRODUCT_RESULT_LIMIT, 5),
+    topBrandCount: num(env.PRODUCT_TOP_BRAND_COUNT, 3),
+    cheaperAlternativeCount: num(env.PRODUCT_CHEAPER_ALTERNATIVE_COUNT, 2),
+    refinements: {
+      freeDelivery: env.PRODUCT_REQUIRE_FREE_DELIVERY !== 'false',
+      // Off unless asked for: "Get It Tomorrow" is the only delivery-speed
+      // refinement Amazon publishes, and it is much stricter than a week.
+      fastDelivery: env.PRODUCT_REQUIRE_FAST_DELIVERY === 'true',
+    },
+    // 45s, not 12s. A refined search — where Amazon applies the delivery
+    // filters itself — measured 35.7s against Canopy, so the old ceiling
+    // aborted it and degraded silently to the curated catalog.
+    timeoutMs: num(env.PRODUCT_PROVIDER_TIMEOUT_MS, 45_000),
     cacheTtlMs: num(env.PRODUCT_CACHE_TTL_MS, 10 * 60_000),
     http: {
       searchUrl: env.PRODUCT_PROVIDER_SEARCH_URL ?? null,

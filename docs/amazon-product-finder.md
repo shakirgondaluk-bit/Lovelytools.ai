@@ -118,9 +118,13 @@ configuration at all (against the curated catalog).
 | `PRODUCT_FALLBACK_PROVIDER` | `catalog` | Used when the primary misses or is unavailable. Same value as `PRODUCT_PROVIDER` (the default state) means no pairing is built |
 | `PRODUCT_MARKETPLACE` | `amazon.co.uk` | Used when the query is a keyword rather than a URL |
 | `AMAZON_AFFILIATE_TAG` | `lovelytools-21` | Applied by the Affiliate Link Service |
-| `PRODUCT_CANDIDATE_LIMIT` | `24` | Candidates requested before filtering |
-| `PRODUCT_RESULT_LIMIT` | `3` | Products shown |
-| `PRODUCT_PROVIDER_TIMEOUT_MS` | `12000` | |
+| `PRODUCT_CANDIDATE_LIMIT` | `40` | Candidates requested before filtering |
+| `PRODUCT_RESULT_LIMIT` | `5` | Products shown |
+| `PRODUCT_TOP_BRAND_COUNT` | `3` | Of those, the best product from this many distinct brands |
+| `PRODUCT_CHEAPER_ALTERNATIVE_COUNT` | `2` | Of those, cheaper products that still match every search word |
+| `PRODUCT_REQUIRE_FREE_DELIVERY` | `true` | Amazon-side refinement. `false` to disable |
+| `PRODUCT_REQUIRE_FAST_DELIVERY` | `false` | Amazon-side "Get It Tomorrow". `true` to enable — see below |
+| `PRODUCT_PROVIDER_TIMEOUT_MS` | `45000` | A refined search measured 35.7s; the old 12s ceiling aborted it |
 | `PRODUCT_CACHE_TTL_MS` | `600000` | Per-process discovery cache. `0` disables |
 
 ### `PRODUCT_PROVIDER=http`
@@ -205,23 +209,72 @@ for it — but the comparison "Winner" is still the highest scorer.
 
 ## Filters
 
-Applied in order; `exclude` stages cut, `prefer` stages feed the offer signal.
+### Amazon-side, inside the search request
+
+These are refinements from Amazon's own sidebar, passed in the search query. They
+cost **no extra quota** and narrow the pool *before* the candidate page is cut,
+which beats filtering locally where a rejected product has already used a slot.
+
+| Refinement | Amazon option | Default |
+|---|---|---|
+| `eligible_for_free_delivery` | "Free UK Delivery by Amazon" | on |
+| `delivery_day` | "Get It Tomorrow" | off |
+
+Option labels are localised, so `REFINEMENT_LABELS` in the Canopy provider is
+keyed by marketplace. An unknown marketplace gets no refinement rather than a
+guessed label — Canopy silently ignores an unrecognised refinement, and we would
+otherwise report a filter as applied when Amazon had ignored it. The live set for
+any search is discoverable via the `availableRefinements` field.
+
+**Amazon publishes no "within a week" option.** "Get It Tomorrow" is the only
+delivery-speed refinement, and it is stricter — enabling it excludes items
+arriving in 2–6 days. It is therefore off by default.
+
+### Local, applied in order
+
+`exclude` stages cut; `prefer` stages feed the offer signal.
 
 0. Colour/size variants merged — Amazon lists each variant under its own ASIN,
    and "wireless headphones" returned the same Sony model in three colours
-1. Keyword relevance (exclude)
-2. Rating ≥ 4.0 (exclude — unknown ratings are kept)
-3. Free delivery (exclude — only a confirmed *paid* delivery is cut)
-4. Discounted products preferred (prefer)
-5. Availability (exclude — only a confirmed *out of stock* is cut)
-6. AI ranking
+1. Keyword relevance (exclude — weighted term coverage ≥ 0.34)
+2. Every search word in the product name (exclude — AND, not OR; skipped for
+   queries derived from a pasted link, and for single-term queries)
+3. Rating ≥ 4.0 (exclude — unknown ratings are kept)
+4. Free delivery (exclude — only a confirmed *paid* delivery is cut)
+5. Discounted products preferred (prefer)
+6. Availability (exclude — only a confirmed *out of stock* is cut)
+7. AI ranking
 
-Two rules keep the results page honest:
+Three rules keep the results page honest:
 
-- **Relaxation.** If the survivors fall below `PRODUCT_RESULT_LIMIT`, stages are
-  rolled back newest-first (relevance last) and the chip is marked "loosened".
+- **Relaxation.** If survivors fall below a stage's floor, it is rolled back and
+  the chip is marked "loosened". The floor is `PRODUCT_RESULT_LIMIT` for most
+  stages, but **1** for the two relevance stages — padding a shortlist back up
+  with products that do not match the query is not a better answer than showing
+  the two that do.
 - **Applicability.** A stage no candidate carries data for is reported inactive
   and its chip is not shown, rather than claiming a filter that judged nothing.
+- **Unknown is not bad.** Stages 3–6 never drop a product for missing data.
+
+## Shortlist composition
+
+Rank order alone returns the same brand three times over, and a page of one
+seller's near-identical listings is not a choice. So the shortlist is composed,
+not sliced (`selectShortlist` in `discovery-service.ts`):
+
+| Slot | Count | Rule |
+|---|---|---|
+| `pinned` | 0–1 | The product whose link was pasted. Leads, and never competes for the slots below |
+| `top-brand` | 3 | Best-ranked product from each distinct brand |
+| `cheaper-alternative` | 2 | Beats the **cheapest** brand pick on price *and* still matches every search word |
+
+A cheaper pick must undercut the cheapest product above it, not merely the top
+one, so it is genuinely cheaper than everything shown before it. Products with no
+published price are excluded from that tier — "cheaper" is a claim an unknown
+price cannot support.
+
+Both tiers degrade rather than pad: too few brands and the remainder fills by
+rank; no cheaper match and the shortlist is simply shorter.
 
 ## Auto-publishing to the Buyer's Guide
 

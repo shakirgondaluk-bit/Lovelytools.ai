@@ -80,7 +80,7 @@ function toNormalized(product: AffiliateProduct): NormalizedProduct {
 }
 
 /** Cheap BM25-ish scoring over the fields a shopper would actually type. */
-function relevance(product: AffiliateProduct, terms: string[]): number {
+function relevance(product: AffiliateProduct, terms: string[]): { score: number; coversAllTerms: boolean } {
   const name = `${product.brand} ${product.name}`.toLowerCase();
   const haystack = [
     name,
@@ -102,8 +102,9 @@ function relevance(product: AffiliateProduct, terms: string[]): number {
   // Every term matching somewhere is a much stronger signal than one term
   // matching three times, so reward full coverage explicitly.
   const covered = terms.filter((t) => matchesTerm(haystack, t)).length;
-  if (covered === terms.length) score += 10;
-  return score;
+  const coversAllTerms = covered === terms.length;
+  if (coversAllTerms) score += 10;
+  return { score, coversAllTerms };
 }
 
 export function createCatalogProvider(_config: ProductFinderConfig): IProductProvider {
@@ -118,8 +119,14 @@ export function createCatalogProvider(_config: ProductFinderConfig): IProductPro
       if (terms.length === 0) return affiliateProducts.slice(0, query.limit).map(toNormalized);
 
       return affiliateProducts
-        .map((product) => ({ product, score: relevance(product, terms) }))
-        .filter((r) => r.score > 0)
+        .map((product) => ({ product, ...relevance(product, terms) }))
+        // Requiring every search word to appear somewhere on the listing is
+        // deliberately strict: this is the last-resort fallback shown when
+        // Amazon itself is unreachable, and a shopper who searched "air
+        // freshener" getting an air pump back — because "air" alone was
+        // enough to score above zero — is a worse outcome than an honest
+        // "nothing in our catalog matches that".
+        .filter((r) => r.coversAllTerms)
         .sort((a, b) => b.score - a.score)
         .slice(0, query.limit)
         .map((r, index) => ({ ...toNormalized(r.product), sourceRank: index }));

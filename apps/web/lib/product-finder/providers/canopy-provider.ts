@@ -193,6 +193,41 @@ function normalize(raw: CanopyProduct, marketplace: string, sourceRank?: number)
   };
 }
 
+/**
+ * Budget given to the refined (free-delivery) search attempt before it is
+ * abandoned in favour of the unrefined retry.
+ *
+ * The retry shares the outer per-request timeout (config.timeoutMs, ~90s) with
+ * this first attempt — without a cap of its own, a refined search that is going
+ * to time out anyway burns nearly the whole budget before the retry even
+ * starts, leaving it too little time to finish. Canopy's free tier has shown
+ * even unrefined queries occasionally running 30s+, so this is set well above
+ * the typical ~2-5s unrefined search to give the *refined* attempt every
+ * realistic chance to just succeed outright, while still reserving the back
+ * half of the 90s budget for the retry if it doesn't.
+ */
+const REFINED_ATTEMPT_BUDGET_MS = 45_000;
+
+/**
+ * An AbortSignal that fires on whichever comes first: the outer signal
+ * aborting, or `ms` elapsing. Lets a single attempt be time-boxed without
+ * consuming the caller's entire timeout budget.
+ */
+function withInnerTimeout(outerSignal: AbortSignal, ms: number): { signal: AbortSignal; dispose: () => void } {
+  const controller = new AbortController();
+  const onOuterAbort = () => controller.abort();
+  if (outerSignal.aborted) controller.abort();
+  else outerSignal.addEventListener('abort', onOuterAbort);
+  const timer = setTimeout(() => controller.abort(), ms);
+  return {
+    signal: controller.signal,
+    dispose: () => {
+      clearTimeout(timer);
+      outerSignal.removeEventListener('abort', onOuterAbort);
+    },
+  };
+}
+
 /* ─────────────────────────── transport ─────────────────────────── */
 
 async function request<T>(
@@ -389,24 +424,56 @@ export function createCanopyProvider(config: ProductFinderConfig): IProductProvi
       const key = requireKey();
       const keyword = query.keyword ?? '';
 
+      const hasRefinements = config.refinements.freeDelivery || config.refinements.fastDelivery;
+
       let results: CanopySearchItem[];
       try {
-        results = await searchViaGraphql(keyword, query.marketplace, key, config.refinements, signal);
+        const refined = withInnerTimeout(signal, REFINED_ATTEMPT_BUDGET_MS);
+        try {
+          results = await searchViaGraphql(keyword, query.marketplace, key, config.refinements, refined.signal);
+        } finally {
+          refined.dispose();
+        }
       } catch (error) {
-        // Only a schema/transport problem falls back to REST. Auth failures and
-        // quota exhaustion would fail identically there, and retrying would
-        // spend a second request to learn nothing.
-        if (!isProductProviderError(error) || error.code !== 'malformed_response') throw error;
-        console.warn('[product-finder] Canopy GraphQL search failed, retrying over REST', error.message);
+        if (!isProductProviderError(error)) throw error;
 
-        const body = await request<{
-          data?: { amazonProductSearchResults?: { productResults?: { results?: CanopySearchItem[] } } };
-        }>(
-          `/search?searchTerm=${encodeURIComponent(keyword)}&domain=${toDomain(query.marketplace)}`,
-          key,
-          signal,
-        );
-        results = body.data?.amazonProductSearchResults?.productResults?.results ?? [];
+        // A refined search asks Amazon to filter server-side, which measurably
+        // costs seconds over the unrefined query — enough to blow the timeout
+        // on some terms while the same search with no refinements answers in
+        // time. Retrying once without refinements trades the delivery filter
+        // for an actual answer, which beats degrading to the curated catalog
+        // over a search Amazon itself could have served. The retry uses the
+        // outer signal directly (not the capped inner one) so it gets whatever
+        // of the real timeout budget is left, rather than the same short cap
+        // that just tripped.
+        if (error.code === 'timeout' && hasRefinements) {
+          console.warn(
+            `[product-finder] Canopy timed out with refinements on "${keyword}", retrying without them`,
+          );
+          results = await searchViaGraphql(
+            keyword,
+            query.marketplace,
+            key,
+            { freeDelivery: false, fastDelivery: false },
+            signal,
+          );
+        } else if (error.code === 'malformed_response') {
+          // Only a schema/transport problem falls back to REST. Auth failures
+          // and quota exhaustion would fail identically there, and retrying
+          // would spend a second request to learn nothing.
+          console.warn('[product-finder] Canopy GraphQL search failed, retrying over REST', error.message);
+
+          const body = await request<{
+            data?: { amazonProductSearchResults?: { productResults?: { results?: CanopySearchItem[] } } };
+          }>(
+            `/search?searchTerm=${encodeURIComponent(keyword)}&domain=${toDomain(query.marketplace)}`,
+            key,
+            signal,
+          );
+          results = body.data?.amazonProductSearchResults?.productResults?.results ?? [];
+        } else {
+          throw error;
+        }
       }
 
       const products = results

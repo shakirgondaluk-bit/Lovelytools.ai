@@ -158,10 +158,15 @@ export function loadConfig(): ProductFinderConfig {
       // refinement Amazon publishes, and it is much stricter than a week.
       fastDelivery: env.PRODUCT_REQUIRE_FAST_DELIVERY === 'true',
     },
-    // 45s, not 12s. A refined search — where Amazon applies the delivery
-    // filters itself — measured 35.7s against Canopy, so the old ceiling
-    // aborted it and degraded silently to the curated catalog.
-    timeoutMs: num(env.PRODUCT_PROVIDER_TIMEOUT_MS, 45_000),
+    // 90s, not 45s. A refined search — where Amazon applies the delivery
+    // filters itself — measured 35.7s against Canopy, and Canopy's own free
+    // tier has since shown queries (refined or not) occasionally running
+    // 30-45s on its own. 45s left no room for the unrefined retry
+    // (see canopy-provider.ts) to land before the outer budget expired, which
+    // aborted a real-but-slow answer and degraded silently to the curated
+    // catalog. 90s trades a longer worst-case wait for actually getting the
+    // live answer instead of giving up on it.
+    timeoutMs: num(env.PRODUCT_PROVIDER_TIMEOUT_MS, 90_000),
     cacheTtlMs: num(env.PRODUCT_CACHE_TTL_MS, 10 * 60_000),
     http: {
       searchUrl: env.PRODUCT_PROVIDER_SEARCH_URL ?? null,

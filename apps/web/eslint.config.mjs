@@ -1,6 +1,4 @@
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { FlatCompat } from '@eslint/eslintrc';
+import { baseConfig } from '@lovelytools/config/eslint';
 
 /**
  * ESLint flat config for apps/web.
@@ -10,47 +8,11 @@ import { FlatCompat } from '@eslint/eslintrc';
  * interactive setup wizard and `pnpm lint` hung, then exited 1 — the lint task
  * had never actually run.
  *
- * FlatCompat rather than a native flat export because eslint-config-next 15.5
- * still ships only eslintrc-style configs (index.js, core-web-vitals.js,
- * typescript.js) with no `exports` map. This is the bridge Next's own docs use;
- * drop it when the package ships a flat entry point.
+ * The shared rules live in @lovelytools/config/eslint.
  */
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const compat = new FlatCompat({ baseDirectory: __dirname });
-
 const config = [
-  {
-    // Flat config drops the implicit .eslintignore, so build output and vendored
-    // assets have to be excluded explicitly or ESLint walks into .next and lints
-    // megabytes of generated chunks.
-    ignores: [
-      '.next/**',
-      'out/**',
-      'node_modules/**',
-      'public/**',
-      'next-env.d.ts',
-    ],
-  },
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
-  {
-    // This codebase already marks a deliberately-unused binding with a leading
-    // underscore (createCatalogProvider's `_config`, which exists to satisfy the
-    // IProductProvider factory signature). Teach the rule that convention so the
-    // marker silences the warning instead of being one.
-    rules: {
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-        },
-      ],
-    },
-  },
+  ...baseConfig({ ignores: ['next-env.d.ts'] }),
   {
     // next.config.js and server.js are CommonJS on purpose, and both say why in
     // their own header comments: the config is plain CJS so Next never loads

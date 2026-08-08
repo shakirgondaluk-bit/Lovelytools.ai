@@ -1,7 +1,14 @@
 /**
  * A small self-contained icon set for affiliate product pages — deliberately not
- * a dependency (lucide-react etc.) because this repo's pnpm store is pinned to a
- * virtual-store-dir-max-length that breaks `pnpm add` outside a full reinstall.
+ * a dependency (lucide-react etc.), so the affiliate templates pull in no icon
+ * library for the handful of glyphs they use.
+ *
+ * This used to cite a broken `pnpm add` as the reason. That is no longer true:
+ * the cause was virtual-store-dir-max-length being passed by hand instead of
+ * recorded, and it is now pinned in .npmrc — adding a dependency works normally.
+ * The set stays because it is small and matches the site's line weight, not
+ * because installing one is impossible.
+ *
  * 24x24 viewBox, stroke=currentColor, matches the weight/rounding of the rest of
  * the site's iconography. Add new names here as the skill needs them — never
  * inline one-off SVGs in the template.

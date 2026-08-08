@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { TOTAL_TOOLS } from '@lovelytools/registry';
 import { Footer, Header } from '@lovelytools/ui';
 
@@ -132,9 +133,9 @@ export default function PrivacyPage() {
 
           <p className="border-t border-line pt-6 text-[13px] text-fg3">
             Questions about any of this:{' '}
-            <a href="/contact" className="text-accent transition-colors hover:text-fg">
+            <Link href="/contact" className="text-accent transition-colors hover:text-fg">
               get in touch
-            </a>
+            </Link>
             .
           </p>
         </section>

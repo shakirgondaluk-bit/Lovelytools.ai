@@ -37,7 +37,6 @@ export function ImageRunner({ tool, category }: { tool: ToolDefinition; category
 }
 
 function FileRunner({
-  tool,
   category,
   binding,
 }: {
@@ -264,7 +263,6 @@ function TextResultPanel({ blob }: { blob: Blob }) {
 function PasteBase64Runner({ binding, action }: { binding: ImageToolBinding; action: string }) {
   const [text, setText] = useState('');
   const imageTool = useImageTool();
-  const busy = imageTool.jobs.some((j) => j.status === 'queued' || j.status === 'working');
   const job = imageTool.jobs[0];
 
   const run = () => {

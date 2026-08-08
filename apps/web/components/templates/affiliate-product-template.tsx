@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { Footer, Header } from '@lovelytools/ui';
 import type { AffiliateProduct } from '@/lib/affiliate-products';

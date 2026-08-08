@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { TOTAL_CATEGORIES, TOTAL_TOOLS } from '@lovelytools/registry';
 import { Button, Footer, Header } from '@lovelytools/ui';
 
@@ -85,10 +86,10 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-wrap gap-3 pt-1">
               <Button asChild>
-                <a href="/tools">Browse all tools</a>
+                <Link href="/tools">Browse all tools</Link>
               </Button>
               <Button asChild variant="secondary">
-                <a href="/privacy">How privacy works</a>
+                <Link href="/privacy">How privacy works</Link>
               </Button>
             </div>
           </div>

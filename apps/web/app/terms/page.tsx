@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Footer, Header } from '@lovelytools/ui';
 
 export const metadata: Metadata = {
@@ -87,9 +88,9 @@ export default function TermsPage() {
 
           <p className="border-t border-line pt-6 text-[13px] text-fg3">
             See also{' '}
-            <a href="/privacy" className="text-accent transition-colors hover:text-fg">
+            <Link href="/privacy" className="text-accent transition-colors hover:text-fg">
               how privacy works
-            </a>
+            </Link>
             .
           </p>
         </section>

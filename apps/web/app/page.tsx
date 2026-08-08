@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import {
   COLLECTIONS,
   collectionTools,
@@ -144,9 +145,9 @@ export default function HomePage() {
                 <h2 className="font-grotesk text-[clamp(28px,4vw,40px)] font-bold tracking-[-0.03em] text-fg">
                   {TOTAL_CATEGORIES === 8 ? 'Eight' : TOTAL_CATEGORIES === 9 ? 'Nine' : TOTAL_CATEGORIES} categories. Zero uploads.
                 </h2>
-                <a href="/tools" className="text-sm text-fg2 transition-colors hover:text-fg">
+                <Link href="/tools" className="text-sm text-fg2 transition-colors hover:text-fg">
                   All {TOTAL_TOOLS} tools →
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -359,10 +360,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button asChild size="lg">
-                <a href="/tools">Browse all tools</a>
+                <Link href="/tools">Browse all tools</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <a href="/pricing">See pricing</a>
+                <Link href="/pricing">See pricing</Link>
               </Button>
             </div>
           </div>

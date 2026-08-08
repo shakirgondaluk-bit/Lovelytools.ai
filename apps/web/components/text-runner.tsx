@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import type { ToolDefinition } from '@lovelytools/registry';
 import { getTextOp, useTextTool, type DiffOp, type OptionSpec, type TextOpDef } from '@lovelytools/engine-text';
 import { Button } from '@lovelytools/ui';

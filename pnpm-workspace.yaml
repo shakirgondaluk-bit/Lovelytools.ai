@@ -18,9 +18,18 @@ packages:
 # postinstall fails outright (sandboxed exec), so these are left unbuilt
 # rather than forced. tesseract.js's postinstall is just an OpenCollective
 # funding message — harmless, allowed.
+#
+# unrs-resolver is the native module resolver behind eslint-plugin-import-x,
+# which eslint-config-next pulls in. Its postinstall only compiles a fallback
+# binary when no prebuilt one matches the platform; napi ships one for
+# win32-x64 and linux-x64, so the script is dead weight here and is left
+# unbuilt for the same sandboxed-exec reason as esbuild. It is a lint-only
+# devDependency and never reaches a production build. If linting ever fails to
+# resolve imports on a new platform, flip this to true.
 allowBuilds:
   esbuild: false
   onnxruntime-node: false
   protobufjs: false
   sharp: false
   tesseract.js: true
+  unrs-resolver: false

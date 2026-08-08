@@ -8,6 +8,7 @@ import type { DiscoveryResult } from '@/lib/product-finder/discovery-service';
 import { detectInput } from '@/lib/product-finder/input';
 import { cacheResult, FilterChips, MAX_COMPARE, ResultSkeleton } from './finder-shared';
 import { ProductCard } from './product-card';
+import { SearchProgress } from './search-progress';
 
 /**
  * The Product Finder search island.
@@ -178,17 +179,21 @@ export function ProductFinderView() {
       </form>
 
       {/* ── Status ───────────────────────────────────────────────── */}
+      {/* Loading is announced by SearchProgress's own live region, stage by
+          stage — two live regions describing the same wait would double up. */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
-        {status === 'loading' && 'Searching for products.'}
         {status === 'error' && error}
         {status === 'done' && result && `${result.results.length} products found and ranked.`}
       </div>
 
       {status === 'loading' && (
-        <div className="grid grid-cols-1 gap-grid md:grid-cols-2 lg:grid-cols-3">
-          <ResultSkeleton />
-          <ResultSkeleton />
-          <ResultSkeleton />
+        <div className="flex flex-col gap-6">
+          <SearchProgress />
+          <div className="grid grid-cols-1 gap-grid md:grid-cols-2 lg:grid-cols-3">
+            <ResultSkeleton />
+            <ResultSkeleton />
+            <ResultSkeleton />
+          </div>
         </div>
       )}
 

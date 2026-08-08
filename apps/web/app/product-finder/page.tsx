@@ -48,7 +48,7 @@ export default function ProductFinderPage() {
                 <li aria-hidden="true">·</li>
                 <li>
                   <Link href="/buyers-guide" className="transition-colors hover:text-fg">
-                    Buyer&rsquo;s Guide
+                    Recommended Products
                   </Link>
                 </li>
                 <li aria-hidden="true">·</li>

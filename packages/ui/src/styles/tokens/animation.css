@@ -38,6 +38,58 @@
   50%      { opacity: 1; }
 }
 
+/* ── Progress / working states ───────────────────────────────────────────
+   Used by the Product Finder's search stepper, where a slow provider call plus
+   an AI ranking pass would otherwise look like a hang. */
+
+/* Sheen travelling along a filled progress bar — 1.6s infinite.
+   Rides on top of the bar's own background, so the fill colour stays a token. */
+@keyframes lt-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+.lt-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    transparent 20%,
+    rgb(255 255 255 / 0.45) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: lt-shimmer 1.6s linear infinite;
+}
+
+/* Indeterminate ring on the stage that is currently running — 900ms infinite. */
+@keyframes lt-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lt-spin { animation: lt-spin 900ms linear infinite; }
+
+/* Radar sweep behind the stepper's header badge — 2.4s infinite. */
+@keyframes lt-scan {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.lt-scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.35;
+  animation: lt-scan 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .lt-float, .lt-drift { animation: none !important; }
+
+  /* The stepper's *state changes* are information, so they stay. Only the
+     decorative motion on top of them stops: the sheen and the sweep go, and the
+     ring becomes a static arc that still marks the running stage. */
+  .lt-shimmer { background-image: none; animation: none; }
+  .lt-scan::after { animation: none; opacity: 0.18; }
+  .lt-spin { animation: none; }
 }

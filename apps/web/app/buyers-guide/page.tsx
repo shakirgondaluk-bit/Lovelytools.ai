@@ -10,7 +10,7 @@ import {
 import { listDiscovered } from '@/lib/product-finder/discovered-store';
 
 export const metadata: Metadata = {
-  title: "Buyer's Guide — hand-picked product reviews | lovelytools.ai",
+  title: "Recommended Products — hand-picked product reviews | lovelytools.ai",
   description:
     'Hand-picked product recommendations and in-depth reviews, alongside our free browser tools.',
   alternates: { canonical: '/buyers-guide' },
@@ -75,7 +75,7 @@ export default async function BuyersGuidePage({
                 </li>
                 <li aria-hidden="true">·</li>
                 <li aria-current="page" className="text-fg2">
-                  Buyer's Guide
+                  Recommended Products
                 </li>
                 {activeCategory ? (
                   <>
@@ -89,7 +89,7 @@ export default async function BuyersGuidePage({
             </nav>
 
             <h1 className="font-grotesk text-[clamp(32px,5vw,44px)] font-bold leading-[1.08] tracking-[-0.03em] text-fg">
-              {activeCategory ? activeCategory.label : "Buyer's Guide"}
+              {activeCategory ? activeCategory.label : "Recommended Products"}
             </h1>
 
             <p className="max-w-[560px] text-[17px] leading-[1.55] text-fg2">
@@ -226,7 +226,7 @@ export default async function BuyersGuidePage({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: "Buyer's Guide",
+            name: "Recommended Products",
             description: metadata.description,
             mainEntity: {
               '@type': 'ItemList',

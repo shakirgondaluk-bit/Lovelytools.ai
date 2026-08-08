@@ -294,12 +294,12 @@ export class ProductDiscoveryService {
 
     if (input.kind === 'asin') {
       return curated
-        ? `We haven't reviewed that product, so there is nothing to rank yet. Right now the finder searches our own hand-picked reviews rather than the whole of Amazon — try describing what you're after instead (for example "cordless drill"), or browse the Buyer's Guide.`
+        ? `We haven't reviewed that product, so there is nothing to rank yet. Right now the finder searches our own hand-picked reviews rather than the whole of Amazon — try describing what you're after instead (for example "cordless drill"), or browse Recommended Products.`
         : `No product found for ASIN ${input.asin} on ${marketplace}.`;
     }
 
     return curated
-      ? `Nothing in our reviewed products matched “${input.keyword}”. The finder searches our own hand-picked reviews rather than the whole of Amazon, so try a broader term, or browse the Buyer's Guide to see everything we cover.`
+      ? `Nothing in our reviewed products matched “${input.keyword}”. The finder searches our own hand-picked reviews rather than the whole of Amazon, so try a broader term, or browse Recommended Products to see everything we cover.`
       : `Nothing matched “${input.keyword}”. Try fewer words, or paste the Amazon link directly.`;
   }
 

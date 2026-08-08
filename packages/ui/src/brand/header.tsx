@@ -20,7 +20,7 @@ const TRIGGERS: Array<{ id: MegaPanelId; label: string }> = [
 
 /**
  * Header — sticky 64px bar, --nav-bg + 18px blur (DS §9).
- * Order: logo · Tools · Solutions · Resources · Buyer's Guide · [spacer] ·
+ * Order: logo · Tools · Solutions · Resources · Recommended Products · [spacer] ·
  * favorites · theme toggle · Log in · Get started.
  * (Pricing is currently hidden — see the note in the nav below.)
  * Mega panels open on trigger mouseenter and close when the pointer leaves
@@ -84,7 +84,7 @@ export function Header() {
             onMouseEnter={() => setOpen(null)}
             className="rounded-lg px-3.5 py-2 text-[14px] font-medium text-fg2 transition-colors duration-150 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            Buyer's Guide
+            Recommended Products
           </Link>
           {/*
             Amazon Product Finder — an outlined pill rather than another plain
@@ -250,7 +250,7 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
             onClick={onNavigate}
             className="rounded-[9px] p-2.5 text-[14px] font-medium text-fg2 hover:bg-surface2 hover:text-fg"
           >
-            Buyer's Guide
+            Recommended Products
           </Link>
           {/* Pricing — hidden for now; see the note on the desktop nav above. */}
           {enabled && (

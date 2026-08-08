@@ -15,7 +15,7 @@ import { Logo } from '../primitives/logo';
 // header.tsx) to bring it back.
 const COMPANY: Array<[string, string]> = [
   ['About', '/about'],
-  ["Buyer's Guide", '/buyers-guide'],
+  ['Recommended Products', '/buyers-guide'],
   ['Privacy', '/privacy'],
   ['Terms', '/terms'],
   ['Contact', '/contact'],

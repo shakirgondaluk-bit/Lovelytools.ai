@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# Fast local feedback before a commit lands. The authoritative check is
+# .github/workflows/ci.yml — this one exists to catch the obvious thing in
+# seconds rather than after a push.
+#
+# Lint only, deliberately. Typecheck, tests and build all run in CI; putting
+# them here would add ~30s to every commit, and a hook that is slow enough to
+# resent is a hook that gets --no-verify'd permanently.
+#
+# Installed by the root "prepare" script (git config core.hooksPath .githooks),
+# so a fresh clone gets it from `pnpm install` with no extra dependency — no
+# husky, no lint-staged.
+
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "pre-commit: pnpm not on PATH, skipping lint (CI will still run it)."
+  exit 0
+fi
+
+echo "pre-commit: linting…"
+
+# Turbo caches on inputs, so this is near-instant when nothing lintable changed.
+if ! pnpm lint; then
+  cat <<'EOF'
+
+pre-commit: lint failed — commit aborted.
+
+  Fix the findings above, or auto-fix what can be:
+
+    pnpm --filter @lovelytools/web exec eslint . --fix
+    pnpm --filter @lovelytools/ui exec eslint . --fix
+
+  To commit anyway (CI will still fail):
+
+    git commit --no-verify
+
+EOF
+  exit 1
+fi

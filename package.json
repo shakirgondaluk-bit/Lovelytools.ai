@@ -8,6 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || exit 0",
     "dev": "turbo dev",
     "build": "cd apps/web && npx --no-install next build",
     "build:turbo": "turbo build",

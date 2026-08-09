@@ -124,6 +124,16 @@ const nextConfig = {
     '@lovelytools/engine-speech',
   ],
 
+  async redirects() {
+    return [
+      // /pricing was deleted along with the Pro tier it advertised. Old links and
+      // search results still point at it, so send them to the catalog rather than
+      // a 404. `statusCode: 301` rather than `permanent: true` — the latter emits
+      // 308, which is equivalent for SEO but a stricter contract than we need here.
+      { source: '/pricing', destination: '/tools', statusCode: 301 },
+    ];
+  },
+
   async headers() {
     return [
       { source: '/:path*', headers: SECURITY_HEADERS },

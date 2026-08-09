@@ -114,8 +114,8 @@ export function Header() {
               Amazon Product Finder
             </span>
           </Link>
-          {/* Pricing — hidden for now. /pricing still exists and is reachable
-              directly; restore this link (and the mobile one below) to bring it back. */}
+          {/* Pricing — removed. The /pricing page is gone too, so restoring this
+              link (and the mobile one below) means rebuilding the page first. */}
         </nav>
 
         <div className="ml-auto flex items-center gap-1.5 md:gap-2.5" onMouseEnter={() => setOpen(null)}>

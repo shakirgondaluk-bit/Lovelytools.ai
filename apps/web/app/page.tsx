@@ -23,7 +23,6 @@ import {
 } from '@lovelytools/ui';
 import { HeroSearch } from '@/components/hero-search';
 import { HeroSpotlightGrid } from '@/components/hero-spotlight-grid';
-import { PricingToggle } from '@/components/pricing-toggle';
 
 export const metadata: Metadata = {
   title: 'lovelytools.ai — powerful online tools that never upload your files',
@@ -317,23 +316,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Pricing ───────────────────────────────────────────────────── */}
-        <section className="lt-band">
-          <div className="lt-container flex flex-col items-center gap-10 py-section">
-            <div className="flex flex-col items-center gap-5 text-center">
-              <span className="font-grotesk text-[12px] font-semibold uppercase tracking-[0.14em] text-accent">
-                Pricing
-              </span>
-              <h2 className="font-grotesk text-[clamp(28px,4vw,40px)] font-bold tracking-[-0.03em] text-fg">
-                Free for everyone. Pro for power users.
-              </h2>
-            </div>
-            <PricingToggle />
-          </div>
-        </section>
-
         {/* ── FAQ ───────────────────────────────────────────────────────── */}
-        <section className="lt-band bg-bg2">
+        <section className="lt-band">
           <div className="lt-container flex flex-col items-center gap-10 py-section">
             <h2 className="font-grotesk text-[clamp(28px,4vw,40px)] font-bold tracking-[-0.03em] text-fg">
               Questions, answered
@@ -358,14 +342,9 @@ export default function HomePage() {
             <p className="max-w-[520px] text-[17px] leading-[1.55] text-fg2">
               {TOTAL_TOOLS} tools, right in your browser. Free to use, no signup, nothing installed.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Button asChild size="lg">
-                <Link href="/tools">Browse all tools</Link>
-              </Button>
-              <Button asChild variant="secondary" size="lg">
-                <Link href="/pricing">See pricing</Link>
-              </Button>
-            </div>
+            <Button asChild size="lg">
+              <Link href="/tools">Browse all tools</Link>
+            </Button>
           </div>
         </section>
       </main>

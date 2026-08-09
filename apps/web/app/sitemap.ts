@@ -12,7 +12,7 @@ const STATIC_PATHS = [
   '/tools',
   '/product-finder',
   '/buyers-guide',
-  '/pricing',
+  // No '/pricing' — that page has been deleted.
   '/about',
   '/contact',
   '/privacy',

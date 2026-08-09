@@ -31,6 +31,10 @@ Tailwind, RSC boundaries). The 12 DS-only components (`Button`, `Badge`, `Avatar
 `TestimonialCard`, `BlogCard`, `CollectionCard`, `FloatingCard`) were ported to
 Tailwind with their spec values intact. Nothing was dropped.
 
+`PricingCard` has since been deleted — not a reconciliation decision, but a
+product one: the Pro tier it rendered was never built, so the pricing page and
+every route to it were removed. DS §6.6 is no longer implemented.
+
 `Logo` existed twice — once as a DS primitive, once inlined in `header.tsx`. The
 footer imported the header's copy, which made a static mark ship client JS while its
 own doc comment claimed "Pure RSC — zero client JS". Both now use the primitive.

@@ -36,7 +36,6 @@ export { Header } from './brand/header';
 export { KbdHint } from './brand/kbd-hint';
 export { MegaNav, type MegaPanelId } from './brand/mega-nav';
 export { MonogramChip } from './brand/monogram-chip';
-export { PricingCard } from './brand/pricing-card';
 export { ProgressBar, ProgressRow, type FileStatus } from './brand/progress-bar';
 export { RateTool, RatingStars } from './brand/rating-stars';
 export { SearchBar, SearchTrigger, SEARCH_INPUT_ID } from './brand/search-bar';

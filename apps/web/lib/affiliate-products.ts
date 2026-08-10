@@ -915,6 +915,124 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'etenwolf-vortex-s6-tyre-inflator',
+    asin: 'B0D17QMS6F',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Car & Motorbike',
+    categoryPath: '/buyers-guide',
+
+    brand: 'ETENWOLF',
+    name: 'Vortex S6 Tyre Inflator, Portable Air Compressor, 19200mAh Battery | for Heavy-Duty Vehicles, Cordless Air Pump for Cars, Bikes and Inflatables, 100% Duty Cycle and Dual Cylinder, Vivid Orange',
+    tagline: 'A dual-cylinder cordless compressor built for truck and 4x4 tyres, not just topping up a hatchback.',
+    description:
+      'A 19200mAh cordless air compressor with a dual-cylinder pump and active cooling, rated for a 100% duty cycle — it will fill all four tyres on a pickup back to back without a cool-down break, and doubles as a 45W USB-C power bank and 1000-lumen work light.',
+
+    images: [
+      `/products/etenwolf-vortex-s6-tyre-inflator/1.jpg`,
+      `/products/etenwolf-vortex-s6-tyre-inflator/2.jpg`,
+      `/products/etenwolf-vortex-s6-tyre-inflator/3.jpg`,
+      `/products/etenwolf-vortex-s6-tyre-inflator/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'battery-charging', label: '19200mAh', sublabel: '18 pickup tyres, 30→35 PSI per charge' },
+      { icon: 'gauge', label: '160 PSI max', sublabel: '1.5 CFM / 42 L/min airflow' },
+      { icon: 'star', label: '4.6 rating', sublabel: '331 reviews' },
+      { icon: 'refresh-ccw', label: '100% duty cycle', sublabel: 'Dual cylinder, active cooling' },
+    ],
+    specs: [
+      { icon: 'gauge', label: 'Max pressure', value: '160 PSI' },
+      { icon: 'droplet', label: 'Airflow rate', value: '1.5 CFM / 42 L/min @ 0 PSI' },
+      { icon: 'battery', label: 'Battery', value: '19200mAh lithium' },
+      { icon: 'zap', label: 'Charging', value: 'USB-C 45W, dual-direction' },
+      { icon: 'layers', label: 'Pump', value: 'Dual cylinder with dedicated cooling' },
+      { icon: 'sliders', label: 'Preset modes', value: '7, with preset pressure memory' },
+      { icon: 'flame', label: 'LED light', value: '1000 lumens, plus flashing and SOS' },
+      { icon: 'package', label: 'In the box', value: 'S6 inflator, 45W wall charger, cable, 2 air hoses, ball needle, Presta adapter, press-on valve' },
+    ],
+    features: [
+      {
+        icon: 'timer',
+        title: 'Fills a 31" tyre in a minute',
+        body: 'ETENWOLF rates it at 1.5 CFM (42 L/min) at 0 PSI, taking a 31-inch pickup tyre from 30 to 35 PSI in about a minute.',
+      },
+      {
+        icon: 'refresh-ccw',
+        title: '100% duty cycle',
+        body: 'The dual-cylinder pump and dedicated cooling system let you take all four F150 tyres from 0 to 35 PSI back to back with no cool-down break in between.',
+      },
+      {
+        icon: 'battery-charging',
+        title: '19200mAh on board',
+        body: 'A full charge covers 18 pickup tyre top-ups (245/70 R17) from 30 to 35 PSI, so it stays useful across a whole trip rather than one tyre.',
+      },
+      {
+        icon: 'zap',
+        title: '45W dual-direction USB-C',
+        body: 'The same port charges the inflator quickly and outputs to your phone or other devices, so it works as a power bank when parked up.',
+      },
+      {
+        icon: 'circle-dot',
+        title: 'Auto stop at target',
+        body: 'Set a target pressure and it shuts off on its own, with seven preset modes and pressure memory so your usual setting is one press away.',
+      },
+      {
+        icon: 'monitor',
+        title: '1000-lumen light + digital display',
+        body: 'The screen shows current and target pressure side by side, and the LED runs at 1000 lumens with flashing and SOS modes — bright enough to use as a camping lantern.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.6 rating across 331 reviews, 100+ bought in the past month",
+      'Genuinely sized for heavy-duty vehicles — pickups, trucks and off-roaders, not just car tyres',
+      '100% duty cycle means all four tyres in one session without waiting for the pump to cool',
+      '19200mAh battery covers roughly 18 pickup tyre top-ups per charge and feeds a 45W USB-C output',
+      'Auto-stop, seven preset modes and pressure memory make repeat inflations near hands-off',
+    ],
+    cons: [
+      'At £100+ it is priced well above the small pocket inflators it sits next to on Amazon',
+      'Rated at 82 decibels — noticeably loud next to a compact single-cylinder pump',
+      'ETENWOLF specifically excludes SUPs from the recommended inflatables',
+    ],
+    bestFor: [
+      'Pickup, truck, 4x4 and RV owners who need real volume, not just a top-up pump',
+      'Overlanders and off-roaders airing tyres back down and up in one session',
+      'Anyone who wants one device covering tyres, inflatables, a power bank and a work light',
+    ],
+    notIdealFor: [
+      'Drivers who only ever top up a small car tyre occasionally — a cheaper compact pump does that',
+      'Inflating stand-up paddleboards, which the manufacturer explicitly rules out',
+      'Anyone who needs a quiet pump for use near sleeping neighbours or campers',
+    ],
+
+    score: 9.2,
+    verdict:
+      'The Vortex S6 is a heavy-duty cordless compressor that backs its numbers up with a 4.6 rating from 331 reviewers — the dual-cylinder 100% duty cycle and 19200mAh battery are what separate it from the pocket inflators, and the 45W power bank and 1000-lumen light make it worth the space in the boot.',
+
+    faq: [
+      {
+        q: 'How fast does it inflate a large tyre?',
+        a: 'ETENWOLF rates it at 1.5 CFM (42 L/min) at 0 PSI, filling a 31-inch tyre from 30 to 35 PSI in around a minute. Maximum pressure is 160 PSI with gauge accuracy of ±1 PSI.',
+      },
+      {
+        q: 'Can it do all four tyres without stopping?',
+        a: 'Yes — the dual-cylinder pump and dedicated cooling system give it a 100% duty cycle, so ETENWOLF states you can take all four F150 tyres (245/70 R17) from 0 to 35 PSI continuously with no breaks.',
+      },
+      {
+        q: 'How many tyres does one charge cover?',
+        a: 'The 19200mAh battery is rated for 18 pickup tyre inflations from 30 to 35 PSI on a full charge, and recharges through a 45W USB-C port.',
+      },
+      {
+        q: 'What else can it inflate?',
+        a: 'Besides pickups, trucks and off-road vehicles, it handles regular cars, bicycles, balls, pool floats and air mattresses. It is not recommended for stand-up paddleboards.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

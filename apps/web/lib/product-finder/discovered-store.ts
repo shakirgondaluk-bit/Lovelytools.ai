@@ -97,8 +97,23 @@ function readClient(): SupabaseClient | null {
   return reader;
 }
 
+/**
+ * Auto-publishing is OFF unless explicitly switched on.
+ *
+ * This used to be opt-out (`!== 'false'`), so every Product Finder search
+ * silently added a machine-written card to the Recommended Products page. It is
+ * now opt-in: the guide is a curated list, and a search is not an endorsement.
+ * Set PRODUCT_FINDER_AUTO_ADD=true to restore the previous behaviour.
+ */
 export const autoPublishEnabled = (): boolean =>
-  process.env.PRODUCT_FINDER_AUTO_ADD !== 'false' && adminClient() !== null;
+  process.env.PRODUCT_FINDER_AUTO_ADD === 'true' && adminClient() !== null;
+
+/**
+ * Reads are gated on the flag alone, not on `autoPublishEnabled()`, which also
+ * requires the service key. A deployment can hold rows it may still render
+ * without holding the credential needed to write new ones.
+ */
+const autoPublishListingEnabled = (): boolean => process.env.PRODUCT_FINDER_AUTO_ADD === 'true';
 
 const KNOWN_LABELS = new Set(affiliateCategories.map((c) => c.label));
 
@@ -162,8 +177,18 @@ export async function recordDiscoveries(products: AffiliateProduct[]): Promise<v
   await db.from(TABLE).upsert(rows, { onConflict: 'slug' });
 }
 
-/** Newest-first listing for the Buyer's Guide. */
+/**
+ * Newest-first listing for the Buyer's Guide.
+ *
+ * Returns nothing while auto-publishing is off, which is the default. Gating
+ * the read as well as the write matters: rows recorded before the switch
+ * flipped are still in the table, and listing them would leave the feature
+ * half-on. The rows are kept, not deleted — switching the flag back on restores
+ * them.
+ */
 export async function listDiscovered(limit = 60): Promise<DiscoveredProduct[]> {
+  if (!autoPublishListingEnabled()) return [];
+
   const db = readClient();
   if (!db) return [];
 

@@ -278,20 +278,29 @@ rank; no cheaper match and the shortlist is simply shorter.
 
 ## Auto-publishing to the Buyer's Guide
 
-Every finder search persists its shortlist to Supabase, and the Buyer's Guide
-lists those alongside the hand-written reviews. Curated entries always lead and
-are labelled differently ("Read review" vs "See the analysis", plus an
-*Auto-listed* badge) — a visitor should be able to tell an editorial page from a
-generated one before clicking.
+**Off by default.** Auto-publishing is opt-in: set `PRODUCT_FINDER_AUTO_ADD=true`
+to switch it on. While it is off, a finder search records nothing and the
+Recommended Products page shows only the hand-written reviews in
+`lib/affiliate-products.ts`. The finder itself is unaffected either way — its
+"View Details" link for a non-curated product goes to
+`/product-finder/product/[asin]`, which builds its page live from the provider
+and never touches this table.
 
-**Setup** — run `docs/supabase-discovered-products.sql`, then set
-`SUPABASE_SERVICE_ROLE_KEY`. Without it the whole feature is inert: writes
-no-op, the listing is empty, and the finder is unaffected.
+When it is on, every finder search persists its shortlist to Supabase and the
+Buyer's Guide lists those alongside the hand-written reviews. Curated entries
+always lead and are labelled differently ("Read review" vs "See the analysis",
+plus an *Auto-listed* badge) — a visitor should be able to tell an editorial page
+from a generated one before clicking.
+
+**Setup** — set `PRODUCT_FINDER_AUTO_ADD=true`, run
+`docs/supabase-discovered-products.sql`, then set `SUPABASE_SERVICE_ROLE_KEY`.
+Without the key the feature stays inert even with the flag on: writes no-op, the
+listing is empty, and the finder is unaffected.
 
 | Variable | Notes |
 |---|---|
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-only. Bypasses RLS — never expose it to the browser and never prefix it `NEXT_PUBLIC_` |
-| `PRODUCT_FINDER_AUTO_ADD` | `false` stops new products being published. Existing rows stay |
+| `PRODUCT_FINDER_AUTO_ADD` | Unset (the default) keeps auto-publishing off: nothing is recorded and the Buyer's Guide lists no generated cards. `true` switches it on. Flipping it off leaves existing rows in the table, just unlisted |
 | `PRODUCT_FINDER_AUTO_ADD_NOINDEX` | `true` makes every auto-published page `noindex`, effective on the next request with no redeploy |
 
 Writes are server-side only. The table grants public `select` and **no** write

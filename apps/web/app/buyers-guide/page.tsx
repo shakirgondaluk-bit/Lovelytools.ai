@@ -34,6 +34,10 @@ export default async function BuyersGuidePage({
   // auto-published. Curated entries always lead: they are the ones with a real
   // verdict behind them, and a machine-generated card should never outrank one
   // just because it was discovered more recently.
+  //
+  // Auto-publishing is off by default, so `discovered` is normally empty and
+  // this page lists only the curated reviews. See PRODUCT_FINDER_AUTO_ADD in
+  // lib/product-finder/discovered-store.ts.
   const discovered = await listDiscovered();
   const curatedSlugs = new Set(affiliateProducts.map((p) => p.slug));
 

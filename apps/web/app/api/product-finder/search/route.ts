@@ -53,7 +53,8 @@ export async function POST(request: Request) {
     const service = createDiscoveryService(config);
     const result = await service.discover(query, controller.signal);
 
-    // Auto-publish the shortlist to the Buyer's Guide.
+    // Auto-publish the shortlist to the Buyer's Guide. Off unless
+    // PRODUCT_FINDER_AUTO_ADD=true, in which case this is a no-op.
     //
     // Awaited rather than fire-and-forget so the write actually lands, but
     // wrapped so it can never affect the response: a Supabase outage, a missing

@@ -1,7 +1,7 @@
 # Amazon Product Finder
 
 AI-ranked Amazon product discovery at `/product-finder`. Takes a keyword, a full
-Amazon URL or a bare ASIN; returns the top three products scored 0–100 with the
+Amazon URL or a bare ASIN; returns the top ten products scored 0–100 with the
 reasoning behind every number, a side-by-side comparison, and affiliate links.
 
 ## Architecture
@@ -119,9 +119,9 @@ configuration at all (against the curated catalog).
 | `PRODUCT_MARKETPLACE` | `amazon.co.uk` | Used when the query is a keyword rather than a URL |
 | `AMAZON_AFFILIATE_TAG` | `lovelytools-21` | Applied by the Affiliate Link Service |
 | `PRODUCT_CANDIDATE_LIMIT` | `40` | Candidates requested before filtering |
-| `PRODUCT_RESULT_LIMIT` | `5` | Products shown |
-| `PRODUCT_TOP_BRAND_COUNT` | `3` | Of those, the best product from this many distinct brands |
-| `PRODUCT_CHEAPER_ALTERNATIVE_COUNT` | `2` | Of those, cheaper products that still match every search word |
+| `PRODUCT_RESULT_LIMIT` | `10` | Products shown |
+| `PRODUCT_TOP_BRAND_COUNT` | `6` | Of those, the best product from this many distinct brands |
+| `PRODUCT_CHEAPER_ALTERNATIVE_COUNT` | `4` | Of those, the best-reviewed cheaper products that still match every search word |
 | `PRODUCT_REQUIRE_FREE_DELIVERY` | `true` | Amazon-side refinement. `false` to disable |
 | `PRODUCT_REQUIRE_FAST_DELIVERY` | `false` | Amazon-side "Get It Tomorrow". `true` to enable — see below |
 | `PRODUCT_PROVIDER_TIMEOUT_MS` | `45000` | A refined search measured 35.7s; the old 12s ceiling aborted it |
@@ -265,13 +265,20 @@ not sliced (`selectShortlist` in `discovery-service.ts`):
 | Slot | Count | Rule |
 |---|---|---|
 | `pinned` | 0–1 | The product whose link was pasted. Leads, and never competes for the slots below |
-| `top-brand` | 3 | Best-ranked product from each distinct brand |
-| `cheaper-alternative` | 2 | Beats the **cheapest** brand pick on price *and* still matches every search word |
+| `top-brand` | 6 | Best-ranked product from each distinct brand |
+| `cheaper-alternative` | 4 | Beats the **cheapest** brand pick on price *and* still matches every search word. Ordered by review strength, not by rank |
 
 A cheaper pick must undercut the cheapest product above it, not merely the top
 one, so it is genuinely cheaper than everything shown before it. Products with no
 published price are excluded from that tier — "cheaper" is a claim an unknown
 price cannot support.
+
+Which of the qualifying cheap products make the cut is decided by `valueScore`:
+rating weighted by `ratingConfidence` (0.7) plus how far it undercuts (0.3).
+Taking them in rank order instead surfaced whatever was cheap and near the top of
+Amazon's results, letting a 3.4★ listing with nine reviews beat a 4.6★ one with
+four thousand. The tier answers "cheapest with the best reviews", so it sorts on
+exactly that.
 
 Both tiers degrade rather than pad: too few brands and the remainder fills by
 rank; no cheaper match and the shortlist is simply shorter.

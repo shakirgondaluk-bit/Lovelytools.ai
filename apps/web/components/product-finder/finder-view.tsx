@@ -304,7 +304,9 @@ export function ProductFinderView() {
                     </h3>
                     <p className="text-[13px] text-fg2">
                       {cheaper.length === 1 ? 'This one matches' : 'These match'} every word you searched for and
-                      {cheaper.length === 1 ? ' undercuts' : ' undercut'} all of the above on price.
+                      {cheaper.length === 1 ? ' undercuts' : ' undercut'} all of the above on price
+                      {cheaper.length === 1 ? ', and it is' : ', and they are'} the best reviewed of the cheaper
+                      options rather than simply the cheapest.
                     </p>
                   </div>
                   {grid(cheaper)}

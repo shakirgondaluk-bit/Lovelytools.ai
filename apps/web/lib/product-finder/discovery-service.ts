@@ -17,6 +17,7 @@ import { resolveProvider, type IProductProvider } from './provider';
 import { ClaudeRankingEngine } from './claude-ranking';
 import {
   HeuristicRankingEngine,
+  ratingConfidence,
   type ComparisonVerdict,
   type IRankingEngine,
   type ProductAnalysis,
@@ -130,9 +131,40 @@ export interface ShortlistShape {
  * no published price are excluded — "cheaper" is a claim, and an unknown price
  * cannot support it.
  *
+ * Within that qualifying set the picks are ordered by `valueScore` — how well
+ * reviewed a product is, weighted by how much evidence backs the rating, and
+ * then how far it undercuts. Taking them in raw rank order instead surfaced
+ * whatever happened to be cheap and near the top of Amazon's results, which is
+ * how a 3.4★ listing with nine reviews beat a 4.6★ one with four thousand. The
+ * tier is meant to answer "cheapest with the best reviews", so it is sorted on
+ * exactly that.
+ *
  * Both tiers degrade rather than pad: too few brands and the remainder fills by
  * rank; no cheaper match and the shortlist is simply shorter.
  */
+/**
+ * Ranks a qualifying cheap product on "well reviewed first, then cheap".
+ *
+ * Rating is weighted by `ratingConfidence` — the same log curve the scoring
+ * engine uses — so 4.8★ from six buyers cannot outrank 4.5★ from six thousand.
+ * An unrated listing is not treated as bad, just as weak evidence, which that
+ * curve already encodes.
+ *
+ * Price contributes the smaller share deliberately. Everything in this set has
+ * already cleared the "cheaper than every brand pick" bar, so the remaining
+ * question is which of them is actually worth buying, not which is cheapest by
+ * a few pence.
+ */
+const REVIEW_WEIGHT = 0.7;
+const PRICE_WEIGHT = 0.3;
+
+function valueScore(product: NormalizedProduct, amount: number, mustBeat: number): number {
+  const quality = ((product.rating ?? 0) / 5) * ratingConfidence(product.reviewCount);
+  // How far under the cheapest brand pick this sits, 0–1.
+  const undercut = mustBeat > 0 ? Math.min(1, Math.max(0, (mustBeat - amount) / mustBeat)) : 0;
+  return quality * REVIEW_WEIGHT + undercut * PRICE_WEIGHT;
+}
+
 export function selectShortlist(
   analyses: ProductAnalysis[],
   byAsin: Map<string, NormalizedProduct>,
@@ -178,19 +210,27 @@ export function selectShortlist(
     .filter((amount): amount is number => amount !== null);
   const mustBeat = brandPrices.length > 0 ? Math.min(...brandPrices) : null;
 
-  let cheaperTaken = 0;
   if (mustBeat !== null) {
+    const eligible: { analysis: ProductAnalysis; value: number }[] = [];
+
     for (const analysis of analyses) {
-      if (picked.length >= resultLimit || cheaperTaken >= cheaperAlternativeCount) break;
       if (taken.has(analysis.asin)) continue;
 
       const product = byAsin.get(analysis.asin);
-      const amount = product?.price?.amount ?? null;
-      if (amount === null || amount >= mustBeat) continue;
-      if (keyword && product && !matchesAllTerms(product, keyword)) continue;
+      if (!product) continue;
 
+      const amount = product.price?.amount ?? null;
+      if (amount === null || amount >= mustBeat) continue;
+      if (keyword && !matchesAllTerms(product, keyword)) continue;
+
+      eligible.push({ analysis, value: valueScore(product, amount, mustBeat) });
+    }
+
+    eligible.sort((a, b) => b.value - a.value);
+
+    for (const { analysis } of eligible.slice(0, cheaperAlternativeCount)) {
+      if (picked.length >= resultLimit) break;
       take(analysis, 'cheaper-alternative');
-      cheaperTaken += 1;
     }
   }
 

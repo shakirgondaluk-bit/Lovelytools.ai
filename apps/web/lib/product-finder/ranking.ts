@@ -136,7 +136,7 @@ const formatCount = (n: number) => new Intl.NumberFormat('en-GB').format(n);
  * Confidence in a rating, 0–1, from review volume. Log-scaled: the step from
  * 5 to 50 reviews matters far more than 5,000 to 50,000.
  */
-const ratingConfidence = (reviewCount: number | null): number => {
+export const ratingConfidence = (reviewCount: number | null): number => {
   if (reviewCount === null || reviewCount <= 0) return 0.35; // unrated ≠ badly rated, but it isn't evidence either
   return Math.min(1, Math.log10(reviewCount + 1) / 3.5);
 };

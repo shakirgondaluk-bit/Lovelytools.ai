@@ -149,9 +149,12 @@ export function loadConfig(): ProductFinderConfig {
     // both unreachable (the REST endpoint returned one ~16-row page) and, once
     // GraphQL raised the ceiling, would have thrown away a third of the pool.
     candidateLimit: num(env.PRODUCT_CANDIDATE_LIMIT, 40),
-    resultLimit: num(env.PRODUCT_RESULT_LIMIT, 5),
-    topBrandCount: num(env.PRODUCT_TOP_BRAND_COUNT, 3),
-    cheaperAlternativeCount: num(env.PRODUCT_CHEAPER_ALTERNATIVE_COUNT, 2),
+    // 10 results, split 6 brand picks + 4 value picks. Both tiers degrade
+    // rather than pad (see selectShortlist), so a thin category still returns a
+    // short, honest list instead of ten near-duplicates.
+    resultLimit: num(env.PRODUCT_RESULT_LIMIT, 10),
+    topBrandCount: num(env.PRODUCT_TOP_BRAND_COUNT, 6),
+    cheaperAlternativeCount: num(env.PRODUCT_CHEAPER_ALTERNATIVE_COUNT, 4),
     refinements: {
       freeDelivery: env.PRODUCT_REQUIRE_FREE_DELIVERY !== 'false',
       // Off unless asked for: "Get It Tomorrow" is the only delivery-speed

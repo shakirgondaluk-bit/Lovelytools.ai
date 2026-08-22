@@ -1151,6 +1151,125 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'ghguole-70pc-tyre-repair-kit',
+    asin: 'B0BCJNHFNY',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Car & Motorbike',
+    categoryPath: '/buyers-guide?category=car-motorbike',
+
+    brand: 'Ghguole',
+    name: 'Tyre Repair Kit, 70pcs Tyre Plug Kit, Heavy Duty Tyre Puncture Repair Kit, Universal Car Tyre Patch Kit with 30 Tyre Repair Rubber Strip for Tires on Cars, Trucks, Motorcycles, ATV, Tractor, Van',
+    tagline: 'Thirty plugs, a pressure gauge and the valve tools to go with them, in a pouch that lives in the boot.',
+    description:
+      'A 70-piece tubeless tyre plug kit built around a hardened steel spiral probe and insert tool, with 30 rubber repair strips so it handles more than one puncture. The zip case is small enough to keep in the car permanently rather than remembering to pack it.',
+
+    images: [
+      `/products/ghguole-70pc-tyre-repair-kit/1.jpg`,
+      `/products/ghguole-70pc-tyre-repair-kit/2.jpg`,
+      `/products/ghguole-70pc-tyre-repair-kit/3.jpg`,
+      `/products/ghguole-70pc-tyre-repair-kit/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.5 rating', sublabel: '2,901 reviews, 600+ bought last month' },
+      { icon: 'package', label: '70 pieces', sublabel: 'Including 30 repair strips' },
+      { icon: 'shield-check', label: 'Hardened steel', sublabel: 'Sandblasted insert needle' },
+      { icon: 'truck', label: 'Universal fit', sublabel: 'Cars, bikes, ATVs, tractors, vans' },
+    ],
+    specs: [
+      { icon: 'package', label: 'Total pieces', value: '70' },
+      { icon: 'layers', label: 'Repair strips', value: '30 rubber plug strips' },
+      { icon: 'wrench', label: 'Core tools', value: 'T-handle spiral probe, T-handle insert tool, threaded needle handle, pliers, hex key' },
+      { icon: 'gauge', label: 'Pressure gauge', value: 'Pencil type, dual-headed, 12 cm' },
+      { icon: 'settings', label: 'Valve hardware', value: '8 valve cores, 4-way valve tool, 8 plastic caps, 4 extension caps' },
+      { icon: 'lock', label: 'Anti-theft nuts', value: '4 stainless steel + 4 aluminium alloy' },
+      { icon: 'droplet', label: 'Lubricant', value: '1 tub included' },
+      { icon: 'ruler', label: 'Case size', value: '20.5 × 14.5 cm zip pouch' },
+    ],
+    features: [
+      {
+        icon: 'wrench',
+        title: 'Probe and insert, both T-handled',
+        body: 'A spiral probe reams and cleans the hole, then the forked insert tool drives the plug home. Both use a full T-handle, which is what makes it possible to push through a car tyre by hand.',
+      },
+      {
+        icon: 'layers',
+        title: '30 repair strips',
+        body: 'Enough plugs for many punctures rather than the two or three a minimal kit ships with, so one purchase covers years of occasional use.',
+      },
+      {
+        icon: 'gauge',
+        title: 'Pencil pressure gauge included',
+        body: 'A dual-headed pencil gauge comes in the pouch, so you can check the tyre back to its correct pressure after a repair without a separate tool.',
+      },
+      {
+        icon: 'settings',
+        title: 'Valve servicing too',
+        body: 'A four-way valve tool plus eight spare valve cores and caps, which covers the other common cause of a slow leak — a leaking valve rather than a punctured tread.',
+      },
+      {
+        icon: 'lock',
+        title: 'Anti-theft valve nuts',
+        body: 'Four stainless steel and four aluminium alloy anti-theft nuts are included alongside the ordinary caps.',
+      },
+      {
+        icon: 'ruler',
+        title: 'Fits in the boot and stays there',
+        body: 'The whole kit packs into a 20.5 × 14.5 cm zip cloth case, small enough to leave in the car for a roadside emergency instead of in the garage.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.5 rating across 2,901 reviews, 600+ bought in the past month",
+      '30 repair strips included — most kits at this price ship a handful',
+      'Goes beyond plugs: pressure gauge, four-way valve tool, spare valve cores and anti-theft nuts',
+      'Hardened steel auger with a sandblasted insert needle, rather than soft plated tools',
+      'Compact 20.5 × 14.5 cm case that genuinely lives in a boot or door pocket',
+    ],
+    cons: [
+      'Tubeless tyres only — the manufacturer explicitly excludes tubed tyres',
+      'Not for sidewall punctures, which are a tread-repair kit\'s standard limit',
+      'No pump or compressor in the kit, so you still need a way to reinflate after plugging',
+      'One small tub of lubricant and no vulcanising cement, so heavy use means buying more',
+    ],
+    bestFor: [
+      'Drivers who want a roadside puncture fix that gets them to a garage under their own power',
+      'Motorcyclists, van drivers and anyone running tubeless tyres on more than one vehicle',
+      'Keeping permanently in the boot alongside a 12V inflator',
+    ],
+    notIdealFor: [
+      'Tubed tyres, including most bicycles and some older motorcycles',
+      'Sidewall or shoulder damage, which no plug kit can safely repair',
+      'Anyone expecting a workshop-grade permanent repair rather than a get-you-home plug',
+    ],
+
+    score: 9.0,
+    verdict:
+      'A properly complete tyre plug kit rather than the four-piece minimum: the 30 strips, pressure gauge and valve tools cover most of what actually goes wrong with a tyre, and 4.5 stars from 2,901 reviewers backs up the build. Just know its limits — tubeless tread punctures only, and you will need something to put the air back in.',
+
+    faq: [
+      {
+        q: 'What tyres can this repair?',
+        a: 'Any tubeless tyre — cars, trucks, motorcycles, ATVs, tractors, vans, lawn mowers, RVs and jeeps. Ghguole is explicit that it is not designed for tubed tyres or for sidewall punctures, which cannot be safely plugged.',
+      },
+      {
+        q: 'What are the 70 pieces?',
+        a: '30 rubber repair strips, a T-handle spiral probe, a T-handle insert tool, a threaded needle handle, pliers, a hex key, a pencil pressure gauge, a four-way valve tool, 8 valve cores, 8 plastic valve caps, 4 extension caps, 4 stainless and 4 aluminium anti-theft nuts, a tub of lubricant and the cloth case.',
+      },
+      {
+        q: 'Do I need anything else to fix a puncture?',
+        a: 'Yes — a way to reinflate. The kit plugs the hole and lets you check the pressure with the included gauge, but there is no pump or compressor in it, so pair it with a 12V or cordless inflator.',
+      },
+      {
+        q: 'How big is the case?',
+        a: 'The zip cloth pouch measures 20.5 × 14.5 cm. The T-handle tools are 14 cm long with a 9.5 cm handle, and the pressure gauge is 12 cm, so the whole thing stores flat in a boot or under a seat.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

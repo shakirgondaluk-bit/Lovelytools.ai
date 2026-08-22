@@ -1033,6 +1033,124 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'inphic-bluetooth-silent-wireless-mouse',
+    asin: 'B09K41MDJG',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Computers & Accessories',
+    categoryPath: '/buyers-guide?category=computers-accessories',
+
+    brand: 'INPHIC',
+    name: 'Bluetooth Mouse, [Upgraded] Multi-Device Silent Rechargeable Bluetooth Wireless Mouse (Tri-Mode: BT 5.0/4.0+2.4G), 1600DPI Ergonomic Portable Mouse for Laptop PC Computer Mac, Black',
+    tagline: 'Three connection modes, silent clicks and months between charges — for under twenty pounds.',
+    description:
+      'A rechargeable wireless mouse that holds two Bluetooth pairings and a 2.4G dongle at once, switching between them with a button on the base. The left and right clicks are silent, and a 700mAh battery means you charge it a few times a year rather than swapping AAs.',
+
+    images: [
+      `/products/inphic-bluetooth-silent-wireless-mouse/1.jpg`,
+      `/products/inphic-bluetooth-silent-wireless-mouse/2.jpg`,
+      `/products/inphic-bluetooth-silent-wireless-mouse/3.jpg`,
+      `/products/inphic-bluetooth-silent-wireless-mouse/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.4 rating', sublabel: '6,072 reviews, 200+ bought last month' },
+      { icon: 'layers', label: '3 modes', sublabel: 'BT 5.0, BT 4.0 and 2.4G USB' },
+      { icon: 'battery-charging', label: '700mAh', sublabel: 'Months of use per charge' },
+      { icon: 'volume-2', label: 'Silent click', sublabel: 'Left and right buttons' },
+    ],
+    specs: [
+      { icon: 'wifi', label: 'Connection', value: 'Bluetooth 5.0, Bluetooth 4.0, 2.4G USB' },
+      { icon: 'battery', label: 'Battery', value: '700mAh lithium-polymer, rechargeable' },
+      { icon: 'gauge', label: 'DPI levels', value: '1000 / 1200 / 1600, switchable' },
+      { icon: 'sliders', label: 'Buttons', value: '6, including DPI and mode switch' },
+      { icon: 'circle-dot', label: 'Sensor', value: 'Optical' },
+      { icon: 'ruler', label: 'Range', value: 'Up to 10 m in each mode' },
+      { icon: 'monitor', label: 'Compatibility', value: 'Windows 8/10, macOS, Android, iOS/iPadOS 14+' },
+      { icon: 'users', label: 'Shape', value: 'Ergonomic, right-handed' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: 'Three devices, one button',
+        body: 'Holds Bluetooth 5.0, Bluetooth 4.0 and a 2.4G USB receiver at the same time. A switch on the base moves between them, with a green, blue or red light showing which is live.',
+      },
+      {
+        icon: 'volume-2',
+        title: 'Silent left and right clicks',
+        body: 'The main buttons are near-silent, which is the difference between usable and antisocial in a shared office, a library, or a room where someone is asleep.',
+      },
+      {
+        icon: 'battery-charging',
+        title: 'Recharges, and rarely needs to',
+        body: 'A 700mAh lithium-polymer cell runs for several months on a charge, so there are no AA batteries to keep buying and no dead mouse mid-task.',
+      },
+      {
+        icon: 'circle-dot',
+        title: 'Three power lights',
+        body: 'Three indicators on top show how much charge is left rather than leaving you to guess, and the charging light switches itself off once the battery is full.',
+      },
+      {
+        icon: 'gauge',
+        title: '1000, 1200 or 1600 DPI',
+        body: 'Three sensitivity steps on a dedicated button — slower for precise work, faster for crossing a large or high-resolution screen.',
+      },
+      {
+        icon: 'users',
+        title: 'Shaped for a right hand',
+        body: 'A contoured right-handed body with a thumb rest, aimed at all-day desk use rather than the flat travel mice common at this price.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.4 rating across 6,072 reviews, 200+ bought in the past month",
+      'Genuine tri-mode: two Bluetooth pairings plus a 2.4G dongle, switched from the base',
+      'Silent left and right clicks make it usable in shared and quiet spaces',
+      'Rechargeable 700mAh battery lasts months per charge, with three indicator lights',
+      'Six buttons and three DPI steps at a price where two buttons is common',
+    ],
+    cons: [
+      'Right-handed shape only — there is no left-handed version of this body',
+      'Bluetooth 5.0 mode needs Windows 8 or 10; Windows 7 and XP are not supported, and iOS devices need iOS 14 or later',
+      '1600 DPI tops out below what a large 4K display or gaming really wants',
+    ],
+    bestFor: [
+      'Anyone moving between a laptop, tablet and desktop who wants one mouse for all three',
+      'Shared offices, libraries and bedrooms where clicking noise matters',
+      'People tired of buying AA batteries for a wireless mouse',
+    ],
+    notIdealFor: [
+      'Left-handed users, given the contoured right-handed shell',
+      'Gaming or high-resolution work that needs more than 1600 DPI',
+      'Machines still on Windows 7 or XP, or iPhones and iPads below iOS 14',
+    ],
+
+    score: 8.6,
+    verdict:
+      'A lot of mouse for under twenty pounds: three-way switching, silent clicks and a rechargeable battery that lasts months are features usually found further up the range. The 4.4 average across 6,072 reviews reflects a solid everyday mouse rather than a precision instrument — the right-handed-only shell and the 1600 DPI ceiling are the honest limits.',
+
+    faq: [
+      {
+        q: 'How do I switch between devices?',
+        a: 'A mode button on the bottom of the mouse cycles between Bluetooth 5.0, Bluetooth 4.0 and the 2.4G USB receiver. An indicator shows green, blue or red for the active mode, so once each is paired you move between them with a single press.',
+      },
+      {
+        q: 'How long does a charge last?',
+        a: 'INPHIC rates the built-in 700mAh lithium-polymer battery at several months of use per charge. Three power indicator lights on the mouse show the remaining level, and the blue charging light turns itself off once it is full.',
+      },
+      {
+        q: 'Is it actually silent?',
+        a: 'The left and right buttons use silent switches, which is what makes it suitable for a library, dorm or office. The scroll wheel and side buttons are ordinary ones, so it is quiet rather than completely without sound.',
+      },
+      {
+        q: 'Does it work with an iPad or iPhone?',
+        a: 'Yes over Bluetooth 5.0, provided the device is on iOS 14 or later. On computers, Bluetooth 5.0 supports Windows 8 and 10, macOS and Android — but not Windows 7 or XP. The 2.4G receiver works with any device that has a USB port.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

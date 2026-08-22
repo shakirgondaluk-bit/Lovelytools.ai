@@ -56,7 +56,7 @@ export class AudioEngine implements ToolEngine<AudioInput, AudioResult> {
     if (file.size > this.limits.maxBytesPerFile) {
       throw new EngineError(
         'too-large',
-        `${file.name} is ${formatBytes(file.size)} — the limit is ${formatBytes(this.limits.maxBytesPerFile)}. Pro raises it to 2 GB.`,
+        `${file.name} is ${formatBytes(file.size)} — the limit is ${formatBytes(this.limits.maxBytesPerFile)} per file.`,
       );
     }
     if (!this.ready) await this.init();

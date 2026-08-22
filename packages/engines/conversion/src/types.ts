@@ -87,8 +87,10 @@ export interface EngineLimits {
   maxBytesPerFile: number;
 }
 
-export const FREE_LIMITS: EngineLimits = { maxFiles: 10, maxBytesPerFile: 200 * 1024 * 1024 };
-export const PRO_LIMITS: EngineLimits = { maxFiles: 200, maxBytesPerFile: 2 * 1024 * 1024 * 1024 };
+// Re-exported from engines-core rather than redeclared: the two copies of this
+// constant had already drifted apart, and a per-file ceiling that differs by
+// which engine you happen to hit is a bug waiting to be filed.
+export { MAX_BYTES_PER_FILE, FREE_LIMITS } from '@lovelytools/engines-core';
 
 /* ---------------- worker protocol ---------------- */
 

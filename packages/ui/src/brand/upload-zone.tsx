@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { MAX_MB_PER_FILE } from '@lovelytools/engines-core';
 import { cn } from '../lib/utils';
 import { KbdHint } from './kbd-hint';
 import { MonogramChip } from './monogram-chip';
@@ -8,8 +9,8 @@ import { MonogramChip } from './monogram-chip';
 interface UploadZoneProps {
   /** e.g. "application/pdf" or ".png,.jpg,.webp". Omit to accept anything. */
   accept?: string;
-  /** Free plan default per registry limits. */
   maxFiles?: number;
+  /** Per-file ceiling in MB. Defaults to MAX_BYTES_PER_FILE from engines-core. */
   maxMb?: number;
   /** Files never leave the device — this hands them to the local engine layer. */
   onFiles: (files: File[]) => void;
@@ -32,7 +33,7 @@ interface UploadZoneProps {
 export function UploadZone({
   accept,
   maxFiles = 10,
-  maxMb = 200,
+  maxMb = MAX_MB_PER_FILE,
   onFiles,
   label = 'Drop files here',
   categoryCode = 'PD',
@@ -60,7 +61,7 @@ export function UploadZone({
       }
       const tooBig = files.find((f) => f.size > maxMb * 1024 * 1024);
       if (tooBig) {
-        setError(`${tooBig.name} is over ${maxMb} MB. Pro raises the limit to 2 GB.`);
+        setError(`${tooBig.name} is over the ${maxMb} MB limit. Everything runs in this tab, so the cap keeps a large file from exhausting the page's memory.`);
         return;
       }
       setError(null);
@@ -136,8 +137,8 @@ export function UploadZone({
           <p className="text-[13px] text-fg3">
             or browse · paste ·{' '}
             {maxFiles === 1
-              ? `up to ${maxMb >= 1024 ? `${maxMb / 1024} GB` : `${maxMb} MB`}`
-              : `up to ${maxFiles} files (${maxMb >= 1024 ? `${maxMb / 1024} GB` : `${maxMb} MB`} each)`}
+              ? `up to ${maxMb} MB`
+              : `up to ${maxFiles} files (${maxMb} MB each)`}
           </p>
         </div>
         <p className="flex items-center gap-2 text-[12.5px] text-fg3">

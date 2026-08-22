@@ -94,9 +94,22 @@ export interface EngineLimits {
   maxBytesPerFile: number;
 }
 
-/** RFC-001 §3 — free tier. Pro raises these; the plan claim gates client-side. */
-export const FREE_LIMITS: EngineLimits = { maxFiles: 10, maxBytesPerFile: 200 * 1024 * 1024 };
-export const PRO_LIMITS: EngineLimits = { maxFiles: 200, maxBytesPerFile: 2048 * 1024 * 1024 };
+/**
+ * Per-file ceiling for every tool, in bytes.
+ *
+ * 15 MB. Processing happens in the browser, so this is a bound on what one tab
+ * is asked to hold — a decode buffer is many times the file on disk, and the
+ * tools that are heaviest on memory (video, OCR, speech) are exactly the ones
+ * people hand the biggest files to. Rejecting up front with a clear message
+ * beats an out-of-memory tab kill with none.
+ *
+ * Defined once here and re-exported by the conversion package, which used to
+ * carry its own copy that drifted (2048 MB vs 2 GB for the same tier).
+ */
+export const MAX_MB_PER_FILE = 15;
+export const MAX_BYTES_PER_FILE = MAX_MB_PER_FILE * 1024 * 1024;
+
+export const FREE_LIMITS: EngineLimits = { maxFiles: 10, maxBytesPerFile: MAX_BYTES_PER_FILE };
 
 /** Probes the runtime once, so engines can pick a path and fall back gracefully. */
 export async function probeContext(): Promise<EngineContext> {

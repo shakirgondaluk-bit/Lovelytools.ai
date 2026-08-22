@@ -67,5 +67,5 @@ instead of shipping a worse file.
 
 ## Limits
 
-Same registry limits as everywhere: Free 10 files / 200 MB each · Pro 200 / 2 GB.
+Same registry limits as everywhere: 10 files / 15 MB each (`MAX_BYTES_PER_FILE` in engines-core).
 All ops are cancellable; progress is real (per page), never simulated.

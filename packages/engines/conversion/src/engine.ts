@@ -51,7 +51,7 @@ export class ConversionEngine {
       if (file.size > this.limits.maxBytesPerFile) {
         throw new EngineError(
           'too-large',
-          `${file.name} is over ${Math.round(this.limits.maxBytesPerFile / 1048576)} MB. Pro raises the limit to 2 GB.`,
+          `${file.name} is over the ${Math.round(this.limits.maxBytesPerFile / 1048576)} MB per-file limit.`,
         );
       }
       const from = await detectFormat(file);

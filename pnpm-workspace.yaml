@@ -33,3 +33,17 @@ allowBuilds:
   sharp: false
   tesseract.js: true
   unrs-resolver: false
+
+# Transitive security patches. Same story as allowBuilds above: pnpm 11 reads
+# overrides from this file only — package.json's "pnpm.overrides" is silently
+# ignored, which is easy to miss because the install still exits 0.
+#
+# brace-expansion reaches us as js-beautify > editorconfig/glob > minimatch >
+# brace-expansion@2.1.2, which is vulnerable to GHSA-mh99-v99m-4gvg
+# (CVE-2026-14257, unbounded expansion -> OOM crash) and GHSA-rgw5-rvv9-x895
+# (the bypass of that fix, unbounded intermediate arrays). minimatch has no
+# release pinning a fixed 2.x, so the floor is set here. Scoped to the 2.x
+# major on purpose: the 1.1.18 and 5.0.9 copies elsewhere in the tree are
+# already on patched releases, and their dependents expect those majors.
+overrides:
+  brace-expansion@2: ^2.1.4

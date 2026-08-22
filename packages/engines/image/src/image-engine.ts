@@ -47,7 +47,7 @@ export class ImageEngine {
     }
     for (const f of files) {
       if (f.size > this.limits.maxBytesPerFile) {
-        throw new ImageError('too-large', `${f.name} is over ${Math.round(this.limits.maxBytesPerFile / 1048576)} MB. Pro raises the limit to 2 GB.`);
+        throw new ImageError('too-large', `${f.name} is over the ${Math.round(this.limits.maxBytesPerFile / 1048576)} MB per-file limit.`);
       }
     }
     return Promise.all(files.map(decodeImage));

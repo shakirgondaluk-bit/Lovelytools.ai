@@ -69,6 +69,6 @@ still no user data in flight), caches it in the Cache API, and reports
 
 ## Limits
 
-Registry limits: Free 10 files / 200 MB each · Pro 200 / 2 GB. Dimension guard:
+Registry limits: 10 files / 15 MB each (`MAX_BYTES_PER_FILE` in engines-core). Dimension guard:
 inputs above 12k × 12k px are rejected with a friendly error (canvas memory).
 All ops cancellable; progress is real (per file, per stage), never simulated.

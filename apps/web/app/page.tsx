@@ -54,7 +54,7 @@ const FAQ = [
   },
   {
     q: 'Is there a file size limit?',
-    a: 'Free tops out at 200 MB per file and 10 files at a time; Pro raises that to 2 GB and 200 files. The ceiling is your device’s memory, not our servers — we don’t have any in this path.',
+    a: 'Up to 15 MB per file and 10 files at a time. Everything runs in your browser, so the real ceiling is your device’s memory — the limit is there to stop a large file taking the tab down with it. We don’t have servers in this path.',
   },
   {
     q: 'Does it work offline?',

@@ -179,7 +179,7 @@ export async function fetchMediaUrl(
   if (totalBytes && totalBytes > maxBytes) {
     throw new UrlIngestError(
       'too-large',
-      `That file is ${Math.round(totalBytes / 1_048_576)} MB — the limit is ${Math.round(maxBytes / 1_048_576)} MB. Pro raises it to 2 GB.`,
+      `That file is ${Math.round(totalBytes / 1_048_576)} MB — the limit is ${Math.round(maxBytes / 1_048_576)} MB per file.`,
     );
   }
 
@@ -201,7 +201,7 @@ export async function fetchMediaUrl(
         reader.cancel().catch(() => undefined);
         throw new UrlIngestError(
           'too-large',
-          `That download passed ${Math.round(maxBytes / 1_048_576)} MB — the free limit. Pro raises it to 2 GB.`,
+          `That download passed the ${Math.round(maxBytes / 1_048_576)} MB per-file limit.`,
         );
       }
       onProgress({

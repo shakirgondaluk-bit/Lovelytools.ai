@@ -37,7 +37,7 @@ const FAQ = [
   },
   {
     q: 'Are these tools really free?',
-    a: 'Yes — no watermark, no daily cap, no signup. Free handles files up to 200 MB; Pro raises that to 2 GB. The tools themselves are never gated.',
+    a: 'Yes — no watermark, no daily cap, no signup. Files are capped at 15 MB each because everything runs in your browser. The tools themselves are never gated.',
   },
 ];
 

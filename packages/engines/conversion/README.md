@@ -71,5 +71,5 @@ const { jobs, addFiles, convertAll, downloadAll } = useConversion({ target: 'pdf
 
 ## Limits (enforced in engine.ts, mirrors registry)
 
-Free: 10 files / 200 MB each · Pro: 200 files / 2 GB each. Same-format no-ops are
+Limits: 10 files / 15 MB each (`MAX_BYTES_PER_FILE` in engines-core). Same-format no-ops are
 rejected with a friendly error. All processing is cancellable (`AbortSignal`).

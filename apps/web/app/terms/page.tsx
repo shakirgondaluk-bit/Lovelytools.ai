@@ -31,7 +31,7 @@ const SECTIONS: Array<[string, string]> = [
   ],
   [
     'Limits and fair use',
-    'Free accounts are limited to 10 files per batch and 200 MB per file; Pro raises those. The real limit is your own device’s memory. We may rate-limit the small number of server endpoints that exist (search, ratings, the AI finder) to keep them available.',
+    'Tools are limited to 10 files per batch and 15 MB per file. The real limit is your own device’s memory, since processing happens there. We may rate-limit the small number of server endpoints that exist (search, ratings, the AI finder) to keep them available.',
   ],
   [
     'Paid plans',

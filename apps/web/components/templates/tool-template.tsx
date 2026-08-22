@@ -26,7 +26,7 @@ export function ToolTemplate({ tool, category }: { tool: ToolDefinition; categor
     },
     {
       q: 'What are the limits?',
-      a: 'Free handles up to 10 files at 200 MB each. Pro raises that to 200 files at 2 GB. The real ceiling is your device’s memory.',
+      a: 'Up to 10 files at 15 MB each. Everything runs in your browser, so the real ceiling is your device’s memory — the cap keeps a large file from exhausting the tab.',
     },
   ];
 

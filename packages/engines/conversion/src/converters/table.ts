@@ -1,5 +1,15 @@
 // lovelytools.ai — table converters (TableIR ⇄ XLS/XLSX/CSV/JSON/XML/HTML/TXT)
 // via SheetJS CE. Legacy XLS reads at full fidelity.
+//
+// The xlsx dependency is an https tarball rather than a registry range, which
+// is deliberate. SheetJS stopped publishing to npm at 0.18.5, and that version
+// carries GHSA-4r6h-8v6p-xvw6 (prototype pollution) and GHSA-5pgg-2g8v-p4x9
+// (ReDoS) with no registry release that fixes them — npm audit reports the
+// patched range as "<0.0.0" for exactly this reason. 0.20.3 comes from the
+// vendor's own CDN, which is their documented distribution channel; pnpm
+// records its integrity hash in the lockfile, so later installs are verified
+// rather than trusted. A deploy environment therefore needs to reach
+// cdn.sheetjs.com at install time.
 import { cellToString, escapeHtml, type Sheet, type TableIR } from '../ir';
 import { EngineError } from '../types';
 

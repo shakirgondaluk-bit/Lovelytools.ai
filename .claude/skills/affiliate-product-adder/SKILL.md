@@ -116,7 +116,8 @@ markup, so getting the data right *is* getting the design right.
      ```
      then pick the URL with the largest `width*height`. Do the same for each thumbnail — click it first (or hover) so `#landingImage`'s `data-a-dynamic-image` updates to that image's own JSON map, since `#altImages img` thumbnails only expose a small `._AC_US40_`-style URL directly. If a given photo's dynamic-image map is missing or single-entry, fall back to the `._AC_SX679_` suffix swap on the thumbnail URL as before — but the dynamic-image JSON is the ground truth and should be preferred whenever present.
    - Bullet points / "About this item" → source material for `specs`, `features`, `pros`
-   - Category breadcrumb on the Amazon page → informs `categoryLabel` (a reasonable guess is fine; the user will fix this once the real category exists). Set `categoryPath` to `/buyers-guide` — there is no real category route yet, and pointing it at a guessed path 404s.
+   - Category breadcrumb on the Amazon page → pick the closest `categoryLabel` from `affiliateCategories` in `lib/affiliate-products.ts`. This is a **closed set** — the label must match one of those entries exactly (including the `&`), because the Buyer's Guide only renders a filter chip for a category that a product's label matches. A label outside the list shows a badge no chip can reach. If nothing fits, add an entry to `affiliateCategories` rather than inventing a label on the product.
+   - Set `categoryPath` to `/buyers-guide?category={slug}`, using that category's `slug` from the same list — e.g. `/buyers-guide?category=computers-accessories`. This lands on the guide pre-filtered to the category. (Older notes said to use a bare `/buyers-guide` because no category route existed; the `?category=` filter is real now, and a bare path is a working but worse link. Do not invent a standalone path like `/computers-accessories` — that genuinely does 404.)
 
 3. **Download images locally**
    Save the product images under `public/products/{slug}/` (create the folder), numbered `1.jpg`, `2.jpg`, etc. — `1.jpg` is the hero. Reference them in the entry as `/products/{slug}/1.jpg` etc. Never hotlink Amazon's own image URLs — they can break or change. Use `curl -sL -A "Mozilla/5.0"` (no user agent gets blocked by Amazon's CDN).
@@ -149,7 +150,7 @@ markup, so getting the data right *is* getting the design right.
    - The FAQ accordion opens/closes on click, chevron rotates.
    - Resize to mobile (~375px) and tablet (~768px) widths: confirm the hero collapses to a single column with Quick Specs below the content, the thumbnail rail flips from vertical to a horizontal strip under the main image below `sm`, and that nothing causes horizontal overflow.
    - With a long product title (20+ words), confirm the name wraps across the full width beside Quick Specs and there is no large empty block under the hero text.
-   - It also appears on `/buyers-guide` (the listing page reads the same store automatically — nothing to wire up there).
+   - It also appears on `/buyers-guide` (the listing page reads the same store automatically — nothing to wire up there), and on `/buyers-guide?category={slug}` for the category you set. Check the filtered view actually returns the product: a `categoryLabel` that does not exactly match an `affiliateCategories` entry still renders a page, it just quietly never appears under any chip.
    Then run `pnpm build` (or `npm run build` from repo root) once before handing back — this is a static-export site, and a page-export or type error here is exactly what breaks the live Hostinger deploy even when `next dev` looks fine locally.
 
 8. **Report back**

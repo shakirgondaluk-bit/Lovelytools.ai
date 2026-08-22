@@ -34,7 +34,7 @@ export interface AffiliateProduct {
   amazonDomain: string; // e.g. "amazon.co.uk"
 
   categoryLabel: string; // breadcrumb + badge, e.g. "Kitchen Gadgets"
-  categoryPath: string; // e.g. "/kitchen-gadgets" (once category exists)
+  categoryPath: string; // "/buyers-guide?category={slug}" — slug from affiliateCategories
 
   brand: string; // e.g. "VOCOO"
   name: string; // full product name, e.g. "Rechargeable Digital Kitchen Timer"
@@ -349,7 +349,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     amazonDomain: 'amazon.co.uk',
 
     categoryLabel: 'Home & Garden',
-    categoryPath: '/buyers-guide',
+    categoryPath: '/buyers-guide?category=home-garden',
 
     brand: 'Bosch',
     name: 'UniversalAquatak 135 High Pressure Washer | 1900 W, 135 Bar, 450 l/h Flow Rate, 3-in-1 Nozzle, Detergent Nozzle & Carrying Handle',
@@ -464,7 +464,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     amazonDomain: 'amazon.co.uk',
 
     categoryLabel: 'Home & Garden',
-    categoryPath: '/buyers-guide',
+    categoryPath: '/buyers-guide?category=home-garden',
 
     brand: 'Lamicall',
     name: 'Cordless Tyre Inflator Air Compressor - [Metal Cylinder] 150PSI Electric Pump with Digital Dual-Value Display, Portable Air Pump for Car Motorcycle Bike Balls, with Long Hose, Silicone Case',
@@ -696,7 +696,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     amazonDomain: 'amazon.co.uk',
 
     categoryLabel: 'Kitchen & Dining',
-    categoryPath: '/buyers-guide',
+    categoryPath: '/buyers-guide?category=kitchen-dining',
 
     brand: 'DS Packaging',
     name: 'Heavy Duty Pizza Delivery Bag, 20" x 20" x 8" Full Insulated All Sides, 51 x 51 x 20cm',
@@ -922,7 +922,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     amazonDomain: 'amazon.co.uk',
 
     categoryLabel: 'Car & Motorbike',
-    categoryPath: '/buyers-guide',
+    categoryPath: '/buyers-guide?category=car-motorbike',
 
     brand: 'ETENWOLF',
     name: 'Vortex S6 Tyre Inflator, Portable Air Compressor, 19200mAh Battery | for Heavy-Duty Vehicles, Cordless Air Pump for Cars, Bikes and Inflatables, 100% Duty Cycle and Dual Cylinder, Vivid Orange',

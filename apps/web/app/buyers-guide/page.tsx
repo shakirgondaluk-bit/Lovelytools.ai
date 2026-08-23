@@ -8,6 +8,8 @@ import {
   type AffiliateProduct,
 } from '@/lib/affiliate-products';
 import { listDiscovered } from '@/lib/product-finder/discovered-store';
+import { BuyersGuideSort } from '@/components/buyers-guide-sort';
+import { DEFAULT_SORT, parseSortKey, sortGuideEntries } from '@/lib/buyers-guide-sort';
 
 export const metadata: Metadata = {
   title: "Recommended Products — hand-picked product reviews | lovelytools.ai",
@@ -24,11 +26,16 @@ export const metadata: Metadata = {
 export default async function BuyersGuidePage({
   searchParams,
 }: {
-  searchParams?: Promise<{ category?: string }>;
+  searchParams?: Promise<{ category?: string; sort?: string }>;
 }) {
   const resolvedSearchParams = await searchParams;
   const activeSlug = resolvedSearchParams?.category;
   const activeCategory = affiliateCategories.find((c) => c.slug === activeSlug);
+  const sort = parseSortKey(resolvedSearchParams?.sort);
+
+  // Chips have to carry the current sort, or changing category silently resets
+  // it. Same rule in reverse lives in the sort island.
+  const sortSuffix = sort === DEFAULT_SORT ? '' : `&sort=${sort}`;
 
   // Hand-written reviews first, then whatever the Product Finder has
   // auto-published. Curated entries always lead: they are the ones with a real
@@ -70,9 +77,14 @@ export default async function BuyersGuidePage({
   const usedLabels = new Set(entries.map((e) => e.product.categoryLabel));
   const visibleCategories = affiliateCategories.filter((c) => usedLabels.has(c.label));
 
-  const products = activeCategory
-    ? entries.filter((e) => e.product.categoryLabel === activeCategory.label)
-    : entries;
+  // Filter first, then sort: sorting the full list and filtering after would do
+  // the same work but on every product rather than the ones being shown.
+  const products = sortGuideEntries(
+    activeCategory
+      ? entries.filter((e) => e.product.categoryLabel === activeCategory.label)
+      : entries,
+    sort,
+  );
 
   return (
     <>
@@ -117,13 +129,16 @@ export default async function BuyersGuidePage({
               every day.
             </p>
 
-            <p className="text-[13px] text-fg3">
-              {products.length} {products.length === 1 ? 'review' : 'reviews'}
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-[13px] text-fg3">
+                {products.length} {products.length === 1 ? 'review' : 'reviews'}
+              </p>
+              <BuyersGuideSort />
+            </div>
 
             <div className="flex flex-wrap gap-2 pt-2">
               <Link
-                href="/buyers-guide"
+                href={sortSuffix ? `/buyers-guide?${sortSuffix.slice(1)}` : '/buyers-guide'}
                 className={`inline-flex items-center rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors ${
                   !activeCategory
                     ? 'border-accent bg-accent-soft text-accent'
@@ -135,7 +150,7 @@ export default async function BuyersGuidePage({
               {visibleCategories.map((category) => (
                 <Link
                   key={category.slug}
-                  href={`/buyers-guide?category=${category.slug}`}
+                  href={`/buyers-guide?category=${category.slug}${sortSuffix}`}
                   className={`inline-flex items-center rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors ${
                     activeCategory?.slug === category.slug
                       ? 'border-accent bg-accent-soft text-accent'

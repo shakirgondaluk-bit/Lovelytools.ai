@@ -41,8 +41,24 @@ export default async function BuyersGuidePage({
   const discovered = await listDiscovered();
   const curatedSlugs = new Set(affiliateProducts.map((p) => p.slug));
 
+  // Both halves are ordered most-recently-added first.
+  //
+  // There is no date on an AffiliateProduct, so position in the array is the
+  // recency signal: entries are only ever appended (see the affiliate-product-adder
+  // skill, step 6), which makes the last element the newest. Reversing is
+  // therefore the whole sort. If products ever need reordering by hand, give
+  // them a real date field rather than relying on this.
+  //
+  // `.slice()` first — `.reverse()` mutates in place, and `affiliateProducts` is
+  // a shared export. Reversing it directly would also reorder the Product
+  // Finder's catalog corpus and flip the order again on every re-render.
+  //
+  // `listDiscovered` already returns newest-first, so it needs no equivalent.
   const entries: { product: AffiliateProduct; generated: boolean }[] = [
-    ...affiliateProducts.map((product) => ({ product, generated: false })),
+    ...affiliateProducts
+      .slice()
+      .reverse()
+      .map((product) => ({ product, generated: false })),
     ...discovered
       .filter((d) => !curatedSlugs.has(d.slug))
       .map((d) => ({ product: d.product, generated: true })),

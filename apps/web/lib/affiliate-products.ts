@@ -93,6 +93,7 @@ export const affiliateCategories: AffiliateCategory[] = [
   { slug: 'mobile-phones-accessories', label: 'Mobile Phones & Accessories' },
   { slug: 'smartwatches-wearables', label: 'Smartwatches & Wearables' },
   { slug: 'audio-headphones', label: 'Audio & Headphones' },
+  { slug: 'tv-home-cinema', label: 'TV & Home Cinema' },
   { slug: 'computers-accessories', label: 'Computers & Accessories' },
   { slug: 'cameras-photography', label: 'Cameras & Photography' },
   { slug: 'car-motorbike', label: 'Car & Motorbike' },
@@ -1989,8 +1990,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Electronics & Gadgets',
-    categoryPath: '/buyers-guide?category=electronics-gadgets',
+    categoryLabel: 'TV & Home Cinema',
+    categoryPath: '/buyers-guide?category=tv-home-cinema',
 
     brand: 'TCL',
     name: '65C7L-UK 65 Inch SQD-Mini LED TV, 4K HDR 3000 nits and 1,152 dimming zones, Google TV, Dolby Vision & Atmos, Audio by Bang & Olufsen, 144Hz, Apple AirPlay 2 & Alexa (2026 New Model)',

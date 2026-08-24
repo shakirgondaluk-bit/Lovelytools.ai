@@ -44,6 +44,14 @@ const RULES: Array<[RegExp, string]> = [
     /\b(headphones?|earphones?|earbuds?|headsets?|soundbars?|bluetooth speakers?|speakers?|amplifiers?|turntables?|microphones?)\b/i,
     'Audio & Headphones',
   ],
+  // Above Computers (which claims "monitors") and Toys (which claims
+  // "gaming"), so a gaming TV or a TV-sized monitor lands here rather than
+  // there. Soundbars stay under Audio & Headphones — moving them would change
+  // how existing results are filed, which is a separate decision.
+  [
+    /\b(tvs?|televisions?|smart tv|mini ?led|oled|qled|projectors?|blu-?ray|home cinema|home theatre|av receivers?|set-?top box(?:es)?|streaming sticks?|fire tv|chromecast|freeview)\b/i,
+    'TV & Home Cinema',
+  ],
   [/\b(cameras?|camera lens|tripod for camera|gimbals?|drones?|camcorders?|gopro|webcams?|photography)\b/i, 'Cameras & Photography'],
   [
     /\b(laptops?|macbook|keyboards?|mouse|monitors?|ssd|hard drives?|graphics cards?|motherboards?|routers?|usb hubs?|docking stations?|printers?)\b/i,

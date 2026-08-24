@@ -2103,6 +2103,125 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'ultimea-aura-a60-pro-soundbar',
+    asin: 'B0GRZKG31G',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Audio & Headphones',
+    categoryPath: '/buyers-guide?category=audio-headphones',
+
+    brand: 'ULTIMEA',
+    name: 'Aura A60 Pro 7.1ch Surround Sound System for TV, Dolby Atmos Sound Bar with 4 Surround Speakers, VoiceMX, BassMX, 420W Peak Power, HDMI eARC, App Control (2026 Model)',
+    tagline: 'Four satellites and a 5.25-inch sub for two hundred pounds — real surround, not a bar pretending.',
+    description:
+      'A 7.1 system with three channels in the bar and four separate satellite speakers placed around the room, driven over HDMI eARC for full-bandwidth Dolby Atmos. The A60 Pro upgrades the original A60 with a larger 5.25-inch subwoofer and more headroom.',
+
+    images: [
+      `/products/ultimea-aura-a60-pro-soundbar/1.jpg`,
+      `/products/ultimea-aura-a60-pro-soundbar/2.jpg`,
+      `/products/ultimea-aura-a60-pro-soundbar/3.jpg`,
+      `/products/ultimea-aura-a60-pro-soundbar/4.jpg`,
+    ],
+    awardBadge: { line1: '#1', line2: 'BEST SELLER' },
+
+    trustBadges: [
+      { icon: 'award', label: '#1 Best Seller', sublabel: 'In Hi-Fi Speaker Systems' },
+      { icon: 'star', label: '4.5 rating', sublabel: 'From 23 reviews so far' },
+      { icon: 'volume-2', label: '7.1 channels', sublabel: '3 in the bar, 4 satellites' },
+      { icon: 'circle-dot', label: '5.25" subwoofer', sublabel: 'Bass down to 45 Hz' },
+    ],
+    specs: [
+      { icon: 'volume-2', label: 'Channels', value: '7.1 — 3 main plus 4 surround speakers' },
+      { icon: 'zap', label: 'Peak power', value: '420 W (up from 350 W on the A60)' },
+      { icon: 'circle-dot', label: 'Subwoofer', value: '5.25 inch, 18 mm high-excursion driver, 6.1 L cabinet' },
+      { icon: 'gauge', label: 'Bass extension', value: 'Down to 45 Hz' },
+      { icon: 'layers', label: 'Surround wiring', value: '2 front wired; rear pair one wireless, one wired' },
+      { icon: 'monitor', label: 'Connection', value: 'HDMI eARC, 37 Mbps bandwidth' },
+      { icon: 'users', label: 'Dialogue', value: 'VoiceMX, boosts 120 Hz – 6 kHz' },
+      { icon: 'sliders', label: 'App tuning', value: '10-band EQ, 121 presets, 13 surround levels' },
+    ],
+    features: [
+      {
+        icon: 'volume-2',
+        title: 'Four real satellites',
+        body: 'Three channels in the bar plus four separate speakers placed around the seating area, so rear effects come from behind you rather than from processing that implies they do.',
+      },
+      {
+        icon: 'users',
+        title: 'VoiceMX for dialogue',
+        body: 'Targets the 120 Hz to 6 kHz vocal band with dynamic EQ and gain, which is aimed squarely at the common complaint that speech disappears under the soundtrack.',
+      },
+      {
+        icon: 'circle-dot',
+        title: 'Bigger sub than the A60',
+        body: 'A 5.25-inch driver replaces the original 4-inch, in a tuned 6.1-litre cabinet reaching down to 45 Hz — the single biggest change between this and the model it replaces.',
+      },
+      {
+        icon: 'monitor',
+        title: 'HDMI eARC, not just ARC',
+        body: 'eARC carries far more bandwidth than standard ARC, which is what allows lossless Dolby Atmos to reach the bar rather than a compressed version of it.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Tuning that goes deep',
+        body: 'A 10-band graphic EQ, 121 presets and 13 separate surround levels in the app, so the rear channels can be balanced to where the speakers actually ended up.',
+      },
+      {
+        icon: 'refresh-ccw',
+        title: 'One remote, and OTA updates',
+        body: 'The supplied remote controls the TV and the soundbar together, and firmware updates arrive over the air through the app rather than needing a service visit.',
+      },
+    ],
+
+    pros: [
+      '#1 Best Seller in Hi-Fi Speaker Systems, rated 4.5 with 100+ bought in the past month',
+      'Genuine 7.1 layout with four satellites at a price where virtualised surround is the norm',
+      'Larger 5.25-inch subwoofer and 420 W peak, both upgraded over the original A60',
+      'HDMI eARC rather than plain ARC, so Dolby Atmos arrives at full bandwidth',
+      'Unusually deep app control — 10-band EQ, 121 presets and 13 surround levels',
+    ],
+    cons: [
+      'Only 23 reviews so far, so the 4.5 rating rests on a very small sample — and 7% of it is one star',
+      'The rear speakers are only half wireless: the right rear connects wirelessly, the left rear still needs a cable',
+      'Both front surround speakers wire directly to the bar, so there are cable runs to plan either way',
+      'ULTIMEA\'s "99.99% detail accuracy" claim for SurroundX has no stated measure behind it',
+    ],
+    bestFor: [
+      'Films and TV in a normal living room where rear channels genuinely change the experience',
+      'Anyone whose main complaint is losing dialogue under the soundtrack',
+      'Buyers who want separates-style surround without a receiver or separates money',
+    ],
+    notIdealFor: [
+      'Rooms where no cable can reach the rear-left position',
+      'Anyone wanting a proven track record — this is a 2026 model with few reviews',
+      'Minimalists after a single bar and nothing else to place or wire',
+    ],
+
+    score: 8.4,
+    verdict:
+      'A lot of surround system for two hundred pounds: four real satellites, a bigger subwoofer than the model it replaces, eARC and genuinely deep app tuning. Scored short of the top of the guide only because 23 reviews is thin evidence — the specification and the price look right, the track record simply is not there yet.',
+
+    faq: [
+      {
+        q: 'Are the rear speakers wireless?',
+        a: 'Only partly. ULTIMEA describe a hybrid arrangement — the right rear speaker connects to the soundbar wirelessly, while the left rear connects by wire. The two front surround speakers are wired to the bar as well, so plan for cabling before you buy.',
+      },
+      {
+        q: 'What is different about the Pro versus the original A60?',
+        a: 'Two things ULTIMEA call out: the subwoofer grows from a 4-inch driver to 5.25 inches in a tuned 6.1-litre cabinet reaching 45 Hz, and peak power rises from 350 W to 420 W for more headroom during loud passages.',
+      },
+      {
+        q: 'Why does HDMI eARC matter?',
+        a: 'ULTIMEA quote eARC at 37 Mbps against roughly 1 Mbps for standard ARC. That extra bandwidth is what lets a lossless Dolby Atmos track reach the soundbar intact instead of being compressed on the way.',
+      },
+      {
+        q: 'Can I fix quiet dialogue with it?',
+        a: 'That is what VoiceMX is for. It isolates the 120 Hz to 6 kHz vocal range and applies dynamic EQ and gain in real time, aimed at low-volume listening and loud scenes where speech normally gets buried.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

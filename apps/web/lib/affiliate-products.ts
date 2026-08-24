@@ -1270,6 +1270,838 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'hontry-10x25-compact-binoculars',
+    asin: 'B07Q1GHB5X',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Cameras & Photography',
+    categoryPath: '/buyers-guide?category=cameras-photography',
+
+    brand: 'Hontry',
+    name: '10x25 Compact Binoculars for Adults and Kids Bird Watching | Small Binoculars for Camping, Hiking, Travel, Safari, Concerts, Theatre, Sports, Cruising and Road Trip',
+    tagline: 'Pocket-sized 10x binoculars with BAK-4 glass, backed by more reviews than almost anything else in the category.',
+    description:
+      'A 260 g compact that fits where your phone fits, pairing 10x magnification with BAK-4 prisms and fully multi-coated optics. The interpupillary distance adjusts from 60 to 75 mm, so the same pair works for a child and an adult.',
+
+    images: [
+      `/products/hontry-10x25-compact-binoculars/1.jpg`,
+      `/products/hontry-10x25-compact-binoculars/2.jpg`,
+      `/products/hontry-10x25-compact-binoculars/3.jpg`,
+      `/products/hontry-10x25-compact-binoculars/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.5 rating', sublabel: '22,673 reviews, 1K+ bought last month' },
+      { icon: 'gauge', label: '10x25', sublabel: '10x magnification, 25 mm objective' },
+      { icon: 'package', label: '260 g', sublabel: 'Fits a jacket pocket' },
+      { icon: 'droplet', label: '96.4% light', sublabel: 'Fully multi-coated BAK-4 optics' },
+    ],
+    specs: [
+      { icon: 'gauge', label: 'Magnification', value: '10x' },
+      { icon: 'circle-dot', label: 'Objective lens', value: '25 mm' },
+      { icon: 'layers', label: 'Prisms', value: 'BAK-4, fully multi-coated' },
+      { icon: 'droplet', label: 'Light transmission', value: '96.4%, 1.552 refractive index' },
+      { icon: 'sliders', label: 'Interpupillary distance', value: '60–75 mm adjustable' },
+      { icon: 'ruler', label: 'Dimensions', value: '11 × 10 × 5 cm (4.33 × 3.94 × 1.97 in)' },
+      { icon: 'package', label: 'Weight', value: '260 g' },
+      { icon: 'shield-check', label: 'Body', value: 'ABS with slip-resistant textured grip' },
+    ],
+    features: [
+      {
+        icon: 'gauge',
+        title: '10x without the wobble',
+        body: 'Hontry pitches 10x as the balance point — enough reach to pick out a bird across a field, but not so much that every heartbeat shows in the image the way higher-power compacts do.',
+      },
+      {
+        icon: 'layers',
+        title: 'BAK-4 prisms, fully multi-coated',
+        body: 'The higher-grade prism glass gives images real depth rather than the washed-out flatness of BK-7 budget optics, with anti-reflective coating on every air-to-glass surface.',
+      },
+      {
+        icon: 'droplet',
+        title: '96.4% light transmission',
+        body: 'Hontry quotes 96.4% transmission and under 0.5% surface reflectance, which is what keeps the view usable as the light drops at the end of an afternoon.',
+      },
+      {
+        icon: 'ruler',
+        title: 'Fits where your phone fits',
+        body: 'At 11 × 10 × 5 cm and 260 g it slides into a jacket pocket or glove box, which is the difference between binoculars you carry and binoculars you leave at home.',
+      },
+      {
+        icon: 'sliders',
+        title: '60–75 mm IPD range',
+        body: 'The barrels fold to match eye spacing from a child to most adults, so one pair genuinely gets shared around rather than only fitting the person who bought it.',
+      },
+      {
+        icon: 'package',
+        title: 'Pouch and strap included',
+        body: 'A soft carry pouch and neck strap come in the box, so it is ready to take out without buying accessories first.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.5 rating across 22,673 reviews — among the most-reviewed compacts on Amazon UK, 1K+ bought in the past month",
+      'Genuinely pocketable at 260 g and 11 × 10 × 5 cm',
+      'BAK-4 prisms and fully multi-coated optics at a price where BK-7 is common',
+      'Interpupillary distance adjusts 60–75 mm, so kids and adults can share one pair',
+      'Carry pouch and neck strap included',
+    ],
+    cons: [
+      'A 25 mm objective gathers far less light than a full-size 42 mm binocular, so dawn and dusk viewing is limited whatever the coatings',
+      'No tripod socket — Amazon lists mounting type as "No" — so long static observation means holding them up',
+      '10x in a body this light shows hand shake more than an 8x compact would',
+      'ABS plastic body rather than a rubber-armoured metal chassis',
+    ],
+    bestFor: [
+      'Bird watching, hiking and travel where size and weight decide whether you actually bring them',
+      'Families wanting one pair that fits both children and adults',
+      'Concerts, theatre and sport, or keeping in the glove box for the view that turns up unplanned',
+    ],
+    notIdealFor: [
+      'Serious low-light wildlife watching or astronomy, which needs a much larger objective',
+      'Tripod-mounted observation, since there is no mounting socket',
+      'Rough handling or wet weather work that calls for a sealed, armoured body',
+    ],
+
+    score: 9.1,
+    verdict:
+      'The review count is the story here: 4.5 stars across 22,673 buyers is about as much evidence as a compact binocular gets, and the BAK-4 glass and multi-coating justify it at the price. Buy them for what they are — a 260 g pair you will actually carry — not as a substitute for full-size optics in poor light.',
+
+    faq: [
+      {
+        q: 'Will these fit a child?',
+        a: 'Yes. The interpupillary distance adjusts from 60 mm to 75 mm by folding the barrels, which covers most children through to most adults, so the same pair can be handed round a family.',
+      },
+      {
+        q: 'How good are they in low light?',
+        a: 'Better than the price suggests, thanks to BAK-4 prisms, fully multi-coated lenses and a quoted 96.4% light transmission. But the 25 mm objective is the hard limit — for genuine dusk or dawn use, a 42 mm binocular gathers far more light.',
+      },
+      {
+        q: 'What comes in the box?',
+        a: 'The binoculars, a soft carry pouch and a neck strap. There is no tripod adapter, and Amazon lists the mounting type as "No", so they are designed to be hand-held.',
+      },
+      {
+        q: 'How small are they really?',
+        a: 'About 11 × 10 × 5 cm (4.33 × 3.94 × 1.97 in) and 260 g — roughly a palm-sized block that Hontry describes as fitting where your phone fits.',
+      },
+    ],
+  },
+  {
+    slug: 'deesoo-20x25-compact-binoculars',
+    asin: 'B0H2DM469L',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Cameras & Photography',
+    categoryPath: '/buyers-guide?category=cameras-photography',
+
+    brand: 'deesoo',
+    name: 'Compact Binoculars for Adults Kids — 20×25 High Power for Bird Watching | Small, Pocket, FMC, BAK4 Prism, Large Eyepiece, Easy Focus, Easy to Carry, Travel, Sightseeing, Outdoors, Hunting, Theatre',
+    tagline: 'Twice the magnification of a standard pocket compact, with the trade-offs that come with it.',
+    description:
+      'A palm-sized 20x binocular with BAK4 prisms, fully multi-coated optics and 25 mm of eye relief for glasses wearers. The high magnification buys reach a 10x compact cannot match, at the cost of a dimmer, shakier image — worth knowing before you choose between them.',
+
+    images: [
+      `/products/deesoo-20x25-compact-binoculars/1.jpg`,
+      `/products/deesoo-20x25-compact-binoculars/2.jpg`,
+      `/products/deesoo-20x25-compact-binoculars/3.jpg`,
+      `/products/deesoo-20x25-compact-binoculars/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.5 rating', sublabel: 'From 33 reviews — a small sample' },
+      { icon: 'gauge', label: '20x25', sublabel: 'High power in a pocket body' },
+      { icon: 'users', label: '25 mm eye relief', sublabel: 'Twist-up eyecups for glasses' },
+      { icon: 'package', label: 'Full kit', sublabel: 'Case, strap, cloth and lens covers' },
+    ],
+    specs: [
+      { icon: 'gauge', label: 'Magnification', value: '20x' },
+      { icon: 'circle-dot', label: 'Objective lens', value: '25 mm' },
+      { icon: 'layers', label: 'Prism', value: 'BAK4' },
+      { icon: 'droplet', label: 'Coatings', value: 'FMC — green-coated objectives, blue-coated eyepieces' },
+      { icon: 'ruler', label: 'Exit pupil', value: '1.25 mm (25 ÷ 20)' },
+      { icon: 'users', label: 'Eye relief', value: '25 mm, twist-up eyecups' },
+      { icon: 'settings', label: 'Focus', value: 'Central knob plus right-eyepiece diopter' },
+      { icon: 'package', label: 'Weight', value: '0.6 lb (about 272 g)' },
+    ],
+    features: [
+      {
+        icon: 'gauge',
+        title: '20x in a pocket body',
+        body: 'Double the magnification of the 10x compacts that dominate this price bracket, which is the whole reason to pick it — deesoo pitches it directly against 12x rivals.',
+      },
+      {
+        icon: 'layers',
+        title: 'BAK4 prisms, fully multi-coated',
+        body: 'The better prism glass and multi-layer coatings on every air-to-glass surface are what keep contrast up, rather than the single-coated optics common further down the range.',
+      },
+      {
+        icon: 'users',
+        title: '25 mm eye relief',
+        body: 'Unusually generous, and paired with twist-up eyecups that fold down for spectacle wearers — so you can keep your glasses on and still see the full field.',
+      },
+      {
+        icon: 'settings',
+        title: 'Centre focus and diopter',
+        body: 'A central knob focuses both barrels together, and the right eyepiece adjusts separately to correct for a difference between your eyes.',
+      },
+      {
+        icon: 'ruler',
+        title: 'Fits in one hand',
+        body: 'At roughly 272 g the barrels fold into a palm-sized block that drops into a coat pocket or day bag.',
+      },
+      {
+        icon: 'package',
+        title: 'Ready out of the box',
+        body: 'Case, neck strap, cleaning cloth and lens covers are all included, so nothing else needs buying before the first outing.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice, rated 4.5 with 50+ bought in the past month",
+      '20x magnification gives noticeably more reach than the 10x compacts it sits beside',
+      'BAK4 prisms with fully multi-coated optics rather than single-coated budget glass',
+      '25 mm eye relief and twist-up eyecups genuinely accommodate glasses',
+      'Case, neck strap, cleaning cloth and lens covers all included',
+    ],
+    cons: [
+      'Only 33 reviews, so the 4.5 rating rests on a much smaller sample than the established compacts around it',
+      '20x over a 25 mm objective leaves a 1.25 mm exit pupil — a dim image, and low light is where that shows first',
+      'Hand shake is magnified 20x too, so a steady view usually means bracing against something',
+      'Plastic body, no tripod socket listed, and it costs more than well-reviewed 10x25 alternatives',
+    ],
+    bestFor: [
+      'Daylight viewing where reach matters more than brightness — sightseeing, raptors on a distant perch, stage and stadium',
+      'Glasses wearers, thanks to the 25 mm eye relief and folding eyecups',
+      'Anyone who already owns a wide 8x or 10x and wants a pocketable high-power second pair',
+    ],
+    notIdealFor: [
+      'Dawn, dusk or woodland light, where the 1.25 mm exit pupil runs out first',
+      'Handheld use for long stretches without something to lean on',
+      'A first and only binocular — a 10x25 or 8x42 is easier to live with',
+    ],
+
+    score: 8.4,
+    verdict:
+      'The optics tick the right boxes for the money — BAK4, fully multi-coated, real eye relief — and 20x buys reach nothing else this size offers. Scored below the other 4.5-star compacts here deliberately: 33 reviews is thin evidence, and the 1.25 mm exit pupil is a genuine limitation rather than a quibble.',
+
+    faq: [
+      {
+        q: 'Is 20x better than the usual 10x compact?',
+        a: 'It is more magnification, which is not the same as better. You get twice the reach, but the same 25 mm lens now spreads its light over twice the magnification, so the image is dimmer and every tremor in your hands is doubled. In good light on a distant subject it wins; in poor light, or held unsupported, a 10x is the easier tool.',
+      },
+      {
+        q: 'Do they work if I wear glasses?',
+        a: 'Yes — 25 mm of eye relief is generous, and the eyecups twist down so you can hold the binoculars closer with spectacles on and still take in the whole field of view.',
+      },
+      {
+        q: 'What comes in the box?',
+        a: 'The binoculars, a carry case, a neck strap, a cleaning cloth and lens covers. deesoo bills it as a complete kit, and nothing further is needed to start using them.',
+      },
+      {
+        q: 'How do I focus them?',
+        a: 'A central knob between the barrels focuses both eyepieces at once, and the right eyepiece turns independently so you can set it once for any difference between your eyes and then use the centre knob alone.',
+      },
+    ],
+  },
+  {
+    slug: 'cigman-cnvpro-4k-night-vision-goggles',
+    asin: 'B0FG2L5PDY',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Cameras & Photography',
+    categoryPath: '/buyers-guide?category=cameras-photography',
+
+    brand: 'CIGMAN',
+    name: 'CNVPRO Night Vision Goggles 4K with 1000M Range, F/0.8 Aperture, 4" Display, Wi-Fi Control, IP54 Night Vision Scope with Flashlight, Backlit Buttons & 64GB Storage for Outdoor Use',
+    tagline: 'A 4-inch screen instead of an eyepiece, so two people can watch the same thing at once.',
+    description:
+      'Digital night vision built around an F/0.8 lens and a 4-inch display, recording to an included 64 GB card and streaming to your phone over Wi-Fi. The 5100 mAh battery runs 12 hours with the infrared illuminator on, which is the number that matters for actual night use.',
+
+    images: [
+      `/products/cigman-cnvpro-4k-night-vision-goggles/1.jpg`,
+      `/products/cigman-cnvpro-4k-night-vision-goggles/2.jpg`,
+      `/products/cigman-cnvpro-4k-night-vision-goggles/3.jpg`,
+      `/products/cigman-cnvpro-4k-night-vision-goggles/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.3 rating', sublabel: 'From 98 reviews' },
+      { icon: 'gauge', label: '1000 m range', sublabel: 'Maximum IR-assisted viewing' },
+      { icon: 'battery', label: '12–18 hours', sublabel: '5100 mAh, IR on or off' },
+      { icon: 'package', label: '64 GB card', sublabel: 'Included, plus cable and case' },
+    ],
+    specs: [
+      { icon: 'circle-dot', label: 'Aperture', value: 'F/0.8' },
+      { icon: 'monitor', label: 'Display', value: '4-inch screen' },
+      { icon: 'gauge', label: 'Viewing range', value: 'Up to 1000 m, IR-assisted' },
+      { icon: 'settings', label: 'Magnification', value: 'Up to 8x' },
+      { icon: 'wifi', label: 'Wi-Fi', value: 'Phone control within 30 m' },
+      { icon: 'battery', label: 'Battery', value: '5100 mAh — 18 h IR off, 12 h IR on' },
+      { icon: 'package', label: 'Storage', value: '64 GB microSD included' },
+      { icon: 'droplet', label: 'Weather rating', value: 'IP54 splash resistant' },
+    ],
+    features: [
+      {
+        icon: 'circle-dot',
+        title: 'F/0.8 aperture',
+        body: 'A very fast lens for the class, which is what lets the sensor work with the small amount of ambient light there is before the infrared illuminator has to take over.',
+      },
+      {
+        icon: 'monitor',
+        title: '4-inch screen, not an eyepiece',
+        body: 'The display sits on the back rather than behind your eyes, so someone else can see what you are seeing — genuinely useful with children, or when identifying something together.',
+      },
+      {
+        icon: 'layers',
+        title: '7-layer multi-coated lens',
+        body: 'CIGMAN quotes a 95% light transmission rate through the coated stack, the difference between a usable picture and a muddy one once light is scarce.',
+      },
+      {
+        icon: 'wifi',
+        title: 'Wi-Fi to your phone',
+        body: 'Connect within 30 m to change settings, watch the live view and pull footage off without unplugging anything or removing the card.',
+      },
+      {
+        icon: 'battery',
+        title: '5100 mAh on board',
+        body: 'Rated at 18 hours with the infrared off and 12 with it on, so a full night of recording is realistic rather than marketing.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'Tripod mount and metal body',
+        body: 'An aluminium and ABS shell with a tripod thread, so it can be left set up and pointed at one spot instead of held for hours.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice, and a Red Dot 2024 design award mark on CIGMAN's own packaging",
+      '4-inch rear screen means two people can watch at once, unlike eyepiece-only scopes',
+      'F/0.8 aperture and a 7-layer coated lens are strong optics for digital night vision',
+      'Genuinely complete kit: 64 GB card, USB-C cable, cleaning cloth, carry strap, carabiner compass and case',
+      'Records to card and transfers over Wi-Fi, with a tripod mount for static observation',
+    ],
+    cons: [
+      'A 4.3 rating from 98 reviews is the most modest score in this guide — decent, but not the near-universal approval the compacts here get',
+      'The title says "IP54 Waterproof", but IP54 is splash and rain resistance only — it is not rated for immersion',
+      'The headline 18-hour battery is with the infrared off; CIGMAN\'s own artwork puts it at 12 hours with IR on, which is how you will actually use it at night',
+      '1000 m is a maximum detection range in ideal conditions, not the distance at which you can identify what you are looking at',
+    ],
+    bestFor: [
+      'Wildlife watching after dark, where the shared screen and recording matter more than pocketability',
+      'Night-time property and land checks that benefit from a tripod mount and hours of runtime',
+      'Anyone who wants footage to keep rather than just a live view',
+    ],
+    notIdealFor: [
+      'Wet-weather work beyond rain and splashes — IP54 does not cover immersion',
+      'Anyone expecting long-range identification at the full 1000 m headline figure',
+      'Buyers on a tight budget, given sub-£100 digital night vision exists, including CIGMAN\'s own cheaper model',
+    ],
+
+    score: 8.0,
+    verdict:
+      'A well-specified digital night vision unit where the screen, the recording and the 12-hour IR runtime are the real selling points, not the headline numbers. Scored at 8.0 because 4.3 stars from 98 reviews is solid rather than emphatic, and because the marketing overstates both the waterproofing and the usable range.',
+
+    faq: [
+      {
+        q: 'How long does the battery actually last?',
+        a: 'The 5100 mAh cell is rated at 18 hours with the infrared illuminator switched off and 12 hours with it on. Since the illuminator is what makes it work in real darkness, plan around the 12-hour figure for night use.',
+      },
+      {
+        q: 'Is it waterproof?',
+        a: 'Not in the usual sense. IP54 covers dust and splashing water, so rain and spray are fine, but it is not rated for submersion despite the word "waterproof" appearing in the product title.',
+      },
+      {
+        q: 'How do I get photos and video off it?',
+        a: 'It records to the included 64 GB microSD card. You can connect a phone over its built-in Wi-Fi within about 30 metres to change settings, watch the live view and transfer files, or use the supplied USB-C cable.',
+      },
+      {
+        q: 'Does it see in complete darkness?',
+        a: 'Yes — the built-in infrared illuminator lights the scene invisibly to the naked eye, with a quoted maximum range of 1000 metres. Treat that as detection distance in good conditions; the range at which you can actually identify a subject is considerably shorter.',
+      },
+    ],
+  },
+  {
+    slug: 'oxford-hd-chain-lock-screamer-7-alarm',
+    asin: 'B07DN6T8CD',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Car & Motorbike',
+    categoryPath: '/buyers-guide?category=car-motorbike',
+
+    brand: 'Oxford',
+    name: 'OF159 HD Motorbike Chain Lock + Screamer 7 Alarm Disc Lock Yellow/Black LK290 + Free Reminder Cable 1.5M',
+    tagline: 'Two locks in one box — a hardened chain for the wheel and an alarmed disc lock for the brake.',
+    description:
+      'Oxford\'s mid-range HD chain paired with the Screamer 7 alarm disc lock, so a thief has to defeat a 9.5 mm hardened chain and set off a 100 dB siren. The padlock shackle doubles as a disc lock of its own, and a yellow reminder cable stops you riding away with the disc still locked.',
+
+    images: [
+      `/products/oxford-hd-chain-lock-screamer-7-alarm/1.jpg`,
+      `/products/oxford-hd-chain-lock-screamer-7-alarm/2.jpg`,
+      `/products/oxford-hd-chain-lock-screamer-7-alarm/3.jpg`,
+      `/products/oxford-hd-chain-lock-screamer-7-alarm/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.3 rating', sublabel: '274 reviews, 300+ bought last month' },
+      { icon: 'badge-check', label: 'Sold Secure', sublabel: 'Motor Scooter Silver, ART 4114' },
+      { icon: 'volume-2', label: '100 dB alarm', sublabel: 'Motion and shock sensors' },
+      { icon: 'ruler', label: '1.5 m chain', sublabel: '9.5 mm hardened square links' },
+    ],
+    specs: [
+      { icon: 'ruler', label: 'Chain length', value: '1.5 m' },
+      { icon: 'layers', label: 'Chain', value: '9.5 mm hardened square link' },
+      { icon: 'lock', label: 'Padlock', value: 'Double locking, hardened shackle that doubles as a disc lock' },
+      { icon: 'badge-check', label: 'Approvals', value: 'ART 4114, Sold Secure Motor Scooter Silver' },
+      { icon: 'volume-2', label: 'Alarm', value: '100 dB siren' },
+      { icon: 'settings', label: 'Sensors', value: 'Motion and shock' },
+      { icon: 'circle-dot', label: 'Disc lock pin', value: '7 mm' },
+      { icon: 'battery', label: 'Alarm battery', value: 'Lithium CR2' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: '9.5 mm hardened square links',
+        body: 'Square links are harder to get a bolt cropper jaw around than round ones, and the fabric sleeve keeps the chain off your paintwork while you thread it through a wheel.',
+      },
+      {
+        icon: 'lock',
+        title: 'The padlock is also a disc lock',
+        body: 'The double-locking shackle is short enough to pass through a brake disc on its own, so you can leave the chain at home for a quick stop and still lock the bike.',
+      },
+      {
+        icon: 'volume-2',
+        title: '100 dB alarm on the disc',
+        body: 'Motion and shock sensors trigger the Screamer 7 siren, so an attempt to move or lever the bike draws attention rather than passing quietly.',
+      },
+      {
+        icon: 'droplet',
+        title: 'Reminder cable included',
+        body: 'A 1.5 m bright cable runs from the disc lock to the bars. Riding off with a disc lock still fitted is how people bend forks and drop bikes, and this is the cheap fix for it.',
+      },
+      {
+        icon: 'badge-check',
+        title: 'Independently rated',
+        body: 'ART 4114 approved and Sold Secure Motor Scooter Silver — an actual third-party test result rather than a manufacturer security claim.',
+      },
+      {
+        icon: 'package',
+        title: 'Three keys, and replacements',
+        body: 'Both locks ship with keys and a key replacement service. Note the key number down when it arrives — that is what a replacement is cut from if you lose the set.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice, 4.3 from 274 reviews with 300+ bought in the past month",
+      'Two separate locks in one purchase — chain for the wheel, alarmed disc lock for the brake',
+      'Independently rated: ART 4114 and Sold Secure Motor Scooter Silver',
+      'Amazon\'s review summary reports buyers rate the chain quality, durability and value highly',
+      'Reminder cable and key replacement service included rather than sold separately',
+    ],
+    cons: [
+      'Amazon\'s review summary flags that some buyers report the alarm stops working after getting wet, despite the water-resistant keyway cover',
+      'Sold Secure Motor Scooter Silver is a mid-tier rating — Oxford describe it as a mid-range lock, and Gold or Diamond chains resist a determined attack for longer',
+      'Alarm volume draws mixed comments: some buyers find 100 dB not deafening, others find it too loud',
+      '1.5 m is enough for a wheel and a post but short for chaining through several bikes',
+    ],
+    bestFor: [
+      'Everyday parking where a visible chain plus an audible alarm is the deterrent that matters',
+      'Riders who want one purchase that covers both a chain and a disc lock',
+      'Scooters and mid-value bikes, which is the risk tier this rating is aimed at',
+    ],
+    notIdealFor: [
+      'High-value bikes left on the street overnight, which warrant a Sold Secure Gold or Diamond chain',
+      'Permanently outdoor storage, given the reported alarm faults after water exposure',
+      'Securing several bikes at once, or reaching a distant anchor point, at 1.5 m',
+    ],
+
+    score: 8.0,
+    verdict:
+      'A sensible bundle: the chain earns its reputation and the alarmed disc lock adds a layer most riders skip, all for less than the two bought separately. It is a Silver-rated deterrent rather than a fortress, and the alarm electronics are the weak link buyers report — so treat the chain as the real security and the siren as a bonus.',
+
+    faq: [
+      {
+        q: 'How secure is it really?',
+        a: 'It carries ART 4114 approval and a Sold Secure Motor Scooter Silver rating — independently tested, and mid-tier. Oxford themselves describe the HD chain as a mid-range lock that is light enough to carry but secure enough to deter opportunists. For a high-value bike left out overnight, a Sold Secure Gold or Diamond chain is the right step up.',
+      },
+      {
+        q: 'How does the alarm work?',
+        a: 'The Screamer 7 uses motion and shock sensors to trigger a 100 dB siren, powered by a lithium CR2 battery, and locks with a simple push. Worth knowing that Amazon\'s review summary reports some buyers finding the alarm stops working after it gets wet.',
+      },
+      {
+        q: 'What is the yellow cable for?',
+        a: 'It is a reminder cable. You run the 1.5 m bright cable from the fitted disc lock to your handlebars so you cannot ride off with the lock still on the disc — which is how forks get bent and bikes get dropped.',
+      },
+      {
+        q: 'What if I lose the keys?',
+        a: 'Both locks come with keys and a key replacement service. Make a note of the key number when the lock arrives and keep it somewhere safe — a replacement is cut from that number if the whole set goes missing.',
+      },
+    ],
+  },
+  {
+    slug: 'insta360-ace-pro-2-ski-bundle',
+    asin: 'B0DKBSS3L8',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Cameras & Photography',
+    categoryPath: '/buyers-guide?category=cameras-photography',
+
+    brand: 'Insta360',
+    name: 'Ace Pro 2 Ski Bundle — 8K Waterproof Action Camera Co-Engineered with Leica, 1/1.3" Sensor, Dual AI Chip, Leading Low Light, Superior Audio, Flip Screen & AI Editing for Vlogs',
+    tagline: 'A Leica-designed lens on a 1/1.3-inch sensor, bundled with the mounts a winter trip actually needs.',
+    description:
+      'Insta360\'s flagship action camera, built around a large 1/1.3" sensor and a Leica Summarit lens, with two processors handling noise reduction and AI work separately. This is the Winter bundle — the camera plus two batteries, a 128 GB card, chest strap, adhesive mounts and an invisible selfie stick.',
+
+    images: [
+      `/products/insta360-ace-pro-2-ski-bundle/1.jpg`,
+      `/products/insta360-ace-pro-2-ski-bundle/2.jpg`,
+      `/products/insta360-ace-pro-2-ski-bundle/3.jpg`,
+      `/products/insta360-ace-pro-2-ski-bundle/4.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'star', label: '4.5 rating', sublabel: '815 reviews, 89% at four stars or more' },
+      { icon: 'gauge', label: '8K30 video', sublabel: '4K60 Active HDR, 13.5 stops' },
+      { icon: 'droplet', label: '12 m waterproof', sublabel: 'Rated down to −20 °C' },
+      { icon: 'package', label: '10-item bundle', sublabel: '2 batteries and a 128 GB card' },
+    ],
+    specs: [
+      { icon: 'circle-dot', label: 'Sensor', value: '1/1.3" CMOS, 2.4 μm equivalent pixels' },
+      { icon: 'layers', label: 'Lens', value: 'Leica Super-Summarit, f/2.6, 157° wide angle' },
+      { icon: 'gauge', label: 'Max video', value: '8K30fps, 4K60fps Active HDR' },
+      { icon: 'sliders', label: 'Dynamic range', value: '13.5 stops' },
+      { icon: 'zap', label: 'Processing', value: 'Dual chip — Pro Imaging plus 5nm AI' },
+      { icon: 'monitor', label: 'Screen', value: '2.5" flip touchscreen' },
+      { icon: 'droplet', label: 'Waterproof', value: '12 m (39 ft), operates to −20 °C' },
+      { icon: 'battery', label: 'Batteries', value: '2 × 1800 mAh included' },
+    ],
+    features: [
+      {
+        icon: 'circle-dot',
+        title: 'Leica lens on a big sensor',
+        body: 'A 1/1.3-inch sensor is large for an action camera, and the Leica Super-Summarit optics in front of it are the reason the image holds together when the light drops.',
+      },
+      {
+        icon: 'zap',
+        title: 'Two chips, not one',
+        body: 'A dedicated Pro Imaging chip handles noise reduction while a 5nm AI chip does the rest — Insta360 claims twice the computing power of the original Ace Pro.',
+      },
+      {
+        icon: 'monitor',
+        title: '2.5-inch flip touchscreen',
+        body: 'Flips up so you can frame yourself, with higher pixel density and brightness than the previous generation and a hinge rated for twice the durability.',
+      },
+      {
+        icon: 'volume-2',
+        title: 'Snap-on Wind Guard',
+        body: 'A physical wind guard clips on and off as conditions change, paired with revised audio processing — the difference between usable narration and roar on a fast descent.',
+      },
+      {
+        icon: 'droplet',
+        title: 'Waterproof and cold-rated',
+        body: 'Sealed to 12 m without a case and specified to keep working at −20 °C, which is the specification that matters for a camera sold as a ski bundle.',
+      },
+      {
+        icon: 'package',
+        title: 'The Winter kit',
+        body: 'Two batteries, a 128 GB microSD card, chest strap, flexible adhesive mount, standard mount, mic cap, USB-C cable and a carbon-fibre invisible selfie stick.',
+      },
+    ],
+
+    pros: [
+      '4.5 stars across 815 reviews, with 76% leaving five stars',
+      'Large 1/1.3" sensor and Leica Summarit optics — genuinely a step above typical action-camera imaging',
+      'Amazon\'s review summary reports buyers praising photo and video quality and finding it easy to use',
+      'Bundle includes two batteries and a 128 GB card, so there is nothing essential left to buy',
+      'Waterproof to 12 m with no housing and rated to −20 °C',
+    ],
+    cons: [
+      'Amazon\'s review summary reports mixed feedback on performance, functionality, stability, field of view and value for money',
+      '5% of reviews are one star, a higher tail than the rating alone suggests',
+      'Insta360 sells this camera in nine different bundles at different prices — it is easy to buy the wrong accessory set',
+      'Flagship pricing, and the Winter bundle is not the cheapest way into the same camera',
+    ],
+    bestFor: [
+      'Skiing, snowboarding and winter sports, which is exactly what this accessory set is chosen for',
+      'Vloggers who need a flip screen and want low-light footage that holds up',
+      'Anyone diving, riding or filming in weather that would end a phone',
+    ],
+    notIdealFor: [
+      'Buyers who only need the camera — a cheaper bundle covers that for less',
+      'Anyone wanting a proven-simple point-and-shoot, given the mixed comments on functionality',
+      'Tight budgets, with capable action cameras available for a fraction of this',
+    ],
+
+    score: 9.0,
+    verdict:
+      'The imaging is the reason to buy it — a 1/1.3-inch sensor behind Leica glass, with dual processors and a genuinely useful flip screen, and the Winter bundle adds the mounts and spare power a ski trip needs. The reviews are strong on image quality and more mixed on everything else, so buy it for the pictures rather than the feature list.',
+
+    faq: [
+      {
+        q: 'What exactly comes in the Ski bundle?',
+        a: 'One Ace Pro 2, a Wind Guard fitted by default, two batteries, a standard mount, a mic cap, a USB-C cable, a 128 GB microSD card, a chest strap, a flexible adhesive mount and an Action Invisible Selfie Stick.',
+      },
+      {
+        q: 'Do I need a waterproof housing?',
+        a: 'No. The camera is sealed to 12 metres (39 ft) as it comes, and Insta360 rate it to keep working down to −20 °C, so snow and cold are within specification without an extra case.',
+      },
+      {
+        q: 'How good is it in low light?',
+        a: 'Low light is the headline claim. The 1/1.3" sensor gives 13.5 stops of dynamic range, and PureVideo mode applies AI noise reduction at up to 4K60fps. Reviewers single out image quality as the camera\'s strongest point.',
+      },
+      {
+        q: 'Is this the same camera as the other bundles?',
+        a: 'Yes — the Ace Pro 2 is identical across the range. What changes is the accessory set and the price: Insta360 list Standard, Starter, Bike, Motorcycle, POV, Vlog, Get-Set, MM93 and Winter bundles, so pick the one whose mounts match what you film.',
+      },
+    ],
+  },
+  {
+    slug: 'dji-osmo-pocket-3-creator-combo',
+    asin: 'B0CG19FGQ5',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Cameras & Photography',
+    categoryPath: '/buyers-guide?category=cameras-photography',
+
+    brand: 'DJI',
+    name: 'Osmo Pocket 3 Creator Combo, Vlogging Camera With 1" CMOS & 4K/120fps | 3-Axis Stabilization, Spotlight Follow, Fast Focusing, Mic Included for Clear Sound, Small Camera for Photography',
+    tagline: 'A 1-inch sensor on a real motorised gimbal, in something that fits a jacket pocket.',
+    description:
+      'A pocket vlogging camera built around a 1-inch CMOS sensor and a three-axis mechanical gimbal — actual moving hardware rather than software smoothing. The Creator Combo adds the DJI Mic 2 transmitter, battery handle, wide-angle lens and mini tripod, which is most of what a vlogging setup needs.',
+
+    images: [
+      `/products/dji-osmo-pocket-3-creator-combo/1.jpg`,
+      `/products/dji-osmo-pocket-3-creator-combo/2.jpg`,
+      `/products/dji-osmo-pocket-3-creator-combo/3.jpg`,
+      `/products/dji-osmo-pocket-3-creator-combo/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.5 rating', sublabel: '6,643 reviews, 79% five-star' },
+      { icon: 'circle-dot', label: '1-inch CMOS', sublabel: '4K at up to 120fps' },
+      { icon: 'move', label: '3-axis gimbal', sublabel: 'Mechanical, not software' },
+      { icon: 'package', label: '12-piece combo', sublabel: 'Mic 2, battery handle, tripod' },
+    ],
+    specs: [
+      { icon: 'circle-dot', label: 'Sensor', value: '1-inch CMOS' },
+      { icon: 'gauge', label: 'Max video', value: '4K at 120fps' },
+      { icon: 'move', label: 'Stabilisation', value: '3-axis mechanical gimbal' },
+      { icon: 'monitor', label: 'Screen', value: '2-inch rotating touchscreen' },
+      { icon: 'layers', label: 'Colour', value: '10-bit, D-Log M' },
+      { icon: 'sliders', label: 'Lens', value: '20 mm equivalent, f/2.0' },
+      { icon: 'volume-2', label: 'Audio', value: 'Stereo, plus DJI Mic 2 transmitter' },
+      { icon: 'package', label: 'Storage', value: 'microSD (not included)' },
+    ],
+    features: [
+      {
+        icon: 'move',
+        title: 'A gimbal, not a crop',
+        body: 'Three motorised axes physically hold the camera level, so footage stays smooth without cropping into the sensor the way electronic stabilisation does.',
+      },
+      {
+        icon: 'monitor',
+        title: 'Screen rotates to portrait',
+        body: 'Twist the 2-inch touchscreen and the camera switches between horizontal and vertical framing — the difference between shooting for YouTube and shooting for a phone feed.',
+      },
+      {
+        icon: 'users',
+        title: 'ActiveTrack 6.0',
+        body: 'Set it on the tripod and the gimbal follows you around the frame, so you can move, present or demonstrate something without anyone behind the camera.',
+      },
+      {
+        icon: 'volume-2',
+        title: 'DJI Mic 2 in the box',
+        body: 'The Creator Combo bundles a Mic 2 transmitter with windscreen and magnet clip, which is what fixes the audio that usually lets small-camera footage down.',
+      },
+      {
+        icon: 'layers',
+        title: '10-bit D-Log M',
+        body: 'A billion colours and a flat log profile for grading, so footage holds up when you push the highlights and shadows of a sunrise in post.',
+      },
+      {
+        icon: 'package',
+        title: 'The whole Creator kit',
+        body: 'Battery handle, mini tripod, wide-angle lens, 1/4" thread handle, protective cover, wrist strap, carrying bag and USB-C cable, on top of the camera and mic.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice, 4.5 stars across 6,643 reviews with 79% leaving five stars",
+      'A 1-inch sensor is large for this size, and it shows most in low light',
+      'True mechanical three-axis stabilisation rather than a software crop',
+      'Amazon\'s review summary reports buyers praising video quality, ease of use and portability',
+      'Creator Combo includes the DJI Mic 2 transmitter, battery handle, tripod and wide-angle lens',
+    ],
+    cons: [
+      'Amazon\'s review summary notes customers disagree on reliability and value for money',
+      '6% of reviews are one star — a higher tail than the 4.5 average suggests',
+      'A newer model exists: DJI now sell the Osmo Pocket 4P, so this is the previous generation',
+      'No microSD card in the box, and the moving gimbal is more fragile than a sealed action camera',
+    ],
+    bestFor: [
+      'Vloggers and creators who want broadcast-looking footage without carrying a rig',
+      'Travel and events, where a pocket camera with a real gimbal beats a phone',
+      'Anyone filming themselves alone, thanks to ActiveTrack and the rotating screen',
+    ],
+    notIdealFor: [
+      'Rough, wet or impact-heavy filming — this is not a waterproof action camera',
+      'Buyers who only want the camera, since the plain Osmo Pocket 3 costs noticeably less',
+      'Anyone who would rather wait for or buy the newer Pocket 4P generation',
+    ],
+
+    score: 9.1,
+    verdict:
+      'Still the reference pocket vlogging camera: a 1-inch sensor and a genuine motorised gimbal in something you will actually carry, and the Creator Combo bundles the mic and handle you would otherwise buy separately. The caveats are that reliability divides reviewers and a newer Pocket generation now exists.',
+
+    faq: [
+      {
+        q: 'What is in the Creator Combo?',
+        a: 'The Osmo Pocket 3, a DJI Mic 2 transmitter with windscreen and clip magnet, the battery handle, a handle with a 1/4" thread, a wide-angle lens, the Osmo Mini Tripod, a protective cover, wrist strap, carrying bag and a USB-C cable. No memory card is included.',
+      },
+      {
+        q: 'How is this different from the cheaper Osmo Pocket 3?',
+        a: 'The camera is identical. The Creator Combo adds the Mic 2 transmitter, battery handle, wide-angle lens and tripod. DJI also sell an Audio Combo with a full mic kit, so pick by which accessories you need.',
+      },
+      {
+        q: 'Is the stabilisation really better than a phone?',
+        a: 'It works differently. Three motors physically move the camera to keep it level, so nothing is cropped away from the sensor — unlike electronic stabilisation, which trims the frame to compensate. That is why the footage stays steady while walking or running.',
+      },
+      {
+        q: 'Can it shoot vertical video?',
+        a: 'Yes. The 2-inch touchscreen rotates, and the camera switches between horizontal and vertical framing with it, so you can shoot natively for social feeds rather than cropping afterwards.',
+      },
+    ],
+  },
+  {
+    slug: 'tcl-65c7l-sqd-mini-led-tv',
+    asin: 'B0GY5DJ1MV',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Electronics & Gadgets',
+    categoryPath: '/buyers-guide?category=electronics-gadgets',
+
+    brand: 'TCL',
+    name: '65C7L-UK 65 Inch SQD-Mini LED TV, 4K HDR 3000 nits and 1,152 dimming zones, Google TV, Dolby Vision & Atmos, Audio by Bang & Olufsen, 144Hz, Apple AirPlay 2 & Alexa (2026 New Model)',
+    tagline: '1,152 dimming zones and 3,000 nits, with Bang & Olufsen doing the sound.',
+    description:
+      'TCL\'s 2026 SQD-Mini LED panel, pairing quantum-dot colour with 1,152 individually controlled dimming zones for genuine contrast rather than a grey approximation of black. Google TV, a 144 Hz panel and Bang & Olufsen tuning cover streaming, gaming and sound in one box.',
+
+    images: [
+      `/products/tcl-65c7l-sqd-mini-led-tv/1.jpg`,
+      `/products/tcl-65c7l-sqd-mini-led-tv/2.jpg`,
+      `/products/tcl-65c7l-sqd-mini-led-tv/3.jpg`,
+      `/products/tcl-65c7l-sqd-mini-led-tv/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.7 rating', sublabel: 'From just 10 reviews so far' },
+      { icon: 'flame', label: '3,000 nits', sublabel: '1,152 dimming zones' },
+      { icon: 'gauge', label: '144 Hz', sublabel: 'FreeSync Premium Pro, 288 VRR mode' },
+      { icon: 'volume-2', label: 'Bang & Olufsen', sublabel: 'Dolby Atmos and DTS:X' },
+    ],
+    specs: [
+      { icon: 'monitor', label: 'Screen', value: '65 inch, 4K, 16:9' },
+      { icon: 'layers', label: 'Panel', value: 'SQD-Mini LED, 1,152 dimming zones' },
+      { icon: 'flame', label: 'Peak brightness', value: 'Up to 3,000 nits' },
+      { icon: 'droplet', label: 'Colour', value: '100% BT.2020, Super Quantum Dot' },
+      { icon: 'gauge', label: 'Refresh rate', value: '144 Hz, 288 VRR Game Accelerator' },
+      { icon: 'volume-2', label: 'Audio', value: 'Bang & Olufsen, Dolby Atmos, DTS:X' },
+      { icon: 'wifi', label: 'Connectivity', value: 'Wi-Fi, Bluetooth, Ethernet, HDMI, USB' },
+      { icon: 'ruler', label: 'Dimensions', value: '144.4 W × 86.9 H × 36.9 D cm, 19.9 kg with stand' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: '1,152 dimming zones',
+        body: 'Mini LED backlights split into over a thousand independently controlled zones, so a bright object on a dark background keeps its edge instead of sitting in a grey halo.',
+      },
+      {
+        icon: 'flame',
+        title: '3,000 nits of peak brightness',
+        body: 'Enough headroom that HDR highlights actually read as bright rather than merely lighter grey, and enough to stay watchable in a sunlit room.',
+      },
+      {
+        icon: 'droplet',
+        title: '100% BT.2020 colour',
+        body: 'TCL claim full coverage of the broadcast colour standard the best content is graded against, using a Super Quantum Dot layer and an Ultra Colour Filter panel.',
+      },
+      {
+        icon: 'gauge',
+        title: 'Built for consoles',
+        body: '144 Hz native with FreeSync Premium Pro, Dolby Vision Gaming and a 288 VRR Game Accelerator mode, plus TCL\'s Game Master tools.',
+      },
+      {
+        icon: 'volume-2',
+        title: 'Tuned by Bang & Olufsen',
+        body: 'B&O tuning with Dolby Atmos and DTS:X — not a substitute for a soundbar, but a long way from the thin sound most flat panels ship with.',
+      },
+      {
+        icon: 'monitor',
+        title: 'Google TV, AirPlay 2 and Alexa',
+        body: 'Google TV handles the apps, with Apple AirPlay 2 for casting from an iPhone and Alexa for voice, so nothing extra is needed to stream.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice, currently rated 4.7 with no reviews below three stars",
+      '1,152 dimming zones and 3,000 nits is serious Mini LED specification at this price',
+      'Certified across the board: Dolby Vision IQ, HDR10+, IMAX Enhanced, Filmmaker Mode, Dolby Atmos, DTS:X',
+      'Genuine gaming credentials — 144 Hz, FreeSync Premium Pro and Dolby Vision Gaming',
+      'TCL offer a 5-year warranty, and the stand, remote and cables are all in the box',
+    ],
+    cons: [
+      'Only 10 reviews — a 4.7 average on a brand-new 2026 model is almost no evidence either way',
+      'No long-term reliability record yet, which matters more on a £1,000+ purchase than a £20 one',
+      'The 5-year warranty is by redemption within 30 days of purchase, not automatic — you have to claim it',
+      'Five sizes share this listing from 55 to 98 inches, so it is easy to order the wrong one',
+    ],
+    bestFor: [
+      'Films and HDR content, where the dimming zones and peak brightness do the most work',
+      'Console gaming at 144 Hz with variable refresh rate',
+      'Bright living rooms, thanks to the anti-reflection screen and 3,000-nit peak',
+    ],
+    notIdealFor: [
+      'Cautious buyers who want an established review record before spending four figures',
+      'Anyone needing a wall bracket included — it is not, and VESA is 300 × 300 mm',
+      'Small rooms: at 144 cm wide this needs a stand or wall of real width',
+    ],
+
+    score: 8.5,
+    verdict:
+      'On paper this is a lot of television for the money — 1,152 dimming zones, 3,000 nits and B&O sound are specifications usually attached to a bigger price. The honest caveat is evidence: ten reviews on a 2026 model tell you very little, so the score reflects the specification and the thin track record rather than a proven performer.',
+
+    faq: [
+      {
+        q: 'How good is the contrast really?',
+        a: 'The panel splits its Mini LED backlight into 1,152 independently dimmed zones and peaks at 3,000 nits. More zones means finer control over which parts of the screen are lit, which is what keeps bright objects from glowing into surrounding dark areas.',
+      },
+      {
+        q: 'Is it a good gaming TV?',
+        a: 'The specification says yes — 144 Hz native, AMD FreeSync Premium Pro, Dolby Vision Gaming and a 288 VRR Game Accelerator mode, alongside TCL\'s Game Master features. HDMI, Bluetooth and Wi-Fi are all present for consoles and peripherals.',
+      },
+      {
+        q: 'What comes in the box, and can I wall-mount it?',
+        a: 'The TV, stand, remote control, power cable and user manual. There is no wall bracket included; the mounting pattern is VESA 300 × 300 mm and the set weighs 18 kg without its stand.',
+      },
+      {
+        q: 'Should I be worried about only ten reviews?',
+        a: 'It is worth knowing about. This is a 2026 model that has not been on sale long, so the 4.7 average rests on a very small sample and there is no long-term reliability data yet. The specification is strong; the evidence behind it is simply thin so far.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

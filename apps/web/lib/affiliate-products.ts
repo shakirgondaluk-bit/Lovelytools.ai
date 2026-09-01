@@ -2222,6 +2222,124 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'epson-ecotank-et-2910-printer',
+    asin: 'B0H1J23LT5',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Computers & Accessories',
+    categoryPath: '/buyers-guide?category=computers-accessories',
+
+    brand: 'Epson',
+    name: 'EcoTank ET-2910 | Busy Home Use | Wi-Fi | A4 | Print, Copy, Scan | AirPrint Compatible | Compact | Includes Up To 3 Years of Ink',
+    tagline: 'Refillable bottles instead of cartridges — the printer that stops the ink bill.',
+    description:
+      'An A4 print, copy and scan machine built around refillable tanks rather than cartridges, shipping with enough ink in the box for up to 4,700 black pages. The saving is real but the maths is Epson\'s: every headline figure here is a manufacturer claim under its own test conditions.',
+
+    images: [
+      `/products/epson-ecotank-et-2910-printer/1.jpg`,
+      `/products/epson-ecotank-et-2910-printer/2.jpg`,
+      `/products/epson-ecotank-et-2910-printer/3.jpg`,
+      `/products/epson-ecotank-et-2910-printer/4.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'package', label: '4 ink bottles', sublabel: 'In the box, up to 3 years of ink' },
+      { icon: 'layers', label: '4,700 pages', sublabel: 'Black per set; 7,500 in colour' },
+      { icon: 'gauge', label: '33 ppm mono', sublabel: '15 ppm in colour' },
+      { icon: 'users', label: '100+ bought', sublabel: 'In the past month on Amazon' },
+    ],
+    specs: [
+      { icon: 'monitor', label: 'Functions', value: 'Print, copy and scan, A4' },
+      { icon: 'droplet', label: 'Ink system', value: 'Refillable EcoTank, key-lock bottles' },
+      { icon: 'layers', label: 'Yield per set', value: 'Up to 4,700 pages black, 7,500 colour' },
+      { icon: 'package', label: 'Bottle equivalence', value: "Up to 63 cartridges' worth of ink" },
+      { icon: 'gauge', label: 'Print speed', value: '33 ppm mono, 15 ppm colour' },
+      { icon: 'circle-dot', label: 'Ink tanks', value: '4 — black, cyan, magenta, yellow' },
+      { icon: 'wifi', label: 'Connectivity', value: 'Wi-Fi, Apple AirPrint, Epson Smart Panel app' },
+      { icon: 'ruler', label: 'Weight', value: '4.1 kg' },
+    ],
+    features: [
+      {
+        icon: 'droplet',
+        title: 'Bottles, not cartridges',
+        body: 'Ink pours into four refillable tanks through a key-lock bottle system designed so the wrong colour will not fit and nothing spills on the way in.',
+      },
+      {
+        icon: 'layers',
+        title: 'Thousands of pages per fill',
+        body: 'Epson rate one set of bottles at up to 4,700 black pages and 7,500 in colour — the reason the machine costs more up front and less to run.',
+      },
+      {
+        icon: 'refresh-ccw',
+        title: 'No cartridges to throw away',
+        body: 'Refilling a tank means no plastic cartridge each time, which Epson frame as zero cartridge waste alongside the running-cost saving.',
+      },
+      {
+        icon: 'ruler',
+        title: 'Compact for a tank printer',
+        body: 'Epson claim at least 25% smaller than competing models, and at 4.1 kg it is light enough to move off a desk when it is not in use.',
+      },
+      {
+        icon: 'wifi',
+        title: 'Wi-Fi and AirPrint',
+        body: 'Prints from iPhone and iPad over AirPrint with nothing to install, and the Epson Smart Panel app handles setup, monitoring and printing from Android too.',
+      },
+      {
+        icon: 'gauge',
+        title: '33 pages a minute in mono',
+        body: 'Quoted at 33 ppm black and 15 ppm colour, which is quick for a home machine on plain text but well short of an office laser on long colour jobs.',
+      },
+    ],
+
+    pros: [
+      'Refillable tanks remove the cartridge habit that costs more than the printer over time',
+      'Ships with four bottles — Epson quote up to 3 years of ink, 4,700 black pages per set',
+      'Up to 63 cartridges of ink in one set of bottles, with no cartridge plastic to bin',
+      'Wi-Fi with Apple AirPrint and the Epson Smart Panel app for phone printing',
+      'Compact and light at 4.1 kg, which Epson put at 25% smaller than rival tank models',
+    ],
+    cons: [
+      'Amazon shows zero customer reviews for this listing — there is no buyer feedback to judge it on yet',
+      'Every headline number is Epson\'s own, asterisked to footnotes: "up to" 95% savings, "up to" 3 years, page yields under Epson test conditions',
+      'No LCD screen — Epson\'s own photos show a panel of buttons and indicator lights only',
+      '15 ppm in colour is modest, so long colour jobs are slow next to a laser',
+    ],
+    bestFor: [
+      'Households that print often enough for cartridge costs to hurt',
+      'Homework, forms and everyday documents where running cost matters more than speed',
+      'Anyone printing from a phone or tablet, thanks to AirPrint and the Smart Panel app',
+    ],
+    notIdealFor: [
+      'Buyers who want a review record before committing — this listing has none',
+      'High-volume colour work, where 15 ppm and inkjet running costs both bite',
+      'Anyone who needs an on-device screen for menus rather than app or button control',
+    ],
+
+    score: 7.5,
+    verdict:
+      'The EcoTank proposition is sound: pay more once and stop buying cartridges, with four bottles and thousands of pages in the box. The score is deliberately restrained because this listing carries no customer reviews at all, so unlike every other product here it rests on the specification and Epson\'s own claims rather than on what buyers found.',
+
+    faq: [
+      {
+        q: 'How many pages does the included ink actually print?',
+        a: 'Epson quote up to 4,700 pages in black and 7,500 in colour from one set of bottles, which they describe as up to three years of ink. Those are manufacturer figures measured under Epson\'s own conditions, so treat them as a ceiling rather than a promise.',
+      },
+      {
+        q: 'Does it have any customer reviews?',
+        a: 'No. At the time this page was written Amazon showed "There are 0 customer reviews" for this listing, with an empty rating histogram. Sibling EcoTank models on the same page carry ratings ranging from 3.8 to 4.7, so it is worth comparing them before deciding.',
+      },
+      {
+        q: 'Can I print from my phone?',
+        a: 'Yes. It is Apple AirPrint compatible, so an iPhone or iPad can print with nothing installed, and the Epson Smart Panel app covers setup, monitoring and printing on mobile more generally.',
+      },
+      {
+        q: 'How is refilling different from cartridges?',
+        a: 'Ink comes in four bottles that pour into fixed tanks on the printer, using a key-lock design so each bottle only fits its own colour. Epson put one set at up to 63 cartridges\' worth of ink, and there is no cartridge to dispose of each time.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

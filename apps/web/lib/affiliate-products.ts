@@ -2459,6 +2459,125 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'sebson-pir-motion-sensor-outdoor',
+    asin: 'B08TCNP9GW',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Lighting & Electrical',
+    categoryPath: '/buyers-guide?category=lighting-electrical',
+
+    brand: 'SEBSON',
+    name: 'PIR Sensor Outdoor IP44 Wall Surface-mounted 12m/180° LED Suitable 400W, Programmable Infrared Motion Sensor, 3 IR Sensors Range max. 12m/180°, Swivelling, 3-Wire',
+    tagline: 'The part that turns an always-on floodlight into one that only comes on when someone is there.',
+    description:
+      'A wall-mounted PIR that switches any light up to 400 W of LED load, with dials for how long it stays on and how dark it has to be first. Three infrared sensors cover 180° out to 12 metres, and the head swivels to aim the detection zone after mounting.',
+
+    images: [
+      `/products/sebson-pir-motion-sensor-outdoor/1.jpg`,
+      `/products/sebson-pir-motion-sensor-outdoor/2.jpg`,
+      `/products/sebson-pir-motion-sensor-outdoor/3.jpg`,
+      `/products/sebson-pir-motion-sensor-outdoor/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.2 rating', sublabel: '6,386 reviews, 300+ bought last month' },
+      { icon: 'move', label: '12 m / 180°', sublabel: 'Three infrared sensors' },
+      { icon: 'zap', label: '400 W LED', sublabel: '800 W incandescent' },
+      { icon: 'timer', label: '10 s – 15 min', sublabel: 'Adjustable on-time' },
+    ],
+    specs: [
+      { icon: 'move', label: 'Detection', value: 'Up to 12 m, 180° arc' },
+      { icon: 'circle-dot', label: 'Sensors', value: '3 infrared sensors' },
+      { icon: 'sliders', label: 'Head adjustment', value: '100° horizontal, 40° vertical' },
+      { icon: 'zap', label: 'Max load', value: '400 W LED, 800 W incandescent, 230 V' },
+      { icon: 'timer', label: 'On-time', value: '10 seconds to 15 minutes' },
+      { icon: 'gauge', label: 'Light threshold', value: '3 to 2,000 lux' },
+      { icon: 'droplet', label: 'Weather rating', value: 'IP44' },
+      { icon: 'ruler', label: 'Size', value: '79 × 55.5 × 67.5 mm, 97 g' },
+    ],
+    features: [
+      {
+        icon: 'move',
+        title: '180° across 12 metres',
+        body: 'Three infrared sensors cover a 180-degree arc out to 12 m in open ground, and reviewers report it picking up people from the far side of a road.',
+      },
+      {
+        icon: 'timer',
+        title: 'On-time from 10 seconds',
+        body: 'A dial sets how long the light stays on after the last movement, anywhere from ten seconds to a quarter of an hour — short for a doorway, long for a driveway.',
+      },
+      {
+        icon: 'gauge',
+        title: 'Dusk threshold, 3 to 2,000 lux',
+        body: 'A second dial decides how dark it has to be before the sensor bothers switching anything on, so it can be set to ignore daylight entirely.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Aim it after mounting',
+        body: 'The head swivels 100° horizontally and 40° vertically, so the detection zone can be pointed at the path and away from the road once it is on the wall.',
+      },
+      {
+        icon: 'zap',
+        title: 'Rated for LED loads',
+        body: 'Switches up to 400 W of LED or energy-saving lamps and 800 W of incandescent. Older PIRs often misbehave with low-wattage LEDs, so a stated LED rating matters.',
+      },
+      {
+        icon: 'ruler',
+        title: 'Small enough to disappear',
+        body: 'At 79 × 55.5 × 67.5 mm and 97 g in anthracite, it is unobtrusive next to the light it controls. SEBSON suggest mounting between 1.80 m and 2.50 m.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with a 4.2 rating from 6,386 reviews — by far the largest review base in this guide",
+      'Amazon\'s review summary reports it works exceptionally well, is easy to install and has good detection range',
+      'Both on-time and dusk threshold are adjustable on the unit, no app or programming required',
+      'Explicitly rated for LED loads up to 400 W, which older PIRs often are not',
+      'Cheap enough to add motion control to a floodlight that has none',
+    ],
+    cons: [
+      'Amazon\'s review summary reports the wiring is fiddly — buyers describe limited space for connections inside the housing',
+      'IP44 is the entry level for outdoors: splash-resistant, not jet-proof. SEBSON sell IP65 versions of the same sensor for a few pounds more',
+      '4.2 is a modest average — 18% of reviews are three stars or below',
+      'It is a 3-wire device, so the mounting position needs a neutral as well as a live and switched live',
+    ],
+    bestFor: [
+      'Adding motion control to an existing floodlight or outdoor lamp that has no sensor',
+      'Driveways, side passages and doorways where a fixed 180° arc suits the approach',
+      'Anyone who wants dials on the unit rather than an app to configure',
+    ],
+    notIdealFor: [
+      'Fully exposed positions that want a jet-proof IP65 rating',
+      'Anyone not comfortable wiring in a 3-wire fitting with cramped terminals',
+      'Loads above 400 W of LED, or coverage needing a full 360°',
+    ],
+
+    score: 7.8,
+    verdict:
+      'A cheap, well-proven way to make an existing light motion-activated, with real dials for time and dusk rather than guesswork. The 4.2 average across 6,386 reviews is honest rather than glowing, and the recurring complaint is the same one every time — there is very little room inside for the wiring.',
+
+    faq: [
+      {
+        q: 'Will it work with LED lights?',
+        a: 'Yes, and that is worth checking on any PIR. SEBSON rate it at up to 400 W of LED or other energy-saving lamps, and 800 W of incandescent, at 230 V. Older sensors without a stated LED rating often flicker or fail to switch low-wattage LEDs.',
+      },
+      {
+        q: 'How hard is it to install?',
+        a: 'Amazon\'s review summary describes it as easy to install overall, but singles out the wiring as challenging because there is limited space inside for the connections. It is a 3-wire device, so the position needs a live, a neutral and a switched live. SEBSON suggest mounting between 1.80 m and 2.50 m high.',
+      },
+      {
+        q: 'Can I stop it triggering during the day?',
+        a: 'Yes. A lux dial sets how dark it must be before the sensor will switch anything on, adjustable anywhere from 3 to 2,000 lux, so it can be set to daylight-only, dusk-only or anything between.',
+      },
+      {
+        q: 'Is IP44 enough for outdoors?',
+        a: 'It covers splashing water from any direction, which is fine under an eave or a sheltered wall. For a fully exposed position, SEBSON list IP65 versions of the same sensor — including a 12m/180° model — for a little more.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

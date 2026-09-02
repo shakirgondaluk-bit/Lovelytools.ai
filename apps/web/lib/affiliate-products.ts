@@ -2340,6 +2340,125 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'litglobe-200w-led-floodlight',
+    asin: 'B0F8988HGH',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Lighting & Electrical',
+    categoryPath: '/buyers-guide?category=lighting-electrical',
+
+    brand: 'Litglobe',
+    name: 'Flood Lights Outdoor 200W, 20000LM Super Bright LED Floodlight Outdoor, 6500K Cool White Security Light, IP66 Waterproof Wall Light for Garden, Garage, Yard, Parking Lot, Warehouse',
+    tagline: 'Twenty thousand lumens across a 120° spread, for the price of a takeaway.',
+    description:
+      'A 200 W floodlight with 216 SMD LEDs behind tempered glass, rated IP66 and mounted on a 180° adjustable bracket. It is a plain always-on light rather than a sensor unit, and it wires in — there is no plug on the cable.',
+
+    images: [
+      `/products/litglobe-200w-led-floodlight/1.jpg`,
+      `/products/litglobe-200w-led-floodlight/2.jpg`,
+      `/products/litglobe-200w-led-floodlight/3.jpg`,
+      `/products/litglobe-200w-led-floodlight/4.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: '4.4 rating', sublabel: 'From 18 reviews so far' },
+      { icon: 'flame', label: '20,000 lm', sublabel: '6500 K cool white, 120° beam' },
+      { icon: 'droplet', label: 'IP66 rated', sublabel: 'Rain, snow and humidity' },
+      { icon: 'timer', label: '50,000 hours', sublabel: 'Manufacturer rated life' },
+    ],
+    specs: [
+      { icon: 'flame', label: 'Brightness', value: '20,000 lm (manufacturer figure)' },
+      { icon: 'zap', label: 'Power', value: '200 W — also sold as 100 W and 500 W' },
+      { icon: 'sliders', label: 'Colour temperature', value: '6500 K cool white' },
+      { icon: 'layers', label: 'Beam angle', value: '120°' },
+      { icon: 'circle-dot', label: 'LEDs', value: '216 × 2835 SMD beads' },
+      { icon: 'droplet', label: 'Weather rating', value: 'IP66' },
+      { icon: 'shield-check', label: 'Build', value: 'Die-cast aluminium, tempered glass, finned heat sink' },
+      { icon: 'gauge', label: 'Energy class', value: 'F' },
+    ],
+    features: [
+      {
+        icon: 'flame',
+        title: '20,000 lumens over 120°',
+        body: 'Litglobe quote 20,000 lm from 216 SMD beads across a 120-degree spread, which is aimed at lighting a whole yard or forecourt rather than picking out one doorway.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'Aluminium body, glass front',
+        body: 'A die-cast aluminium housing with a finned heat sink and a tempered glass face — heat is what kills cheap LED floodlights, so the fins are doing real work.',
+      },
+      {
+        icon: 'droplet',
+        title: 'IP66 against weather',
+        body: 'Rated to shrug off heavy rain, snow and humidity, which is the minimum worth having for something mounted on an exposed wall all year.',
+      },
+      {
+        icon: 'move',
+        title: '180° adjustable bracket',
+        body: 'The yoke swings through 180°, so it can be aimed after mounting on a wall, ceiling or the ground rather than committing to an angle up front.',
+      },
+      {
+        icon: 'timer',
+        title: '50,000 hour rated life',
+        body: 'Litglobe rate the fitting at over 50,000 hours. At six hours a night that is more than twenty years, though as with any LED claim it is a laboratory figure.',
+      },
+      {
+        icon: 'zap',
+        title: 'Three sizes on one listing',
+        body: 'The same fitting is sold in 100 W, 200 W and 500 W versions — this page is the 200 W, so check the size selector matches what you want.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice, rated 4.4 with 83% of reviewers leaving five stars",
+      'Amazon\'s review summary reports buyers rating the quality and brightness highly',
+      '20,000 lm over a 120° beam covers a driveway or yard from a single fitting',
+      'Die-cast aluminium with a finned heat sink and tempered glass, not a plastic housing',
+      'IP66 and a 180° bracket, so it can go almost anywhere outdoors and be aimed afterwards',
+    ],
+    cons: [
+      'No motion sensor, despite being sold as a security light — nothing in the listing mentions PIR, and rival listings alongside it do advertise one',
+      'It wires in: the cable ends in bare conductors with no plug, so fitting means a spur or an electrician',
+      'Only 18 reviews, and they are polarised — 83% five-star with 17% at one or two, and nothing in between',
+      'Energy Class F is second from bottom on the label, and 6500 K cool white is harsh with no warmer or dimmable option',
+    ],
+    bestFor: [
+      'Lighting a whole driveway, yard or car park from one fitting',
+      'Garages, warehouses and workshops where cool white and raw output matter more than warmth',
+      'Anyone comfortable wiring a fitting into a switched outdoor spur',
+    ],
+    notIdealFor: [
+      'Anyone expecting a motion-activated security light — this one stays on until switched off',
+      'Plug-in installation, since the cable has no plug fitted',
+      'Patios and windows near neighbours, where 20,000 lm of 6500 K light is antisocial',
+    ],
+
+    score: 8.0,
+    verdict:
+      'An enormous amount of light for around twenty-five pounds, in a metal-and-glass body that looks built to survive outdoors. Scored at 8.0 rather than higher because 18 reviews is thin evidence with a visibly split verdict, and because two things buyers assume — a motion sensor and a plug — are not part of it.',
+
+    faq: [
+      {
+        q: 'Does it have a motion sensor?',
+        a: 'No. It is described as a security light, but nothing in the listing mentions PIR or motion detection, and none is visible on the fitting. It is an always-on floodlight controlled by whatever switch you wire it to. Several competing listings shown alongside it do include sensors, so it is an easy assumption to make.',
+      },
+      {
+        q: 'Can I just plug it in?',
+        a: 'No. Litglobe\'s own photograph shows the cable ending in three bare conductors with no plug fitted, so it needs wiring into a switched outdoor supply. If you are not confident doing that, budget for an electrician.',
+      },
+      {
+        q: 'How bright is 20,000 lumens really?',
+        a: 'Enough to light a full driveway or yard from one fitting, spread over a 120-degree beam at 6500 K cool white. It is a manufacturer figure, and the Energy Class F rating on the listing is consistent with roughly 100 lumens per watt — respectable for the price, but well short of the most efficient LEDs available.',
+      },
+      {
+        q: 'Which size does this page cover?',
+        a: 'The 200 W version. The same listing also sells 100 W and 500 W models at different prices, so check the size selector on Amazon before ordering.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

@@ -2578,6 +2578,124 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'aosu-t2-ultra-4k-security-camera-kit',
+    asin: 'B0GCD435G3',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Cameras & Photography',
+    categoryPath: '/buyers-guide?category=cameras-photography',
+
+    brand: 'aosu',
+    name: 'T2 Ultra 4K Security Cameras Wireless Outdoor Solar, 2 Cam Kit & aosuBase 2.0, Smart Home Security System with TrueColor Night Vision, AI Recognition & 360° Tracking, Expandable 1TB Local Storage',
+    tagline: 'Colour footage at night without a floodlight, recorded to a box in your house rather than someone else\'s cloud.',
+    description:
+      'Two solar-powered 4K cameras that pan a full circle and track what they see, paired with a base station that stores everything locally with no subscription. A 1/1.8-inch sensor behind an F1.0 lens is what lets it show colour at night instead of grey infrared.',
+
+    images: [
+      `/products/aosu-t2-ultra-4k-security-camera-kit/1.jpg`,
+      `/products/aosu-t2-ultra-4k-security-camera-kit/2.jpg`,
+      `/products/aosu-t2-ultra-4k-security-camera-kit/3.jpg`,
+      `/products/aosu-t2-ultra-4k-security-camera-kit/4.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'star', label: '4.5 rating', sublabel: '144 reviews, 5K+ bought last month' },
+      { icon: 'monitor', label: '4K TrueColor', sublabel: '1/1.8" sensor, F1.0 lens' },
+      { icon: 'lock', label: 'No subscription', sublabel: '32 GB local, 1 TB expandable' },
+      { icon: 'battery-charging', label: 'Solar powered', sublabel: '9200 mAh per camera' },
+    ],
+    specs: [
+      { icon: 'monitor', label: 'Resolution', value: '4K UHD, 8 MP' },
+      { icon: 'circle-dot', label: 'Sensor and lens', value: '1/1.8 inch, F1.0' },
+      { icon: 'move', label: 'Movement', value: '360° pan-tilt with auto tracking' },
+      { icon: 'flame', label: 'Night vision', value: 'TrueColor — no spotlight needed' },
+      { icon: 'battery-charging', label: 'Power', value: '9200 mAh battery plus detachable solar panel' },
+      { icon: 'package', label: 'Storage', value: '32 GB in the base, expandable to 1 TB (drive not included)' },
+      { icon: 'users', label: 'AI detection', value: 'People, animals and vehicles' },
+      { icon: 'layers', label: 'Expandable', value: 'aosuBase supports up to 6 cameras' },
+    ],
+    features: [
+      {
+        icon: 'monitor',
+        title: 'Colour at night, no floodlight',
+        body: 'A 1/1.8-inch sensor behind an F1.0 lens gathers enough light for TrueColor footage after dark, so you get the colour of a jacket or a car rather than grey infrared shapes.',
+      },
+      {
+        icon: 'move',
+        title: '360° with auto tracking',
+        body: 'The dome pans a full circle and follows movement as it crosses the frame, which removes the fixed blind spot every static camera has.',
+      },
+      {
+        icon: 'users',
+        title: 'AI that knows what it saw',
+        body: 'On-device detection separates people, animals and vehicles to cut pointless alerts, and Smart Vehicle Guard watches a parked car and warns you if something moves near it.',
+      },
+      {
+        icon: 'lock',
+        title: 'Local storage, no monthly fee',
+        body: 'The aosuBase 2.0 records to 32 GB of encrypted onboard storage, expandable to a 1 TB drive. Nothing goes to a cloud subscription, so footage stays in the house.',
+      },
+      {
+        icon: 'battery-charging',
+        title: 'Solar, so you forget about it',
+        body: 'Each camera pairs a 9200 mAh battery with a detachable solar panel that can be angled at the sun independently of where the camera points.',
+      },
+      {
+        icon: 'layers',
+        title: 'One alert, not twelve',
+        body: 'Multi-Camera Tracking stitches clips from different cameras into a single video of the whole event, instead of leaving you to piece together scattered notifications.',
+      },
+    ],
+
+    pros: [
+      '4.5 stars across 144 reviews with 73% five-star, and 5K+ bought in the past month',
+      'Genuine colour night vision from a 1/1.8" sensor and F1.0 lens, no spotlight required',
+      'Local encrypted recording with no subscription — the running cost is nothing',
+      '360° pan-tilt with auto tracking rather than a fixed field of view',
+      'Solar plus a 9200 mAh battery, and the base expands to six cameras',
+    ],
+    cons: [
+      '144 reviews is a modest base for a system at this price',
+      'The 1 TB expansion is a drive you supply — 32 GB is what actually ships',
+      'Alexa voice control needs a screen-equipped Alexa device, which Amazon lists as required and sells separately',
+      'The headline price is Prime-exclusive; the standard price is around £70 higher',
+    ],
+    bestFor: [
+      'Covering a front door and driveway without paying a monthly cloud fee',
+      'Properties with no convenient outdoor power, thanks to solar and a big battery',
+      'Anyone who wants footage kept at home rather than on a manufacturer\'s servers',
+    ],
+    notIdealFor: [
+      'Buyers who want a long review record before spending three hundred pounds',
+      'Shaded mounting positions where a solar panel will rarely see direct sun',
+      'Anyone expecting the 1 TB storage or an Alexa display to be in the box',
+    ],
+
+    score: 8.8,
+    verdict:
+      'A well-specified system where the interesting parts are the ones that cost money elsewhere: colour night vision from real optics, 360° tracking, and local recording with no subscription attached. Scored just below the top of the guide because 144 reviews is a decent but not deep record, and because two things people assume are included are not.',
+
+    faq: [
+      {
+        q: 'Is there a subscription?',
+        a: 'No. The aosuBase 2.0 stores footage locally with 32 GB of encrypted onboard storage, and you can add a hard drive up to 1 TB. Nothing needs a cloud plan, and the recordings stay in your house.',
+      },
+      {
+        q: 'How does it see colour at night?',
+        a: 'Through optics rather than a light. aosu specify a 1/1.8-inch sensor and an F1.0 lens, which together gather enough ambient light for TrueColor footage — so no spotlight fires and nothing gets alerted to being watched.',
+      },
+      {
+        q: 'Do the cameras need mains power or wiring?',
+        a: 'No. Each camera runs on a 9200 mAh battery topped up by a detachable solar panel that angles separately from the camera. Only the aosuBase needs power and an Ethernet connection to your router.',
+      },
+      {
+        q: 'What is not included that I might expect?',
+        a: 'Two things. The 1 TB expansion is the maximum supported size, not a drive in the box — you get 32 GB built in. And Alexa voice control requires a screen-equipped Alexa device, which Amazon lists as a required separate purchase.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

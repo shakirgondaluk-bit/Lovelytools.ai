@@ -2696,6 +2696,127 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'proster-network-cable-tester',
+    asin: 'B0FHK1B4H5',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home Improvement & Power Tools',
+    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+
+    brand: 'Proster',
+    name: 'Network Cable Tester with POE RJ45 LAN Ethernet Wire Tracker | CAT7, CAT6, CAT5 Wire Tracker with Length, Voltage, NCV, Continuity Test and Port Flash. Type-C Charging with Storage Bag',
+    tagline: 'Finds which cable is which, how long it is, and whether it is live — without unplugging half the rack to guess.',
+    description:
+      'A rechargeable tester that rolls a cable tester, wire tracer, PoE voltage meter and RJ45 crimper into one handheld unit. It measures runs up to 400 m, reads PoE voltage up to 60 V, and flashes the switch port a cable lands on so you can identify it from the other end of the building.',
+
+    images: [
+      `/products/proster-network-cable-tester/1.jpg`,
+      `/products/proster-network-cable-tester/2.jpg`,
+      `/products/proster-network-cable-tester/3.jpg`,
+      `/products/proster-network-cable-tester/4.jpg`,
+      `/products/proster-network-cable-tester/5.jpg`,
+      `/products/proster-network-cable-tester/6.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: "Amazon's Choice", sublabel: '4.0 rating from 120 reviews' },
+      { icon: 'ruler', label: '400 m range', sublabel: 'Cable length measurement' },
+      { icon: 'zap', label: 'PoE up to 60 V', sublabel: 'With anti-burn protection' },
+      { icon: 'battery-charging', label: 'USB-C rechargeable', sublabel: 'No disposable batteries' },
+    ],
+    specs: [
+      { icon: 'ruler', label: 'Length measurement', value: 'Up to 400 m (1,312 ft)' },
+      { icon: 'zap', label: 'Voltage testing', value: 'Up to 60 V, PoE standard and non-standard' },
+      { icon: 'wifi', label: 'Cable support', value: 'CAT5, CAT5e, CAT6, CAT6A, CAT7, CAT8' },
+      { icon: 'monitor', label: 'Display', value: 'VA colour screen with analogue bargraph' },
+      { icon: 'timer', label: 'Port flash', value: 'Flashes the switch port every 3 seconds' },
+      { icon: 'shield-check', label: 'Safety', value: 'NCV detection plus anti-burn protection' },
+      { icon: 'wrench', label: 'Built in', value: 'RJ45 crimping function and LED flashlight' },
+      { icon: 'package', label: 'Weight', value: '0.5 kg, supplied with storage bag' },
+    ],
+    features: [
+      {
+        icon: 'ruler',
+        title: 'Length up to 400 metres',
+        body: 'Reads how long a run actually is rather than how long you think it is, which is what tells you whether a fault is at the patch panel or ninety metres into a ceiling void.',
+      },
+      {
+        icon: 'timer',
+        title: 'Port flash every 3 seconds',
+        body: 'Connect one end and the switch port it lands on blinks roughly once every three seconds — the difference between tracing a cable and reading the answer off the rack.',
+      },
+      {
+        icon: 'zap',
+        title: 'PoE voltage analysis',
+        body: 'Measures both standard and non-standard PoE supply, including the voltage and the polarity of the power pairs, and detects 10M/100M/1000M link modes.',
+      },
+      {
+        icon: 'shield-check',
+        title: 'NCV and anti-burn',
+        body: 'Non-contact voltage mode tells you whether something is live before you touch it, and the anti-burn circuit is there for the moment you connect it to the wrong thing.',
+      },
+      {
+        icon: 'monitor',
+        title: 'Colour screen, adjustable volume',
+        body: 'A VA colour display with an analogue bargraph stays readable in bright light, and the tracer tone volume turns up for noisy plant rooms.',
+      },
+      {
+        icon: 'wrench',
+        title: 'Crimper and torch on board',
+        body: 'An RJ45 crystal-head crimping function and an LED flashlight are built into the same body, so a terminated cable and a dark comms cupboard need no extra tools.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice in Network Testers, and one tool in place of a tester, tracer, PoE meter and crimper",
+      '400 m length measurement is at the long end for a handheld of this type',
+      'Port flashing turns cable identification in a rack into a look rather than a hunt',
+      'NCV plus anti-burn protection, which matters on unknown live cabling',
+      'USB-C rechargeable with a storage bag included, so no battery hunting mid-job',
+    ],
+    cons: [
+      '4.0 average is honest rather than strong — 12% of the 120 reviews are one star and 17% sit at two stars or below',
+      '120 reviews is a small base for a tool at this price',
+      'Proster list a newer version of this model at roughly half the price, which is worth comparing before buying',
+      'Length readings are derived measurements, so treat them as close rather than exact on unknown cable',
+    ],
+    bestFor: [
+      'Network engineers and electricians tracing runs in occupied buildings',
+      'Anyone commissioning PoE cameras or access points who needs to see the supply voltage',
+      'Structured cabling work spanning CAT5 through CAT8 where one tool beats four',
+    ],
+    notIdealFor: [
+      'Certification work — this is a tester and tracer, not a CAT6A certifier',
+      'Occasional home use, where a basic continuity tester does the only job needed',
+      'Buyers who want a long, settled review record before committing',
+    ],
+
+    score: 7.6,
+    verdict:
+      'A genuinely well-equipped tester — 400 m length, PoE voltage, port flash, NCV and a crimper in one rechargeable body — at a price that undercuts buying those functions separately. The reason it does not score higher is the review record: 4.0 from 120 reviews with a visible one-star tail, and a newer Proster model sitting alongside it at around half the price.',
+
+    faq: [
+      {
+        q: 'What does the port flash function actually do?',
+        a: 'Plug the tester into one end of a cable and the indicator light on the switch port at the other end flashes roughly once every three seconds. In a patch panel full of identical cables that identifies the run visually, without unplugging anything to test by elimination.',
+      },
+      {
+        q: 'Will it test PoE?',
+        a: 'Yes, both standard and non-standard PoE. It measures the supply voltage up to 60 V and reports the polarity of the power pairs, and it detects whether the link is running at 10M, 100M or 1000M.',
+      },
+      {
+        q: 'Which cable types does it cover?',
+        a: 'Proster list CAT5, CAT5e, CAT6, CAT6A, CAT7 and CAT8 via the RJ45 remote interface. The description also covers security monitoring, communication wiring and other low-voltage systems rather than data cabling alone.',
+      },
+      {
+        q: 'How is it powered?',
+        a: 'A built-in rechargeable battery charged over Type-C, so there are no disposable cells to replace. A storage bag is included, and an LED flashlight is built into the unit for working in dark comms cupboards.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

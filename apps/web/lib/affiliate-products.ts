@@ -2937,6 +2937,126 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'zoerax-11-in-1-network-tool-kit',
+    asin: 'B0D41HLYHJ',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home Improvement & Power Tools',
+    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+
+    brand: 'ZOERAX',
+    name: 'Network Tool Kit, 11 in 1 Professional RJ45 Crimp Tool Kit - Pass Through Crimper, RJ45 Tester, 110/88 Punch Down Tool, Stripper, Cutter, Cat6 Pass Through Connectors and Boots',
+    tagline: 'The crimping half of a network kit, without paying for a wire tracker you may never use.',
+    description:
+      'An 11-piece case built around a pass-through RJ45 crimper, with a punch down tool, four different strippers, cutters and a continuity tester. It covers making and terminating cable properly; what it deliberately leaves out is cable tracing.',
+
+    images: [
+      `/products/zoerax-11-in-1-network-tool-kit/1.jpg`,
+      `/products/zoerax-11-in-1-network-tool-kit/2.jpg`,
+      `/products/zoerax-11-in-1-network-tool-kit/3.jpg`,
+      `/products/zoerax-11-in-1-network-tool-kit/4.jpg`,
+      `/products/zoerax-11-in-1-network-tool-kit/5.jpg`,
+      `/products/zoerax-11-in-1-network-tool-kit/6.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'star', label: '4.4 rating', sublabel: '120 reviews, 50+ bought last month' },
+      { icon: 'package', label: '11 pieces', sublabel: 'In a fitted carry case' },
+      { icon: 'settings', label: 'Pass-through crimper', sublabel: '4, 6 and 8 position connectors' },
+      { icon: 'circle-dot', label: '20 consumables', sublabel: '10 connectors, 10 boots, 2 spare blades' },
+    ],
+    specs: [
+      { icon: 'package', label: 'Contents', value: '11 pieces including case' },
+      { icon: 'settings', label: 'Crimper', value: 'RJ45 pass-through, RJ11/RJ12, 4/6/8 position' },
+      { icon: 'wifi', label: 'Cable types', value: 'STP and UTP data cable' },
+      { icon: 'hammer', label: 'Punch down tool', value: '110/88' },
+      { icon: 'wrench', label: 'Strippers', value: 'Coaxial, round cable and flat cable, plus cutters' },
+      { icon: 'zap', label: 'Tester', value: 'LAN/Ethernet continuity — 9V batteries not included' },
+      { icon: 'circle-dot', label: 'Consumables', value: '10 Cat6 pass-through connectors, 10 boots, 2 spare blades' },
+      { icon: 'shield-check', label: 'Weight', value: '1.28 kg, ergonomic plastic handles' },
+    ],
+    features: [
+      {
+        icon: 'settings',
+        title: 'Pass-through crimping',
+        body: 'Wires run out through the front of the connector so you can confirm the colour order before you squeeze, and the tool trims them flush in the same action.',
+      },
+      {
+        icon: 'layers',
+        title: 'Four strippers, not one',
+        body: 'Coaxial, round cable and flat cable strippers plus mini cutters, so the kit handles satellite and telephone runs rather than only Ethernet.',
+      },
+      {
+        icon: 'hammer',
+        title: '110/88 punch down tool',
+        body: 'Seats and trims a conductor into a keystone or patch panel in one push — the tool that makes terminating at the wall plate quick instead of miserable.',
+      },
+      {
+        icon: 'zap',
+        title: 'Check the run before you close up',
+        body: 'The included tester confirms LAN and Ethernet continuity across the pairs, so a miswire turns up while the tools are still out. Note it needs 9V batteries, which are not supplied.',
+      },
+      {
+        icon: 'circle-dot',
+        title: 'Consumables and spares included',
+        body: '10 Cat6 pass-through connectors, 10 RJ45 boots and two spare blades, so the first few leads and the first blade change cost nothing extra.',
+      },
+      {
+        icon: 'package',
+        title: 'Everything in its own slot',
+        body: 'A fitted case with protective bubble pads holds each tool in place, which is what stops a kit becoming a drawer of loose crimpers within a year.',
+      },
+    ],
+
+    pros: [
+      '4.4 stars across 120 reviews — a far more settled record than most kits at this price',
+      'Pass-through crimper makes the colour order visible before crimping, not after',
+      'Four strippers cover coax and flat cable, not just round Ethernet',
+      'Connectors, boots and two spare blades are all in the box',
+      'Noticeably cheaper than the 14-in-1 version of the same kit',
+    ],
+    cons: [
+      'No wire tracker — this kit cannot trace or identify a cable, only test the one in front of you',
+      'The tester needs 9V batteries and ZOERAX do not include them',
+      'Plastic handles rather than the metal used on the larger kit',
+      '10 connectors is a starter quantity; any real install needs a bag of them',
+    ],
+    bestFor: [
+      'Making up custom-length patch leads for a rack or desk',
+      'Home and small-office cabling where the runs are already known and labelled',
+      'Anyone who wants the crimping tools without paying for a tracer',
+    ],
+    notIdealFor: [
+      'Tracing unlabelled cable in an existing building — you need a kit with a wire tracker',
+      'Certification work that needs a report rather than a continuity check',
+      'Anyone expecting batteries in the box to test on day one',
+    ],
+
+    score: 8.5,
+    verdict:
+      'The sensible pick if you already know which cable is which. It has the two tools that actually matter — a pass-through crimper and a 110/88 punch down — plus a wider set of strippers than you would expect, and 120 reviews behind a 4.4 average is a genuinely solid record. Just be clear that no wire tracker is included, and neither are the batteries the tester needs.',
+
+    faq: [
+      {
+        q: 'How is this different from the 14-in-1 kit?',
+        a: 'The big one is the wire tracker: the 14-in-1 includes one, this does not, so this kit can test a cable in your hand but cannot trace an unlabelled run through a building. The larger kit also uses metal handles. In exchange this one is cheaper and has a far deeper review record.',
+      },
+      {
+        q: 'Does the tester come with batteries?',
+        a: 'No. ZOERAX state plainly that the 9V batteries are not included, so buy a pair alongside it if you want to test anything the day it arrives.',
+      },
+      {
+        q: 'Which connectors does the crimper handle?',
+        a: 'It crimps, strips and cuts STP and UTP data cable and takes 4, 6 and 8 position modular connectors — RJ11 and RJ12 standard, plus RJ45 pass-through. Ten Cat6 pass-through connectors and ten boots are supplied.',
+      },
+      {
+        q: 'What is actually in the case?',
+        a: 'The pass-through crimper, a LAN cable tester, a 110/88 punch down tool, coaxial, round cable and flat cable strippers, wire cutters and mini cutters, plus 10 Cat6 connectors, 10 RJ45 boots and 2 spare blades, held in a fitted case with protective pads.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

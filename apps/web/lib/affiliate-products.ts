@@ -2817,6 +2817,126 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'zoerax-14-in-1-network-tool-kit',
+    asin: 'B0FS72ND6Z',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Home Improvement & Power Tools',
+    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+
+    brand: 'ZOERAX',
+    name: 'Professional Network Tool Kit, 14 in 1 RJ45 Crimp Tool Kit, Cat 6 Cat 5E Cat 5 Crimping Tool with Cat6 Connectors and Boots, Cable Tester, Wire Stripper, Punch Down Tool, Wire Tracker',
+    tagline: 'Everything you need to terminate a run and prove it works, in one case that closes.',
+    description:
+      'A 14-piece kit built around a pass-through RJ45 crimper, with a punch down tool, stripper, cutter, cable tester and wire tracker alongside it. The point is that a single case covers making the cable, terminating it at the panel, and checking it before you close the ceiling.',
+
+    images: [
+      `/products/zoerax-14-in-1-network-tool-kit/1.jpg`,
+      `/products/zoerax-14-in-1-network-tool-kit/2.jpg`,
+      `/products/zoerax-14-in-1-network-tool-kit/3.jpg`,
+      `/products/zoerax-14-in-1-network-tool-kit/4.jpg`,
+      `/products/zoerax-14-in-1-network-tool-kit/5.jpg`,
+      `/products/zoerax-14-in-1-network-tool-kit/6.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'star', label: '4.4 rating', sublabel: '33 reviews, 50+ bought last month' },
+      { icon: 'package', label: '14 pieces', sublabel: 'In a hard carry case' },
+      { icon: 'settings', label: 'Pass-through crimper', sublabel: 'Tool-free rotating adjustment' },
+      { icon: 'wifi', label: 'Cat5 to Cat6A', sublabel: 'RJ45, RJ11 and RJ12' },
+    ],
+    specs: [
+      { icon: 'package', label: 'Contents', value: '14 pieces including case' },
+      { icon: 'settings', label: 'Crimper', value: 'Pass-through and non-pass-through RJ45, RJ11, RJ12' },
+      { icon: 'wifi', label: 'Cable support', value: 'Cat5, Cat5e, Cat6, Cat6A' },
+      { icon: 'hammer', label: 'Punch down tool', value: '110 and 110/88, reversible blades' },
+      { icon: 'circle-dot', label: 'Consumables', value: '10 Cat6 pass-through connectors plus RJ45 boots' },
+      { icon: 'zap', label: 'Tester', value: 'Opens, shorts, miswires and reversed pairs' },
+      { icon: 'ruler', label: 'Case size', value: '20.3 × 22 cm' },
+      { icon: 'shield-check', label: 'Weight', value: '1.2 kg, metal-handled tools' },
+    ],
+    features: [
+      {
+        icon: 'settings',
+        title: 'Pass-through crimping',
+        body: 'Wires push straight out of the front of the connector so you can check the colour order before you squeeze, and the crimper trims them flush in the same action.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Adjust it without a screwdriver',
+        body: 'A rotating knob sets the crimper for different connector types by hand, which matters when you are up a ladder and the toolbox is on the floor.',
+      },
+      {
+        icon: 'hammer',
+        title: '110/88 punch down, both ways',
+        body: 'Interchangeable reversible blades cover 110 and 110/88 standards, seating and trimming a conductor into the block in one push.',
+      },
+      {
+        icon: 'zap',
+        title: 'Test before you close the ceiling',
+        body: 'The included tester checks network and telephone lines for opens, shorts, miswires and reversed pairs — the four ways a hand-terminated cable usually goes wrong.',
+      },
+      {
+        icon: 'move',
+        title: 'Trace what you cannot see',
+        body: 'The wire tracker finds breaks and identifies runs across routers, switches and PCs, and handles RJ11, RJ45 and other metal cabling with the adapter.',
+      },
+      {
+        icon: 'package',
+        title: 'A case that keeps the set together',
+        body: 'A lightweight hard case holds every tool in its own place, which is the difference between a kit and a drawer of loose crimpers a year from now.',
+      },
+    ],
+
+    pros: [
+      '4.4 stars with 65% five-star and no one-star reviews at all',
+      'Pass-through crimper makes correct colour ordering visible before crimping, not after',
+      'Connectors and boots are included, so the first few cables cost nothing extra',
+      'Covers making, terminating and testing — no second purchase to check your own work',
+      'Tool-free rotating adjustment on the crimper rather than a screwdriver-set stop',
+    ],
+    cons: [
+      '33 reviews is a thin record — the 4.4 average is encouraging rather than proven',
+      '10 connectors is a starter quantity; any real install needs a bag of them',
+      'The included tester checks wiring order and continuity, not speed or certification',
+      'The wire tracker needs an adapter for cables other than RJ11 and RJ45',
+    ],
+    bestFor: [
+      'Anyone wiring their own house or office for Ethernet from scratch',
+      'IT and AV installers who want one case instead of five loose tools',
+      'Homelab and server-rack work where custom-length patch leads save space',
+    ],
+    notIdealFor: [
+      'Certification work that needs a proper Cat6A certifier with a test report',
+      'Someone who only ever needs to crimp one cable — buy a made-up lead instead',
+      'Buyers who want a long, settled review history before committing',
+    ],
+
+    score: 8.2,
+    verdict:
+      'A sensible, complete starting kit: the pass-through crimper and the punch down tool are the two things that actually make structured cabling pleasant, and having a tester in the same case means you find a miswire while the tools are still in your hand. The 4.4 average with no one-star reviews is a good sign, but 33 reviews is a small base to lean on.',
+
+    faq: [
+      {
+        q: 'What does a pass-through crimper do differently?',
+        a: 'The connectors let the eight wires run all the way through and out of the front, so you can see the colour order is right before crimping. The tool then crimps and trims the protruding ends flush in one squeeze, which removes the fiddliest part of terminating by hand.',
+      },
+      {
+        q: 'Does the kit include connectors?',
+        a: 'Yes — 10 Cat6 pass-through connectors and RJ45 boots are supplied, enough to make a handful of leads straight out of the box. For a full install you will want to buy connectors in bulk separately.',
+      },
+      {
+        q: 'What can the tester actually check?',
+        a: 'It tests network and telephone lines for opens, shorts, miswires and reversed connections, which covers the common hand-termination faults. It is a wiring-order tester, not a certifier — it will not report bandwidth or produce a certification result.',
+      },
+      {
+        q: 'Which cable types does it handle?',
+        a: 'The crimper covers Cat5, Cat5e, Cat6 and Cat6A with both pass-through and non-pass-through RJ45, RJ11 and RJ12 connectors, and also strips, cuts and crimps metal dovetail clips and terminals. The punch down tool takes 110 and 110/88 blades.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

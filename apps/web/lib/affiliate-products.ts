@@ -83,7 +83,7 @@ export interface AffiliateCategory {
 // badge that no filter chip can match. The guide only shows chips for
 // categories that currently hold a product, so adding one here is cheap.
 export const affiliateCategories: AffiliateCategory[] = [
-  { slug: 'home-improvement-power-tools', label: 'Home Improvement & Power Tools' },
+  { slug: 'professional-tools', label: 'Professional Tools' },
   { slug: 'kitchen-dining', label: 'Kitchen & Dining' },
   { slug: 'home-garden', label: 'Home & Garden' },
   { slug: 'sports-outdoor', label: 'Sports & Outdoor' },
@@ -116,8 +116,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Home Improvement & Power Tools',
-    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+    categoryLabel: 'Professional Tools',
+    categoryPath: '/buyers-guide?category=professional-tools',
 
     brand: 'RYOBI',
     name: 'R18PD3-215GZ 18V ONE+ Cordless Combi Drill Starter Kit + 60-Piece Bit Set',
@@ -233,8 +233,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Home Improvement & Power Tools',
-    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+    categoryLabel: 'Professional Tools',
+    categoryPath: '/buyers-guide?category=professional-tools',
 
     brand: 'Huepar',
     name: '360° Laser Level with 1.3m Tripod, Self Leveling Rechargeable Laser Level for Construction and Picture Hanging',
@@ -580,8 +580,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Home Improvement & Power Tools',
-    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+    categoryLabel: 'Professional Tools',
+    categoryPath: '/buyers-guide?category=professional-tools',
 
     brand: 'INGCO',
     name: '20V 140mm Cordless Circular Saw with Brushless Motor 6300RPM Max. Cutting Depth 50mm (90°) Electric Circular Saw 20mm Arbor with 1Pcs 4.0Ah Battery and Charger CSLI14021',
@@ -2702,8 +2702,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Home Improvement & Power Tools',
-    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+    categoryLabel: 'Professional Tools',
+    categoryPath: '/buyers-guide?category=professional-tools',
 
     brand: 'Proster',
     name: 'Network Cable Tester with POE RJ45 LAN Ethernet Wire Tracker | CAT7, CAT6, CAT5 Wire Tracker with Length, Voltage, NCV, Continuity Test and Port Flash. Type-C Charging with Storage Bag',
@@ -2823,8 +2823,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Home Improvement & Power Tools',
-    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+    categoryLabel: 'Professional Tools',
+    categoryPath: '/buyers-guide?category=professional-tools',
 
     brand: 'ZOERAX',
     name: 'Professional Network Tool Kit, 14 in 1 RJ45 Crimp Tool Kit, Cat 6 Cat 5E Cat 5 Crimping Tool with Cat6 Connectors and Boots, Cable Tester, Wire Stripper, Punch Down Tool, Wire Tracker',
@@ -2943,8 +2943,8 @@ export const affiliateProducts: AffiliateProduct[] = [
     affiliateTag: 'lovelytools-21',
     amazonDomain: 'amazon.co.uk',
 
-    categoryLabel: 'Home Improvement & Power Tools',
-    categoryPath: '/buyers-guide?category=home-improvement-power-tools',
+    categoryLabel: 'Professional Tools',
+    categoryPath: '/buyers-guide?category=professional-tools',
 
     brand: 'ZOERAX',
     name: 'Network Tool Kit, 11 in 1 Professional RJ45 Crimp Tool Kit - Pass Through Crimper, RJ45 Tester, 110/88 Punch Down Tool, Stripper, Cutter, Cat6 Pass Through Connectors and Boots',

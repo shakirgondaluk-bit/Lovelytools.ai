@@ -62,9 +62,9 @@ const RULES: Array<[RegExp, string]> = [
   // --- Tools & DIY ---
   [
     /\b(drills?|saws?|sanders?|grinders?|laser levels?|impact drivers?|multi-?tools?|tool ?kits?|tool ?sets?|spanners?|socket sets?|workbenches?|welders?|nail guns?|screwdrivers?)\b/i,
-    'Home Improvement & Power Tools',
+    'Professional Tools',
   ],
-  [/\b(paint|sealant|adhesive|filler|plaster ?board|tiles?|grout|decorating|wallpaper)\b/i, 'Home Improvement & Power Tools'],
+  [/\b(paint|sealant|adhesive|filler|plaster ?board|tiles?|grout|decorating|wallpaper)\b/i, 'Home & Garden'],
 
   // --- Motoring ---
   [

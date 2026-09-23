@@ -3419,6 +3419,127 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'tuyluxe-4-head-solar-security-light',
+    asin: 'B0GY4BWRBL',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Lighting & Electrical',
+    categoryPath: '/buyers-guide?category=lighting-electrical',
+
+    brand: 'TuyLuxe',
+    name: 'Solar Security Lights Outdoor Motion Sensor, 257 LED 3600LM Super Bright Solar Outdoor Lights with Remote Control, Up to 15 Hours, 3 Modes, IP65 Solar Lights Outdoor Garden for Porch Driveway Garage',
+    tagline: 'A fourth head where everyone else stops at three, and the brightest output in this guide.',
+    description:
+      'Four independently rotatable heads carrying 257 LEDs rated at 3600 lumens, with a PIR sensor covering 180°. The fourth head is the point: three-head lights leave a shadow to one side, and this fills it.',
+
+    images: [
+      `/products/tuyluxe-4-head-solar-security-light/1.jpg`,
+      `/products/tuyluxe-4-head-solar-security-light/2.jpg`,
+      `/products/tuyluxe-4-head-solar-security-light/3.jpg`,
+      `/products/tuyluxe-4-head-solar-security-light/4.jpg`,
+      `/products/tuyluxe-4-head-solar-security-light/5.jpg`,
+      `/products/tuyluxe-4-head-solar-security-light/6.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: "Amazon's Choice", sublabel: '4.3 rating, 200+ bought last month' },
+      { icon: 'flame', label: '3600 lumens', sublabel: '257 LEDs — brightest here' },
+      { icon: 'layers', label: '4 rotatable heads', sublabel: '90° each, no side shadow' },
+      { icon: 'settings', label: 'Remote and buttons', sublabel: 'Set modes without a ladder' },
+    ],
+    specs: [
+      { icon: 'layers', label: 'Heads', value: 'Four, each rotating 90°' },
+      { icon: 'flame', label: 'Brightness', value: '3600 lumens from 257 LEDs' },
+      { icon: 'move', label: 'Detection', value: '180° PIR, 8–10 m range' },
+      { icon: 'sliders', label: 'Modes', value: '3 lighting modes' },
+      { icon: 'settings', label: 'Control', value: 'Wireless remote plus on-unit buttons' },
+      { icon: 'battery', label: 'Battery', value: '2500 mAh, quoted 3 h charge for up to 15 h' },
+      { icon: 'ruler', label: 'Solar panel', value: '15.7 × 9.2 cm tempered glass' },
+      { icon: 'droplet', label: 'Rating', value: 'IP65, auto on at dusk' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: 'Four heads, not three',
+        body: 'Three-head lights throw everything forward and leave a shadow off to one side. A fourth rotatable head fills that gap, which matters on a corner or a side porch.',
+      },
+      {
+        icon: 'flame',
+        title: '3600 lumens from 257 LEDs',
+        body: 'The brightest stated output of any solar light in this guide, and a real lumen figure rather than a LED count you cannot compare against anything.',
+      },
+      {
+        icon: 'settings',
+        title: 'Remote and buttons',
+        body: 'Modes and power set either way. The remote is the one that counts once the light is mounted at eaves height and the buttons are out of reach.',
+      },
+      {
+        icon: 'clock',
+        title: 'Dusk sensing, no timer to set',
+        body: 'A separate light sensor switches the unit off through the day and arms it at dusk, so nothing needs programming as the nights draw in.',
+      },
+      {
+        icon: 'move',
+        title: '180° PIR at 8–10 m',
+        body: 'TuyLuxe specify detection of people, pets and vehicles across a 180° arc out to eight or ten metres — enough for a driveway approach rather than just a doorstep.',
+      },
+      {
+        icon: 'ruler',
+        title: 'Glass panel, not plastic',
+        body: 'A 15.7 × 9.2 cm tempered glass panel. Glass resists the clouding and yellowing that slowly strangles cheap plastic-topped solar lights after a couple of summers.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with 200+ bought in the past month",
+      'Four rotatable heads where nearly every rival fits three',
+      '3600 lumens stated — the highest figure in this guide, and a comparable one',
+      'Remote as well as on-unit buttons, so a high mounting is not a problem',
+      'Tempered glass panel rather than the plastic most budget solar lights use',
+    ],
+    cons: [
+      '32 reviews is a thin record, and 11% of them are one star',
+      'TuyLuxe claim 95% panel conversion efficiency — real silicon panels run around 20–25%, so treat that number as marketing rather than spec',
+      'Much of the listing is framed as comparisons against unnamed competitors instead of plain specification',
+      'The panel is built into the unit, so the light itself must sit somewhere that gets real sun',
+    ],
+    bestFor: [
+      'Corners and side entries where a three-head light leaves a dark patch',
+      'Anyone who wants maximum brightness from a solar unit rather than a modest glow',
+      'High mountings, thanks to remote control of modes and power',
+    ],
+    notIdealFor: [
+      'Shaded or north-facing walls — an all-in-one panel needs direct sun',
+      'Buyers who want a settled review history before spending',
+      'Anyone who needs the panel sited away from the lamp; this is not a split design',
+    ],
+
+    score: 7.9,
+    verdict:
+      'The fourth head and the 3600 lumen output are genuine points of difference, and a tempered glass panel is a better bet than plastic over several winters. What holds the score down is the evidence: 32 reviews with an 11% one-star tail, and a listing that leans on competitor comparisons and at least one efficiency figure that does not survive scrutiny.',
+
+    faq: [
+      {
+        q: 'Why does a fourth head matter?',
+        a: 'Three-head lights point their heads forward and to each side, which still leaves a shadow at one edge. A fourth rotatable head covers that blind spot, so on a corner, a side porch or an L-shaped approach you get even light rather than a dark patch.',
+      },
+      {
+        q: 'Is the 95% solar efficiency claim real?',
+        a: 'No — treat it as marketing. Commercial silicon solar panels convert roughly 20–25% of the light hitting them, and competing lights in this guide quote 23% and 26%. What is worth having is the tempered glass surface, which stays clear far longer than the plastic panels used on cheaper units.',
+      },
+      {
+        q: 'How long does it run?',
+        a: 'TuyLuxe quote up to 15 hours from a 2500 mAh battery after about three hours of sunlight. As with any solar light, treat that as a good-conditions figure — output falls on short, overcast winter days.',
+      },
+      {
+        q: 'Can I change modes without a ladder?',
+        a: 'Yes. Unlike several rivals, this has both a wireless remote and buttons on the unit, so the three modes and the power state can be set from the ground after mounting.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

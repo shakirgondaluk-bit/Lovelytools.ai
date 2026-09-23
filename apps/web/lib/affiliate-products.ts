@@ -3299,6 +3299,126 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'vensstnor-split-panel-solar-security-light',
+    asin: 'B0GX9N7HQP',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Lighting & Electrical',
+    categoryPath: '/buyers-guide?category=lighting-electrical',
+
+    brand: 'VENSSTNOR',
+    name: 'Solar Lights Outdoor Garden with 5M Cable - 3000LM Solar Security Lights Outdoor Motion Sensor, IP65 Waterproof Solar Flood Lights Outdoor for Garden Driveway Path',
+    tagline: 'The same 3000 lumens as its all-in-one sibling, but the panel goes where the sun is.',
+    description:
+      'A split solar floodlight: 236 LEDs rated at 3000 lumens and two PIR sensors in the lamp, with the panel on five metres of cable so it can sit in full sun while the light points somewhere shaded. Three modes, including a 10% standby that jumps to full on detection.',
+
+    images: [
+      `/products/vensstnor-split-panel-solar-security-light/1.jpg`,
+      `/products/vensstnor-split-panel-solar-security-light/2.jpg`,
+      `/products/vensstnor-split-panel-solar-security-light/3.jpg`,
+      `/products/vensstnor-split-panel-solar-security-light/4.jpg`,
+      `/products/vensstnor-split-panel-solar-security-light/5.jpg`,
+      `/products/vensstnor-split-panel-solar-security-light/6.jpg`,
+    ],
+
+    trustBadges: [
+      { icon: 'star', label: '4.7 rating', sublabel: '25 reviews, 83% five-star' },
+      { icon: 'layers', label: '5 m cable', sublabel: 'Panel mounts away from the lamp' },
+      { icon: 'flame', label: '3000 lumens', sublabel: '236 LEDs, 270° coverage' },
+      { icon: 'move', label: 'Dual PIR sensors', sublabel: '180°, up to 10 m' },
+    ],
+    specs: [
+      { icon: 'layers', label: 'Design', value: 'Split panel and lamp, 5 m connecting cable' },
+      { icon: 'flame', label: 'Brightness', value: '3000 lumens from 236 LED beads' },
+      { icon: 'move', label: 'Detection', value: 'Two PIR sensors, 180°, up to 32 ft (~10 m)' },
+      { icon: 'sliders', label: 'Coverage', value: '270° wide-angle' },
+      { icon: 'settings', label: 'Mode 1', value: 'Motion only, 100% brightness' },
+      { icon: 'clock', label: 'Mode 2', value: 'Continuous all night at 30%' },
+      { icon: 'zap', label: 'Mode 3', value: '10% standby, 100% on motion' },
+      { icon: 'droplet', label: 'Rating', value: 'IP65 waterproof and dustproof' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: 'Five metres between panel and lamp',
+        body: 'This is the whole reason to pick it over the all-in-one version. Put the panel on a sunny roof or wall and the light under a porch, in a garage or anywhere that never sees sun.',
+      },
+      {
+        icon: 'zap',
+        title: 'A standby mode that makes sense',
+        body: 'Mode 3 holds 10% output so the area is never pitch dark, then jumps to the full 3000 lumens when the sensors fire. Useful where a light snapping on from nothing is startling.',
+      },
+      {
+        icon: 'move',
+        title: 'Two sensors across 180°',
+        body: 'A pair of PIR detectors rather than one, covering 180° out to about ten metres, which catches people approaching from an angle instead of only head-on.',
+      },
+      {
+        icon: 'flame',
+        title: '3000 lumens, stated',
+        body: 'A published lumen figure rather than a bare LED count, so it can actually be compared against a mains floodlight instead of guessed at.',
+      },
+      {
+        icon: 'sliders',
+        title: '270° of coverage',
+        body: 'Wide-angle output spreads light across a much broader arc than a single narrow beam, covering the corners either side of wherever it is aimed.',
+      },
+      {
+        icon: 'droplet',
+        title: 'IP65, and no tools to speak of',
+        body: 'Rated against rain and dust for British weather, and VENSSTNOR state installation needs no complex tools — there is no wiring to run either way.',
+      },
+    ],
+
+    pros: [
+      '4.7 stars with 83% five-star and no one-star reviews at all',
+      'Split design with a 5 m cable solves the problem that sinks most solar lights: a shaded wall',
+      'Genuinely stated 3000 lumens rather than an uncomparable LED count',
+      'Two PIR sensors instead of the single sensor most rivals fit',
+      'Three distinct modes including a 10% standby that boosts on detection',
+    ],
+    cons: [
+      '25 reviews is a very thin record — treat the 4.7 as promising rather than proven',
+      'Detection reaches about 10 m, shorter than the ~12 m VENSSTNOR quote for their all-in-one model',
+      'No battery capacity is given; the listing only claims a lifespan over 50,000 cycles',
+      'No remote — modes are set on the unit, so decide before mounting it high',
+    ],
+    bestFor: [
+      'Shaded, north-facing or covered spots where an all-in-one solar light would never charge',
+      'Garages and porches where the light has to be inside but the panel can go outside',
+      'Anyone who wants a comparable brightness figure before buying',
+    ],
+    notIdealFor: [
+      'Runs longer than 5 m between the sunny spot and where the light is needed',
+      'Buyers who want a settled review history behind the rating',
+      'Anyone who would rather change modes from the ground by remote',
+    ],
+
+    score: 8.6,
+    verdict:
+      'The split panel is what earns this its price over the all-in-one VENSSTNOR: five metres of cable turns a shaded wall from a dealbreaker into a non-issue, and the brightness and dual sensors are unchanged. The 4.7 average is the best in this part of the guide, but it rests on only 25 reviews, and detection range is slightly shorter than the sibling model.',
+
+    faq: [
+      {
+        q: 'How is this different from the other VENSSTNOR solar light?',
+        a: 'This one splits the panel from the lamp and joins them with a 5 m cable, so the light can go somewhere shaded — a porch, a garage, a north-facing wall — while the panel sits in the sun. Brightness, sensor count and IP rating match; detection is quoted slightly shorter here at about 10 m against roughly 12 m.',
+      },
+      {
+        q: 'What do the three modes actually do?',
+        a: 'Mode 1 stays off and fires at 100% on motion. Mode 2 stays on all night at 30%. Mode 3 holds 10% continuously and boosts to 100% when the sensors trigger, which is the useful one if you want an area never fully dark.',
+      },
+      {
+        q: 'Can it be used indoors?',
+        a: 'Yes — VENSSTNOR specifically mention garages, since the split design lets the panel stay outside in the sun while the lamp mounts inside. The 5 m cable sets the limit on how far apart the two can be.',
+      },
+      {
+        q: 'What is the battery capacity?',
+        a: 'VENSSTNOR do not publish one. They describe a built-in high-capacity battery with a lifespan exceeding 50,000 cycles, which speaks to longevity rather than how long it runs on a charge.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

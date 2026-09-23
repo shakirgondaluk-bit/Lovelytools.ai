@@ -3178,6 +3178,127 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'vensstnor-3000lm-solar-security-light',
+    asin: 'B0F92S4H4N',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Lighting & Electrical',
+    categoryPath: '/buyers-guide?category=lighting-electrical',
+
+    brand: 'VENSSTNOR',
+    name: 'Solar Lights Outdoor Garden Motion Sensor - 3000LM 236LEDs Security Lights Outdoor with Dual Sensors, 3 Lighting Modes, 270° Illumination, IP65 Waterproof Security Flood Lights (Modern, 2)',
+    tagline: 'Two PIR sensors instead of one, and an actual lumen figure instead of a LED count.',
+    description:
+      'A two-pack of solar floodlights with three aimable heads, 236 LEDs rated at 3000 lumens, and a pair of motion sensors covering 180° out to around 12 metres. One of the few in this class that publishes a real brightness figure rather than leaving you to guess from the LED count.',
+
+    images: [
+      `/products/vensstnor-3000lm-solar-security-light/1.jpg`,
+      `/products/vensstnor-3000lm-solar-security-light/2.jpg`,
+      `/products/vensstnor-3000lm-solar-security-light/3.jpg`,
+      `/products/vensstnor-3000lm-solar-security-light/4.jpg`,
+      `/products/vensstnor-3000lm-solar-security-light/5.jpg`,
+      `/products/vensstnor-3000lm-solar-security-light/6.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: "Amazon's Choice", sublabel: '4.4 rating, 100+ bought last month' },
+      { icon: 'flame', label: '3000 lumens', sublabel: '236 LEDs at 7000K' },
+      { icon: 'move', label: 'Dual PIR sensors', sublabel: '180° detection to ~12 m' },
+      { icon: 'package', label: 'Two lights', sublabel: 'IP65, ABS, no wiring' },
+    ],
+    specs: [
+      { icon: 'flame', label: 'Brightness', value: '3000 lumens, 7000K cool white' },
+      { icon: 'circle-dot', label: 'LEDs', value: '236 across three heads' },
+      { icon: 'move', label: 'Detection', value: 'Two PIR sensors, 180°, up to 40 ft (~12 m)' },
+      { icon: 'sliders', label: 'Coverage', value: 'Up to 270° from 3 adjustable heads' },
+      { icon: 'settings', label: 'Modes', value: 'Sensor, continuous on, dim-to-sensor' },
+      { icon: 'battery', label: 'Battery', value: 'Listing quotes both 2200 mAh and 2000 mAh' },
+      { icon: 'timer', label: 'Per charge', value: 'Up to 1,300 activations' },
+      { icon: 'droplet', label: 'Rating', value: 'IP65, ABS housing' },
+    ],
+    features: [
+      {
+        icon: 'move',
+        title: 'Two sensors, not one',
+        body: 'A second PIR is the headline difference here. Two detectors covering 180° out to about 12 metres catch movement approaching from an angle that a single centre-mounted sensor tends to miss.',
+      },
+      {
+        icon: 'flame',
+        title: 'A stated 3000 lumens',
+        body: 'Most solar floodlights in this bracket quote only an LED count, which tells you nothing comparable. A published lumen figure lets you weigh this against a mains floodlight properly.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Three heads across 270°',
+        body: 'Each head aims independently, so one unit can light a door, a path and a corner at once rather than throwing everything in a single direction.',
+      },
+      {
+        icon: 'settings',
+        title: 'Three modes on one button',
+        body: 'Press to cycle: sensor mode, continuous on, then dim-to-sensor which holds a low glow and jumps to full on detection. No app and no pairing.',
+      },
+      {
+        icon: 'timer',
+        title: 'Rated in activations',
+        body: 'VENSSTNOR quote up to 1,300 lighting events per full charge rather than a runtime in hours — a more honest figure for a light that only fires when something moves.',
+      },
+      {
+        icon: 'droplet',
+        title: 'IP65 in impact-resistant ABS',
+        body: 'Rated against rain and dust, with a shell specified for heat, cold and impact — the baseline for something bolted to an outside wall through a winter.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice in Security Lighting, 4.4 stars with 72% five-star and no two-star reviews",
+      'Dual PIR sensors rather than the single sensor most competitors use',
+      'Publishes a real 3000 lumen figure, which most solar floodlights do not',
+      'Three independently aimed heads covering up to 270°',
+      'Two lights per box, IP65 rated, and no wiring or electrician needed',
+    ],
+    cons: [
+      '34 reviews is a thin record — the 4.4 average is encouraging rather than established',
+      "VENSSTNOR's own bullets contradict each other on battery size, quoting 2200 mAh in one line and 2000 mAh in the next",
+      'Mode switching is by button on the unit, so a light mounted high needs a ladder to change — there is no remote',
+      'The panel is part of the unit, so the light itself has to sit somewhere that gets real sun',
+    ],
+    bestFor: [
+      'Approaches where people arrive from an angle, which is what the second sensor is for',
+      'Anyone who wants to compare brightness against a mains floodlight before buying',
+      'Covering two separate areas of a property in one purchase',
+    ],
+    notIdealFor: [
+      'Shaded or north-facing walls, where an integrated-panel light cannot charge',
+      'High mountings where you would want to change modes from the ground by remote',
+      'Buyers who want a long, settled review history before committing',
+    ],
+
+    score: 8.2,
+    verdict:
+      'Two things set this apart in a crowded category: a second motion sensor, and a published lumen figure instead of a bare LED count. Both are genuinely useful when comparing solar floodlights. It scores where it does because 34 reviews is a thin base for a 4.4 average, and because the listing cannot keep its own battery spec straight.',
+
+    faq: [
+      {
+        q: 'What difference do two sensors make?',
+        a: 'A single PIR sits centrally and is weakest at the edges of its arc. Two sensors covering 180° out to roughly 12 metres pick up movement approaching from the side, which is usually where a one-sensor light fails to trigger until someone is already close.',
+      },
+      {
+        q: 'How bright is it really?',
+        a: 'VENSSTNOR state 3000 lumens from 236 LEDs at 7000K cool white. That is a genuine comparable figure, unlike the LED-count-only claims most solar floodlights make — useful if you are weighing this against a mains unit.',
+      },
+      {
+        q: 'What is the battery capacity?',
+        a: 'The listing is inconsistent: the bullet heading says 2200 mAh and the sentence beneath it says 2000 mAh. What VENSSTNOR do state consistently is up to 1,300 activations per full charge, which is the more meaningful number for a motion-triggered light.',
+      },
+      {
+        q: 'How do I change modes?',
+        a: 'A button on the unit cycles the three modes — sensor, continuous on, then dim-to-sensor. There is no remote, so pick your mode before mounting it somewhere high, or be prepared to fetch a ladder to change it.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {

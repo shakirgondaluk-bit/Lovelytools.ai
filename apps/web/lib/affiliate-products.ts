@@ -3057,6 +3057,127 @@ export const affiliateProducts: AffiliateProduct[] = [
       },
     ],
   },
+  {
+    slug: 'lotmos-342led-solar-security-light',
+    asin: 'B0FGQ1XH8P',
+    affiliateTag: 'lovelytools-21',
+    amazonDomain: 'amazon.co.uk',
+
+    categoryLabel: 'Lighting & Electrical',
+    categoryPath: '/buyers-guide?category=lighting-electrical',
+
+    brand: 'LOTMOS',
+    name: 'Solar Lights Outdoor, 342LED Remote Security Lights Motion Sensor | 6 Pack, 3 Modes, Garden Light Solar Powered, Waterproof, Pir Flood Lighting for Yard Shed Garage Outside, Cool White',
+    tagline: 'Six motion-sensing floodlights that need no wiring, no switch and no electricity bill.',
+    description:
+      'A split-design solar security light: the panel goes where the sun is, the lamp goes where you need light, and five metres of cable joins them. Six of them in a box, each with 342 LEDs, a PIR sensor and a remote for switching modes without a ladder.',
+
+    images: [
+      `/products/lotmos-342led-solar-security-light/1.jpg`,
+      `/products/lotmos-342led-solar-security-light/2.jpg`,
+      `/products/lotmos-342led-solar-security-light/3.jpg`,
+      `/products/lotmos-342led-solar-security-light/4.jpg`,
+      `/products/lotmos-342led-solar-security-light/5.jpg`,
+      `/products/lotmos-342led-solar-security-light/6.jpg`,
+    ],
+    awardBadge: { line1: "AMAZON'S", line2: 'CHOICE' },
+
+    trustBadges: [
+      { icon: 'star', label: "Amazon's Choice", sublabel: '4.3 rating from 4,758 reviews' },
+      { icon: 'package', label: '6 lights per box', sublabel: 'Covers a whole property' },
+      { icon: 'circle-dot', label: '342 LEDs', sublabel: '6500K cool white, 200° spread' },
+      { icon: 'droplet', label: 'IP65 rated', sublabel: 'ABS, built for permanent outdoor use' },
+    ],
+    specs: [
+      { icon: 'circle-dot', label: 'LEDs', value: '342 beads, 6500K cool white' },
+      { icon: 'move', label: 'Coverage', value: '200° wide-angle spread' },
+      { icon: 'sliders', label: 'Modes', value: 'Security sensor, dim sensor, constant on' },
+      { icon: 'settings', label: 'Control', value: 'PIR motion sensor plus remote' },
+      { icon: 'layers', label: 'Design', value: 'Split panel and lamp, 5 m detachable cable' },
+      { icon: 'battery-charging', label: 'Solar panel', value: 'Up to 23% conversion rate' },
+      { icon: 'timer', label: 'Runtime', value: '8–12 hours from a full charge' },
+      { icon: 'droplet', label: 'Rating', value: 'IP65, ABS housing' },
+    ],
+    features: [
+      {
+        icon: 'layers',
+        title: 'Panel and lamp go in different places',
+        body: 'The split design is the reason this works on a north-facing wall: five metres of detachable cable lets the panel sit in full sun while the light points wherever you actually need it.',
+      },
+      {
+        icon: 'sliders',
+        title: 'Three modes, not just on and off',
+        body: 'Security sensor mode stays dark until something moves, dim sensor mode holds a low glow and jumps to full on detection, and constant mode simply stays lit.',
+      },
+      {
+        icon: 'settings',
+        title: 'A remote, so no ladder',
+        body: 'Modes and on/off switch from the ground by remote — the difference between changing a setting and fetching a ladder to reach a light mounted at eaves height.',
+      },
+      {
+        icon: 'move',
+        title: '200° of spread',
+        body: '342 LEDs across a wide-angle head throw 6500K cool white across a much broader arc than a typical narrow-beam floodlight, covering the dark corners either side.',
+      },
+      {
+        icon: 'battery-charging',
+        title: 'No wiring, no running cost',
+        body: 'A larger panel rated up to 23% conversion runs the light for 8–12 hours on a full charge. Nothing to wire in, no neutral to find, nothing added to the bill.',
+      },
+      {
+        icon: 'droplet',
+        title: 'IP65 in ABS',
+        body: 'Rated against rain, dust and heat rather than merely splash-resistant, which is what a light bolted to an exposed wall for several winters actually needs.',
+      },
+    ],
+
+    pros: [
+      "Amazon's Choice with 4.3 stars across 4,758 reviews — one of the deepest review records in this guide",
+      'Six lights in one box, enough to do a whole house rather than one doorway',
+      'Split panel and lamp with a 5 m cable, so shaded walls are still workable',
+      'IP65 rather than the IP44 most budget outdoor sensors settle for',
+      'No wiring and no running cost — it needs a wall and sun, nothing else',
+    ],
+    cons: [
+      '9% of reviews are one star, a larger tail than the 4.3 average suggests',
+      'Solar output falls in winter and on wet days; LOTMOS say rainy weather cuts working time',
+      'The panel must be in direct, unshaded sun — a shaded mounting spot will disappoint',
+      'Needs charging for 10+ hours before first use, and testing it requires covering the panel to simulate darkness',
+    ],
+    bestFor: [
+      'Driveways, sheds, garages and paths with no power run anywhere near them',
+      'Covering several dark areas of one property in a single purchase',
+      'Renters and anyone who wants outdoor security lighting without an electrician',
+    ],
+    notIdealFor: [
+      'Walls and roofs that never get direct sun, where the panel cannot charge',
+      'Anyone needing guaranteed output through midwinter — solar lighting dips when days are shortest',
+      'Installations wanting a single high-output floodlight rather than six wide-spread ones',
+    ],
+
+    score: 8.2,
+    verdict:
+      'The practical answer to lighting the parts of a property that have no power near them, and the split panel is what makes it work where one-piece solar lights do not. 4.3 across nearly 4,800 reviews is a genuinely well-tested record, though the 9% one-star tail and the usual solar caveat — output follows the weather — are both real.',
+
+    faq: [
+      {
+        q: 'Does the solar panel have to be next to the light?',
+        a: 'No, and that is the main point of this design. The panel detaches and connects by a 5 m cable, so it can sit on a sunny roof or wall while the lamp mounts wherever the light is needed. That makes shaded or north-facing positions workable.',
+      },
+      {
+        q: 'What are the three modes?',
+        a: 'Security sensor mode keeps the light off until the PIR detects movement, then lights fully. Dim sensor mode holds a low glow all night and brightens on detection. Constant mode stays on. All three switch from the supplied remote.',
+      },
+      {
+        q: 'How long does it run on a charge?',
+        a: 'LOTMOS quote 8–12 hours from a full charge, enough for a full night. They also state plainly that rainy days reduce charging efficiency and therefore working time, so treat that figure as a good-conditions number.',
+      },
+      {
+        q: 'Anything to know before the first night?',
+        a: 'Two things from the listing. Charge it for more than 10 hours before first use, because it loses charge in transit. And if you want to test it indoors, cover the solar panel — the light will not come on while the panel sees light.',
+      },
+    ],
+  },
 ];
 
 export function getAffiliateProduct(slug: string): AffiliateProduct | undefined {
